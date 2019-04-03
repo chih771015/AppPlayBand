@@ -18,6 +18,7 @@
 		59F81F982254641400C04E32 /* Booking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59F81F972254641400C04E32 /* Booking.storyboard */; };
 		59F81F9A2254642F00C04E32 /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59F81F992254642F00C04E32 /* Message.storyboard */; };
 		59F81F9C22547C3A00C04E32 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F81F9B22547C3A00C04E32 /* UIImage+Extension.swift */; };
+		59F81F9F22549FCD00C04E32 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F81F9E22549FCD00C04E32 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		59F81F972254641400C04E32 /* Booking.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Booking.storyboard; sourceTree = "<group>"; };
 		59F81F992254642F00C04E32 /* Message.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Message.storyboard; sourceTree = "<group>"; };
 		59F81F9B22547C3A00C04E32 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		59F81F9E22549FCD00C04E32 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		59F81F8D22545AC400C04E32 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				59F81F9D22549FBA00C04E32 /* Profile */,
 				59F81F8E2254625C00C04E32 /* PBTabBarController.swift */,
 			);
 			path = Controller;
@@ -112,6 +115,14 @@
 				59F81F91225462FD00C04E32 /* UIStoryBoard+Extenstion.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		59F81F9D22549FBA00C04E32 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				59F81F9E22549FCD00C04E32 /* ProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +202,7 @@
 			files = (
 				59F81F92225462FD00C04E32 /* UIStoryBoard+Extenstion.swift in Sources */,
 				5941D82D225359D500FDEEBA /* AppDelegate.swift in Sources */,
+				59F81F9F22549FCD00C04E32 /* ProfileViewController.swift in Sources */,
 				59F81F8F2254625C00C04E32 /* PBTabBarController.swift in Sources */,
 				59F81F9C22547C3A00C04E32 /* UIImage+Extension.swift in Sources */,
 			);
