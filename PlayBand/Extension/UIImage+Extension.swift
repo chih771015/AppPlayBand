@@ -1,9 +1,9 @@
 //
 //  UIImage+Extension.swift
-//  STYLiSH
+//  PlayBand
 //
-//  Created by WU CHIH WEI on 2019/2/11.
-//  Copyright © 2019 WU CHIH WEI. All rights reserved.
+//  Created by 姜旦旦 on 2019/4/3.
+//  Copyright © 2019 姜旦旦. All rights reserved.
 //
 
 import UIKit
