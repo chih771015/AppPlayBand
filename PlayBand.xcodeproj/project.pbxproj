@@ -19,6 +19,9 @@
 		59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF84E22564DEB00273724 /* UILabel+Extension.swift */; };
 		59DFF8512257409300273724 /* Photo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DFF8502257409300273724 /* Photo.storyboard */; };
 		59DFF8542257465800273724 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF8532257465800273724 /* PhotoViewController.swift */; };
+		59DFF85622578DAB00273724 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF85522578DAB00273724 /* EditProfileViewController.swift */; };
+		59DFF85A22578FFD00273724 /* EditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF85822578FFD00273724 /* EditTableViewCell.swift */; };
+		59DFF85B22578FFD00273724 /* EditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59DFF85922578FFD00273724 /* EditTableViewCell.xib */; };
 		59F81F8F2254625C00C04E32 /* PBTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F81F8E2254625C00C04E32 /* PBTabBarController.swift */; };
 		59F81F92225462FD00C04E32 /* UIStoryBoard+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F81F91225462FD00C04E32 /* UIStoryBoard+Extenstion.swift */; };
 		59F81F94225463BB00C04E32 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59F81F93225463BB00C04E32 /* Profile.storyboard */; };
@@ -45,6 +48,9 @@
 		59DFF84E22564DEB00273724 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		59DFF8502257409300273724 /* Photo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Photo.storyboard; sourceTree = "<group>"; };
 		59DFF8532257465800273724 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		59DFF85522578DAB00273724 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		59DFF85822578FFD00273724 /* EditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewCell.swift; sourceTree = "<group>"; };
+		59DFF85922578FFD00273724 /* EditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditTableViewCell.xib; sourceTree = "<group>"; };
 		59F81F8E2254625C00C04E32 /* PBTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBTabBarController.swift; sourceTree = "<group>"; };
 		59F81F91225462FD00C04E32 /* UIStoryBoard+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryBoard+Extenstion.swift"; sourceTree = "<group>"; };
 		59F81F93225463BB00C04E32 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -116,6 +122,15 @@
 			path = Photo;
 			sourceTree = "<group>";
 		};
+		59DFF85722578FBF00273724 /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				59DFF85822578FFD00273724 /* EditTableViewCell.swift */,
+				59DFF85922578FFD00273724 /* EditTableViewCell.xib */,
+			);
+			path = EditProfile;
+			sourceTree = "<group>";
+		};
 		59F81F8B22545AAF00C04E32 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				59F81F9E22549FCD00C04E32 /* ProfileViewController.swift */,
+				59DFF85522578DAB00273724 /* EditProfileViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -171,6 +187,7 @@
 		59F81FA52254A6C800C04E32 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				59DFF85722578FBF00273724 /* EditProfile */,
 				598B8CD22254B9140061F03B /* ProfileMain */,
 			);
 			path = Profile;
@@ -239,6 +256,7 @@
 				59DFF8512257409300273724 /* Photo.storyboard in Resources */,
 				59F81F982254641400C04E32 /* Booking.storyboard in Resources */,
 				59F81F962254640200C04E32 /* News.storyboard in Resources */,
+				59DFF85B22578FFD00273724 /* EditTableViewCell.xib in Resources */,
 				59F81F94225463BB00C04E32 /* Profile.storyboard in Resources */,
 				5941D832225359D500FDEEBA /* Main.storyboard in Resources */,
 				598B8CD62254B9530061F03B /* ProfileInformationTableViewCell.xib in Resources */,
@@ -253,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59DFF85622578DAB00273724 /* EditProfileViewController.swift in Sources */,
 				59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */,
 				5952315C2254AB51008C007F /* ProfileUserPictureImageView.swift in Sources */,
 				598B8CDB2254C4610061F03B /* ProfileContentCategory.swift in Sources */,
@@ -265,6 +284,7 @@
 				59F81F9F22549FCD00C04E32 /* ProfileViewController.swift in Sources */,
 				59F81F8F2254625C00C04E32 /* PBTabBarController.swift in Sources */,
 				59F81F9C22547C3A00C04E32 /* UIImage+Extension.swift in Sources */,
+				59DFF85A22578FFD00273724 /* EditTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

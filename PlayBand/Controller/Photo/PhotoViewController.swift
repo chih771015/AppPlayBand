@@ -15,7 +15,15 @@ class PhotoViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func chancePhoto() {
+        
+        
+    }
     
+    @IBAction func useCamera() {
+        
+        
+    }
     
     
     

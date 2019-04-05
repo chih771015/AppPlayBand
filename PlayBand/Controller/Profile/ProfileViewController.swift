@@ -52,6 +52,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return datas[indexPath.row].cellForIndexPath(indexPath, tableView: tableView)
+        return datas[indexPath.row].cellForIndexPathInMain(indexPath, tableView: tableView)
     }
 }

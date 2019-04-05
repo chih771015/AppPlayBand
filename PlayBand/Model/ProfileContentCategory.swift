@@ -21,7 +21,7 @@ enum ProfileContentCategory: String {
     
     case facebook = "粉絲專頁"
     
-    func cellForIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
+    func cellForIndexPathInMain(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
     
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileInformationTableViewCell.self), for: indexPath) as? ProfileInformationTableViewCell else { return UITableViewCell()}
         
@@ -46,6 +46,37 @@ enum ProfileContentCategory: String {
         case .facebook:
             
             cell.settingProfilePage(title: rawValue, data: "Facebook")
+        }
+        
+        return cell
+        
+    }
+    
+    func cellForIndexPathInEdit(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditTableViewCell.self), for: indexPath) as? EditTableViewCell else { return UITableViewCell()}
+        
+        switch self {
+            
+        case .name:
+            
+           cell.setupEditCell(placeholder: rawValue)
+            
+        case .email:
+            
+            cell.setupEditCell(placeholder: rawValue)
+            
+        case .band:
+            
+            cell.setupEditCell(placeholder: rawValue)
+            
+        case .phone:
+            
+            cell.setupEditCell(placeholder: rawValue)
+            
+        case .facebook:
+            
+            cell.setupEditCell(placeholder: rawValue)
         }
         
         return cell

@@ -46,6 +46,9 @@
                                         <real key="value" value="11"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="chancePhoto" destination="IG8-w9-Zeb" eventType="touchUpInside" id="8wq-Ij-ghV"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkT-KF-f8r">
                                 <rect key="frame" x="10" y="748" width="394" height="40"/>
@@ -59,6 +62,9 @@
                                         <real key="value" value="11"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="useCamera" destination="IG8-w9-Zeb" eventType="touchUpInside" id="0LR-5W-XWe"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
