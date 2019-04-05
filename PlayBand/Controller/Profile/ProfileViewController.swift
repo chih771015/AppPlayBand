@@ -20,6 +20,15 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    @IBAction func presentPhotoVC() {
+        
+        guard let vc = UIStoryboard.photo.instantiateInitialViewController() else {return}
+        present(vc, animated: true, completion: nil)
+        
+    }
+    
+    
+    
     private let datas: [ProfileContentCategory] = [.name, .band, .phone, .email, .facebook]
     
     override func viewDidLoad() {

@@ -20,7 +20,6 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="BTL-Rs-yJP" customClass="ProfileUserPictureImageView" customModule="PlayBand" customModuleProvider="target">
                                 <rect key="frame" x="147.5" y="104" width="80" height="80"/>
-                                <color key="backgroundColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="BTL-Rs-yJP" secondAttribute="height" multiplier="1:1" id="znS-Cf-MTK"/>
                                 </constraints>
@@ -67,16 +66,53 @@
                                 <color key="textColor" white="0.1207733146" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FbB-nI-fA6">
+                                <rect key="frame" x="203.5" y="160" width="24" height="24"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WPL-Fr-vZ8">
+                                        <rect key="frame" x="4" y="5.5" width="16" height="13"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="WPL-Fr-vZ8" secondAttribute="height" multiplier="6:5" id="Yq1-Eo-ISI"/>
+                                        </constraints>
+                                        <state key="normal" image="photo-camera"/>
+                                        <connections>
+                                            <action selector="presentPhotoVC" destination="ozj-Gu-UGt" eventType="touchUpInside" id="m4X-BH-77v"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.97056934930000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="FbB-nI-fA6" secondAttribute="height" multiplier="1:1" id="2K3-01-3Ac"/>
+                                    <constraint firstItem="WPL-Fr-vZ8" firstAttribute="width" secondItem="FbB-nI-fA6" secondAttribute="width" multiplier="2:3" id="Jua-yU-T00"/>
+                                    <constraint firstItem="WPL-Fr-vZ8" firstAttribute="centerX" secondItem="FbB-nI-fA6" secondAttribute="centerX" id="Zki-TP-GRr"/>
+                                    <constraint firstItem="WPL-Fr-vZ8" firstAttribute="centerY" secondItem="FbB-nI-fA6" secondAttribute="centerY" id="wEm-uf-SCh"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lvCornerRadius">
+                                        <real key="value" value="11"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lvBorderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lvBorderColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.97056934931506844" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="C4s-sF-wRV" firstAttribute="top" secondItem="BTL-Rs-yJP" secondAttribute="bottom" constant="50" id="5E1-kv-OsI"/>
+                            <constraint firstItem="FbB-nI-fA6" firstAttribute="trailing" secondItem="BTL-Rs-yJP" secondAttribute="trailing" id="7vq-bV-mTv"/>
                             <constraint firstItem="EVh-R3-oSo" firstAttribute="bottom" secondItem="gkd-fK-U5Z" secondAttribute="bottom" id="JqJ-tc-Yzd"/>
                             <constraint firstItem="gkd-fK-U5Z" firstAttribute="top" secondItem="C4s-sF-wRV" secondAttribute="bottom" constant="30" id="Kkj-HL-aVQ"/>
+                            <constraint firstItem="FbB-nI-fA6" firstAttribute="bottom" secondItem="BTL-Rs-yJP" secondAttribute="bottom" id="MYe-4U-ghu"/>
                             <constraint firstItem="BTL-Rs-yJP" firstAttribute="centerX" secondItem="EVh-R3-oSo" secondAttribute="centerX" id="S4T-5m-2Q6"/>
                             <constraint firstItem="Och-Hg-tx3" firstAttribute="top" secondItem="BTL-Rs-yJP" secondAttribute="bottom" constant="14" id="VN9-0k-MmQ"/>
                             <constraint firstItem="C4s-sF-wRV" firstAttribute="centerX" secondItem="BTL-Rs-yJP" secondAttribute="centerX" id="VYN-66-mHU"/>
                             <constraint firstItem="Och-Hg-tx3" firstAttribute="centerX" secondItem="BTL-Rs-yJP" secondAttribute="centerX" id="a71-JI-l4M"/>
+                            <constraint firstItem="FbB-nI-fA6" firstAttribute="width" secondItem="BTL-Rs-yJP" secondAttribute="width" multiplier="6:20" id="aK6-3a-8jG"/>
                             <constraint firstItem="gkd-fK-U5Z" firstAttribute="leading" secondItem="EVh-R3-oSo" secondAttribute="leading" id="aa8-5v-0xi"/>
                             <constraint firstItem="C4s-sF-wRV" firstAttribute="width" secondItem="BTL-Rs-yJP" secondAttribute="width" multiplier="49:40" id="cSu-Yg-ghJ"/>
                             <constraint firstItem="EVh-R3-oSo" firstAttribute="trailing" secondItem="gkd-fK-U5Z" secondAttribute="trailing" id="dd3-4z-7Fa"/>
@@ -122,6 +158,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="photo-camera" width="24" height="20"/>
         <image name="settings" width="16" height="16"/>
         <image name="user" width="24" height="24"/>
     </resources>

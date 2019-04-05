@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IG8-w9-Zeb">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Photo View Controller-->
+        <scene sceneID="4DX-B8-1wx">
+            <objects>
+                <viewController modalPresentationStyle="overFullScreen" id="IG8-w9-Zeb" customClass="PhotoViewController" customModule="PlayBand" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hhh-pk-y7t">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDr-Li-uYS">
+                                <rect key="frame" x="10" y="812" width="394" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ful-hO-axD"/>
+                                </constraints>
+                                <state key="normal" title="取消"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lvCornerRadius">
+                                        <real key="value" value="11"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="dismissVC" destination="IG8-w9-Zeb" eventType="touchUpInside" id="GbF-Ed-uPy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jy-TB-uct">
+                                <rect key="frame" x="10" y="707" width="394" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Ro3-7W-Xxb"/>
+                                </constraints>
+                                <state key="normal" title="選擇照片"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lvCornerRadius">
+                                        <real key="value" value="11"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkT-KF-f8r">
+                                <rect key="frame" x="10" y="748" width="394" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="NLj-iK-4yP"/>
+                                </constraints>
+                                <state key="normal" title="拍攝照片"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lvCornerRadius">
+                                        <real key="value" value="11"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="CDr-Li-uYS" firstAttribute="leading" secondItem="AN6-sr-W5n" secondAttribute="leading" constant="10" id="1so-GU-q19"/>
+                            <constraint firstItem="lkT-KF-f8r" firstAttribute="leading" secondItem="CDr-Li-uYS" secondAttribute="leading" id="7yA-q9-Ri6"/>
+                            <constraint firstItem="lkT-KF-f8r" firstAttribute="top" secondItem="4jy-TB-uct" secondAttribute="bottom" constant="1" id="DgQ-5l-3bE"/>
+                            <constraint firstItem="4jy-TB-uct" firstAttribute="leading" secondItem="lkT-KF-f8r" secondAttribute="leading" id="FFu-OR-bkT"/>
+                            <constraint firstItem="CDr-Li-uYS" firstAttribute="top" secondItem="lkT-KF-f8r" secondAttribute="bottom" constant="24" id="PSW-Gq-xWQ"/>
+                            <constraint firstItem="AN6-sr-W5n" firstAttribute="bottom" secondItem="CDr-Li-uYS" secondAttribute="bottom" constant="10" id="SXb-mX-GjN"/>
+                            <constraint firstItem="4jy-TB-uct" firstAttribute="trailing" secondItem="lkT-KF-f8r" secondAttribute="trailing" id="ahX-sI-xLC"/>
+                            <constraint firstItem="AN6-sr-W5n" firstAttribute="trailing" secondItem="CDr-Li-uYS" secondAttribute="trailing" constant="10" id="bce-tU-dCg"/>
+                            <constraint firstItem="lkT-KF-f8r" firstAttribute="trailing" secondItem="CDr-Li-uYS" secondAttribute="trailing" id="wsE-9z-eab"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AN6-sr-W5n"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2eG-ae-RH7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7" y="113"/>
+        </scene>
+    </scenes>
+</document>

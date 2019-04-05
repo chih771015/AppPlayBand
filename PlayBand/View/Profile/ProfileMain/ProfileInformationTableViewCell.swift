@@ -28,7 +28,9 @@ class ProfileInformationTableViewCell: UITableViewCell {
     func settingProfilePage(title: String, data: String) {
         
         self.titleLabel.text = title
+        self.titleLabel.setTextSpacingBy(value: 2.25)
         self.dataLabel.text = data
+        self.dataLabel.setTextSpacingBy(value: 2.25)
     }
     
 }

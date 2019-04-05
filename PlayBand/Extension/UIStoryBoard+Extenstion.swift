@@ -19,6 +19,8 @@ private struct StoryboardCategory {
     static let message = "Message"
     
     static let profile = "Profile"
+    
+    static let photo = "Photo"
 
 }
 
@@ -33,7 +35,9 @@ extension UIStoryboard {
     static var message: UIStoryboard { return stStoryboard(name: StoryboardCategory.message) }
     
     static var profile: UIStoryboard { return stStoryboard(name: StoryboardCategory.profile) }
-
+    
+    static var photo: UIStoryboard { return stStoryboard(name: StoryboardCategory.photo)}
+    
     private static func stStoryboard(name: String) -> UIStoryboard {
         
         return UIStoryboard(name: name, bundle: nil)
