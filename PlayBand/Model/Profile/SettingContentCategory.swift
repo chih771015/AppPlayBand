@@ -15,6 +15,16 @@ enum SettingContentCategory: String {
     case passwordChange = "更改密碼"
     case logout = "登出"
     
+    var imageTitle: String {
+        
+        switch self {
+            
+        case .logout: return "logout"
+        case .notification: return "notification"
+        case .passwordChange: return "key"
+        }
+    }
+    
     func cellForIndexPathInSetting(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingTableViewCell.self), for: indexPath) as? SettingTableViewCell else { return UITableViewCell() }
         
@@ -22,15 +32,15 @@ enum SettingContentCategory: String {
             
         case .notification:
             
-            cell.setupWithSwitch(title: rawValue, image: returnImageName())
+            cell.setupWithSwitch(title: rawValue, image: imageTitle)
             
         case .passwordChange:
             
-            cell.setupWithoutSwitch(title: rawValue, image: returnImageName())
+            cell.setupWithoutSwitch(title: rawValue, image: imageTitle)
             
         case .logout:
             
-            cell.setupWithoutSwitch(title: rawValue, image: returnImageName())
+            cell.setupWithoutSwitch(title: rawValue, image: imageTitle)
             
         }
         return cell
@@ -39,6 +49,7 @@ enum SettingContentCategory: String {
     func setCellForIndexPath(viewController: UIViewController) {
         
         switch self {
+            
         case .passwordChange:
             print("passowordChange")
         case .logout:
@@ -48,17 +59,5 @@ enum SettingContentCategory: String {
         }
         
         
-    }
-    
-    private func returnImageName() -> String {
-        
-        switch self {
-        case .notification:
-            return "notification"
-        case .passwordChange:
-            return "key"
-        case .logout:
-            return "logout"
-        }
     }
 }

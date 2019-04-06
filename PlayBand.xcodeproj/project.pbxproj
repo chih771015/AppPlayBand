@@ -20,6 +20,10 @@
 		59ABB0242258732B00AE937A /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59ABB0222258732B00AE937A /* SettingTableViewCell.xib */; };
 		59ABB026225877C400AE937A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ABB025225877C400AE937A /* SettingViewController.swift */; };
 		59ABB029225878C700AE937A /* SettingContentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ABB028225878C700AE937A /* SettingContentCategory.swift */; };
+		59ABB02C2258A89D00AE937A /* SearchStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ABB02B2258A89D00AE937A /* SearchStoreViewController.swift */; };
+		59ABB0342258B32B00AE937A /* SearchStoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ABB0322258B32B00AE937A /* SearchStoreTableViewCell.swift */; };
+		59ABB0352258B32B00AE937A /* SearchStoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59ABB0332258B32B00AE937A /* SearchStoreTableViewCell.xib */; };
+		59ABB0382259084800AE937A /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ABB0362259084800AE937A /* StoreDetailViewController.swift */; };
 		59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF84E22564DEB00273724 /* UILabel+Extension.swift */; };
 		59DFF8512257409300273724 /* Photo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DFF8502257409300273724 /* Photo.storyboard */; };
 		59DFF8542257465800273724 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF8532257465800273724 /* PhotoViewController.swift */; };
@@ -53,6 +57,10 @@
 		59ABB0222258732B00AE937A /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
 		59ABB025225877C400AE937A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		59ABB028225878C700AE937A /* SettingContentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingContentCategory.swift; sourceTree = "<group>"; };
+		59ABB02B2258A89D00AE937A /* SearchStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStoreViewController.swift; sourceTree = "<group>"; };
+		59ABB0322258B32B00AE937A /* SearchStoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStoreTableViewCell.swift; sourceTree = "<group>"; };
+		59ABB0332258B32B00AE937A /* SearchStoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchStoreTableViewCell.xib; sourceTree = "<group>"; };
+		59ABB0362259084800AE937A /* StoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailViewController.swift; sourceTree = "<group>"; };
 		59DFF84E22564DEB00273724 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		59DFF8502257409300273724 /* Photo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Photo.storyboard; sourceTree = "<group>"; };
 		59DFF8532257465800273724 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +148,24 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		59ABB02A2258A83900AE937A /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				59ABB02B2258A89D00AE937A /* SearchStoreViewController.swift */,
+				59ABB0362259084800AE937A /* StoreDetailViewController.swift */,
+			);
+			path = Booking;
+			sourceTree = "<group>";
+		};
+		59ABB0312258B25C00AE937A /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				59ABB0322258B32B00AE937A /* SearchStoreTableViewCell.swift */,
+				59ABB0332258B32B00AE937A /* SearchStoreTableViewCell.xib */,
+			);
+			path = Booking;
+			sourceTree = "<group>";
+		};
 		59DFF8522257463D00273724 /* Photo */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +194,7 @@
 		59F81F8C22545ABD00C04E32 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				59ABB0312258B25C00AE937A /* Booking */,
 				59F81FA52254A6C800C04E32 /* Profile */,
 				5941D830225359D500FDEEBA /* Main.storyboard */,
 				59F81F93225463BB00C04E32 /* Profile.storyboard */,
@@ -182,6 +209,7 @@
 		59F81F8D22545AC400C04E32 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				59ABB02A2258A83900AE937A /* Booking */,
 				59DFF8522257463D00273724 /* Photo */,
 				59F81F9D22549FBA00C04E32 /* Profile */,
 				59F81F8E2254625C00C04E32 /* PBTabBarController.swift */,
@@ -286,6 +314,7 @@
 				59F81F982254641400C04E32 /* Booking.storyboard in Resources */,
 				59F81F962254640200C04E32 /* News.storyboard in Resources */,
 				59DFF85B22578FFD00273724 /* EditTableViewCell.xib in Resources */,
+				59ABB0352258B32B00AE937A /* SearchStoreTableViewCell.xib in Resources */,
 				59F81F94225463BB00C04E32 /* Profile.storyboard in Resources */,
 				5941D832225359D500FDEEBA /* Main.storyboard in Resources */,
 				598B8CD62254B9530061F03B /* ProfileInformationTableViewCell.xib in Resources */,
@@ -302,6 +331,7 @@
 			files = (
 				59DFF85622578DAB00273724 /* EditProfileViewController.swift in Sources */,
 				59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */,
+				59ABB0342258B32B00AE937A /* SearchStoreTableViewCell.swift in Sources */,
 				5952315C2254AB51008C007F /* ProfileUserPictureImageView.swift in Sources */,
 				59ABB026225877C400AE937A /* SettingViewController.swift in Sources */,
 				598B8CDB2254C4610061F03B /* ProfileContentCategory.swift in Sources */,
@@ -310,11 +340,13 @@
 				59ABB0232258732B00AE937A /* SettingTableViewCell.swift in Sources */,
 				59ABB029225878C700AE937A /* SettingContentCategory.swift in Sources */,
 				59DFF8542257465800273724 /* PhotoViewController.swift in Sources */,
+				59ABB02C2258A89D00AE937A /* SearchStoreViewController.swift in Sources */,
 				598B8CD52254B9530061F03B /* ProfileInformationTableViewCell.swift in Sources */,
 				59F81F92225462FD00C04E32 /* UIStoryBoard+Extenstion.swift in Sources */,
 				5941D82D225359D500FDEEBA /* AppDelegate.swift in Sources */,
 				59F81F9F22549FCD00C04E32 /* ProfileViewController.swift in Sources */,
 				59F81F8F2254625C00C04E32 /* PBTabBarController.swift in Sources */,
+				59ABB0382259084800AE937A /* StoreDetailViewController.swift in Sources */,
 				59F81F9C22547C3A00C04E32 /* UIImage+Extension.swift in Sources */,
 				59DFF85A22578FFD00273724 /* EditTableViewCell.swift in Sources */,
 			);
