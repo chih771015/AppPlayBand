@@ -104,7 +104,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.97056934931506844" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="C4s-sF-wRV" firstAttribute="top" secondItem="BTL-Rs-yJP" secondAttribute="bottom" constant="50" id="5E1-kv-OsI"/>
                             <constraint firstItem="FbB-nI-fA6" firstAttribute="trailing" secondItem="BTL-Rs-yJP" secondAttribute="trailing" id="7vq-bV-mTv"/>
@@ -144,10 +144,10 @@
             </objects>
             <point key="canvasLocation" x="1141.5999999999999" y="145.27736131934034"/>
         </scene>
-        <!--Edit Profile View Controller-->
+        <!--Edit-->
         <scene sceneID="kx4-Fd-gCO">
             <objects>
-                <viewController id="xwR-dq-XZD" customClass="EditProfileViewController" customModule="PlayBand" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Edit" id="xwR-dq-XZD" customClass="EditProfileViewController" customModule="PlayBand" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UBQ-qU-tdf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -216,16 +216,31 @@
             </objects>
             <point key="canvasLocation" x="2085.5999999999999" y="144.3778110944528"/>
         </scene>
-        <!--View Controller-->
+        <!--Setting-->
         <scene sceneID="rDf-oD-TxX">
             <objects>
-                <viewController id="D4A-cL-Fcf" sceneMemberID="viewController">
+                <viewController title="Setting" id="D4A-cL-Fcf" customClass="SettingViewController" customModule="PlayBand" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4VK-2A-ldx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0tN-7R-jLa">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8Tj-yb-six" firstAttribute="trailing" secondItem="0tN-7R-jLa" secondAttribute="trailing" id="4DC-N2-Uu3"/>
+                            <constraint firstItem="8Tj-yb-six" firstAttribute="bottom" secondItem="0tN-7R-jLa" secondAttribute="bottom" id="9wF-9u-HDU"/>
+                            <constraint firstItem="0tN-7R-jLa" firstAttribute="leading" secondItem="8Tj-yb-six" secondAttribute="leading" id="V1T-BP-SmI"/>
+                            <constraint firstItem="0tN-7R-jLa" firstAttribute="top" secondItem="8Tj-yb-six" secondAttribute="top" id="zNI-Us-xyE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8Tj-yb-six"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="0tN-7R-jLa" id="f1u-X8-GFh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z53-dc-upO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
