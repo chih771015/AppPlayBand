@@ -20,6 +20,8 @@
 		598B8CD62254B9530061F03B /* ProfileInformationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 598B8CD42254B9530061F03B /* ProfileInformationTableViewCell.xib */; };
 		598B8CD82254BFF80061F03B /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B8CD72254BFF80061F03B /* UITableView+Extension.swift */; };
 		598B8CDB2254C4610061F03B /* ProfileContentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B8CDA2254C4610061F03B /* ProfileContentCategory.swift */; };
+		59949295225A7D9C00726BF3 /* CalendarFrameWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59949294225A7D9C00726BF3 /* CalendarFrameWork.swift */; };
+		59949297225A7FCE00726BF3 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59949296225A7FCE00726BF3 /* CalendarViewController.swift */; };
 		59ABB0232258732B00AE937A /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ABB0212258732B00AE937A /* SettingTableViewCell.swift */; };
 		59ABB0242258732B00AE937A /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59ABB0222258732B00AE937A /* SettingTableViewCell.xib */; };
 		59ABB026225877C400AE937A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ABB025225877C400AE937A /* SettingViewController.swift */; };
@@ -63,6 +65,8 @@
 		598B8CD42254B9530061F03B /* ProfileInformationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileInformationTableViewCell.xib; sourceTree = "<group>"; };
 		598B8CD72254BFF80061F03B /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		598B8CDA2254C4610061F03B /* ProfileContentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContentCategory.swift; sourceTree = "<group>"; };
+		59949294225A7D9C00726BF3 /* CalendarFrameWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFrameWork.swift; sourceTree = "<group>"; };
+		59949296225A7FCE00726BF3 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		59ABB0212258732B00AE937A /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		59ABB0222258732B00AE937A /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
 		59ABB025225877C400AE937A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 		5941D82B225359D500FDEEBA /* PlayBand */ = {
 			isa = PBXGroup;
 			children = (
+				59949293225A7D6400726BF3 /* FrameWork */,
 				59F81F902254629F00C04E32 /* Extension */,
 				59F81F8D22545AC400C04E32 /* Controller */,
 				59F81F8C22545ABD00C04E32 /* View */,
@@ -153,6 +158,14 @@
 				598B8CD42254B9530061F03B /* ProfileInformationTableViewCell.xib */,
 			);
 			path = ProfileMain;
+			sourceTree = "<group>";
+		};
+		59949293225A7D6400726BF3 /* FrameWork */ = {
+			isa = PBXGroup;
+			children = (
+				59949294225A7D9C00726BF3 /* CalendarFrameWork.swift */,
+			);
+			path = FrameWork;
 			sourceTree = "<group>";
 		};
 		59ABB020225872D100AE937A /* Setting */ = {
@@ -178,6 +191,7 @@
 			children = (
 				59ABB02B2258A89D00AE937A /* SearchStoreViewController.swift */,
 				59ABB0362259084800AE937A /* StoreDetailViewController.swift */,
+				59949296225A7FCE00726BF3 /* CalendarViewController.swift */,
 			);
 			path = Booking;
 			sourceTree = "<group>";
@@ -309,7 +323,6 @@
 				C291E05659581482F9363EF6 /* Pods-PlayBand.debug.xcconfig */,
 				4DC66BA7995D6F264BD1A145 /* Pods-PlayBand.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -451,6 +464,7 @@
 				59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */,
 				59ABB0342258B32B00AE937A /* SearchStoreTableViewCell.swift in Sources */,
 				5952315C2254AB51008C007F /* ProfileUserPictureImageView.swift in Sources */,
+				59949297225A7FCE00726BF3 /* CalendarViewController.swift in Sources */,
 				59ABB026225877C400AE937A /* SettingViewController.swift in Sources */,
 				598B8CDB2254C4610061F03B /* ProfileContentCategory.swift in Sources */,
 				59F81FA12254A3F200C04E32 /* UIView+Extension.swift in Sources */,
@@ -464,6 +478,7 @@
 				59F81F92225462FD00C04E32 /* UIStoryBoard+Extenstion.swift in Sources */,
 				5941D82D225359D500FDEEBA /* AppDelegate.swift in Sources */,
 				59ABB03E2259121100AE937A /* StoreInformationTableViewCell.swift in Sources */,
+				59949295225A7D9C00726BF3 /* CalendarFrameWork.swift in Sources */,
 				59F81F9F22549FCD00C04E32 /* ProfileViewController.swift in Sources */,
 				59F81F8F2254625C00C04E32 /* PBTabBarController.swift in Sources */,
 				59ABB0382259084800AE937A /* StoreDetailViewController.swift in Sources */,
