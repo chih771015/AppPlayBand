@@ -1,0 +1,20 @@
+PODS:
+  - JKCalendar (1.1.0):
+    - JKInfinitePageView (~> 1.1.0)
+  - JKInfinitePageView (1.1.0)
+
+DEPENDENCIES:
+  - JKCalendar
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - JKCalendar
+    - JKInfinitePageView
+
+SPEC CHECKSUMS:
+  JKCalendar: ccbbbc982417d6b3f31dd57827eaf0ba39ae3ede
+  JKInfinitePageView: 30c9e47e0e75067f9be046e5874edc7f4e7d4dc0
+
+PODFILE CHECKSUM: a6564f46227ccc769045603bb62dec395a5f6cbf
+
+COCOAPODS: 1.6.0

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04EE224A9427F6AF53FCEB53 /* Pods_PlayBand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB1175214C85AD46AEC4EF17 /* Pods_PlayBand.framework */; };
 		5907F6972259DE3C008BB604 /* StoreDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907F6952259DE3C008BB604 /* StoreDescriptionTableViewCell.swift */; };
 		5907F6982259DE3C008BB604 /* StoreDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5907F6962259DE3C008BB604 /* StoreDescriptionTableViewCell.xib */; };
 		5907F69B2259E2BD008BB604 /* StoreContentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4DC66BA7995D6F264BD1A145 /* Pods-PlayBand.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayBand.release.xcconfig"; path = "Target Support Files/Pods-PlayBand/Pods-PlayBand.release.xcconfig"; sourceTree = "<group>"; };
 		5907F6952259DE3C008BB604 /* StoreDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		5907F6962259DE3C008BB604 /* StoreDescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreDescriptionTableViewCell.xib; sourceTree = "<group>"; };
 		5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreContentCategory.swift; sourceTree = "<group>"; };
@@ -86,6 +88,8 @@
 		59F81F9B22547C3A00C04E32 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		59F81F9E22549FCD00C04E32 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		59F81FA02254A3F100C04E32 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		C291E05659581482F9363EF6 /* Pods-PlayBand.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayBand.debug.xcconfig"; path = "Target Support Files/Pods-PlayBand/Pods-PlayBand.debug.xcconfig"; sourceTree = "<group>"; };
+		CB1175214C85AD46AEC4EF17 /* Pods_PlayBand.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayBand.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04EE224A9427F6AF53FCEB53 /* Pods_PlayBand.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,8 @@
 			children = (
 				5941D82B225359D500FDEEBA /* PlayBand */,
 				5941D82A225359D500FDEEBA /* Products */,
+				6E3F15B2F76F23D3001D8D73 /* Pods */,
+				65305CFD1299762D2983A06F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -288,6 +295,24 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		65305CFD1299762D2983A06F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB1175214C85AD46AEC4EF17 /* Pods_PlayBand.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6E3F15B2F76F23D3001D8D73 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C291E05659581482F9363EF6 /* Pods-PlayBand.debug.xcconfig */,
+				4DC66BA7995D6F264BD1A145 /* Pods-PlayBand.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -295,9 +320,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5941D83B225359D600FDEEBA /* Build configuration list for PBXNativeTarget "PlayBand" */;
 			buildPhases = (
+				C109DB257FF332B7B1C1507C /* [CP] Check Pods Manifest.lock */,
 				5941D825225359D500FDEEBA /* Sources */,
 				5941D826225359D500FDEEBA /* Frameworks */,
 				5941D827225359D500FDEEBA /* Resources */,
+				7D941A20224A3869354EEFDF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -364,6 +391,55 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7D941A20224A3869354EEFDF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlayBand/Pods-PlayBand-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JKCalendar/JKCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/JKInfinitePageView/JKInfinitePageView.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JKCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JKInfinitePageView.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlayBand/Pods-PlayBand-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C109DB257FF332B7B1C1507C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PlayBand-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5941D825225359D500FDEEBA /* Sources */ = {
@@ -536,6 +612,7 @@
 		};
 		5941D83C225359D600FDEEBA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C291E05659581482F9363EF6 /* Pods-PlayBand.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -555,6 +632,7 @@
 		};
 		5941D83D225359D600FDEEBA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DC66BA7995D6F264BD1A145 /* Pods-PlayBand.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

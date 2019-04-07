@@ -6,7 +6,7 @@ target 'PlayBand' do
   use_frameworks!
 
   # Pods for PlayBand
-
+    pod 'JKCalendar'
 
 
 end
