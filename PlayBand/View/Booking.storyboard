@@ -44,7 +44,7 @@
         <!--Store Detail View Controller-->
         <scene sceneID="enL-Wt-7j1">
             <objects>
-                <viewController storyboardIdentifier="PlaceDetailViewController" id="V4D-Qs-lts" customClass="StoreDetailViewController" customModule="PlayBand" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StoreDetailViewController" id="V4D-Qs-lts" customClass="StoreDetailViewController" customModule="PlayBand" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jFv-Iq-3xh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,9 +57,20 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KJR-Ro-mcj">
                                 <rect key="frame" x="0.0" y="772" width="414" height="90"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hU-fn-H1D">
+                                        <rect key="frame" x="16" y="16" width="382" height="58"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="0.50217372660000004" green="0.81188531090000005" blue="0.67815955029999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
+                                    <constraint firstItem="5hU-fn-H1D" firstAttribute="leading" secondItem="KJR-Ro-mcj" secondAttribute="leading" constant="16" id="7pF-0u-Bap"/>
+                                    <constraint firstItem="5hU-fn-H1D" firstAttribute="top" secondItem="KJR-Ro-mcj" secondAttribute="top" constant="16" id="Idr-f3-vm4"/>
+                                    <constraint firstAttribute="bottom" secondItem="5hU-fn-H1D" secondAttribute="bottom" constant="16" id="XYP-WY-0y7"/>
                                     <constraint firstAttribute="height" constant="90" id="lfm-pQ-dbY"/>
+                                    <constraint firstAttribute="trailing" secondItem="5hU-fn-H1D" secondAttribute="trailing" constant="16" id="rLS-fE-0mZ"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a1o-Mj-rv0">
@@ -82,6 +93,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iFk-hv-TDZ"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="a1o-Mj-rv0" id="fTv-EK-zDd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jld-c5-iO6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

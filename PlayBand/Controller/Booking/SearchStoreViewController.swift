@@ -54,6 +54,7 @@ extension SearchStoreViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: String(describing: StoreDetailViewController.self)) else {return}
+        present(vc, animated: true, completion: nil)
     }
 }

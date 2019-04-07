@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5907F6972259DE3C008BB604 /* StoreDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907F6952259DE3C008BB604 /* StoreDescriptionTableViewCell.swift */; };
+		5907F6982259DE3C008BB604 /* StoreDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5907F6962259DE3C008BB604 /* StoreDescriptionTableViewCell.xib */; };
+		5907F69B2259E2BD008BB604 /* StoreContentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */; };
 		5941D82D225359D500FDEEBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D82C225359D500FDEEBA /* AppDelegate.swift */; };
 		5941D832225359D500FDEEBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5941D830225359D500FDEEBA /* Main.storyboard */; };
 		5941D834225359D600FDEEBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5941D833225359D600FDEEBA /* Assets.xcassets */; };
@@ -24,6 +27,8 @@
 		59ABB0342258B32B00AE937A /* SearchStoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ABB0322258B32B00AE937A /* SearchStoreTableViewCell.swift */; };
 		59ABB0352258B32B00AE937A /* SearchStoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59ABB0332258B32B00AE937A /* SearchStoreTableViewCell.xib */; };
 		59ABB0382259084800AE937A /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ABB0362259084800AE937A /* StoreDetailViewController.swift */; };
+		59ABB03E2259121100AE937A /* StoreInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ABB03C2259121100AE937A /* StoreInformationTableViewCell.swift */; };
+		59ABB03F2259121100AE937A /* StoreInformationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59ABB03D2259121100AE937A /* StoreInformationTableViewCell.xib */; };
 		59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF84E22564DEB00273724 /* UILabel+Extension.swift */; };
 		59DFF8512257409300273724 /* Photo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DFF8502257409300273724 /* Photo.storyboard */; };
 		59DFF8542257465800273724 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF8532257465800273724 /* PhotoViewController.swift */; };
@@ -42,6 +47,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5907F6952259DE3C008BB604 /* StoreDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		5907F6962259DE3C008BB604 /* StoreDescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreDescriptionTableViewCell.xib; sourceTree = "<group>"; };
+		5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreContentCategory.swift; sourceTree = "<group>"; };
 		5941D829225359D500FDEEBA /* PlayBand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayBand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5941D82C225359D500FDEEBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5941D831225359D500FDEEBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,6 +69,8 @@
 		59ABB0322258B32B00AE937A /* SearchStoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStoreTableViewCell.swift; sourceTree = "<group>"; };
 		59ABB0332258B32B00AE937A /* SearchStoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchStoreTableViewCell.xib; sourceTree = "<group>"; };
 		59ABB0362259084800AE937A /* StoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailViewController.swift; sourceTree = "<group>"; };
+		59ABB03C2259121100AE937A /* StoreInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInformationTableViewCell.swift; sourceTree = "<group>"; };
+		59ABB03D2259121100AE937A /* StoreInformationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreInformationTableViewCell.xib; sourceTree = "<group>"; };
 		59DFF84E22564DEB00273724 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		59DFF8502257409300273724 /* Photo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Photo.storyboard; sourceTree = "<group>"; };
 		59DFF8532257465800273724 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +99,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5907F6992259DE60008BB604 /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */,
+			);
+			path = Booking;
+			sourceTree = "<group>";
+		};
 		5941D820225359D500FDEEBA = {
 			isa = PBXGroup;
 			children = (
@@ -160,10 +178,30 @@
 		59ABB0312258B25C00AE937A /* Booking */ = {
 			isa = PBXGroup;
 			children = (
+				59ABB03B225910D200AE937A /* StoreDetail */,
+				59ABB03A225910BB00AE937A /* SearchStore */,
+			);
+			path = Booking;
+			sourceTree = "<group>";
+		};
+		59ABB03A225910BB00AE937A /* SearchStore */ = {
+			isa = PBXGroup;
+			children = (
 				59ABB0322258B32B00AE937A /* SearchStoreTableViewCell.swift */,
 				59ABB0332258B32B00AE937A /* SearchStoreTableViewCell.xib */,
 			);
-			path = Booking;
+			path = SearchStore;
+			sourceTree = "<group>";
+		};
+		59ABB03B225910D200AE937A /* StoreDetail */ = {
+			isa = PBXGroup;
+			children = (
+				59ABB03C2259121100AE937A /* StoreInformationTableViewCell.swift */,
+				59ABB03D2259121100AE937A /* StoreInformationTableViewCell.xib */,
+				5907F6952259DE3C008BB604 /* StoreDescriptionTableViewCell.swift */,
+				5907F6962259DE3C008BB604 /* StoreDescriptionTableViewCell.xib */,
+			);
+			path = StoreDetail;
 			sourceTree = "<group>";
 		};
 		59DFF8522257463D00273724 /* Photo */ = {
@@ -186,6 +224,7 @@
 		59F81F8B22545AAF00C04E32 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5907F6992259DE60008BB604 /* Booking */,
 				59ABB027225878A700AE937A /* Profile */,
 			);
 			path = Model;
@@ -311,6 +350,8 @@
 				5941D834225359D600FDEEBA /* Assets.xcassets in Resources */,
 				59DFF8512257409300273724 /* Photo.storyboard in Resources */,
 				59ABB0242258732B00AE937A /* SettingTableViewCell.xib in Resources */,
+				5907F6982259DE3C008BB604 /* StoreDescriptionTableViewCell.xib in Resources */,
+				59ABB03F2259121100AE937A /* StoreInformationTableViewCell.xib in Resources */,
 				59F81F982254641400C04E32 /* Booking.storyboard in Resources */,
 				59F81F962254640200C04E32 /* News.storyboard in Resources */,
 				59DFF85B22578FFD00273724 /* EditTableViewCell.xib in Resources */,
@@ -329,6 +370,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5907F6972259DE3C008BB604 /* StoreDescriptionTableViewCell.swift in Sources */,
 				59DFF85622578DAB00273724 /* EditProfileViewController.swift in Sources */,
 				59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */,
 				59ABB0342258B32B00AE937A /* SearchStoreTableViewCell.swift in Sources */,
@@ -340,10 +382,12 @@
 				59ABB0232258732B00AE937A /* SettingTableViewCell.swift in Sources */,
 				59ABB029225878C700AE937A /* SettingContentCategory.swift in Sources */,
 				59DFF8542257465800273724 /* PhotoViewController.swift in Sources */,
+				5907F69B2259E2BD008BB604 /* StoreContentCategory.swift in Sources */,
 				59ABB02C2258A89D00AE937A /* SearchStoreViewController.swift in Sources */,
 				598B8CD52254B9530061F03B /* ProfileInformationTableViewCell.swift in Sources */,
 				59F81F92225462FD00C04E32 /* UIStoryBoard+Extenstion.swift in Sources */,
 				5941D82D225359D500FDEEBA /* AppDelegate.swift in Sources */,
+				59ABB03E2259121100AE937A /* StoreInformationTableViewCell.swift in Sources */,
 				59F81F9F22549FCD00C04E32 /* ProfileViewController.swift in Sources */,
 				59F81F8F2254625C00C04E32 /* PBTabBarController.swift in Sources */,
 				59ABB0382259084800AE937A /* StoreDetailViewController.swift in Sources */,
