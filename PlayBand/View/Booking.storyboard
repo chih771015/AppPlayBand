@@ -49,7 +49,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jzh-ur-Rri">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="27540325_574597332884961_4955653517050363908_n" translatesAutoresizingMaskIntoConstraints="NO" id="jzh-ur-Rri">
                                 <rect key="frame" x="0.0" y="44" width="414" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="lMJ-tX-hf1"/>
@@ -139,7 +139,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" id="Dz8-IV-PhQ" customClass="TableViewCell" customModule="PlayBand" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CalendarTableViewCell" id="Dz8-IV-PhQ" customClass="CalendarTableViewCell" customModule="PlayBand" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dz8-IV-PhQ" id="c6P-FK-U3i">
@@ -156,14 +156,41 @@
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrd-IN-g5A">
+                                                    <rect key="frame" x="62" y="0.0" width="336" height="43.5"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uiU-nB-bZt">
+                                                            <rect key="frame" x="282" y="6" width="46" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <state key="normal" title="Button">
+                                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="bookingAction" destination="Dz8-IV-PhQ" eventType="touchUpInside" id="O24-bv-8Tf"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.50217372660000004" green="0.81188531090000005" blue="0.67815955029999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="lvCornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="rrd-IN-g5A" firstAttribute="top" secondItem="c6P-FK-U3i" secondAttribute="top" id="23q-Ba-HT3"/>
+                                                <constraint firstAttribute="trailing" secondItem="rrd-IN-g5A" secondAttribute="trailing" constant="16" id="3zU-lO-3bg"/>
                                                 <constraint firstItem="gbp-Ws-1Ku" firstAttribute="leading" secondItem="c6P-FK-U3i" secondAttribute="leading" id="Cco-uP-pWp"/>
-                                                <constraint firstItem="gbp-Ws-1Ku" firstAttribute="top" secondItem="c6P-FK-U3i" secondAttribute="top" id="j1q-PQ-nox"/>
+                                                <constraint firstAttribute="bottom" secondItem="rrd-IN-g5A" secondAttribute="bottom" id="Fzb-X3-Bkc"/>
+                                                <constraint firstItem="rrd-IN-g5A" firstAttribute="leading" secondItem="gbp-Ws-1Ku" secondAttribute="trailing" constant="12" id="GpJ-b5-dvY"/>
+                                                <constraint firstItem="gbp-Ws-1Ku" firstAttribute="top" secondItem="c6P-FK-U3i" secondAttribute="top" constant="12" id="j1q-PQ-nox"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="timeLabel" destination="gbp-Ws-1Ku" id="LAe-De-WTo"/>
+                                            <outlet property="bookingButton" destination="uiU-nB-bZt" id="ADw-1L-prQ"/>
+                                            <outlet property="bookingView" destination="rrd-IN-g5A" id="QLp-Dy-4WA"/>
+                                            <outlet property="timeLabel" destination="gbp-Ws-1Ku" id="nOF-fk-WZf"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -188,7 +215,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qti-66-KTO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2870" y="74"/>
+            <point key="canvasLocation" x="2974" y="64"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="27540325_574597332884961_4955653517050363908_n" width="675" height="675"/>
+    </resources>
 </document>

@@ -137,7 +137,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="nameLabel" destination="Och-Hg-tx3" id="THJ-bE-ALS"/>
                         <outlet property="tableView" destination="gkd-fK-U5Z" id="ncK-cM-Jxb"/>
+                        <outlet property="userImage" destination="BTL-Rs-yJP" id="7mh-3H-7LK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6kt-VZ-S4f" userLabel="First Responder" sceneMemberID="firstResponder"/>

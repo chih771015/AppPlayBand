@@ -27,7 +27,8 @@ class ProfileViewController: UIViewController {
         
     }
     
-    
+    @IBOutlet weak var userImage: ProfileUserPictureImageView!
+    @IBOutlet weak var nameLabel: UILabel!
     
     private let datas: [ProfileContentCategory] = [.name, .band, .phone, .email, .facebook]
     

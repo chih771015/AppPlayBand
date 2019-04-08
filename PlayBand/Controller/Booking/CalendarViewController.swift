@@ -9,16 +9,13 @@
 import UIKit
 import JKCalendar
 
-class TableViewCell: UITableViewCell{
-    
-    @IBOutlet weak var timeLabel: UILabel!
-}
-
 
 class CalendarViewController: UIViewController {
 
     let markColor = UIColor(red: 40/255, green: 178/255, blue: 253/255, alpha: 1)
     var selectDay: JKDay = JKDay(date: Date())
+    var bookingDatas: [BookingData] = []
+    
     
     @IBOutlet weak var calendarTableView: JKCalendarTableView!
     
@@ -50,6 +47,7 @@ extension CalendarViewController: JKCalendarDelegate{
         selectDay = day
         calendar.focusWeek = day < calendar.month ? 0: day > calendar.month ? calendar.month.weeksCount - 1: day.weekOfMonth - 1
         calendar.reloadData()
+        calendarTableView.reloadData()
     }
     
     func heightOfFooterView(in claendar: JKCalendar) -> CGFloat{
@@ -110,25 +108,49 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 48
+        return 14
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CalendarTableViewCell.self), for: indexPath) as? CalendarTableViewCell else {return UITableViewCell()}
         
-        if indexPath.row % 2 == 0 && indexPath.row != 0 && indexPath.row != 47{
-            let hour = indexPath.row / 2
-            cell.timeLabel.text = (hour < 10 ? "0": "") + String(hour) + ":00"
-        }else{
-            cell.timeLabel.text = ""
+        let hour = indexPath.row + 10
+        cell.bookingButton.addTarget(self, action: #selector(addBooking(sender:)), for: .touchUpInside)
+        for data in bookingDatas {
+            
+            if data.year == selectDay.year && data.month == selectDay.month && data.day == selectDay.day && data.hour == hour {
+                
+                cell.bookingView.backgroundColor = .green
+                return cell
+            }
         }
-        
+        cell.setupCell(hour: hour)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
     }
-    
 }
 
+
+extension CalendarViewController {
+
+    @objc func addBooking(sender: UIButton) {
+        
+        let bookingData = BookingData(year: selectDay.year, month: selectDay.month, day: selectDay.day, hour: sender.tag)
+        var conut = 0
+        guard let cell = calendarTableView.cellForRow(at: IndexPath(row: sender.tag - 10, section: 0)) as? CalendarTableViewCell else {return}
+        for data in bookingDatas {
+            
+            if data == bookingData  {
+                bookingDatas.remove(at: conut)
+                cell.resetCell()
+                return
+            }
+            conut += 1
+        }
+        self.bookingDatas.append(bookingData)
+        cell.bookingView.backgroundColor = .green
+    }
+}
