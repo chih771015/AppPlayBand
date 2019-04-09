@@ -20,5 +20,5 @@ class ConfirmTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

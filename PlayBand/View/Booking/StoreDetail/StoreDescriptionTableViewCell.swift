@@ -10,11 +10,10 @@ import UIKit
 
 class StoreDescriptionTableViewCell: UITableViewCell {
 
-    
     @IBOutlet weak var titleLabel: UILabel!
-    
+
     @IBOutlet weak var descriptionLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,11 +24,11 @@ class StoreDescriptionTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
     func setupCell(title: String, description: String) {
-        
+
         titleLabel.text = title
         descriptionLabel.text = description
     }
-    
+
 }

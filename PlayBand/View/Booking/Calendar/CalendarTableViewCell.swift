@@ -10,18 +10,16 @@ import UIKit
 
 class CalendarTableViewCell: UITableViewCell {
 
-    
     @IBOutlet weak var bookingView: UIView!
     @IBOutlet weak var timeLabel: UILabel!
-    
+
     @IBAction func bookingAction() {
-        
+
         bookingView.backgroundColor = .green
     }
-    
+
     @IBOutlet weak var bookingButton: UIButton!
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,28 +30,28 @@ class CalendarTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
     func createGradientLayer() {
-        
+
         let gradientLayer = CAGradientLayer()
-        
+
         gradientLayer.frame = self.bounds
-        
+
         gradientLayer.colors = [UIColor.red.cgColor, UIColor.yellow.cgColor]
-        
+
         self.layer.addSublayer(gradientLayer)
     }
-    
+
     func setupCell(hour: Int) {
-        
+
         timeLabel.text = String(hour)
         bookingButton.tag = hour
         bookingView.backgroundColor = .white
     }
-    
+
     func resetCell() {
-        
+
         bookingView.backgroundColor = .white
     }
-    
+
 }

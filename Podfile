@@ -7,7 +7,7 @@ target 'PlayBand' do
 
   # Pods for PlayBand
     pod 'JKCalendar'
-
+    pod 'SwiftLint'
 
 end
 

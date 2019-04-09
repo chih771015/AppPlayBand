@@ -12,8 +12,7 @@ class ProfileInformationTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dataLabel: UILabel!
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,13 +23,13 @@ class ProfileInformationTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
     func settingProfilePage(title: String, data: String) {
-        
+
         self.titleLabel.text = title
         self.titleLabel.setTextSpacingBy(value: 2.25)
         self.dataLabel.text = data
         self.dataLabel.setTextSpacingBy(value: 2.25)
     }
-    
+
 }

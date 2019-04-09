@@ -10,22 +10,22 @@ import UIKit
 
 @IBDesignable
 extension UIView {
-    
+
     @IBInspectable var lvBorderColor: UIColor? {
         get {
-            
+
             guard let borderColor = layer.borderColor else {
-                
+
                 return nil
             }
-            
+
             return UIColor(cgColor: borderColor)
         }
         set {
             layer.borderColor = newValue?.cgColor
         }
     }
-    
+
     @IBInspectable var lvBorderWidth: CGFloat {
         get {
             return layer.borderWidth
@@ -34,7 +34,7 @@ extension UIView {
             layer.borderWidth = newValue
         }
     }
-    
+
     @IBInspectable var lvCornerRadius: CGFloat {
         get {
             return layer.cornerRadius

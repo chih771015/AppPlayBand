@@ -2,19 +2,23 @@ PODS:
   - JKCalendar (1.1.0):
     - JKInfinitePageView (~> 1.1.0)
   - JKInfinitePageView (1.1.0)
+  - SwiftLint (0.31.0)
 
 DEPENDENCIES:
   - JKCalendar
+  - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - JKCalendar
     - JKInfinitePageView
+    - SwiftLint
 
 SPEC CHECKSUMS:
   JKCalendar: ccbbbc982417d6b3f31dd57827eaf0ba39ae3ede
   JKInfinitePageView: 30c9e47e0e75067f9be046e5874edc7f4e7d4dc0
+  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
 
-PODFILE CHECKSUM: a6564f46227ccc769045603bb62dec395a5f6cbf
+PODFILE CHECKSUM: bc084ea8b3a797df4e906f1fd531cb4d01c23772
 
 COCOAPODS: 1.6.0

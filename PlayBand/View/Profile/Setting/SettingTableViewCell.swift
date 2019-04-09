@@ -11,14 +11,13 @@ import UIKit
 class SettingTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleImage: UIImageView!
-    
+
     @IBOutlet weak var titleLabel: UILabel!
 
     @IBOutlet weak var switchObject: UISwitch!
-    
+
     @IBOutlet weak var backImage: UIImageView!
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,18 +28,18 @@ class SettingTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
     func setupWithSwitch(title: String, image: String) {
-        
+
         titleImage.image = UIImage(named: image)
         titleLabel.text = title
         titleLabel.setTextSpacingBy(value: 1.5)
         switchObject.isHidden = false
         backImage.isHidden =  true
     }
-    
+
     func setupWithoutSwitch(title: String, image: String) {
-        
+
         titleImage.image = UIImage(named: image)
         titleLabel.text = title
         titleLabel.setTextSpacingBy(value: 1.5)

@@ -9,7 +9,5 @@
 import UIKit
 
 class ConfirmTableViewHeaderView: UITableViewHeaderFooterView {
-    
-    
-    
+
 }

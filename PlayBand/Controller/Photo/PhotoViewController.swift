@@ -11,31 +11,23 @@ import UIKit
 class PhotoViewController: UIViewController {
 
     @IBAction func dismissVC() {
-        
+
         dismiss(animated: true, completion: nil)
     }
-    
+
     @IBAction func chancePhoto() {
-        
-        
+
     }
-    
+
     @IBAction func useCamera() {
-        
-        
+
     }
-    
-    
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
 
     /*
     // MARK: - Navigation

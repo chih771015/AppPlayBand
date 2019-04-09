@@ -10,9 +10,8 @@ import UIKit
 
 class EditTableViewCell: UITableViewCell {
 
-    
     @IBOutlet weak var textField: UITextField!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,10 +22,10 @@ class EditTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
     func setupEditCell(placeholder: String) {
-        
+
         textField.placeholder = placeholder
     }
-    
+
 }
