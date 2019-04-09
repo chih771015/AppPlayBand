@@ -18,6 +18,13 @@
 		5941D834225359D600FDEEBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5941D833225359D600FDEEBA /* Assets.xcassets */; };
 		5941D837225359D600FDEEBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5941D835225359D600FDEEBA /* LaunchScreen.storyboard */; };
 		5952315C2254AB51008C007F /* ProfileUserPictureImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5952315B2254AB51008C007F /* ProfileUserPictureImageView.swift */; };
+		59530B0D225C79EB002F18AB /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59530B0C225C79EB002F18AB /* ConfirmViewController.swift */; };
+		59530B10225C7B58002F18AB /* ConfirmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59530B0E225C7B58002F18AB /* ConfirmTableViewCell.swift */; };
+		59530B11225C7B58002F18AB /* ConfirmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59530B0F225C7B58002F18AB /* ConfirmTableViewCell.xib */; };
+		59530B13225C7F92002F18AB /* ConfirmTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59530B12225C7F92002F18AB /* ConfirmTableViewHeaderView.swift */; };
+		59530B15225C7FE5002F18AB /* ConfirmTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59530B14225C7FE5002F18AB /* ConfirmTableViewHeaderView.xib */; };
+		59530B17225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59530B16225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift */; };
+		59530B19225C80A0002F18AB /* ConfirmTableViewSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59530B18225C80A0002F18AB /* ConfirmTableViewSectionHeaderView.xib */; };
 		598B8CD52254B9530061F03B /* ProfileInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B8CD32254B9530061F03B /* ProfileInformationTableViewCell.swift */; };
 		598B8CD62254B9530061F03B /* ProfileInformationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 598B8CD42254B9530061F03B /* ProfileInformationTableViewCell.xib */; };
 		598B8CD82254BFF80061F03B /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B8CD72254BFF80061F03B /* UITableView+Extension.swift */; };
@@ -65,6 +72,13 @@
 		5941D836225359D600FDEEBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5941D838225359D600FDEEBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5952315B2254AB51008C007F /* ProfileUserPictureImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUserPictureImageView.swift; sourceTree = "<group>"; };
+		59530B0C225C79EB002F18AB /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		59530B0E225C7B58002F18AB /* ConfirmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmTableViewCell.swift; sourceTree = "<group>"; };
+		59530B0F225C7B58002F18AB /* ConfirmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmTableViewCell.xib; sourceTree = "<group>"; };
+		59530B12225C7F92002F18AB /* ConfirmTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmTableViewHeaderView.swift; sourceTree = "<group>"; };
+		59530B14225C7FE5002F18AB /* ConfirmTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmTableViewHeaderView.xib; sourceTree = "<group>"; };
+		59530B16225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmTableViewSectionHeaderView.swift; sourceTree = "<group>"; };
+		59530B18225C80A0002F18AB /* ConfirmTableViewSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmTableViewSectionHeaderView.xib; sourceTree = "<group>"; };
 		598B8CD32254B9530061F03B /* ProfileInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationTableViewCell.swift; sourceTree = "<group>"; };
 		598B8CD42254B9530061F03B /* ProfileInformationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileInformationTableViewCell.xib; sourceTree = "<group>"; };
 		598B8CD72254BFF80061F03B /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
@@ -163,11 +177,17 @@
 			path = PlayBand;
 			sourceTree = "<group>";
 		};
-		59530B0B225C793E002F18AB /* BookingConfirm */ = {
+		59530B0B225C793E002F18AB /* Confirm */ = {
 			isa = PBXGroup;
 			children = (
+				59530B0E225C7B58002F18AB /* ConfirmTableViewCell.swift */,
+				59530B0F225C7B58002F18AB /* ConfirmTableViewCell.xib */,
+				59530B12225C7F92002F18AB /* ConfirmTableViewHeaderView.swift */,
+				59530B14225C7FE5002F18AB /* ConfirmTableViewHeaderView.xib */,
+				59530B16225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift */,
+				59530B18225C80A0002F18AB /* ConfirmTableViewSectionHeaderView.xib */,
 			);
-			path = BookingConfirm;
+			path = Confirm;
 			sourceTree = "<group>";
 		};
 		598B8CD22254B9140061F03B /* ProfileMain */ = {
@@ -212,6 +232,7 @@
 				59ABB02B2258A89D00AE937A /* SearchStoreViewController.swift */,
 				59ABB0362259084800AE937A /* StoreDetailViewController.swift */,
 				59949296225A7FCE00726BF3 /* CalendarViewController.swift */,
+				59530B0C225C79EB002F18AB /* ConfirmViewController.swift */,
 			);
 			path = Booking;
 			sourceTree = "<group>";
@@ -219,7 +240,7 @@
 		59ABB0312258B25C00AE937A /* Booking */ = {
 			isa = PBXGroup;
 			children = (
-				59530B0B225C793E002F18AB /* BookingConfirm */,
+				59530B0B225C793E002F18AB /* Confirm */,
 				59207AA1225AE87600B50E7C /* Calendar */,
 				59ABB03B225910D200AE937A /* StoreDetail */,
 				59ABB03A225910BB00AE937A /* SearchStore */,
@@ -413,9 +434,12 @@
 				59DFF8512257409300273724 /* Photo.storyboard in Resources */,
 				59ABB0242258732B00AE937A /* SettingTableViewCell.xib in Resources */,
 				5907F6982259DE3C008BB604 /* StoreDescriptionTableViewCell.xib in Resources */,
+				59530B15225C7FE5002F18AB /* ConfirmTableViewHeaderView.xib in Resources */,
 				59ABB03F2259121100AE937A /* StoreInformationTableViewCell.xib in Resources */,
 				59F81F982254641400C04E32 /* Booking.storyboard in Resources */,
+				59530B19225C80A0002F18AB /* ConfirmTableViewSectionHeaderView.xib in Resources */,
 				59F81F962254640200C04E32 /* News.storyboard in Resources */,
+				59530B11225C7B58002F18AB /* ConfirmTableViewCell.xib in Resources */,
 				59DFF85B22578FFD00273724 /* EditTableViewCell.xib in Resources */,
 				59ABB0352258B32B00AE937A /* SearchStoreTableViewCell.xib in Resources */,
 				59F81F94225463BB00C04E32 /* Profile.storyboard in Resources */,
@@ -500,12 +524,16 @@
 				59ABB02C2258A89D00AE937A /* SearchStoreViewController.swift in Sources */,
 				598B8CD52254B9530061F03B /* ProfileInformationTableViewCell.swift in Sources */,
 				59F81F92225462FD00C04E32 /* UIStoryBoard+Extenstion.swift in Sources */,
+				59530B0D225C79EB002F18AB /* ConfirmViewController.swift in Sources */,
 				5941D82D225359D500FDEEBA /* AppDelegate.swift in Sources */,
 				59ABB03E2259121100AE937A /* StoreInformationTableViewCell.swift in Sources */,
+				59530B10225C7B58002F18AB /* ConfirmTableViewCell.swift in Sources */,
 				59949295225A7D9C00726BF3 /* CalendarFrameWork.swift in Sources */,
 				59F81F9F22549FCD00C04E32 /* ProfileViewController.swift in Sources */,
+				59530B13225C7F92002F18AB /* ConfirmTableViewHeaderView.swift in Sources */,
 				59F81F8F2254625C00C04E32 /* PBTabBarController.swift in Sources */,
 				59ABB0382259084800AE937A /* StoreDetailViewController.swift in Sources */,
+				59530B17225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift in Sources */,
 				59F81F9C22547C3A00C04E32 /* UIImage+Extension.swift in Sources */,
 				59DFF85A22578FFD00273724 /* EditTableViewCell.swift in Sources */,
 			);

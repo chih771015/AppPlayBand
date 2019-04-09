@@ -128,19 +128,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        print("Look")
-        if editingStyle == .delete {
-
-            print("haha")
-        }
-
-    }
-    
 }
 
 

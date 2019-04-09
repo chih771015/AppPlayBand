@@ -16,4 +16,32 @@ extension UITableView {
         
         register(nib, forCellReuseIdentifier: identifier)
     }
+    
+    func lv_registerHeaderWithNib(identifier: String, bundle: Bundle?) {
+        
+        let nib = UINib(nibName: identifier, bundle: bundle)
+        
+        register(nib, forHeaderFooterViewReuseIdentifier: identifier)
+    }
+    
+    func setTableHeaderView(headerView: UIView) {
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.tableHeaderView = headerView
+        
+        // ** Must setup AutoLayout after set tableHeaderView.
+        headerView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        headerView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        headerView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+    }
+    
+    // 2.
+    func shouldUpdateHeaderViewFrame() -> Bool {
+        guard let headerView = self.tableHeaderView else { return false }
+        let oldSize = headerView.bounds.size
+        // Update the size
+        headerView.layoutIfNeeded()
+        let newSize = headerView.bounds.size
+        return oldSize != newSize
+    }
 }

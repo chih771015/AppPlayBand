@@ -26,19 +26,19 @@ private struct StoryboardCategory {
 
 extension UIStoryboard {
     
-    static var main: UIStoryboard { return stStoryboard(name: StoryboardCategory.main) }
+    static var main: UIStoryboard { return pbStoryboard(name: StoryboardCategory.main) }
     
-    static var news: UIStoryboard { return stStoryboard(name: StoryboardCategory.news) }
+    static var news: UIStoryboard { return pbStoryboard(name: StoryboardCategory.news) }
     
-    static var booking: UIStoryboard { return stStoryboard(name: StoryboardCategory.booking) }
+    static var booking: UIStoryboard { return pbStoryboard(name: StoryboardCategory.booking) }
     
-    static var message: UIStoryboard { return stStoryboard(name: StoryboardCategory.message) }
+    static var message: UIStoryboard { return pbStoryboard(name: StoryboardCategory.message) }
     
-    static var profile: UIStoryboard { return stStoryboard(name: StoryboardCategory.profile) }
+    static var profile: UIStoryboard { return pbStoryboard(name: StoryboardCategory.profile) }
     
-    static var photo: UIStoryboard { return stStoryboard(name: StoryboardCategory.photo)}
+    static var photo: UIStoryboard { return pbStoryboard(name: StoryboardCategory.photo)}
     
-    private static func stStoryboard(name: String) -> UIStoryboard {
+    private static func pbStoryboard(name: String) -> UIStoryboard {
         
         return UIStoryboard(name: name, bundle: nil)
     }
