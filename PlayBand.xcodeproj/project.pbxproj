@@ -163,6 +163,13 @@
 			path = PlayBand;
 			sourceTree = "<group>";
 		};
+		59530B0B225C793E002F18AB /* BookingConfirm */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BookingConfirm;
+			sourceTree = "<group>";
+		};
 		598B8CD22254B9140061F03B /* ProfileMain */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +219,7 @@
 		59ABB0312258B25C00AE937A /* Booking */ = {
 			isa = PBXGroup;
 			children = (
+				59530B0B225C793E002F18AB /* BookingConfirm */,
 				59207AA1225AE87600B50E7C /* Calendar */,
 				59ABB03B225910D200AE937A /* StoreDetail */,
 				59ABB03A225910BB00AE937A /* SearchStore */,
@@ -649,14 +657,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G9J3D558CX;
 				INFOPLIST_FILE = PlayBand/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chihhsuan.PlayBand;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -669,14 +677,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G9J3D558CX;
 				INFOPLIST_FILE = PlayBand/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chihhsuan.PlayBand;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

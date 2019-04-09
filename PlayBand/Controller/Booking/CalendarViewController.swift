@@ -131,12 +131,24 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        print("Look")
+        if editingStyle == .delete {
+
+            print("haha")
+        }
+
+    }
+    
 }
 
 
 extension CalendarViewController {
 
     @objc func addBooking(sender: UIButton) {
+        
+        
         
         let bookingData = BookingData(year: selectDay.year, month: selectDay.month, day: selectDay.day, hour: sender.tag)
         var conut = 0
