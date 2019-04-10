@@ -13,7 +13,13 @@ class CalendarViewController: UIViewController {
 
     let markColor = UIColor(red: 40/255, green: 178/255, blue: 253/255, alpha: 1)
     var selectDay: JKDay = JKDay(date: Date())
-    var bookingDatas: [BookingData] = []
+    var bookingDatas: [BookingData] = [] {
+        
+        didSet {
+            
+            self.bookingDatas = self.bookingDatas.sorted(by: <)
+        }
+    }
 
     @IBOutlet weak var calendarTableView: JKCalendarTableView!
 
@@ -33,6 +39,13 @@ class CalendarViewController: UIViewController {
 
     @IBAction func handleBackButtonClick(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let nextVC = segue.destination as? ConfirmViewController else {return}
+        nextVC.loadViewIfNeeded()
+        nextVC.bookingDatas = self.bookingDatas
     }
 
 }
@@ -118,13 +131,17 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         cell.bookingButton.addTarget(self, action: #selector(addBooking(sender:)), for: .touchUpInside)
         for data in bookingDatas {
 
-            if data.year == selectDay.year &&
-                data.month == selectDay.month &&
-                data.day == selectDay.day &&
-                data.hour == hour {
-
-                cell.bookingView.backgroundColor = .green
-                return cell
+            if data.date.year == selectDay.year &&
+                data.date.month == selectDay.month &&
+                data.date.day == selectDay.day {
+                for hours in data.hour {
+                    
+                    if hours == hour {
+                        
+                        cell.bookingView.backgroundColor = .green
+                        return cell
+                    }
+                }
             }
         }
         cell.setupCell(hour: hour)
@@ -137,25 +154,37 @@ extension CalendarViewController {
 
     @objc func addBooking(sender: UIButton) {
 
-        let bookingData = BookingData(
+        let bookingDate = BookingDate(
             year: selectDay.year,
             month: selectDay.month,
-            day: selectDay.day,
-            hour: sender.tag)
-        var conut = 0
+            day: selectDay.day)
+        var count = 0
+        var counthour = 0
         guard let cell = calendarTableView.cellForRow(
             at: IndexPath(row: sender.tag - 10, section: 0)
             ) as? CalendarTableViewCell else {return}
-        for data in bookingDatas {
 
-            if data == bookingData {
-                bookingDatas.remove(at: conut)
-                cell.resetCell()
+        for booking in bookingDatas {
+
+            if booking.date == bookingDate {
+
+                for hour in booking.hour {
+
+                    if hour == sender.tag {
+
+                        bookingDatas[count].hour.remove(at: counthour)
+                        cell.resetCell()
+                        return
+                    }
+                    counthour += 1
+                }
+                bookingDatas[count].hour.append(sender.tag)
+                cell.bookingView.backgroundColor = .green
                 return
             }
-            conut += 1
+            count += 1
         }
-        self.bookingDatas.append(bookingData)
+        bookingDatas.append(BookingData(date: bookingDate, hour: [sender.tag]))
         cell.bookingView.backgroundColor = .green
     }
 }

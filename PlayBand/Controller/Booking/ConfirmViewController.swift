@@ -17,7 +17,13 @@ class ConfirmViewController: UIViewController {
         }
     }
 
-    var bookingDatas: [BookingData] = []
+    var bookingDatas: [BookingData] = [] {
+        
+        didSet {
+            
+            tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,7 +98,7 @@ extension ConfirmViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 3
+        return bookingDatas[section].hour.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,14 +117,7 @@ extension ConfirmViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        for bookingdate in bookingDatas {
-            
-            bookingdate.year
-            bookingdate.month
-            bookingdate.day
-            
-        }
-        return 4
+        return bookingDatas.count
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
