@@ -14,10 +14,9 @@ class CalendarViewController: UIViewController {
     let markColor = UIColor(red: 40/255, green: 178/255, blue: 253/255, alpha: 1)
     var selectDay: JKDay = JKDay(date: Date())
     var bookingDatas: [BookingData] = [] {
-        
         didSet {
-            
-            self.bookingDatas = self.bookingDatas.sorted(by: <)
+         
+            self.bookingDatas.sort(by: <)
         }
     }
 
@@ -45,7 +44,8 @@ class CalendarViewController: UIViewController {
         
         guard let nextVC = segue.destination as? ConfirmViewController else {return}
         nextVC.loadViewIfNeeded()
-        nextVC.bookingDatas = self.bookingDatas
+        
+        nextVC.bookingDatas = self.bookingDatas.sorted(by: <)
     }
 
 }

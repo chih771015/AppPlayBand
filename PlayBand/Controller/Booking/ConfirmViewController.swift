@@ -92,8 +92,12 @@ extension ConfirmViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
-        return tableView.dequeueReusableHeaderFooterView(
-            withIdentifier: String(describing: ConfirmTableViewSectionHeaderView.self))
+        guard let sectionHeader = tableView.dequeueReusableHeaderFooterView(
+            withIdentifier: String(
+                describing: ConfirmTableViewSectionHeaderView.self)) as? ConfirmTableViewSectionHeaderView else { return UIView()}
+        sectionHeader.dateLabel.text = "\(bookingDatas[section].date.year) + \(bookingDatas[section].date.month) + \(bookingDatas[section].date.day)"
+        sectionHeader.timeLabel.text = "總共\(bookingDatas[section].hour.count)小時"
+        return sectionHeader
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -112,6 +116,7 @@ extension ConfirmViewController: UITableViewDelegate, UITableViewDataSource {
 
                 return UITableViewCell()
             }
+        cell.titleLabel.text = "\(bookingDatas[indexPath.section].hour[indexPath.row])"
         return cell
     }
     
