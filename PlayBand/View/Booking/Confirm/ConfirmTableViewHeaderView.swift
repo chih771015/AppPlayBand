@@ -9,5 +9,16 @@
 import UIKit
 
 class ConfirmTableViewHeaderView: UITableViewHeaderFooterView {
+    
+    @IBOutlet weak var titleImage: UIImageView!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var sectionLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
 
 }

@@ -17,6 +17,8 @@ class ConfirmViewController: UIViewController {
         }
     }
 
+    var bookingDatas: [BookingData] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,10 +36,7 @@ class ConfirmViewController: UIViewController {
             ),
             bundle: nil
         )
-        tableView.lv_registerHeaderWithNib(identifier: String(describing: ConfirmTableViewHeaderView.self), bundle: nil)
 
-//        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: ConfirmTableViewHeaderView.self)) else {return}
-//
          guard let headerView = UINib(
             nibName: String(describing: ConfirmTableViewHeaderView.self),
             bundle: nil
@@ -46,19 +45,44 @@ class ConfirmViewController: UIViewController {
                 options: nil)[0] as? ConfirmTableViewHeaderView
             else { return }
 
-        //tableView.setTableHeaderView(headerView: headerView)
-        tableView.shouldUpdateHeaderViewFrame()
-//        tableView.tableHeaderView = headerView
+        tableView.tableHeaderView = headerView
 
     }
-
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+//        guard let headerView = tableView.tableHeaderView else { return }
+//        headerView.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        let headerWidth = headerView.bounds.size.width
+//        let temporaryWidthConstraints = NSLayoutConstraint.constraints(
+//            withVisualFormat: "[headerView(width)]",
+//            options: NSLayoutConstraint.FormatOptions(rawValue: UInt(0)),
+//            metrics: ["width": headerWidth],
+//            views: ["headerView": headerView])
+//        
+//        headerView.addConstraints(temporaryWidthConstraints)
+//        headerView.setNeedsLayout()
+//        headerView.layoutIfNeeded()
+//
+//        let headerSize = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+//        let height = headerSize.height
+//        var frame = headerView.frame
+//        frame.size.height = height
+//        headerView.frame = frame
+//        self.tableView.tableHeaderView = headerView
+//        headerView.removeConstraints(temporaryWidthConstraints)
+//        headerView.translatesAutoresizingMaskIntoConstraints = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        print(tableView.tableHeaderView?.frame)
+    }
 }
 
 extension ConfirmViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        return UITableView.automaticDimension
-    }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
@@ -68,7 +92,7 @@ extension ConfirmViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 1
+        return 3
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -83,5 +107,21 @@ extension ConfirmViewController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
         return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        for bookingdate in bookingDatas {
+            
+            bookingdate.year
+            bookingdate.month
+            bookingdate.day
+            
+        }
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
     }
 }

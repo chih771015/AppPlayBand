@@ -19,3 +19,14 @@ struct BookingData: Equatable {
     let day: Int
     let hour: Int
 }
+
+struct BookingDate: Equatable {
+    
+    let year: Int
+    let month: Int
+    let day: Int
+    
+    static func == (lhs: BookingDate, rhs: BookingDate) -> Bool {
+        return lhs.year == rhs.year && lhs.month == rhs.month && lhs.day == rhs.day
+    }
+}

@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ConfirmTableViewSectionHeaderView" customModule="PlayBand" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+        <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="iN0-l3-epB" customClass="ConfirmTableViewSectionHeaderView" customModule="PlayBand" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLU-d7-7U3">
-                    <rect key="frame" x="0.0" y="63.5" width="414" height="798.5"/>
-                    <color key="backgroundColor" red="0.50217372660000004" green="0.81188531090000005" blue="0.67815955029999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時間" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSS-Zz-SZE">
-                    <rect key="frame" x="24" y="79.5" width="374" height="813"/>
+                    <rect key="frame" x="24" y="45.5" width="335" height="144.5"/>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="日期" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNM-gv-VTY">
-                    <rect key="frame" x="16" y="44" width="382" height="19.5"/>
+                    <rect key="frame" x="16" y="10" width="343" height="19.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -35,21 +30,19 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GNM-gv-VTY" secondAttribute="trailing" constant="16" id="0Vc-0l-aB6"/>
-                <constraint firstItem="GNM-gv-VTY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="McV-Hg-iXY"/>
-                <constraint firstItem="GNM-gv-VTY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Wug-OK-08p"/>
-                <constraint firstItem="BSS-Zz-SZE" firstAttribute="top" secondItem="GNM-gv-VTY" secondAttribute="bottom" constant="16" id="de0-0d-LXQ"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZLU-d7-7U3" secondAttribute="trailing" id="dvo-hJ-0z9"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ZLU-d7-7U3" secondAttribute="bottom" id="etF-VP-Iu9"/>
-                <constraint firstAttribute="bottom" secondItem="BSS-Zz-SZE" secondAttribute="bottom" constant="3.5" id="eyi-rm-0pS"/>
-                <constraint firstItem="ZLU-d7-7U3" firstAttribute="top" secondItem="GNM-gv-VTY" secondAttribute="bottom" id="mGV-zs-Mdz"/>
-                <constraint firstItem="ZLU-d7-7U3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="qbg-r7-UKb"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BSS-Zz-SZE" secondAttribute="trailing" constant="16" id="roj-sU-uBo"/>
-                <constraint firstItem="BSS-Zz-SZE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="vnw-7M-PuQ"/>
+                <constraint firstAttribute="trailing" secondItem="GNM-gv-VTY" secondAttribute="trailing" constant="16" id="0Vc-0l-aB6"/>
+                <constraint firstItem="GNM-gv-VTY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="McV-Hg-iXY"/>
+                <constraint firstItem="GNM-gv-VTY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Wug-OK-08p"/>
+                <constraint firstAttribute="bottom" secondItem="BSS-Zz-SZE" secondAttribute="bottom" priority="750" constant="10" id="eyi-rm-0pS"/>
+                <constraint firstItem="BSS-Zz-SZE" firstAttribute="top" secondItem="GNM-gv-VTY" secondAttribute="bottom" constant="16" id="pFi-dm-NDB"/>
+                <constraint firstAttribute="trailing" secondItem="BSS-Zz-SZE" secondAttribute="trailing" constant="16" id="roj-sU-uBo"/>
+                <constraint firstItem="BSS-Zz-SZE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="vnw-7M-PuQ"/>
             </constraints>
-            <nil key="simulatedTopBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="dateLabel" destination="GNM-gv-VTY" id="a6j-Fn-qM6"/>
+                <outlet property="timeLabel" destination="BSS-Zz-SZE" id="kol-OX-OqK"/>
+            </connections>
         </view>
     </objects>
 </document>

@@ -30,7 +30,9 @@ extension UITableView {
         self.tableHeaderView = headerView
 
         // ** Must setup AutoLayout after set tableHeaderView.
-        headerView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+//        headerView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        headerView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        headerView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         headerView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         headerView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
     }
