@@ -8,20 +8,17 @@
 
 import Foundation
 
-struct BookingData: Equatable, Comparable {
-    static func < (lhs: BookingData, rhs: BookingData) -> Bool {
-        if lhs.date.year == rhs.date.year {
-            
-            if lhs.date.month == rhs.date.month {
-                
-                return lhs.date.day < rhs.date.day
-            }
-            return lhs.date.month < rhs.date.month
-        }
-        return lhs.date.year < rhs.date.year
+struct BookingTime: Equatable, Comparable {
+    
+    static func < (lhs: BookingTime, rhs: BookingTime) -> Bool {
         
+        return lhs.date.year == rhs.date.year
+                ? lhs.date.month == rhs.date.month
+                    ? lhs.date.day < rhs.date.day
+                    : lhs.date.month < rhs.date.month
+                : lhs.date.year < rhs.date.year
     }
-    static func == (lhs: BookingData, rhs: BookingData) -> Bool {
+    static func == (lhs: BookingTime, rhs: BookingTime) -> Bool {
         return lhs.hour == rhs.hour && lhs.date == rhs.date
     }
 

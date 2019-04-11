@@ -23,8 +23,8 @@
                         <rect key="frame" x="16" y="0.0" width="343" height="133.5"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LineIn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PxA-RK-gkG">
-                        <rect key="frame" x="32" y="94.5" width="51" height="23"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                        <rect key="frame" x="29" y="97" width="59.5" height="26.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -32,8 +32,8 @@
                 <constraints>
                     <constraint firstItem="W7c-tx-h56" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="06c-91-1Bt"/>
                     <constraint firstAttribute="trailing" secondItem="W7c-tx-h56" secondAttribute="trailing" constant="16" id="CU1-Qi-GCg"/>
-                    <constraint firstItem="W7c-tx-h56" firstAttribute="leading" secondItem="PxA-RK-gkG" secondAttribute="leading" constant="-16" id="GhU-XB-xpS"/>
-                    <constraint firstItem="PxA-RK-gkG" firstAttribute="bottom" secondItem="W7c-tx-h56" secondAttribute="bottom" constant="-16" id="RJ0-hN-qCM"/>
+                    <constraint firstItem="W7c-tx-h56" firstAttribute="leading" secondItem="PxA-RK-gkG" secondAttribute="leading" constant="-13" id="GhU-XB-xpS"/>
+                    <constraint firstItem="PxA-RK-gkG" firstAttribute="bottom" secondItem="W7c-tx-h56" secondAttribute="bottom" constant="-10" id="RJ0-hN-qCM"/>
                     <constraint firstAttribute="bottom" secondItem="W7c-tx-h56" secondAttribute="bottom" constant="16" id="dIH-dr-wgU"/>
                     <constraint firstItem="W7c-tx-h56" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="eul-yy-baR"/>
                 </constraints>

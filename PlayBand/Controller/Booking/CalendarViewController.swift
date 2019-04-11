@@ -13,10 +13,11 @@ class CalendarViewController: UIViewController {
 
     let markColor = UIColor(red: 40/255, green: 178/255, blue: 253/255, alpha: 1)
     var selectDay: JKDay = JKDay(date: Date())
-    var bookingDatas: [BookingData] = [] {
+    var bookingTimeDatas: [BookingTime] = [] {
         didSet {
          
-            self.bookingDatas.sort(by: <)
+            self.bookingTimeDatas.sort(by: <)
+            calendarTableView.reloadData()
         }
     }
 
@@ -45,7 +46,10 @@ class CalendarViewController: UIViewController {
         guard let nextVC = segue.destination as? ConfirmViewController else {return}
         nextVC.loadViewIfNeeded()
         
-        nextVC.bookingDatas = self.bookingDatas.sorted(by: <)
+        nextVC.bookingTimeDatas = self.bookingTimeDatas
+        nextVC.bookingDatasChange = { [weak self] changeDatas in
+            self?.bookingTimeDatas = changeDatas
+        }
     }
 
 }
@@ -129,7 +133,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
 
         let hour = indexPath.row + 10
         cell.bookingButton.addTarget(self, action: #selector(addBooking(sender:)), for: .touchUpInside)
-        for data in bookingDatas {
+        for data in bookingTimeDatas {
 
             if data.date.year == selectDay.year &&
                 data.date.month == selectDay.month &&
@@ -138,13 +142,15 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
                     
                     if hours == hour {
                         
-                        cell.bookingView.backgroundColor = .green
+                        cell.bookingView.backgroundColor = UIColor(red: 128/255, green: 204/255, blue: 173/255, alpha: 1)
+                        cell.bookingButton.setImage(UIImage.asset(.substract), for: .normal)
                         return cell
                     }
                 }
             }
         }
         cell.setupCell(hour: hour)
+        cell.bookingButton.setImage(UIImage.asset(.add), for: .normal)
         return cell
     }
 
@@ -160,11 +166,7 @@ extension CalendarViewController {
             day: selectDay.day)
         var count = 0
         var counthour = 0
-        guard let cell = calendarTableView.cellForRow(
-            at: IndexPath(row: sender.tag - 10, section: 0)
-            ) as? CalendarTableViewCell else {return}
-
-        for booking in bookingDatas {
+        for booking in bookingTimeDatas {
 
             if booking.date == bookingDate {
 
@@ -172,19 +174,16 @@ extension CalendarViewController {
 
                     if hour == sender.tag {
 
-                        bookingDatas[count].hour.remove(at: counthour)
-                        cell.resetCell()
+                        bookingTimeDatas[count].hour.remove(at: counthour)
                         return
                     }
                     counthour += 1
                 }
-                bookingDatas[count].hour.append(sender.tag)
-                cell.bookingView.backgroundColor = .green
+                bookingTimeDatas[count].hour.append(sender.tag)
                 return
             }
             count += 1
         }
-        bookingDatas.append(BookingData(date: bookingDate, hour: [sender.tag]))
-        cell.bookingView.backgroundColor = .green
+        bookingTimeDatas.append(BookingTime(date: bookingDate, hour: [sender.tag]))
     }
 }

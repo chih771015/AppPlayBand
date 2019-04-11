@@ -16,9 +16,13 @@ class ConfirmTableViewHeaderView: UITableViewHeaderFooterView {
     
     @IBOutlet weak var sectionLabel: UILabel!
     
+    @IBOutlet weak var backgroundModelView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        let layerShadow = CALayer()
+        layerShadow.addShadow()
+        backgroundModelView.layer.addSublayer(layerShadow)
     }
 
 }

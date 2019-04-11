@@ -14,6 +14,8 @@ enum ImageAsset: String {
     case mail
     case newspaper
     case user
+    case add
+    case substract
 }
 
 extension UIImage {

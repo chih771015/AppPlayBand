@@ -17,7 +17,7 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時間" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSS-Zz-SZE">
                     <rect key="frame" x="24" y="45.5" width="335" height="144.5"/>
-                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>

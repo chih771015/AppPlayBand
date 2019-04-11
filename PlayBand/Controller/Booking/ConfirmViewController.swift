@@ -10,18 +10,21 @@ import UIKit
 
 class ConfirmViewController: UIViewController {
 
+    
+    @IBOutlet weak var countHourLabel: UILabel!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
 
             setupTableView()
         }
     }
-
-    var bookingDatas: [BookingData] = [] {
+    var bookingDatasChange: (([BookingTime]) -> Void)?
+    var bookingTimeDatas: [BookingTime] = [] {
         
         didSet {
             
             tableView.reloadData()
+            bookingDatasChange?(bookingTimeDatas)
         }
     }
 
@@ -54,38 +57,7 @@ class ConfirmViewController: UIViewController {
         tableView.tableHeaderView = headerView
 
     }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-//        guard let headerView = tableView.tableHeaderView else { return }
-//        headerView.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        let headerWidth = headerView.bounds.size.width
-//        let temporaryWidthConstraints = NSLayoutConstraint.constraints(
-//            withVisualFormat: "[headerView(width)]",
-//            options: NSLayoutConstraint.FormatOptions(rawValue: UInt(0)),
-//            metrics: ["width": headerWidth],
-//            views: ["headerView": headerView])
-//        
-//        headerView.addConstraints(temporaryWidthConstraints)
-//        headerView.setNeedsLayout()
-//        headerView.layoutIfNeeded()
-//
-//        let headerSize = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-//        let height = headerSize.height
-//        var frame = headerView.frame
-//        frame.size.height = height
-//        headerView.frame = frame
-//        self.tableView.tableHeaderView = headerView
-//        headerView.removeConstraints(temporaryWidthConstraints)
-//        headerView.translatesAutoresizingMaskIntoConstraints = true
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        print(tableView.tableHeaderView?.frame)
-    }
+
 }
 
 extension ConfirmViewController: UITableViewDelegate, UITableViewDataSource {
@@ -94,15 +66,16 @@ extension ConfirmViewController: UITableViewDelegate, UITableViewDataSource {
 
         guard let sectionHeader = tableView.dequeueReusableHeaderFooterView(
             withIdentifier: String(
-                describing: ConfirmTableViewSectionHeaderView.self)) as? ConfirmTableViewSectionHeaderView else { return UIView()}
-        sectionHeader.dateLabel.text = "\(bookingDatas[section].date.year) + \(bookingDatas[section].date.month) + \(bookingDatas[section].date.day)"
-        sectionHeader.timeLabel.text = "總共\(bookingDatas[section].hour.count)小時"
+                describing: ConfirmTableViewSectionHeaderView.self)
+            ) as? ConfirmTableViewSectionHeaderView else { return UIView()}
+        sectionHeader.dateLabel.text = "\(bookingTimeDatas[section].date.year)年 \(bookingTimeDatas[section].date.month)月\(bookingTimeDatas[section].date.day)日"
+        sectionHeader.timeLabel.text = "總共\(bookingTimeDatas[section].hour.count)小時"
         return sectionHeader
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return bookingDatas[section].hour.count
+        return bookingTimeDatas[section].hour.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -116,16 +89,27 @@ extension ConfirmViewController: UITableViewDelegate, UITableViewDataSource {
 
                 return UITableViewCell()
             }
-        cell.titleLabel.text = "\(bookingDatas[indexPath.section].hour[indexPath.row])"
+        cell.titleLabel.text = "\(bookingTimeDatas[indexPath.section].hour[indexPath.row]):00"
         return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return bookingDatas.count
+        return bookingTimeDatas.count
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            if bookingTimeDatas[indexPath.section].hour.count == 1 {
+                
+                bookingTimeDatas.remove(at: indexPath.section)
+            } else {
+                
+                bookingTimeDatas[indexPath.section].hour.remove(at: indexPath.row)
+            }
+        }
     }
 }

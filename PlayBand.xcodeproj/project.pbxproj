@@ -12,7 +12,7 @@
 		5907F6982259DE3C008BB604 /* StoreDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5907F6962259DE3C008BB604 /* StoreDescriptionTableViewCell.xib */; };
 		5907F69B2259E2BD008BB604 /* StoreContentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */; };
 		59207AA3225AEC2D00B50E7C /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59207AA2225AEC2D00B50E7C /* CalendarTableViewCell.swift */; };
-		59207AA5225AF09400B50E7C /* BookingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59207AA4225AF09400B50E7C /* BookingData.swift */; };
+		59207AA5225AF09400B50E7C /* BookingTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59207AA4225AF09400B50E7C /* BookingTime.swift */; };
 		5941D82D225359D500FDEEBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D82C225359D500FDEEBA /* AppDelegate.swift */; };
 		5941D832225359D500FDEEBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5941D830225359D500FDEEBA /* Main.storyboard */; };
 		5941D834225359D600FDEEBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5941D833225359D600FDEEBA /* Assets.xcassets */; };
@@ -64,7 +64,7 @@
 		5907F6962259DE3C008BB604 /* StoreDescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreDescriptionTableViewCell.xib; sourceTree = "<group>"; };
 		5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreContentCategory.swift; sourceTree = "<group>"; };
 		59207AA2225AEC2D00B50E7C /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
-		59207AA4225AF09400B50E7C /* BookingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingData.swift; sourceTree = "<group>"; };
+		59207AA4225AF09400B50E7C /* BookingTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTime.swift; sourceTree = "<group>"; };
 		5941D829225359D500FDEEBA /* PlayBand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayBand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5941D82C225359D500FDEEBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5941D831225359D500FDEEBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */,
-				59207AA4225AF09400B50E7C /* BookingData.swift */,
+				59207AA4225AF09400B50E7C /* BookingTime.swift */,
 			);
 			path = Booking;
 			sourceTree = "<group>";
@@ -528,7 +528,7 @@
 				59DFF85622578DAB00273724 /* EditProfileViewController.swift in Sources */,
 				59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */,
 				59ABB0342258B32B00AE937A /* SearchStoreTableViewCell.swift in Sources */,
-				59207AA5225AF09400B50E7C /* BookingData.swift in Sources */,
+				59207AA5225AF09400B50E7C /* BookingTime.swift in Sources */,
 				5952315C2254AB51008C007F /* ProfileUserPictureImageView.swift in Sources */,
 				59207AA3225AEC2D00B50E7C /* CalendarTableViewCell.swift in Sources */,
 				59949297225A7FCE00726BF3 /* CalendarViewController.swift in Sources */,

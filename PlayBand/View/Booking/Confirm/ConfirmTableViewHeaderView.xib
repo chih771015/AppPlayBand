@@ -13,9 +13,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ConfirmTableViewHeaderView" customModule="PlayBand" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="282"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="256"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWO-Q0-Wvh">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="256"/>
+                    <color key="backgroundColor" red="0.50217372660000004" green="0.81188531090000005" blue="0.67815955029999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="lvCornerRadius">
+                            <real key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="27540325_574597332884961_4955653517050363908_n" translatesAutoresizingMaskIntoConstraints="NO" id="gIe-PE-ZGQ">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="171"/>
                     <constraints>
@@ -23,13 +32,13 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LineInStudio" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqy-UJ-Hoa">
-                    <rect key="frame" x="16" y="187" width="343" height="24"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <rect key="frame" x="16" y="187" width="343" height="21.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="團室一" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LU-aO-Xsd">
-                    <rect key="frame" x="16" y="227" width="343" height="41.5"/>
+                    <rect key="frame" x="16" y="224.5" width="343" height="18"/>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -37,10 +46,14 @@
             </subviews>
             <color key="backgroundColor" white="0.97056934930000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="FWO-Q0-Wvh" secondAttribute="bottom" id="7oA-wL-XLJ"/>
                 <constraint firstItem="gIe-PE-ZGQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="BQH-9T-7hU"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FWO-Q0-Wvh" secondAttribute="trailing" id="CwD-MQ-4yq"/>
                 <constraint firstItem="gqy-UJ-Hoa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="DNY-Ah-Tch"/>
+                <constraint firstItem="FWO-Q0-Wvh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="I8h-BT-cNQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7LU-aO-Xsd" secondAttribute="trailing" constant="16" id="IwP-fd-XwY"/>
                 <constraint firstItem="gIe-PE-ZGQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="KjR-Ra-Jn6"/>
+                <constraint firstItem="FWO-Q0-Wvh" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="LGl-x5-HHj"/>
                 <constraint firstItem="7LU-aO-Xsd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="bYY-3E-tSs"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gqy-UJ-Hoa" secondAttribute="trailing" constant="16" id="cSG-yd-RsF"/>
                 <constraint firstItem="gqy-UJ-Hoa" firstAttribute="top" secondItem="gIe-PE-ZGQ" secondAttribute="bottom" constant="16" id="fMZ-oJ-h5M"/>
@@ -51,6 +64,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="backgroundModelView" destination="FWO-Q0-Wvh" id="MVb-2s-fOd"/>
                 <outlet property="sectionLabel" destination="7LU-aO-Xsd" id="jb5-Hx-eYl"/>
                 <outlet property="titleImage" destination="gIe-PE-ZGQ" id="rFs-oZ-PIJ"/>
                 <outlet property="titleLabel" destination="gqy-UJ-Hoa" id="Vxe-Ii-LaY"/>

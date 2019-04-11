@@ -44,7 +44,7 @@ class CalendarTableViewCell: UITableViewCell {
 
     func setupCell(hour: Int) {
 
-        timeLabel.text = String(hour)
+        timeLabel.text = String(hour) + ":00"
         bookingButton.tag = hour
         bookingView.backgroundColor = .white
     }
