@@ -20,6 +20,10 @@ enum ProfileContentCategory: String {
     case band = "團名"
 
     case facebook = "粉絲專頁"
+    
+    case account = "帳號"
+    
+    case password = "密碼"
 
     func cellForIndexPathInMain(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
 
@@ -53,6 +57,9 @@ enum ProfileContentCategory: String {
         case .facebook:
 
             cell.settingProfilePage(title: rawValue, data: "Facebook")
+            
+        default:
+            cell.settingProfilePage(title: rawValue, data: "")
         }
 
         return cell
@@ -85,6 +92,9 @@ enum ProfileContentCategory: String {
 
         case .facebook:
 
+            cell.setupEditCell(placeholder: rawValue)
+            
+        default:
             cell.setupEditCell(placeholder: rawValue)
         }
 

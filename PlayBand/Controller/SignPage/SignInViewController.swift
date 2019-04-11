@@ -23,6 +23,12 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var accountTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBAction func guestAction() {
+        
+        let mainVC = UIStoryboard.main.instantiateInitialViewController()
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        appDelegate.window?.rootViewController = mainVC
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

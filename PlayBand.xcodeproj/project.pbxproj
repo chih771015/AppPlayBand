@@ -27,6 +27,7 @@
 		59530B19225C80A0002F18AB /* ConfirmTableViewSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59530B18225C80A0002F18AB /* ConfirmTableViewSectionHeaderView.xib */; };
 		597F044A225EDDD600BAAFEE /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597F0449225EDDD600BAAFEE /* SignIn.storyboard */; };
 		597F044D225EE79D00BAAFEE /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597F044C225EE79D00BAAFEE /* SignInViewController.swift */; };
+		597F044F225F210F00BAAFEE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597F044E225F210F00BAAFEE /* SignUpViewController.swift */; };
 		598B8CD52254B9530061F03B /* ProfileInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B8CD32254B9530061F03B /* ProfileInformationTableViewCell.swift */; };
 		598B8CD62254B9530061F03B /* ProfileInformationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 598B8CD42254B9530061F03B /* ProfileInformationTableViewCell.xib */; };
 		598B8CD82254BFF80061F03B /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B8CD72254BFF80061F03B /* UITableView+Extension.swift */; };
@@ -83,6 +84,7 @@
 		59530B18225C80A0002F18AB /* ConfirmTableViewSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmTableViewSectionHeaderView.xib; sourceTree = "<group>"; };
 		597F0449225EDDD600BAAFEE /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		597F044C225EE79D00BAAFEE /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		597F044E225F210F00BAAFEE /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		598B8CD32254B9530061F03B /* ProfileInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationTableViewCell.swift; sourceTree = "<group>"; };
 		598B8CD42254B9530061F03B /* ProfileInformationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileInformationTableViewCell.xib; sourceTree = "<group>"; };
 		598B8CD72254BFF80061F03B /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				597F044C225EE79D00BAAFEE /* SignInViewController.swift */,
+				597F044E225F210F00BAAFEE /* SignUpViewController.swift */,
 			);
 			path = SignPage;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				597F044F225F210F00BAAFEE /* SignUpViewController.swift in Sources */,
 				5907F6972259DE3C008BB604 /* StoreDescriptionTableViewCell.swift in Sources */,
 				59DFF85622578DAB00273724 /* EditProfileViewController.swift in Sources */,
 				59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */,
