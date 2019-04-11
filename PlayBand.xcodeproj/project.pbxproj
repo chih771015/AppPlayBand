@@ -25,6 +25,8 @@
 		59530B15225C7FE5002F18AB /* ConfirmTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59530B14225C7FE5002F18AB /* ConfirmTableViewHeaderView.xib */; };
 		59530B17225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59530B16225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift */; };
 		59530B19225C80A0002F18AB /* ConfirmTableViewSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59530B18225C80A0002F18AB /* ConfirmTableViewSectionHeaderView.xib */; };
+		597F044A225EDDD600BAAFEE /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597F0449225EDDD600BAAFEE /* SignIn.storyboard */; };
+		597F044D225EE79D00BAAFEE /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597F044C225EE79D00BAAFEE /* SignInViewController.swift */; };
 		598B8CD52254B9530061F03B /* ProfileInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B8CD32254B9530061F03B /* ProfileInformationTableViewCell.swift */; };
 		598B8CD62254B9530061F03B /* ProfileInformationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 598B8CD42254B9530061F03B /* ProfileInformationTableViewCell.xib */; };
 		598B8CD82254BFF80061F03B /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B8CD72254BFF80061F03B /* UITableView+Extension.swift */; };
@@ -79,6 +81,8 @@
 		59530B14225C7FE5002F18AB /* ConfirmTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmTableViewHeaderView.xib; sourceTree = "<group>"; };
 		59530B16225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmTableViewSectionHeaderView.swift; sourceTree = "<group>"; };
 		59530B18225C80A0002F18AB /* ConfirmTableViewSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmTableViewSectionHeaderView.xib; sourceTree = "<group>"; };
+		597F0449225EDDD600BAAFEE /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
+		597F044C225EE79D00BAAFEE /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		598B8CD32254B9530061F03B /* ProfileInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationTableViewCell.swift; sourceTree = "<group>"; };
 		598B8CD42254B9530061F03B /* ProfileInformationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileInformationTableViewCell.xib; sourceTree = "<group>"; };
 		598B8CD72254BFF80061F03B /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
@@ -188,6 +192,14 @@
 				59530B18225C80A0002F18AB /* ConfirmTableViewSectionHeaderView.xib */,
 			);
 			path = Confirm;
+			sourceTree = "<group>";
+		};
+		597F044B225EE77400BAAFEE /* SignPage */ = {
+			isa = PBXGroup;
+			children = (
+				597F044C225EE79D00BAAFEE /* SignInViewController.swift */,
+			);
+			path = SignPage;
 			sourceTree = "<group>";
 		};
 		598B8CD22254B9140061F03B /* ProfileMain */ = {
@@ -305,6 +317,7 @@
 				59F81F972254641400C04E32 /* Booking.storyboard */,
 				59F81F992254642F00C04E32 /* Message.storyboard */,
 				59DFF8502257409300273724 /* Photo.storyboard */,
+				597F0449225EDDD600BAAFEE /* SignIn.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -312,6 +325,7 @@
 		59F81F8D22545AC400C04E32 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				597F044B225EE77400BAAFEE /* SignPage */,
 				59ABB02A2258A83900AE937A /* Booking */,
 				59DFF8522257463D00273724 /* Photo */,
 				59F81F9D22549FBA00C04E32 /* Profile */,
@@ -434,6 +448,7 @@
 				5941D834225359D600FDEEBA /* Assets.xcassets in Resources */,
 				59DFF8512257409300273724 /* Photo.storyboard in Resources */,
 				59ABB0242258732B00AE937A /* SettingTableViewCell.xib in Resources */,
+				597F044A225EDDD600BAAFEE /* SignIn.storyboard in Resources */,
 				5907F6982259DE3C008BB604 /* StoreDescriptionTableViewCell.xib in Resources */,
 				59530B15225C7FE5002F18AB /* ConfirmTableViewHeaderView.xib in Resources */,
 				59ABB03F2259121100AE937A /* StoreInformationTableViewCell.xib in Resources */,
@@ -552,6 +567,7 @@
 				59530B13225C7F92002F18AB /* ConfirmTableViewHeaderView.swift in Sources */,
 				59F81F8F2254625C00C04E32 /* PBTabBarController.swift in Sources */,
 				59ABB0382259084800AE937A /* StoreDetailViewController.swift in Sources */,
+				597F044D225EE79D00BAAFEE /* SignInViewController.swift in Sources */,
 				59530B17225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift in Sources */,
 				59F81F9C22547C3A00C04E32 /* UIImage+Extension.swift in Sources */,
 				59DFF85A22578FFD00273724 /* EditTableViewCell.swift in Sources */,
