@@ -57,4 +57,12 @@ extension MessageViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        guard let nextVC = storyboard?.instantiateViewController(withIdentifier: String(describing: MessageStoreCheckViewController.self)) else {
+            return
+            
+        }
+        self.present(nextVC, animated: true, completion: nil)
+    }
 }

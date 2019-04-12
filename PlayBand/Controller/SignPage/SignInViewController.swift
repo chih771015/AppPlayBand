@@ -10,6 +10,10 @@ import UIKit
 
 class SignInViewController: UIViewController {
 
+    @IBAction func unwindSegue(sender: UIStoryboardSegue) {
+        
+    }
+    
     @IBOutlet weak var signInButton: UIButton!
     
     @IBOutlet weak var guestButton: UIButton!

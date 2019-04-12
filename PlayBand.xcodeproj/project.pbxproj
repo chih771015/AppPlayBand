@@ -21,6 +21,8 @@
 		594ED6B2226058E90054CCC9 /* MessageConfirmPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 594ED6B0226058E90054CCC9 /* MessageConfirmPageTableViewCell.xib */; };
 		594ED6B622605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594ED6B422605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.swift */; };
 		594ED6B722605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 594ED6B522605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.xib */; };
+		594ED6B9226070CB0054CCC9 /* MessageStoreCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594ED6B8226070CB0054CCC9 /* MessageStoreCheckViewController.swift */; };
+		594ED6BB226074BE0054CCC9 /* MessageUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594ED6BA226074BE0054CCC9 /* MessageUserProfileViewController.swift */; };
 		5952315C2254AB51008C007F /* ProfileUserPictureImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5952315B2254AB51008C007F /* ProfileUserPictureImageView.swift */; };
 		59530B0D225C79EB002F18AB /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59530B0C225C79EB002F18AB /* ConfirmViewController.swift */; };
 		59530B10225C7B58002F18AB /* ConfirmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59530B0E225C7B58002F18AB /* ConfirmTableViewCell.swift */; };
@@ -85,6 +87,8 @@
 		594ED6B0226058E90054CCC9 /* MessageConfirmPageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageConfirmPageTableViewCell.xib; sourceTree = "<group>"; };
 		594ED6B422605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageConfirmPageTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		594ED6B522605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageConfirmPageTextFieldTableViewCell.xib; sourceTree = "<group>"; };
+		594ED6B8226070CB0054CCC9 /* MessageStoreCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStoreCheckViewController.swift; sourceTree = "<group>"; };
+		594ED6BA226074BE0054CCC9 /* MessageUserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageUserProfileViewController.swift; sourceTree = "<group>"; };
 		5952315B2254AB51008C007F /* ProfileUserPictureImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUserPictureImageView.swift; sourceTree = "<group>"; };
 		59530B0C225C79EB002F18AB /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		59530B0E225C7B58002F18AB /* ConfirmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmTableViewCell.swift; sourceTree = "<group>"; };
@@ -244,6 +248,8 @@
 			isa = PBXGroup;
 			children = (
 				5980519C225F2D45002036FD /* MessageViewController.swift */,
+				594ED6B8226070CB0054CCC9 /* MessageStoreCheckViewController.swift */,
+				594ED6BA226074BE0054CCC9 /* MessageUserProfileViewController.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -599,6 +605,7 @@
 				59207AA5225AF09400B50E7C /* BookingTime.swift in Sources */,
 				5952315C2254AB51008C007F /* ProfileUserPictureImageView.swift in Sources */,
 				59207AA3225AEC2D00B50E7C /* CalendarTableViewCell.swift in Sources */,
+				594ED6B9226070CB0054CCC9 /* MessageStoreCheckViewController.swift in Sources */,
 				59949297225A7FCE00726BF3 /* CalendarViewController.swift in Sources */,
 				59ABB026225877C400AE937A /* SettingViewController.swift in Sources */,
 				598B8CDB2254C4610061F03B /* ProfileContentCategory.swift in Sources */,
@@ -620,6 +627,7 @@
 				59530B13225C7F92002F18AB /* ConfirmTableViewHeaderView.swift in Sources */,
 				59F81F8F2254625C00C04E32 /* PBTabBarController.swift in Sources */,
 				59ABB0382259084800AE937A /* StoreDetailViewController.swift in Sources */,
+				594ED6BB226074BE0054CCC9 /* MessageUserProfileViewController.swift in Sources */,
 				594ED6B622605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.swift in Sources */,
 				597F044D225EE79D00BAAFEE /* SignInViewController.swift in Sources */,
 				59530B17225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift in Sources */,
