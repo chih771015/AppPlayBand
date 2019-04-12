@@ -9,13 +9,15 @@
 import UIKit
 
 class CalendarTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var bookingView: UIView!
+    
+    
+    
+    @IBOutlet weak var bookingView: UIView! 
     @IBOutlet weak var timeLabel: UILabel!
 
     @IBAction func bookingAction() {
 
-        bookingView.backgroundColor = .green
+ //       bookingView.backgroundColor = .green
     }
 
     @IBOutlet weak var bookingButton: UIButton!
@@ -46,7 +48,8 @@ class CalendarTableViewCell: UITableViewCell {
 
         timeLabel.text = String(hour) + ":00"
         bookingButton.tag = hour
-        bookingView.backgroundColor = .white
+ //       bookingView.backgroundColor = .white
+        bookingView.isHidden = true
     }
 
     func resetCell() {

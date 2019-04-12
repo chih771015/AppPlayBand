@@ -17,6 +17,10 @@
 		5941D832225359D500FDEEBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5941D830225359D500FDEEBA /* Main.storyboard */; };
 		5941D834225359D600FDEEBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5941D833225359D600FDEEBA /* Assets.xcassets */; };
 		5941D837225359D600FDEEBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5941D835225359D600FDEEBA /* LaunchScreen.storyboard */; };
+		594ED6B1226058E90054CCC9 /* MessageConfirmPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594ED6AF226058E90054CCC9 /* MessageConfirmPageTableViewCell.swift */; };
+		594ED6B2226058E90054CCC9 /* MessageConfirmPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 594ED6B0226058E90054CCC9 /* MessageConfirmPageTableViewCell.xib */; };
+		594ED6B622605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594ED6B422605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.swift */; };
+		594ED6B722605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 594ED6B522605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.xib */; };
 		5952315C2254AB51008C007F /* ProfileUserPictureImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5952315B2254AB51008C007F /* ProfileUserPictureImageView.swift */; };
 		59530B0D225C79EB002F18AB /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59530B0C225C79EB002F18AB /* ConfirmViewController.swift */; };
 		59530B10225C7B58002F18AB /* ConfirmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59530B0E225C7B58002F18AB /* ConfirmTableViewCell.swift */; };
@@ -28,6 +32,9 @@
 		597F044A225EDDD600BAAFEE /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597F0449225EDDD600BAAFEE /* SignIn.storyboard */; };
 		597F044D225EE79D00BAAFEE /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597F044C225EE79D00BAAFEE /* SignInViewController.swift */; };
 		597F044F225F210F00BAAFEE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597F044E225F210F00BAAFEE /* SignUpViewController.swift */; };
+		597F0453225F26A100BAAFEE /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597F0451225F26A100BAAFEE /* MessageTableViewCell.swift */; };
+		597F0454225F26A100BAAFEE /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597F0452225F26A100BAAFEE /* MessageTableViewCell.xib */; };
+		5980519D225F2D45002036FD /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5980519C225F2D45002036FD /* MessageViewController.swift */; };
 		598B8CD52254B9530061F03B /* ProfileInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B8CD32254B9530061F03B /* ProfileInformationTableViewCell.swift */; };
 		598B8CD62254B9530061F03B /* ProfileInformationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 598B8CD42254B9530061F03B /* ProfileInformationTableViewCell.xib */; };
 		598B8CD82254BFF80061F03B /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B8CD72254BFF80061F03B /* UITableView+Extension.swift */; };
@@ -74,6 +81,10 @@
 		5941D833225359D600FDEEBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5941D836225359D600FDEEBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5941D838225359D600FDEEBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		594ED6AF226058E90054CCC9 /* MessageConfirmPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageConfirmPageTableViewCell.swift; sourceTree = "<group>"; };
+		594ED6B0226058E90054CCC9 /* MessageConfirmPageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageConfirmPageTableViewCell.xib; sourceTree = "<group>"; };
+		594ED6B422605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageConfirmPageTextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		594ED6B522605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageConfirmPageTextFieldTableViewCell.xib; sourceTree = "<group>"; };
 		5952315B2254AB51008C007F /* ProfileUserPictureImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUserPictureImageView.swift; sourceTree = "<group>"; };
 		59530B0C225C79EB002F18AB /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		59530B0E225C7B58002F18AB /* ConfirmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmTableViewCell.swift; sourceTree = "<group>"; };
@@ -85,6 +96,9 @@
 		597F0449225EDDD600BAAFEE /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		597F044C225EE79D00BAAFEE /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		597F044E225F210F00BAAFEE /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		597F0451225F26A100BAAFEE /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		597F0452225F26A100BAAFEE /* MessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
+		5980519C225F2D45002036FD /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		598B8CD32254B9530061F03B /* ProfileInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationTableViewCell.swift; sourceTree = "<group>"; };
 		598B8CD42254B9530061F03B /* ProfileInformationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileInformationTableViewCell.xib; sourceTree = "<group>"; };
 		598B8CD72254BFF80061F03B /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
@@ -183,6 +197,17 @@
 			path = PlayBand;
 			sourceTree = "<group>";
 		};
+		594ED6AE226058AE0054CCC9 /* MessageConfirmPage */ = {
+			isa = PBXGroup;
+			children = (
+				594ED6AF226058E90054CCC9 /* MessageConfirmPageTableViewCell.swift */,
+				594ED6B0226058E90054CCC9 /* MessageConfirmPageTableViewCell.xib */,
+				594ED6B422605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.swift */,
+				594ED6B522605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.xib */,
+			);
+			path = MessageConfirmPage;
+			sourceTree = "<group>";
+		};
 		59530B0B225C793E002F18AB /* Confirm */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +228,24 @@
 				597F044E225F210F00BAAFEE /* SignUpViewController.swift */,
 			);
 			path = SignPage;
+			sourceTree = "<group>";
+		};
+		597F0450225F267D00BAAFEE /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				594ED6AE226058AE0054CCC9 /* MessageConfirmPage */,
+				597F0451225F26A100BAAFEE /* MessageTableViewCell.swift */,
+				597F0452225F26A100BAAFEE /* MessageTableViewCell.xib */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		5980519B225F2D2C002036FD /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				5980519C225F2D45002036FD /* MessageViewController.swift */,
+			);
+			path = Message;
 			sourceTree = "<group>";
 		};
 		598B8CD22254B9140061F03B /* ProfileMain */ = {
@@ -312,6 +355,7 @@
 		59F81F8C22545ABD00C04E32 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				597F0450225F267D00BAAFEE /* Message */,
 				59ABB0312258B25C00AE937A /* Booking */,
 				59F81FA52254A6C800C04E32 /* Profile */,
 				5941D830225359D500FDEEBA /* Main.storyboard */,
@@ -328,6 +372,7 @@
 		59F81F8D22545AC400C04E32 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5980519B225F2D2C002036FD /* Message */,
 				597F044B225EE77400BAAFEE /* SignPage */,
 				59ABB02A2258A83900AE937A /* Booking */,
 				59DFF8522257463D00273724 /* Photo */,
@@ -452,7 +497,9 @@
 				59DFF8512257409300273724 /* Photo.storyboard in Resources */,
 				59ABB0242258732B00AE937A /* SettingTableViewCell.xib in Resources */,
 				597F044A225EDDD600BAAFEE /* SignIn.storyboard in Resources */,
+				597F0454225F26A100BAAFEE /* MessageTableViewCell.xib in Resources */,
 				5907F6982259DE3C008BB604 /* StoreDescriptionTableViewCell.xib in Resources */,
+				594ED6B2226058E90054CCC9 /* MessageConfirmPageTableViewCell.xib in Resources */,
 				59530B15225C7FE5002F18AB /* ConfirmTableViewHeaderView.xib in Resources */,
 				59ABB03F2259121100AE937A /* StoreInformationTableViewCell.xib in Resources */,
 				59F81F982254641400C04E32 /* Booking.storyboard in Resources */,
@@ -463,6 +510,7 @@
 				59ABB0352258B32B00AE937A /* SearchStoreTableViewCell.xib in Resources */,
 				59F81F94225463BB00C04E32 /* Profile.storyboard in Resources */,
 				5941D832225359D500FDEEBA /* Main.storyboard in Resources */,
+				594ED6B722605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.xib in Resources */,
 				598B8CD62254B9530061F03B /* ProfileInformationTableViewCell.xib in Resources */,
 				59F81F9A2254642F00C04E32 /* Message.storyboard in Resources */,
 			);
@@ -545,6 +593,7 @@
 				597F044F225F210F00BAAFEE /* SignUpViewController.swift in Sources */,
 				5907F6972259DE3C008BB604 /* StoreDescriptionTableViewCell.swift in Sources */,
 				59DFF85622578DAB00273724 /* EditProfileViewController.swift in Sources */,
+				597F0453225F26A100BAAFEE /* MessageTableViewCell.swift in Sources */,
 				59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */,
 				59ABB0342258B32B00AE937A /* SearchStoreTableViewCell.swift in Sources */,
 				59207AA5225AF09400B50E7C /* BookingTime.swift in Sources */,
@@ -571,10 +620,13 @@
 				59530B13225C7F92002F18AB /* ConfirmTableViewHeaderView.swift in Sources */,
 				59F81F8F2254625C00C04E32 /* PBTabBarController.swift in Sources */,
 				59ABB0382259084800AE937A /* StoreDetailViewController.swift in Sources */,
+				594ED6B622605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.swift in Sources */,
 				597F044D225EE79D00BAAFEE /* SignInViewController.swift in Sources */,
 				59530B17225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift in Sources */,
 				59F81F9C22547C3A00C04E32 /* UIImage+Extension.swift in Sources */,
 				59DFF85A22578FFD00273724 /* EditTableViewCell.swift in Sources */,
+				5980519D225F2D45002036FD /* MessageViewController.swift in Sources */,
+				594ED6B1226058E90054CCC9 /* MessageConfirmPageTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

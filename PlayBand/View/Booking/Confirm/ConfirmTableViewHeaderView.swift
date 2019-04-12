@@ -20,9 +20,5 @@ class ConfirmTableViewHeaderView: UITableViewHeaderFooterView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        let layerShadow = CALayer()
-        layerShadow.addShadow()
-        backgroundModelView.layer.addSublayer(layerShadow)
     }
-
 }

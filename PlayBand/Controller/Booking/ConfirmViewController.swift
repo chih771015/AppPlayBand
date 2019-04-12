@@ -10,7 +10,6 @@ import UIKit
 
 class ConfirmViewController: UIViewController {
 
-    
     @IBOutlet weak var countHourLabel: UILabel!
     @IBOutlet weak var tableView: UITableView! {
         didSet {

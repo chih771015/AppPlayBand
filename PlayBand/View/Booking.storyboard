@@ -158,6 +158,10 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrd-IN-g5A">
                                                     <rect key="frame" x="70" y="0.0" width="289" height="43.5"/>
                                                     <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1OG-HV-1ob">
+                                                            <rect key="frame" x="2" y="2" width="257.5" height="39.5"/>
+                                                            <color key="backgroundColor" red="0.50217372660000004" green="0.81188531090000005" blue="0.67815955029999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </view>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uiU-nB-bZt">
                                                             <rect key="frame" x="262.5" y="12" width="19.5" height="19.5"/>
                                                             <constraints>
@@ -171,11 +175,14 @@
                                                             </connections>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.50217372660000004" green="0.81188531090000005" blue="0.67815955029999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstItem="uiU-nB-bZt" firstAttribute="top" secondItem="rrd-IN-g5A" secondAttribute="top" constant="12" id="01I-Rm-UaP"/>
+                                                        <constraint firstItem="1OG-HV-1ob" firstAttribute="top" secondItem="rrd-IN-g5A" secondAttribute="top" constant="2" id="01J-OO-XVQ"/>
+                                                        <constraint firstItem="1OG-HV-1ob" firstAttribute="leading" secondItem="rrd-IN-g5A" secondAttribute="leading" constant="2" id="Qp0-uf-nwH"/>
                                                         <constraint firstAttribute="trailing" secondItem="uiU-nB-bZt" secondAttribute="trailing" constant="7" id="cew-o5-DQr"/>
                                                         <constraint firstAttribute="bottom" secondItem="uiU-nB-bZt" secondAttribute="bottom" constant="12" id="n8y-SW-KPS"/>
+                                                        <constraint firstAttribute="bottom" secondItem="1OG-HV-1ob" secondAttribute="bottom" constant="2" id="pAu-wA-LdU"/>
+                                                        <constraint firstItem="uiU-nB-bZt" firstAttribute="leading" secondItem="1OG-HV-1ob" secondAttribute="trailing" constant="3" id="zdK-T7-BvM"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="lvCornerRadius">
@@ -184,6 +191,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="rrd-IN-g5A" firstAttribute="top" secondItem="c6P-FK-U3i" secondAttribute="top" id="23q-Ba-HT3"/>
                                                 <constraint firstAttribute="trailing" secondItem="rrd-IN-g5A" secondAttribute="trailing" constant="16" id="3zU-lO-3bg"/>
@@ -195,7 +203,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="bookingButton" destination="uiU-nB-bZt" id="ADw-1L-prQ"/>
-                                            <outlet property="bookingView" destination="rrd-IN-g5A" id="QLp-Dy-4WA"/>
+                                            <outlet property="bookingView" destination="1OG-HV-1ob" id="TOJ-o5-qR7"/>
                                             <outlet property="timeLabel" destination="gbp-Ws-1Ku" id="nOF-fk-WZf"/>
                                         </connections>
                                     </tableViewCell>

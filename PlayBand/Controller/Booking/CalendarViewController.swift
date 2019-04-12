@@ -142,8 +142,9 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
                     
                     if hours == hour {
                         
-                        cell.bookingView.backgroundColor = UIColor(red: 128/255, green: 204/255, blue: 173/255, alpha: 1)
+//                        cell.bookingView.backgroundColor = UIColor(red: 128/255, green: 204/255, blue: 173/255, alpha: 1)
                         cell.bookingButton.setImage(UIImage.asset(.substract), for: .normal)
+                        cell.bookingView.isHidden = false
                         return cell
                     }
                 }
