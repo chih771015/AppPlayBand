@@ -43,13 +43,18 @@ class CalendarTableViewCell: UITableViewCell {
 
         self.layer.addSublayer(gradientLayer)
     }
-
+    
+    override func prepareForReuse() {
+        
+    }
     func setupCell(hour: Int) {
 
         timeLabel.text = String(hour) + ":00"
         bookingButton.tag = hour
  //       bookingView.backgroundColor = .white
+        bookingButton.isHidden = false
         bookingView.isHidden = true
+        bookingView.backgroundColor = UIColor(red: 128/255, green: 207/255, blue: 173/255, alpha: 1)
     }
 
     func resetCell() {

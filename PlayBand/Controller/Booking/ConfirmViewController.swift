@@ -10,6 +10,19 @@ import UIKit
 
 class ConfirmViewController: UIViewController {
 
+    @IBAction func bookingAction() {
+        
+        for bookingtime in bookingTimeDatas {
+            
+            FirebaseSingle.shared.dataBase().collection("Booking").addDocument(data: [
+                "Year": bookingtime.date.year,
+                "Month": bookingtime.date.month,
+                "Day": bookingtime.date.day,
+                "hours": bookingtime.hour], completion: { (error) in
+                    print(error)
+            })
+        }
+    }
     @IBOutlet weak var countHourLabel: UILabel!
     @IBOutlet weak var tableView: UITableView! {
         didSet {

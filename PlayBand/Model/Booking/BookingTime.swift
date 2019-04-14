@@ -30,6 +30,21 @@ struct BookingTime: Equatable, Comparable {
             self.hour.sort(by: <)
         }
     }
+    
+    init? (dictionary:[String: Any]) {
+        
+        guard let day = dictionary["Day"] as? Int else {return nil}
+        guard let year = dictionary["Year"] as? Int else {return nil}
+        guard let month = dictionary["Month"] as? Int else {return nil}
+        guard let hours = dictionary["hours"] as? [Int] else {return nil}
+        self.date = BookingDate(year: year, month: month, day: day)
+        self.hour = hours
+    }
+    init(date: BookingDate, hour: [Int]) {
+        
+        self.date = date
+        self.hour = hour
+    }
 }
 
 struct BookingDate: Equatable {

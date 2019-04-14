@@ -20,6 +20,14 @@ class CalendarViewController: UIViewController {
             calendarTableView.reloadData()
         }
     }
+    
+    var firebaseBookingData: [BookingTime] = [] {
+        didSet {
+         
+            calendarTableView.reloadData()
+            print("firebaseBookingData in set")
+        }
+    }
 
     @IBOutlet weak var calendarTableView: JKCalendarTableView!
 
@@ -30,6 +38,20 @@ class CalendarViewController: UIViewController {
         calendarTableView.calendar.dataSource = self
 
         calendarTableView.calendar.focusWeek = selectDay.weekOfMonth - 1
+        
+        FirebaseSingle.shared.dataBase().collection("Booking").getDocuments {[weak self] (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else {
+                return
+            }
+            if let error = error {                print("Error getting documents: \(error)")
+            } else {
+                for document in documents {
+                    
+                    guard let bookingTime = BookingTime(dictionary: document.data()) else {return}
+                    self?.firebaseBookingData.append(bookingTime)
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -132,6 +154,29 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
             for: indexPath) as? CalendarTableViewCell else {return UITableViewCell()}
 
         let hour = indexPath.row + 10
+        for firebasedata in firebaseBookingData {
+            
+            if firebasedata.date.year == selectDay.year &&
+                firebasedata.date.month == selectDay.month &&
+                firebasedata.date.day == selectDay.day {
+                
+                    for hours in firebasedata.hour {
+                        
+                        if hours == hour {
+                            
+                            cell.setupCell(hour: hour)
+                            cell.bookingButton.isHidden = true
+                            cell.bookingView.backgroundColor = .red
+                            cell.bookingView.isHidden = false
+                            return cell
+                        }
+                    }
+                }
+        }
+        
+        
+        
+        
         cell.bookingButton.addTarget(self, action: #selector(addBooking(sender:)), for: .touchUpInside)
         for data in bookingTimeDatas {
 
@@ -142,7 +187,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
                     
                     if hours == hour {
                         
-//                        cell.bookingView.backgroundColor = UIColor(red: 128/255, green: 204/255, blue: 173/255, alpha: 1)
+                        cell.setupCell(hour: hour)
                         cell.bookingButton.setImage(UIImage.asset(.substract), for: .normal)
                         cell.bookingView.isHidden = false
                         return cell
@@ -174,8 +219,14 @@ extension CalendarViewController {
                 for hour in booking.hour {
 
                     if hour == sender.tag {
-
+                        
+                        if bookingTimeDatas[count].hour.count == 1 {
+                            
+                            bookingTimeDatas.remove(at: count)
+                            return
+                        }
                         bookingTimeDatas[count].hour.remove(at: counthour)
+                        
                         return
                     }
                     counthour += 1
