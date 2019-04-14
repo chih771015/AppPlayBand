@@ -55,7 +55,7 @@ enum SettingContentCategory: String {
         case .passwordChange:
             print("passowordChange")
         case .logout:
-            print("logout")
+            FirebaseSingle.shared.logout()
         default:
             return
         }

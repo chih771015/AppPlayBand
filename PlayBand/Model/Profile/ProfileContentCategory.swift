@@ -24,8 +24,8 @@ enum ProfileContentCategory: String {
     case account = "帳號"
     
     case password = "密碼"
-
-    func cellForIndexPathInMain(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
+    
+    func cellForIndexPathInMain(_ indexPath: IndexPath, tableView: UITableView, userData: UserData?) -> UITableViewCell {
 
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: ProfileInformationTableViewCell.self),
@@ -35,28 +35,29 @@ enum ProfileContentCategory: String {
                 
                 return UITableViewCell()
             }
+        guard let user = userData else {return UITableViewCell()}
 
         switch self {
 
         case .name:
 
-            cell.settingProfilePage(title: rawValue, data: "安安")
+            cell.settingProfilePage(title: rawValue, data: user.name)
 
         case .email:
 
-            cell.settingProfilePage(title: rawValue, data: "123@gmail.com")
+            cell.settingProfilePage(title: rawValue, data: user.email)
 
         case .band:
 
-            cell.settingProfilePage(title: rawValue, data: "嘿嘿嘿嘿")
+            cell.settingProfilePage(title: rawValue, data: user.band)
 
         case .phone:
 
-            cell.settingProfilePage(title: rawValue, data: "0987654321")
+            cell.settingProfilePage(title: rawValue, data: user.phone)
 
         case .facebook:
 
-            cell.settingProfilePage(title: rawValue, data: "Facebook")
+            cell.settingProfilePage(title: rawValue, data: user.facebook)
             
         default:
             cell.settingProfilePage(title: rawValue, data: "")

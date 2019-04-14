@@ -13,10 +13,12 @@
 		5907F69B2259E2BD008BB604 /* StoreContentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */; };
 		59207AA3225AEC2D00B50E7C /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59207AA2225AEC2D00B50E7C /* CalendarTableViewCell.swift */; };
 		59207AA5225AF09400B50E7C /* BookingTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59207AA4225AF09400B50E7C /* BookingTime.swift */; };
+		592D2137226244300017A746 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 592D2136226244300017A746 /* GoogleService-Info.plist */; };
 		5941D82D225359D500FDEEBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D82C225359D500FDEEBA /* AppDelegate.swift */; };
 		5941D832225359D500FDEEBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5941D830225359D500FDEEBA /* Main.storyboard */; };
 		5941D834225359D600FDEEBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5941D833225359D600FDEEBA /* Assets.xcassets */; };
 		5941D837225359D600FDEEBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5941D835225359D600FDEEBA /* LaunchScreen.storyboard */; };
+		594CAA8A226395F5009A0921 /* UserDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594CAA89226395F5009A0921 /* UserDataStruct.swift */; };
 		594ED6B1226058E90054CCC9 /* MessageConfirmPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594ED6AF226058E90054CCC9 /* MessageConfirmPageTableViewCell.swift */; };
 		594ED6B2226058E90054CCC9 /* MessageConfirmPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 594ED6B0226058E90054CCC9 /* MessageConfirmPageTableViewCell.xib */; };
 		594ED6B622605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594ED6B422605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.swift */; };
@@ -68,6 +70,7 @@
 		59F81F9C22547C3A00C04E32 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F81F9B22547C3A00C04E32 /* UIImage+Extension.swift */; };
 		59F81F9F22549FCD00C04E32 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F81F9E22549FCD00C04E32 /* ProfileViewController.swift */; };
 		59F81FA12254A3F200C04E32 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F81FA02254A3F100C04E32 /* UIView+Extension.swift */; };
+		59FCFD3922620CAE006402E5 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCFD3822620CAE006402E5 /* Firebase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,12 +80,14 @@
 		5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreContentCategory.swift; sourceTree = "<group>"; };
 		59207AA2225AEC2D00B50E7C /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		59207AA4225AF09400B50E7C /* BookingTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTime.swift; sourceTree = "<group>"; };
+		592D2136226244300017A746 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5941D829225359D500FDEEBA /* PlayBand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayBand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5941D82C225359D500FDEEBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5941D831225359D500FDEEBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5941D833225359D600FDEEBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5941D836225359D600FDEEBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5941D838225359D600FDEEBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		594CAA89226395F5009A0921 /* UserDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStruct.swift; sourceTree = "<group>"; };
 		594ED6AF226058E90054CCC9 /* MessageConfirmPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageConfirmPageTableViewCell.swift; sourceTree = "<group>"; };
 		594ED6B0226058E90054CCC9 /* MessageConfirmPageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageConfirmPageTableViewCell.xib; sourceTree = "<group>"; };
 		594ED6B422605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageConfirmPageTextFieldTableViewCell.swift; sourceTree = "<group>"; };
@@ -134,6 +139,7 @@
 		59F81F9B22547C3A00C04E32 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		59F81F9E22549FCD00C04E32 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		59F81FA02254A3F100C04E32 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		59FCFD3822620CAE006402E5 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		C291E05659581482F9363EF6 /* Pods-PlayBand.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayBand.debug.xcconfig"; path = "Target Support Files/Pods-PlayBand/Pods-PlayBand.debug.xcconfig"; sourceTree = "<group>"; };
 		CB1175214C85AD46AEC4EF17 /* Pods_PlayBand.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayBand.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -195,6 +201,7 @@
 				59F81F8B22545AAF00C04E32 /* Model */,
 				5941D82C225359D500FDEEBA /* AppDelegate.swift */,
 				5941D833225359D600FDEEBA /* Assets.xcassets */,
+				592D2136226244300017A746 /* GoogleService-Info.plist */,
 				5941D835225359D600FDEEBA /* LaunchScreen.storyboard */,
 				5941D838225359D600FDEEBA /* Info.plist */,
 			);
@@ -286,6 +293,7 @@
 			children = (
 				598B8CDA2254C4610061F03B /* ProfileContentCategory.swift */,
 				59ABB028225878C700AE937A /* SettingContentCategory.swift */,
+				594CAA89226395F5009A0921 /* UserDataStruct.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -354,6 +362,7 @@
 			children = (
 				5907F6992259DE60008BB604 /* Booking */,
 				59ABB027225878A700AE937A /* Profile */,
+				59FCFD3822620CAE006402E5 /* Firebase.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -517,6 +526,7 @@
 				59F81F94225463BB00C04E32 /* Profile.storyboard in Resources */,
 				5941D832225359D500FDEEBA /* Main.storyboard in Resources */,
 				594ED6B722605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.xib in Resources */,
+				592D2137226244300017A746 /* GoogleService-Info.plist in Resources */,
 				598B8CD62254B9530061F03B /* ProfileInformationTableViewCell.xib in Resources */,
 				59F81F9A2254642F00C04E32 /* Message.storyboard in Resources */,
 			);
@@ -552,15 +562,31 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PlayBand/Pods-PlayBand-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/JKCalendar/JKCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/JKInfinitePageView/JKInfinitePageView.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JKCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JKInfinitePageView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -606,6 +632,7 @@
 				5952315C2254AB51008C007F /* ProfileUserPictureImageView.swift in Sources */,
 				59207AA3225AEC2D00B50E7C /* CalendarTableViewCell.swift in Sources */,
 				594ED6B9226070CB0054CCC9 /* MessageStoreCheckViewController.swift in Sources */,
+				59FCFD3922620CAE006402E5 /* Firebase.swift in Sources */,
 				59949297225A7FCE00726BF3 /* CalendarViewController.swift in Sources */,
 				59ABB026225877C400AE937A /* SettingViewController.swift in Sources */,
 				598B8CDB2254C4610061F03B /* ProfileContentCategory.swift in Sources */,
@@ -632,6 +659,7 @@
 				597F044D225EE79D00BAAFEE /* SignInViewController.swift in Sources */,
 				59530B17225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift in Sources */,
 				59F81F9C22547C3A00C04E32 /* UIImage+Extension.swift in Sources */,
+				594CAA8A226395F5009A0921 /* UserDataStruct.swift in Sources */,
 				59DFF85A22578FFD00273724 /* EditTableViewCell.swift in Sources */,
 				5980519D225F2D45002036FD /* MessageViewController.swift in Sources */,
 				594ED6B1226058E90054CCC9 /* MessageConfirmPageTableViewCell.swift in Sources */,

@@ -8,6 +8,12 @@ target 'PlayBand' do
   # Pods for PlayBand
     pod 'JKCalendar'
     pod 'SwiftLint'
-
+    pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
+    pod 'Firebase/Database'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Storage'
+    pod 'Firebase/Firestore'
+    pod 'Firebase/Functions'
 end
 

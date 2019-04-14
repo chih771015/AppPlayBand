@@ -9,7 +9,18 @@
 import UIKit
 
 class SignInViewController: UIViewController {
-
+    
+    let firebase = FirebaseSingle.shared
+    
+    @IBAction func signInAction() {
+        guard let account = accountTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        
+        firebase.signInAccount(email: account, password: password) { (result, error) in
+            print(result?.additionalUserInfo?.profile)
+            print(error)
+        }
+    }
     @IBAction func unwindSegue(sender: UIStoryboardSegue) {
         
     }

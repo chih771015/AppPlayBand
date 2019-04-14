@@ -16,6 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseSingle.shared.configure()
+        FirebaseSingle.shared.listenAccount { (auth, user) in
+            guard let appdelgate = UIApplication.shared.delegate as? AppDelegate  else { return }
+            
+                        guard user != nil else {
+            
+                            let nextVC = UIStoryboard.signIn.instantiateInitialViewController()
+                            appdelgate.window?.rootViewController = nextVC
+                            return
+                        }
+            
+                        let nextVC = UIStoryboard.main.instantiateInitialViewController()
+                        appdelgate.window?.rootViewController = nextVC
+        }
         return true
     }
 

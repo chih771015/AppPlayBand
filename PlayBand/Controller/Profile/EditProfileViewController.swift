@@ -10,6 +10,36 @@ import UIKit
 
 class EditProfileViewController: UIViewController {
 
+    @IBAction func editProfileAction() {
+        
+        guard let name = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditTableViewCell)?.textField.text else {
+            return
+        }
+        guard let phone = (tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? EditTableViewCell)?.textField.text else {
+            return
+        }
+        guard let facebook = (tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? EditTableViewCell)?.textField.text else {
+            return
+        }
+        guard let band = (tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? EditTableViewCell)?.textField.text else {
+            return
+        }
+        guard let email = (tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? EditTableViewCell)?.textField.text else {
+            return
+        }
+        guard let uid = FirebaseSingle.shared.user().currentUser?.uid else {return}
+        FirebaseSingle.shared.dataBase().collection("Users").document(uid).setData(
+            ["name": name,
+            "phone": phone,
+            "facebook": facebook,
+            "email": email,
+            "band": band
+        ]) { (error) in
+            print(error)
+        }
+        
+        
+    }
     @IBOutlet weak var tableView: UITableView! {
         didSet {
 

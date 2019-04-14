@@ -29,7 +29,12 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet weak var userImage: ProfileUserPictureImageView!
     @IBOutlet weak var nameLabel: UILabel!
-
+    
+    var user: UserData? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     private let datas: [ProfileContentCategory] = [.name, .band, .phone, .email, .facebook]
 
     override func viewDidLoad() {
@@ -38,6 +43,22 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let uid = FirebaseSingle.shared.user().currentUser?.uid else {return}
+        FirebaseSingle.shared.dataBase().collection("Users").document(uid).getDocument { [weak self] (document, error) in
+            if let user = document.flatMap({
+                $0.data().flatMap({ (data) in
+                    return UserData(dictionary: data)
+                })
+            }) {
+                self?.user = user
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
     private func setupTableView() {
 
         tableView.lv_registerCellWithNib(
@@ -49,12 +70,17 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return datas.count
+        if user != nil {
+            
+            return datas.count
+        } else {
+            
+            return 0
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        return datas[indexPath.row].cellForIndexPathInMain(indexPath, tableView: tableView)
+        return datas[indexPath.row].cellForIndexPathInMain(indexPath, tableView: tableView, userData: user)
     }
 }
