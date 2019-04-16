@@ -27,18 +27,18 @@ class EditProfileViewController: UIViewController {
         guard let email = (tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? EditTableViewCell)?.textField.text else {
             return
         }
-        guard let uid = FirebaseSingle.shared.user().currentUser?.uid else {return}
-        FirebaseSingle.shared.dataBase().collection("Users").document(uid).setData(
-            ["name": name,
-            "phone": phone,
-            "facebook": facebook,
-            "email": email,
-            "band": band
-        ]) { (error) in
-            print(error)
+        let userData = UserData(name: name, phone: phone, band: band, email: email, facebook: facebook)
+        FirebaseSingle.shared.editProfileInfo(userData: userData) { [weak self] (error) in
+            
+            if error == nil {
+                UIAlertController.alertMessageAnimation(title: "修改會員資料成功", message: nil, viewController: self, completionHanderInDismiss: { [weak self] in
+                    self?.navigationController?.popViewController(animated: true)
+                })
+            } else {
+                
+                UIAlertController.alertMessageAnimation(title: FirebaseEnum.fail.rawValue, message: error?.localizedDescription, viewController: self, completionHanderInDismiss: nil)
+            }
         }
-        
-        
     }
     @IBOutlet weak var tableView: UITableView! {
         didSet {

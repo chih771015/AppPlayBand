@@ -11,37 +11,65 @@ import UIKit
 class SignUpViewController: EditProfileViewController {
     
     @IBAction func signUpAction() {
-        guard let accountCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditTableViewCell else { return }
-        guard let passwordCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? EditTableViewCell else { return }
+        
+        guard let accountCell = tableView.cellForRow(
+            at: IndexPath(row: 0, section: 0)) as? EditTableViewCell else { return }
+        guard let passwordCell = tableView.cellForRow(
+            at: IndexPath(row: 1, section: 0)) as? EditTableViewCell else { return }
         guard let account = accountCell.textField.text else {
             return
         }
         guard let password = passwordCell.textField.text else {
             return
         }
-        FirebaseSingle.shared.signUpAccount(email: account, password: password, completionHandler: { result, error in
+        FirebaseSingle.shared.signUpAccount(
+            email: account,
+            password: password,
+            completionHandler: { [weak self] result, error in
             
-            guard result != nil else {
-                
-                print(error)
-                return
+                guard result != nil else {
+                    guard let errorConfirm = error else {return}
+                    print(errorConfirm)
+                    UIAlertController.alertMessageAnimation(
+                        title: FirebaseEnum.fail.rawValue,
+                        message: errorConfirm.localizedDescription,
+                        viewController: self, completionHanderInDismiss: nil)
+                    return
             }
             print(result)
             
-            FirebaseSingle.shared.signInAccount(email: account, password: password, completionHandler: { (result, error) in
+            FirebaseSingle.shared.signInAccount(
+                email: account,
+                password: password,
+                completionHandler: { [weak self] (result, error) in
                 
                 guard result != nil else {
                     
-                    print(error)
+                    UIAlertController.alertMessageAnimation(
+                        title: FirebaseEnum.fail.rawValue,
+                        message: error?.localizedDescription,
+                        viewController: self,
+                        completionHanderInDismiss: nil)
                     return
                 }
-                print(result)
                 
+                let nextVC = UIAlertController(title: "歡迎進入", message: nil, preferredStyle: .alert)
+                    self?.present(nextVC, animated: true, completion: { 
+                        
+                        nextVC.dismiss(animated: true, completion: { [weak self] in
+                            
+                            guard let rootVC = UIStoryboard.main.instantiateInitialViewController() else {return}
+                            guard let appdelgate = UIApplication.shared.delegate as? AppDelegate else {return}
+                            appdelgate.window?.rootViewController = rootVC
+                            self?.presentedViewController?.dismiss(animated: false, completion: nil)
+                            self?.dismiss(animated: false, completion: nil)
+                        })
+                    })
             })
         })
     }
     
-    var dataSignUp: [ProfileContentCategory] = [.account, .password, .email, .name, .phone, .band, .facebook]
+    var dataSignUp: [ProfileContentCategory] = [.account, .password, .email, .name, .phone, .band, .facebook, .userStatus]
     override func viewDidLoad() {
         super.viewDidLoad()
 

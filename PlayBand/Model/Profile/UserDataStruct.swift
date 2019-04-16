@@ -29,6 +29,13 @@ struct UserData {
         self.email = email
         self.facebook = facebook
     }
+    init(name: String, phone: String, band: String, email: String, facebook: String) {
+        self.name = name
+        self.phone = phone
+        self.band = band
+        self.email = email
+        self.facebook = facebook
+    }
     
 }
 

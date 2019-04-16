@@ -45,19 +45,7 @@ class ProfileViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        guard let uid = FirebaseSingle.shared.user().currentUser?.uid else {return}
-        FirebaseSingle.shared.dataBase().collection("Users").document(uid).getDocument { [weak self] (document, error) in
-            if let user = document.flatMap({
-                $0.data().flatMap({ (data) in
-                    return UserData(dictionary: data)
-                })
-            }) {
-                self?.user = user
-            } else {
-                print("Document does not exist")
-            }
-        }
+        self.user = FirebaseSingle.shared.userData
     }
     private func setupTableView() {
 

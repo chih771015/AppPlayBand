@@ -17,19 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseSingle.shared.configure()
-        FirebaseSingle.shared.listenAccount { (auth, user) in
-            guard let appdelgate = UIApplication.shared.delegate as? AppDelegate  else { return }
+        let appdelgate = UIApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
+        if FirebaseSingle.shared.user().currentUser != nil {
             
-                        guard user != nil else {
+            let nextVC = UIStoryboard.main.instantiateInitialViewController()
+            appdelgate.window?.rootViewController = nextVC
+        } else {
             
-                            let nextVC = UIStoryboard.signIn.instantiateInitialViewController()
-                            appdelgate.window?.rootViewController = nextVC
-                            return
-                        }
-            
-                        let nextVC = UIStoryboard.main.instantiateInitialViewController()
-                        appdelgate.window?.rootViewController = nextVC
+            let nextVC = UIStoryboard.signIn.instantiateInitialViewController()
+            appdelgate.window?.rootViewController = nextVC
         }
+        IQKeyboard.shared.frameworkAction()
         return true
     }
 

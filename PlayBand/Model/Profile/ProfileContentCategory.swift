@@ -25,6 +25,8 @@ enum ProfileContentCategory: String {
     
     case password = "密碼"
     
+    case userStatus = "使用者帳號類別"
+    
     func cellForIndexPathInMain(_ indexPath: IndexPath, tableView: UITableView, userData: UserData?) -> UITableViewCell {
 
         guard let cell = tableView.dequeueReusableCell(
@@ -94,6 +96,10 @@ enum ProfileContentCategory: String {
         case .facebook:
 
             cell.setupEditCell(placeholder: rawValue)
+            
+        case .userStatus:
+            
+            cell.setupEditPickerCell(placehoder: rawValue)
             
         default:
             cell.setupEditCell(placeholder: rawValue)

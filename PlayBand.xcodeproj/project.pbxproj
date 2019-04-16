@@ -14,6 +14,7 @@
 		59207AA3225AEC2D00B50E7C /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59207AA2225AEC2D00B50E7C /* CalendarTableViewCell.swift */; };
 		59207AA5225AF09400B50E7C /* BookingTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59207AA4225AF09400B50E7C /* BookingTime.swift */; };
 		592D2137226244300017A746 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 592D2136226244300017A746 /* GoogleService-Info.plist */; };
+		593F6E102263C5810014219B /* IQKeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593F6E0F2263C5810014219B /* IQKeyboardManager.swift */; };
 		5941D82D225359D500FDEEBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D82C225359D500FDEEBA /* AppDelegate.swift */; };
 		5941D832225359D500FDEEBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5941D830225359D500FDEEBA /* Main.storyboard */; };
 		5941D834225359D600FDEEBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5941D833225359D600FDEEBA /* Assets.xcassets */; };
@@ -55,6 +56,11 @@
 		59ABB0382259084800AE937A /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ABB0362259084800AE937A /* StoreDetailViewController.swift */; };
 		59ABB03E2259121100AE937A /* StoreInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ABB03C2259121100AE937A /* StoreInformationTableViewCell.swift */; };
 		59ABB03F2259121100AE937A /* StoreInformationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59ABB03D2259121100AE937A /* StoreInformationTableViewCell.xib */; };
+		59BB3D5C22643E3300E46BEE /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB3D5B22643E3300E46BEE /* UIAlertController+Extension.swift */; };
+		59BB3D5E2264AA8D00E46BEE /* EditPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB3D5D2264AA8D00E46BEE /* EditPageViewController.swift */; };
+		59BB3D602264AAAE00E46BEE /* EditPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59BB3D5F2264AAAE00E46BEE /* EditPage.storyboard */; };
+		59BB3D642264AAE800E46BEE /* EditPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB3D622264AAE800E46BEE /* EditPageTableViewCell.swift */; };
+		59BB3D652264AAE800E46BEE /* EditPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59BB3D632264AAE800E46BEE /* EditPageTableViewCell.xib */; };
 		59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF84E22564DEB00273724 /* UILabel+Extension.swift */; };
 		59DFF8512257409300273724 /* Photo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DFF8502257409300273724 /* Photo.storyboard */; };
 		59DFF8542257465800273724 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF8532257465800273724 /* PhotoViewController.swift */; };
@@ -81,6 +87,7 @@
 		59207AA2225AEC2D00B50E7C /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		59207AA4225AF09400B50E7C /* BookingTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTime.swift; sourceTree = "<group>"; };
 		592D2136226244300017A746 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		593F6E0F2263C5810014219B /* IQKeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQKeyboardManager.swift; sourceTree = "<group>"; };
 		5941D829225359D500FDEEBA /* PlayBand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayBand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5941D82C225359D500FDEEBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5941D831225359D500FDEEBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -124,6 +131,11 @@
 		59ABB0362259084800AE937A /* StoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailViewController.swift; sourceTree = "<group>"; };
 		59ABB03C2259121100AE937A /* StoreInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInformationTableViewCell.swift; sourceTree = "<group>"; };
 		59ABB03D2259121100AE937A /* StoreInformationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreInformationTableViewCell.xib; sourceTree = "<group>"; };
+		59BB3D5B22643E3300E46BEE /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		59BB3D5D2264AA8D00E46BEE /* EditPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPageViewController.swift; sourceTree = "<group>"; };
+		59BB3D5F2264AAAE00E46BEE /* EditPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditPage.storyboard; sourceTree = "<group>"; };
+		59BB3D622264AAE800E46BEE /* EditPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPageTableViewCell.swift; sourceTree = "<group>"; };
+		59BB3D632264AAE800E46BEE /* EditPageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditPageTableViewCell.xib; sourceTree = "<group>"; };
 		59DFF84E22564DEB00273724 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		59DFF8502257409300273724 /* Photo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Photo.storyboard; sourceTree = "<group>"; };
 		59DFF8532257465800273724 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
@@ -275,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				59949294225A7D9C00726BF3 /* CalendarFrameWork.swift */,
+				593F6E0F2263C5810014219B /* IQKeyboardManager.swift */,
 			);
 			path = FrameWork;
 			sourceTree = "<group>";
@@ -340,6 +353,15 @@
 			path = StoreDetail;
 			sourceTree = "<group>";
 		};
+		59BB3D612264AABF00E46BEE /* EditPage */ = {
+			isa = PBXGroup;
+			children = (
+				59BB3D622264AAE800E46BEE /* EditPageTableViewCell.swift */,
+				59BB3D632264AAE800E46BEE /* EditPageTableViewCell.xib */,
+			);
+			path = EditPage;
+			sourceTree = "<group>";
+		};
 		59DFF8522257463D00273724 /* Photo */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,6 +394,7 @@
 			children = (
 				597F0450225F267D00BAAFEE /* Message */,
 				59ABB0312258B25C00AE937A /* Booking */,
+				59BB3D612264AABF00E46BEE /* EditPage */,
 				59F81FA52254A6C800C04E32 /* Profile */,
 				5941D830225359D500FDEEBA /* Main.storyboard */,
 				59F81F93225463BB00C04E32 /* Profile.storyboard */,
@@ -380,6 +403,7 @@
 				59F81F992254642F00C04E32 /* Message.storyboard */,
 				59DFF8502257409300273724 /* Photo.storyboard */,
 				597F0449225EDDD600BAAFEE /* SignIn.storyboard */,
+				59BB3D5F2264AAAE00E46BEE /* EditPage.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -393,6 +417,7 @@
 				59DFF8522257463D00273724 /* Photo */,
 				59F81F9D22549FBA00C04E32 /* Profile */,
 				59F81F8E2254625C00C04E32 /* PBTabBarController.swift */,
+				59BB3D5D2264AA8D00E46BEE /* EditPageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -405,6 +430,7 @@
 				59F81FA02254A3F100C04E32 /* UIView+Extension.swift */,
 				598B8CD72254BFF80061F03B /* UITableView+Extension.swift */,
 				59DFF84E22564DEB00273724 /* UILabel+Extension.swift */,
+				59BB3D5B22643E3300E46BEE /* UIAlertController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -508,6 +534,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5941D837225359D600FDEEBA /* LaunchScreen.storyboard in Resources */,
+				59BB3D602264AAAE00E46BEE /* EditPage.storyboard in Resources */,
 				5941D834225359D600FDEEBA /* Assets.xcassets in Resources */,
 				59DFF8512257409300273724 /* Photo.storyboard in Resources */,
 				59ABB0242258732B00AE937A /* SettingTableViewCell.xib in Resources */,
@@ -522,6 +549,7 @@
 				59F81F962254640200C04E32 /* News.storyboard in Resources */,
 				59530B11225C7B58002F18AB /* ConfirmTableViewCell.xib in Resources */,
 				59DFF85B22578FFD00273724 /* EditTableViewCell.xib in Resources */,
+				59BB3D652264AAE800E46BEE /* EditPageTableViewCell.xib in Resources */,
 				59ABB0352258B32B00AE937A /* SearchStoreTableViewCell.xib in Resources */,
 				59F81F94225463BB00C04E32 /* Profile.storyboard in Resources */,
 				5941D832225359D500FDEEBA /* Main.storyboard in Resources */,
@@ -565,6 +593,7 @@
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/JKCalendar/JKCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/JKInfinitePageView/JKInfinitePageView.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
@@ -580,6 +609,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JKCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JKInfinitePageView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
@@ -628,8 +658,10 @@
 				597F0453225F26A100BAAFEE /* MessageTableViewCell.swift in Sources */,
 				59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */,
 				59ABB0342258B32B00AE937A /* SearchStoreTableViewCell.swift in Sources */,
+				593F6E102263C5810014219B /* IQKeyboardManager.swift in Sources */,
 				59207AA5225AF09400B50E7C /* BookingTime.swift in Sources */,
 				5952315C2254AB51008C007F /* ProfileUserPictureImageView.swift in Sources */,
+				59BB3D5E2264AA8D00E46BEE /* EditPageViewController.swift in Sources */,
 				59207AA3225AEC2D00B50E7C /* CalendarTableViewCell.swift in Sources */,
 				594ED6B9226070CB0054CCC9 /* MessageStoreCheckViewController.swift in Sources */,
 				59FCFD3922620CAE006402E5 /* Firebase.swift in Sources */,
@@ -637,6 +669,7 @@
 				59ABB026225877C400AE937A /* SettingViewController.swift in Sources */,
 				598B8CDB2254C4610061F03B /* ProfileContentCategory.swift in Sources */,
 				59F81FA12254A3F200C04E32 /* UIView+Extension.swift in Sources */,
+				59BB3D5C22643E3300E46BEE /* UIAlertController+Extension.swift in Sources */,
 				598B8CD82254BFF80061F03B /* UITableView+Extension.swift in Sources */,
 				59ABB0232258732B00AE937A /* SettingTableViewCell.swift in Sources */,
 				59ABB029225878C700AE937A /* SettingContentCategory.swift in Sources */,
@@ -659,6 +692,7 @@
 				597F044D225EE79D00BAAFEE /* SignInViewController.swift in Sources */,
 				59530B17225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift in Sources */,
 				59F81F9C22547C3A00C04E32 /* UIImage+Extension.swift in Sources */,
+				59BB3D642264AAE800E46BEE /* EditPageTableViewCell.swift in Sources */,
 				594CAA8A226395F5009A0921 /* UserDataStruct.swift in Sources */,
 				59DFF85A22578FFD00273724 /* EditTableViewCell.swift in Sources */,
 				5980519D225F2D45002036FD /* MessageViewController.swift in Sources */,

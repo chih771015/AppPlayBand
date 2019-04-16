@@ -10,6 +10,12 @@ import UIKit
 
 class EditTableViewCell: UITableViewCell {
 
+    enum PickViewString: String {
+        
+        case user = "一般用戶"
+        case manger = "店家"
+    }
+    
     @IBOutlet weak var textField: UITextField!
 
     override func awakeFromNib() {
@@ -27,5 +33,42 @@ class EditTableViewCell: UITableViewCell {
 
         textField.placeholder = placeholder
     }
-
+    
+    func setupEditPickerCell(placehoder: String) {
+        
+        let pickView = UIPickerView()
+        pickView.delegate = self
+        pickView.dataSource = self
+        textField.inputView = pickView
+        textField.placeholder = placehoder
+    }
 }
+
+extension EditTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        return 2
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if row == 0 {
+            return PickViewString.user.rawValue
+        } else {
+            return PickViewString.manger.rawValue
+        }
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if row == 0 {
+            textField.text = PickViewString.user.rawValue
+        } else {
+            textField.text = PickViewString.manger.rawValue
+        }
+    }
+}
+
+

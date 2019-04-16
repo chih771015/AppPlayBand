@@ -15,5 +15,6 @@ target 'PlayBand' do
     pod 'Firebase/Storage'
     pod 'Firebase/Firestore'
     pod 'Firebase/Functions'
+    pod 'IQKeyboardManagerSwift'
 end
 

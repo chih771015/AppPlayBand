@@ -55,7 +55,19 @@ enum SettingContentCategory: String {
         case .passwordChange:
             print("passowordChange")
         case .logout:
-            FirebaseSingle.shared.logout()
+            FirebaseSingle.shared.logout(completionHandler: { result in
+                
+                UIAlertController.alertMessageAnimation(title: result, message: nil, viewController: viewController, completionHanderInDismiss: {
+                    
+                    guard let appdelgate = UIApplication.shared.delegate as? AppDelegate else {
+                        return
+                    }
+                    guard let nextVC = UIStoryboard.signIn.instantiateInitialViewController() else {
+                        return
+                    }
+                    appdelgate.window?.rootViewController = nextVC
+                })
+            })
         default:
             return
         }
