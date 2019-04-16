@@ -61,6 +61,7 @@
 		59BB3D602264AAAE00E46BEE /* EditPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59BB3D5F2264AAAE00E46BEE /* EditPage.storyboard */; };
 		59BB3D642264AAE800E46BEE /* EditPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB3D622264AAE800E46BEE /* EditPageTableViewCell.swift */; };
 		59BB3D652264AAE800E46BEE /* EditPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59BB3D632264AAE800E46BEE /* EditPageTableViewCell.xib */; };
+		59D717A922658742009772FC /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D717A822658742009772FC /* UIImageView+Extension.swift */; };
 		59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF84E22564DEB00273724 /* UILabel+Extension.swift */; };
 		59DFF8512257409300273724 /* Photo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DFF8502257409300273724 /* Photo.storyboard */; };
 		59DFF8542257465800273724 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF8532257465800273724 /* PhotoViewController.swift */; };
@@ -136,6 +137,7 @@
 		59BB3D5F2264AAAE00E46BEE /* EditPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditPage.storyboard; sourceTree = "<group>"; };
 		59BB3D622264AAE800E46BEE /* EditPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPageTableViewCell.swift; sourceTree = "<group>"; };
 		59BB3D632264AAE800E46BEE /* EditPageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditPageTableViewCell.xib; sourceTree = "<group>"; };
+		59D717A822658742009772FC /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		59DFF84E22564DEB00273724 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		59DFF8502257409300273724 /* Photo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Photo.storyboard; sourceTree = "<group>"; };
 		59DFF8532257465800273724 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 				598B8CD72254BFF80061F03B /* UITableView+Extension.swift */,
 				59DFF84E22564DEB00273724 /* UILabel+Extension.swift */,
 				59BB3D5B22643E3300E46BEE /* UIAlertController+Extension.swift */,
+				59D717A822658742009772FC /* UIImageView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/JKCalendar/JKCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/JKInfinitePageView/JKInfinitePageView.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -612,6 +616,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JKCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JKInfinitePageView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -656,6 +661,7 @@
 				5907F6972259DE3C008BB604 /* StoreDescriptionTableViewCell.swift in Sources */,
 				59DFF85622578DAB00273724 /* EditProfileViewController.swift in Sources */,
 				597F0453225F26A100BAAFEE /* MessageTableViewCell.swift in Sources */,
+				59D717A922658742009772FC /* UIImageView+Extension.swift in Sources */,
 				59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */,
 				59ABB0342258B32B00AE937A /* SearchStoreTableViewCell.swift in Sources */,
 				593F6E102263C5810014219B /* IQKeyboardManager.swift in Sources */,

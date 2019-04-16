@@ -130,6 +130,7 @@ PODS:
   - JKCalendar (1.1.0):
     - JKInfinitePageView (~> 1.1.0)
   - JKInfinitePageView (1.1.0)
+  - Kingfisher (5.2.0)
   - leveldb-library (1.20)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -149,6 +150,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - IQKeyboardManagerSwift
   - JKCalendar
+  - Kingfisher
   - SwiftLint
 
 SPEC REPOS:
@@ -174,6 +176,7 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - JKCalendar
     - JKInfinitePageView
+    - Kingfisher
     - leveldb-library
     - nanopb
     - Protobuf
@@ -201,11 +204,12 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
   JKCalendar: ccbbbc982417d6b3f31dd57827eaf0ba39ae3ede
   JKInfinitePageView: 30c9e47e0e75067f9be046e5874edc7f4e7d4dc0
+  Kingfisher: 07067cfacf371117330dceb4b4b8f5c4b691ab42
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
 
-PODFILE CHECKSUM: 49c2988eccb7df51eae358b1064a587dc344f4c5
+PODFILE CHECKSUM: 0989449e398e87d1c6d77fdfd3beee0c58ebf36d
 
 COCOAPODS: 1.6.0

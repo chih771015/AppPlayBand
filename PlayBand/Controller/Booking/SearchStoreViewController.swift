@@ -46,7 +46,9 @@ extension SearchStoreViewController: UITableViewDataSource, UITableViewDelegate 
             ),
             for: indexPath
         ) as? SearchStoreTableViewCell else { return UITableViewCell()}
-
+        cell.setupCell(title: "test",
+                       imageURL: Test.url.rawValue
+        )
         return cell
     }
 
@@ -62,4 +64,10 @@ extension SearchStoreViewController: UITableViewDataSource, UITableViewDelegate 
         ) else {return}
         navigationController?.pushViewController(nextViewController, animated: true)
     }
+}
+
+
+enum Test: String {
+    
+    case url = "https://firebasestorage.googleapis.com/v0/b/test-3dcea.appspot.com/o/27540325_574597332884961_4955653517050363908_n.jpg?alt=media&token=d61c16a3-b669-426b-a2bc-04e2ba98b7af"
 }

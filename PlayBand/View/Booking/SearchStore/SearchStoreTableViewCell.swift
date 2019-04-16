@@ -10,6 +10,8 @@ import UIKit
 
 class SearchStoreTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +22,10 @@ class SearchStoreTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func setupCell(title: String, imageURL: String) {
+        
+        self.titleLabel.text = title
+        self.titleImageView.lv_setImageWithURL(url: imageURL)
+    }
 }
