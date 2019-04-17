@@ -16,9 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FirebaseSingle.shared.configure()
+        FirebaseManger.shared.configure()
         let appdelgate = UIApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
-        if FirebaseSingle.shared.user().currentUser != nil {
+        if FirebaseManger.shared.user().currentUser != nil {
             
             let nextVC = UIStoryboard.main.instantiateInitialViewController()
             appdelgate.window?.rootViewController = nextVC

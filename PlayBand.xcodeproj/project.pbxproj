@@ -62,6 +62,8 @@
 		59BB3D642264AAE800E46BEE /* EditPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB3D622264AAE800E46BEE /* EditPageTableViewCell.swift */; };
 		59BB3D652264AAE800E46BEE /* EditPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59BB3D632264AAE800E46BEE /* EditPageTableViewCell.xib */; };
 		59D717A922658742009772FC /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D717A822658742009772FC /* UIImageView+Extension.swift */; };
+		59D717AB22658B6A009772FC /* StoreDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D717AA22658B6A009772FC /* StoreDataStruct.swift */; };
+		59D717AD2265A8F3009772FC /* ResultEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D717AC2265A8F3009772FC /* ResultEnum.swift */; };
 		59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF84E22564DEB00273724 /* UILabel+Extension.swift */; };
 		59DFF8512257409300273724 /* Photo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DFF8502257409300273724 /* Photo.storyboard */; };
 		59DFF8542257465800273724 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF8532257465800273724 /* PhotoViewController.swift */; };
@@ -138,6 +140,8 @@
 		59BB3D622264AAE800E46BEE /* EditPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPageTableViewCell.swift; sourceTree = "<group>"; };
 		59BB3D632264AAE800E46BEE /* EditPageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditPageTableViewCell.xib; sourceTree = "<group>"; };
 		59D717A822658742009772FC /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		59D717AA22658B6A009772FC /* StoreDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataStruct.swift; sourceTree = "<group>"; };
+		59D717AC2265A8F3009772FC /* ResultEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultEnum.swift; sourceTree = "<group>"; };
 		59DFF84E22564DEB00273724 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		59DFF8502257409300273724 /* Photo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Photo.storyboard; sourceTree = "<group>"; };
 		59DFF8532257465800273724 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 			children = (
 				5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */,
 				59207AA4225AF09400B50E7C /* BookingTime.swift */,
+				59D717AA22658B6A009772FC /* StoreDataStruct.swift */,
 			);
 			path = Booking;
 			sourceTree = "<group>";
@@ -387,6 +392,7 @@
 				5907F6992259DE60008BB604 /* Booking */,
 				59ABB027225878A700AE937A /* Profile */,
 				59FCFD3822620CAE006402E5 /* Firebase.swift */,
+				59D717AC2265A8F3009772FC /* ResultEnum.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -688,8 +694,10 @@
 				5941D82D225359D500FDEEBA /* AppDelegate.swift in Sources */,
 				59ABB03E2259121100AE937A /* StoreInformationTableViewCell.swift in Sources */,
 				59530B10225C7B58002F18AB /* ConfirmTableViewCell.swift in Sources */,
+				59D717AD2265A8F3009772FC /* ResultEnum.swift in Sources */,
 				59949295225A7D9C00726BF3 /* CalendarFrameWork.swift in Sources */,
 				59F81F9F22549FCD00C04E32 /* ProfileViewController.swift in Sources */,
+				59D717AB22658B6A009772FC /* StoreDataStruct.swift in Sources */,
 				59530B13225C7F92002F18AB /* ConfirmTableViewHeaderView.swift in Sources */,
 				59F81F8F2254625C00C04E32 /* PBTabBarController.swift in Sources */,
 				59ABB0382259084800AE937A /* StoreDetailViewController.swift in Sources */,

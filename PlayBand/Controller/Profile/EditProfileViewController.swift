@@ -12,31 +12,44 @@ class EditProfileViewController: UIViewController {
 
     @IBAction func editProfileAction() {
         
-        guard let name = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditTableViewCell)?.textField.text else {
+        guard let name = (tableView.cellForRow(
+            at: IndexPath(row: 0, section: 0)) as? EditTableViewCell)?.textField.text else {
             return
         }
-        guard let phone = (tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? EditTableViewCell)?.textField.text else {
+        guard let phone = (tableView.cellForRow(
+            at: IndexPath(row: 2, section: 0)) as? EditTableViewCell)?.textField.text else {
             return
         }
-        guard let facebook = (tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? EditTableViewCell)?.textField.text else {
+        guard let facebook = (tableView.cellForRow(
+            at: IndexPath(row: 4, section: 0)) as? EditTableViewCell)?.textField.text else {
             return
         }
-        guard let band = (tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? EditTableViewCell)?.textField.text else {
+        guard let band = (tableView.cellForRow(
+            at: IndexPath(row: 1, section: 0)) as? EditTableViewCell)?.textField.text else {
             return
         }
-        guard let email = (tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? EditTableViewCell)?.textField.text else {
+        guard let email = (tableView.cellForRow(
+            at: IndexPath(row: 3, section: 0)) as? EditTableViewCell)?.textField.text else {
             return
         }
         let userData = UserData(name: name, phone: phone, band: band, email: email, facebook: facebook)
-        FirebaseSingle.shared.editProfileInfo(userData: userData) { [weak self] (error) in
+        FirebaseManger.shared.editProfileInfo(userData: userData) { [weak self] (error) in
             
             if error == nil {
-                UIAlertController.alertMessageAnimation(title: "修改會員資料成功", message: nil, viewController: self, completionHanderInDismiss: { [weak self] in
-                    self?.navigationController?.popViewController(animated: true)
-                })
+                UIAlertController.alertMessageAnimation(
+                    title: "修改會員資料成功",
+                    message: nil,
+                    viewController: self,
+                    completionHanderInDismiss: { [weak self] in
+                        self?.navigationController?.popViewController(animated: true)
+                    })
             } else {
                 
-                UIAlertController.alertMessageAnimation(title: FirebaseEnum.fail.rawValue, message: error?.localizedDescription, viewController: self, completionHanderInDismiss: nil)
+                UIAlertController.alertMessageAnimation(
+                    title: FirebaseEnum.fail.rawValue,
+                    message: error?.localizedDescription,
+                    viewController: self,
+                    completionHanderInDismiss: nil)
             }
         }
     }

@@ -18,7 +18,9 @@ class StoreDetailViewController: UIViewController {
     }
 
     private let datas: [StoreContentCategory] = [.information, .price, .time, .description]
-
+    
+    var storeData: StoreData?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,8 +47,12 @@ extension StoreDetailViewController: UITableViewDataSource, UITableViewDelegate 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        return datas[indexPath.row].cellForIndexPath(indexPath, tableView: tableView)
+        
+        return datas[indexPath.row].cellForIndexPath(indexPath, tableView: tableView, data: self.storeData)
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let nextVC = segue.destination as? CalendarViewController else {return}
+        nextVC.storeData = self.storeData
+    }
 }

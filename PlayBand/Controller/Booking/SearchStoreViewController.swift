@@ -16,18 +16,49 @@ class SearchStoreViewController: UIViewController {
             tableViewSetup()
         }
     }
-
+    
+    private var storeDatas: [StoreData] = [] {
+        
+        didSet {
+            
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        getStoreData()
     }
-
+    
+    private func getStoreData() {
+        
+        FirebaseManger.shared.getStoreInfo { [weak self] result in
+            
+            switch result {
+            case .success(let data):
+                
+                self?.storeDatas = data
+                
+            case .failure(let error):
+                
+                UIAlertController.alertMessageAnimation(
+                    title: FirebaseEnum.fail.rawValue,
+                    message: error.localizedDescription,
+                    viewController: self,
+                    completionHanderInDismiss: nil)
+            }
+        }
+    }
+    
     private func tableViewSetup() {
 
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.lv_registerCellWithNib(identifier: String(describing: SearchStoreTableViewCell.self), bundle: nil)
+        tableView.lv_registerCellWithNib(
+            identifier: String(describing: SearchStoreTableViewCell.self),
+            bundle: nil)
     }
 }
 
@@ -35,7 +66,7 @@ extension SearchStoreViewController: UITableViewDataSource, UITableViewDelegate 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return 1
+        return storeDatas.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,8 +77,8 @@ extension SearchStoreViewController: UITableViewDataSource, UITableViewDelegate 
             ),
             for: indexPath
         ) as? SearchStoreTableViewCell else { return UITableViewCell()}
-        cell.setupCell(title: "test",
-                       imageURL: Test.url.rawValue
+        cell.setupCell(title: storeDatas[indexPath.row].name,
+                       imageURL: storeDatas[indexPath.row].photourl
         )
         return cell
     }
@@ -61,13 +92,8 @@ extension SearchStoreViewController: UITableViewDataSource, UITableViewDelegate 
 
         guard let nextViewController = self.storyboard?.instantiateViewController(
             withIdentifier: String(describing: StoreDetailViewController.self)
-        ) else {return}
+        ) as? StoreDetailViewController else {return}
+        nextViewController.storeData = self.storeDatas[indexPath.row]
         navigationController?.pushViewController(nextViewController, animated: true)
     }
-}
-
-
-enum Test: String {
-    
-    case url = "https://firebasestorage.googleapis.com/v0/b/test-3dcea.appspot.com/o/27540325_574597332884961_4955653517050363908_n.jpg?alt=media&token=d61c16a3-b669-426b-a2bc-04e2ba98b7af"
 }

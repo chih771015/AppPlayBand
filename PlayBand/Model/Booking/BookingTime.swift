@@ -33,9 +33,9 @@ struct BookingTime: Equatable, Comparable {
     
     init? (dictionary:[String: Any]) {
         
-        guard let day = dictionary["Day"] as? Int else {return nil}
-        guard let year = dictionary["Year"] as? Int else {return nil}
-        guard let month = dictionary["Month"] as? Int else {return nil}
+        guard let day = dictionary["day"] as? Int else {return nil}
+        guard let year = dictionary["year"] as? Int else {return nil}
+        guard let month = dictionary["month"] as? Int else {return nil}
         guard let hours = dictionary["hours"] as? [Int] else {return nil}
         self.date = BookingDate(year: year, month: month, day: day)
         self.hour = hours

@@ -45,7 +45,7 @@ class ProfileViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.user = FirebaseSingle.shared.userData
+        self.user = FirebaseManger.shared.userData
     }
     private func setupTableView() {
 

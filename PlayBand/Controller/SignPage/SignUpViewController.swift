@@ -22,11 +22,11 @@ class SignUpViewController: EditProfileViewController {
         guard let password = passwordCell.textField.text else {
             return
         }
-        FirebaseSingle.shared.signUpAccount(
+        FirebaseManger.shared.signUpAccount(
             email: account,
             password: password,
             completionHandler: { [weak self] result, error in
-            
+                print(result)
                 guard result != nil else {
                     guard let errorConfirm = error else {return}
                     print(errorConfirm)
@@ -36,9 +36,8 @@ class SignUpViewController: EditProfileViewController {
                         viewController: self, completionHanderInDismiss: nil)
                     return
             }
-            print(result)
-            
-            FirebaseSingle.shared.signInAccount(
+
+            FirebaseManger.shared.signInAccount(
                 email: account,
                 password: password,
                 completionHandler: { [weak self] (result, error) in

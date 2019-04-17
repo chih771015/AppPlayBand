@@ -12,16 +12,34 @@ class ConfirmViewController: UIViewController {
 
     @IBAction func bookingAction() {
         
-        for bookingtime in bookingTimeDatas {
+        guard let storeName = storeData?.name else { return }
+        FirebaseManger.shared.bookingTimeEdit(storeName: storeName, bookingDatas: bookingTimeDatas) { (result) in
             
-            FirebaseSingle.shared.dataBase().collection("Booking").addDocument(data: [
-                "Year": bookingtime.date.year,
-                "Month": bookingtime.date.month,
-                "Day": bookingtime.date.day,
-                "hours": bookingtime.hour], completion: { (error) in
-                    print(error)
-            })
+            switch result {
+                
+            case .success(let message):
+                UIAlertController.alertMessageAnimation(
+                    title: message,
+                    message: nil,
+                    viewController: self, completionHanderInDismiss: { [weak self] in
+                        self?.navigationController?.popToRootViewController(animated: true)
+                })
+            case .failure(let error):
+                UIAlertController.alertMessageAnimation(
+                    title: FirebaseEnum.fail.rawValue,
+                    message: error.localizedDescription,
+                    viewController: self, completionHanderInDismiss: nil)
+                
+            }
         }
+//            FirebaseManger.shared.dataBase().collection("Booking").addDocument(data: [
+//                "Year": bookingtime.date.year,
+//                "Month": bookingtime.date.month,
+//                "Day": bookingtime.date.day,
+//                "hours": bookingtime.hour], completion: { (error) in
+//                    print(error)
+//            })
+        
     }
     @IBOutlet weak var countHourLabel: UILabel!
     @IBOutlet weak var tableView: UITableView! {
@@ -39,6 +57,7 @@ class ConfirmViewController: UIViewController {
             bookingDatasChange?(bookingTimeDatas)
         }
     }
+    var storeData: StoreData?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +88,6 @@ class ConfirmViewController: UIViewController {
         tableView.tableHeaderView = headerView
 
     }
-
 }
 
 extension ConfirmViewController: UITableViewDelegate, UITableViewDataSource {

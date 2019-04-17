@@ -21,7 +21,8 @@ class CalendarViewController: UIViewController {
         }
     }
     
-    var firebaseBookingData: [BookingTime] = [] {
+    private var firebaseBookingData: [BookingTime] = [] {
+        
         didSet {
          
             calendarTableView.reloadData()
@@ -31,34 +32,35 @@ class CalendarViewController: UIViewController {
 
     @IBOutlet weak var calendarTableView: JKCalendarTableView!
 
+    var storeData: StoreData?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         calendarTableView.calendar.delegate = self
         calendarTableView.calendar.dataSource = self
-
         calendarTableView.calendar.focusWeek = selectDay.weekOfMonth - 1
         
-        FirebaseSingle.shared.dataBase().collection("Booking").getDocuments {[weak self] (querySnapshot, error) in
-            guard let documents = querySnapshot?.documents else {
-                return
-            }
-            if let error = error {                print("Error getting documents: \(error)")
-            } else {
-                for document in documents {
-                    
-                    guard let bookingTime = BookingTime(dictionary: document.data()) else {return}
-                    self?.firebaseBookingData.append(bookingTime)
-                }
+        getFirebaseBookingData()
+    }
+
+    private func getFirebaseBookingData() {
+        
+        guard let data = storeData else { return }
+        
+        FirebaseManger.shared.getStoreBookingInfo(name: data.name) { [weak self] (result) in
+            
+            switch result {
+                
+            case .success(let data):
+                self?.firebaseBookingData = data
+                print(data)
+            case .failure(let error):
+                print(error)
             }
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
     @IBAction func handleBackButtonClick(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
     }
@@ -69,6 +71,7 @@ class CalendarViewController: UIViewController {
         nextVC.loadViewIfNeeded()
         
         nextVC.bookingTimeDatas = self.bookingTimeDatas
+        nextVC.storeData = self.storeData
         nextVC.bookingDatasChange = { [weak self] changeDatas in
             self?.bookingTimeDatas = changeDatas
         }
@@ -173,10 +176,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
                     }
                 }
         }
-        
-        
-        
-        
+
         cell.bookingButton.addTarget(self, action: #selector(addBooking(sender:)), for: .touchUpInside)
         for data in bookingTimeDatas {
 

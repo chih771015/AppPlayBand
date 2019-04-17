@@ -25,7 +25,7 @@ class StoreDescriptionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func setupCell(title: String, description: String) {
+    func setupCell(title: String?, description: String?) {
 
         titleLabel.text = title
         descriptionLabel.text = description

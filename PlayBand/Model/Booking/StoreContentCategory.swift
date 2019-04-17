@@ -27,23 +27,43 @@ enum StoreContentCategory: String {
 
     }
 
-    func cellForIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
-
+    func cellForIndexPath(_ indexPath: IndexPath, tableView: UITableView, data: StoreData?) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-
-        guard let desCell = cell as? StoreDescriptionTableViewCell else {return cell}
+        guard let storeData = data else {return cell}
+        guard let desCell = cell as? StoreDescriptionTableViewCell else {
+        
+            guard let informationcell = cell as? StoreInformationTableViewCell else {return cell}
+            informationcell.setupCell(name: storeData.name, phone: storeData.phone, address: storeData.address)
+            return informationcell
+        }
         switch self {
 
         case .information:
-            return cell
+            
+            guard let informationcell = cell as? StoreInformationTableViewCell else {return cell}
+            informationcell.setupCell(name: data?.name, phone: data?.phone, address: data?.address)
+            return informationcell
+            
         case .price:
-            desCell.setupCell(title: rawValue, description: "20000")
+            
+            var price = ""
+            
+            for room in storeData.rooms {
+                
+                price += "\(room.price)\n"
+            }
+            desCell.setupCell(title: rawValue, description: price)
+            
         case .time:
-            desCell.setupCell(title: rawValue, description: "10:00")
+            
+            desCell.setupCell(title: rawValue, description: "\(storeData.openTime):00 - \(storeData.closeTime):00")
+            
         case .description:
+            
             desCell.setupCell(
                 title: rawValue,
-                description: "很多描述很多描述很多描述很多描述\n很多描述很多描述很多描述很多描述很多描述很多描述很多描述很多描述很多描述很多描述很多描述很多描述\n很多描述很多描述很多描述很多描述很多"
+                description: storeData.information
             )
         }
         return desCell

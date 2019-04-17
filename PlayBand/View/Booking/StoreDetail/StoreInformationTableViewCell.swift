@@ -10,6 +10,13 @@ import UIKit
 
 class StoreInformationTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var phoneLabel: UILabel!
+    
+    @IBOutlet weak var addressLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +26,13 @@ class StoreInformationTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setupCell(name: String?, phone: String?, address: String?) {
+        
+        self.titleLabel.text = name
+        self.phoneLabel.text = phone
+        self.addressLabel.text = address
     }
 
 }
