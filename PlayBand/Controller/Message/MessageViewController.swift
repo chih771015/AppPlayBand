@@ -10,8 +10,19 @@ import UIKit
 
 class MessageViewController: UIViewController {
     
+    private let firebaseManger = FirebaseManger.shared
+    
+    var userBookingData: [UserBookingData] = [] {
+        
+        didSet {
+            
+            tableView.reloadData()
+        }
+    }
+    
     @IBOutlet weak var tableView: UITableView! {
         didSet {
+            
             setupTableView()
         }
     }
@@ -22,11 +33,29 @@ class MessageViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupData()
+    }
     private func setupTableView() {
         
         tableView.lv_registerCellWithNib(identifier: String(describing: MessageTableViewCell.self), bundle: nil)
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    private func setupData() {
+        
+        let status = firebaseManger.userStatus
+        
+        if status == UsersKey.Status.user.rawValue {
+            
+            self.userBookingData = firebaseManger.userBookingData
+        }
+        if status == UsersKey.Status.manger.rawValue {
+            
+            self.userBookingData = firebaseManger.mangerStoreData
+        }
     }
 }
 
@@ -43,7 +72,7 @@ extension MessageViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 1
+        return userBookingData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -55,6 +84,8 @@ extension MessageViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
+        let data = userBookingData[indexPath.row]
+        cell.setupCell(count: data.bookingTime.hour.count, status: data.status, title: data.userInfo.name)
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

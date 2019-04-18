@@ -53,6 +53,9 @@ enum SettingContentCategory: String {
         switch self {
 
         case .passwordChange:
+            
+            let nextVC = UIStoryboard.profile.instantiateViewController(withIdentifier: String(describing: PasswordChangeViewController.self))
+            viewController.navigationController?.pushViewController(nextVC, animated: true)
             print("passowordChange")
         case .logout:
             FirebaseManger.shared.logout(completionHandler: { result in

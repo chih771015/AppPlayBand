@@ -7,36 +7,91 @@
 //
 
 import UIKit
+//
+//class PhotoViewController: UIViewController {
+//
+//    @IBAction func dismissVC() {
+//
+//        dismiss(animated: true, completion: nil)
+//    }
+//
+//    @IBAction func chancePhoto() {
+//
+//        let imagePickVC = UIImagePickerController()
+//        imagePickVC.sourceType = .photoLibrary
+//        imagePickVC.delegate = self
+//        present(imagePickVC, animated: true, completion: nil)
+//    }
+//
+//    @IBAction func useCamera() {
+//
+//        let imagePickVC = UIImagePickerController()
+//        imagePickVC.sourceType = .camera
+//        imagePickVC.delegate = self
+//   //     imagePickVC.allowsEditing = true
+//        present(imagePickVC, animated: true, completion: nil)
+//    }
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        // Do any additional setup after loading the view.
+//    }
+//
+//}
+//
+//extension PhotoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+//
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//
+//        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+//
+//            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+//
+//            dismiss(animated: true, completion: nil)
+//        }
+//    }
+//}
 
-class PhotoViewController: UIViewController {
-
-    @IBAction func dismissVC() {
-
-        dismiss(animated: true, completion: nil)
-    }
-
-    @IBAction func chancePhoto() {
-
-    }
-
-    @IBAction func useCamera() {
-
-    }
-
+class PhotoChoiceViewController: UIAlertController {
+    
+    var getImage = {}
+    var presentVC: (UINavigationControllerDelegate & UIImagePickerControllerDelegate & UIViewController)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupAction()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    deinit {
+        print("dead")
     }
-    */
-
+    
+    private func setupAction() {
+        
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = presentVC
+        
+        let imageFromLibAction = UIAlertAction(title: "照片圖庫", style: .default) { [weak self] (_) in
+            
+            imagePickerController.sourceType = .photoLibrary
+            guard let nextVC = self?.presentVC else {return}
+            nextVC.present(imagePickerController, animated: true, completion: nil)
+        }
+        
+        let imageFromCameraAction = UIAlertAction(title: "相機", style: .default) { [weak self] (_) in
+            
+            imagePickerController.sourceType = .photoLibrary
+            guard let nextVC = self?.presentVC else {return}
+            nextVC.present(imagePickerController, animated: true, completion: nil)
+        }
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel) {[weak self] (_) in
+            
+            self?.dismiss(animated: true, completion: nil)
+        }
+        self.addAction(imageFromLibAction)
+        self.addAction(imageFromCameraAction)
+        self.addAction(cancelAction)
+    }
 }

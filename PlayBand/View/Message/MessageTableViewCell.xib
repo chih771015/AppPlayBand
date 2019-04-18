@@ -86,8 +86,11 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="countLabel" destination="YBT-C5-dxH" id="cro-Te-KB1"/>
                 <outlet property="descriptionView" destination="0k5-D0-naw" id="6Kb-xZ-1DD"/>
+                <outlet property="statusLabel" destination="5gh-kf-rLW" id="UXE-6N-YYA"/>
                 <outlet property="storeImage" destination="nAT-Lj-oTM" id="CUx-XY-jWr"/>
+                <outlet property="titleLabel" destination="GgF-jD-Zon" id="r9T-w8-VhQ"/>
                 <outlet property="titleView" destination="gSX-Ni-nhu" id="Rse-Zg-jkR"/>
             </connections>
             <point key="canvasLocation" x="118.84057971014494" y="150.66964285714286"/>

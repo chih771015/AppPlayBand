@@ -9,12 +9,6 @@
 import UIKit
 
 class EditTableViewCell: UITableViewCell {
-
-    enum PickViewString: String {
-        
-        case user = "一般用戶"
-        case manger = "店家"
-    }
     
     @IBOutlet weak var textField: UITextField!
 
@@ -57,16 +51,16 @@ extension EditTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if row == 0 {
-            return PickViewString.user.rawValue
+            return UsersKey.Status.user.rawValue
         } else {
-            return PickViewString.manger.rawValue
+            return UsersKey.Status.manger.rawValue
         }
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if row == 0 {
-            textField.text = PickViewString.user.rawValue
+            textField.text = UsersKey.Status.user.rawValue
         } else {
-            textField.text = PickViewString.manger.rawValue
+            textField.text = UsersKey.Status.manger.rawValue
         }
     }
 }

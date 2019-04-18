@@ -19,6 +19,8 @@
 		5941D832225359D500FDEEBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5941D830225359D500FDEEBA /* Main.storyboard */; };
 		5941D834225359D600FDEEBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5941D833225359D600FDEEBA /* Assets.xcassets */; };
 		5941D837225359D600FDEEBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5941D835225359D600FDEEBA /* LaunchScreen.storyboard */; };
+		59483D7A2268488A00FD211E /* PasswordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59483D792268488A00FD211E /* PasswordChangeViewController.swift */; };
+		59483D7C22684F3C00FD211E /* ProfileEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59483D7B22684F3C00FD211E /* ProfileEnum.swift */; };
 		594CAA8A226395F5009A0921 /* UserDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594CAA89226395F5009A0921 /* UserDataStruct.swift */; };
 		594ED6B1226058E90054CCC9 /* MessageConfirmPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594ED6AF226058E90054CCC9 /* MessageConfirmPageTableViewCell.swift */; };
 		594ED6B2226058E90054CCC9 /* MessageConfirmPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 594ED6B0226058E90054CCC9 /* MessageConfirmPageTableViewCell.xib */; };
@@ -46,6 +48,7 @@
 		598B8CDB2254C4610061F03B /* ProfileContentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B8CDA2254C4610061F03B /* ProfileContentCategory.swift */; };
 		59949295225A7D9C00726BF3 /* CalendarFrameWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59949294225A7D9C00726BF3 /* CalendarFrameWork.swift */; };
 		59949297225A7FCE00726BF3 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59949296225A7FCE00726BF3 /* CalendarViewController.swift */; };
+		59A08E972267931B00F405B5 /* UserListDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A08E962267931B00F405B5 /* UserListDataStruct.swift */; };
 		59ABB0232258732B00AE937A /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ABB0212258732B00AE937A /* SettingTableViewCell.swift */; };
 		59ABB0242258732B00AE937A /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59ABB0222258732B00AE937A /* SettingTableViewCell.xib */; };
 		59ABB026225877C400AE937A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ABB025225877C400AE937A /* SettingViewController.swift */; };
@@ -97,6 +100,8 @@
 		5941D833225359D600FDEEBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5941D836225359D600FDEEBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5941D838225359D600FDEEBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		59483D792268488A00FD211E /* PasswordChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeViewController.swift; sourceTree = "<group>"; };
+		59483D7B22684F3C00FD211E /* ProfileEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEnum.swift; sourceTree = "<group>"; };
 		594CAA89226395F5009A0921 /* UserDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStruct.swift; sourceTree = "<group>"; };
 		594ED6AF226058E90054CCC9 /* MessageConfirmPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageConfirmPageTableViewCell.swift; sourceTree = "<group>"; };
 		594ED6B0226058E90054CCC9 /* MessageConfirmPageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageConfirmPageTableViewCell.xib; sourceTree = "<group>"; };
@@ -124,6 +129,7 @@
 		598B8CDA2254C4610061F03B /* ProfileContentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContentCategory.swift; sourceTree = "<group>"; };
 		59949294225A7D9C00726BF3 /* CalendarFrameWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFrameWork.swift; sourceTree = "<group>"; };
 		59949296225A7FCE00726BF3 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		59A08E962267931B00F405B5 /* UserListDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListDataStruct.swift; sourceTree = "<group>"; };
 		59ABB0212258732B00AE937A /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		59ABB0222258732B00AE937A /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
 		59ABB025225877C400AE937A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -299,6 +305,14 @@
 			path = FrameWork;
 			sourceTree = "<group>";
 		};
+		59A08E95226792F400F405B5 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				59A08E962267931B00F405B5 /* UserListDataStruct.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
 		59ABB020225872D100AE937A /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +328,7 @@
 				598B8CDA2254C4610061F03B /* ProfileContentCategory.swift */,
 				59ABB028225878C700AE937A /* SettingContentCategory.swift */,
 				594CAA89226395F5009A0921 /* UserDataStruct.swift */,
+				59483D7B22684F3C00FD211E /* ProfileEnum.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -389,6 +404,7 @@
 		59F81F8B22545AAF00C04E32 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				59A08E95226792F400F405B5 /* Message */,
 				5907F6992259DE60008BB604 /* Booking */,
 				59ABB027225878A700AE937A /* Profile */,
 				59FCFD3822620CAE006402E5 /* Firebase.swift */,
@@ -450,6 +466,7 @@
 				59F81F9E22549FCD00C04E32 /* ProfileViewController.swift */,
 				59DFF85522578DAB00273724 /* EditProfileViewController.swift */,
 				59ABB025225877C400AE937A /* SettingViewController.swift */,
+				59483D792268488A00FD211E /* PasswordChangeViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -666,6 +683,7 @@
 				597F044F225F210F00BAAFEE /* SignUpViewController.swift in Sources */,
 				5907F6972259DE3C008BB604 /* StoreDescriptionTableViewCell.swift in Sources */,
 				59DFF85622578DAB00273724 /* EditProfileViewController.swift in Sources */,
+				59483D7C22684F3C00FD211E /* ProfileEnum.swift in Sources */,
 				597F0453225F26A100BAAFEE /* MessageTableViewCell.swift in Sources */,
 				59D717A922658742009772FC /* UIImageView+Extension.swift in Sources */,
 				59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */,
@@ -700,6 +718,7 @@
 				59D717AB22658B6A009772FC /* StoreDataStruct.swift in Sources */,
 				59530B13225C7F92002F18AB /* ConfirmTableViewHeaderView.swift in Sources */,
 				59F81F8F2254625C00C04E32 /* PBTabBarController.swift in Sources */,
+				59483D7A2268488A00FD211E /* PasswordChangeViewController.swift in Sources */,
 				59ABB0382259084800AE937A /* StoreDetailViewController.swift in Sources */,
 				594ED6BB226074BE0054CCC9 /* MessageUserProfileViewController.swift in Sources */,
 				594ED6B622605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.swift in Sources */,
@@ -707,6 +726,7 @@
 				59530B17225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift in Sources */,
 				59F81F9C22547C3A00C04E32 /* UIImage+Extension.swift in Sources */,
 				59BB3D642264AAE800E46BEE /* EditPageTableViewCell.swift in Sources */,
+				59A08E972267931B00F405B5 /* UserListDataStruct.swift in Sources */,
 				594CAA8A226395F5009A0921 /* UserDataStruct.swift in Sources */,
 				59DFF85A22578FFD00273724 /* EditTableViewCell.swift in Sources */,
 				5980519D225F2D45002036FD /* MessageViewController.swift in Sources */,

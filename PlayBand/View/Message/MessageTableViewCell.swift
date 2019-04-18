@@ -10,6 +10,12 @@ import UIKit
 
 class MessageTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var statusLabel: UILabel!
+    
+    @IBOutlet weak var countLabel: UILabel!
+    
     @IBOutlet weak var titleView: UIView! {
         didSet {
             
@@ -46,7 +52,6 @@ class MessageTableViewCell: UITableViewCell {
         }
     }
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -56,5 +61,12 @@ class MessageTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setupCell(count: Int, status: String, title: String) {
+        
+        self.titleLabel.text = title
+        self.countLabel.text = String(count)
+        self.statusLabel.text = status
     }
 }

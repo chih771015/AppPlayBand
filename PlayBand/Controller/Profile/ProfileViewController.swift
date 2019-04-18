@@ -22,7 +22,8 @@ class ProfileViewController: UIViewController {
 
     @IBAction func presentPhotoVC() {
 
-        guard let nextViewController = UIStoryboard.photo.instantiateInitialViewController() else {return}
+        let nextViewController = PhotoChoiceViewController(title: "上傳圖片", message: "請選擇圖片", preferredStyle: .actionSheet)
+        nextViewController.presentVC = self
         present(nextViewController, animated: true, completion: nil)
 
     }
@@ -33,13 +34,15 @@ class ProfileViewController: UIViewController {
     var user: UserData? {
         didSet {
             tableView.reloadData()
+            guard let url = user?.photoURL else {return}
+            userImage.lv_setImageWithURL(url: url)
         }
     }
     private let datas: [ProfileContentCategory] = [.name, .band, .phone, .email, .facebook]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 
@@ -71,4 +74,41 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
         return datas[indexPath.row].cellForIndexPathInMain(indexPath, tableView: tableView, userData: user)
     }
+}
+
+extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        var selectImage: UIImage?
+        
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            
+            selectImage = pickedImage
+        }
+        
+        let uniqueString = NSUUID().uuidString
+        
+        if let selectedImage = selectImage {
+            
+            let resizeImage = selectedImage.resizeImage(targetSize: CGSize(width: 500, height: selectedImage.size.height / selectedImage.size.width * 500))
+            
+            FirebaseManger.shared.uploadIamge(uniqueString: uniqueString, image: resizeImage) { (result) in
+                
+                switch result {
+                    
+                case .success(let string):
+                    UIAlertController.alertMessageAnimation(title: string, message: nil, viewController: self, completionHanderInDismiss: nil)
+                    FirebaseManger.shared.getUserInfo()
+                
+                case .failure(let error):
+                    
+                      UIAlertController.alertMessageAnimation(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, viewController: self, completionHanderInDismiss: nil)
+                }
+            }
+            
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
 }
