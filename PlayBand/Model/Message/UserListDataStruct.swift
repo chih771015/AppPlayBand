@@ -15,6 +15,9 @@ struct UserBookingData {
     let pathID: String
     let userInfo: UserData
     let userUID: String
+    let store: String
+    let userMessage: String?
+    let storeMessage: String?
     
     init? (dictionary: [String: Any]) {
         
@@ -24,11 +27,27 @@ struct UserBookingData {
         guard let userUID = userInfo[UsersKey.uid.rawValue] else {return nil}
         guard let user = UserData(dictionary: userInfo) else {return nil}
         guard let status = dictionary[FirebaseBookingKey.status.rawValue] as? String else {return nil}
+        guard let store = dictionary[FirebaseBookingKey.store.rawValue] as? String  else {return nil}
+        if let userMessage = dictionary[FirebaseBookingKey.userMessage.rawValue] as? String {
+            
+            self.userMessage = userMessage
+        } else {
+            
+            self.userMessage = ""
+        }
+        if let storeMessage = dictionary[FirebaseBookingKey.storeMessage.rawValue] as? String {
+            
+            self.storeMessage = storeMessage
+        } else {
+            
+            self.storeMessage = ""
+        }
         self.bookingTime = bookingTime
         self.status = status
         self.pathID = pathID
         self.userInfo = user
         self.userUID = userUID
+        self.store = store
     }
     
 }

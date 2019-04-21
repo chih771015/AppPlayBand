@@ -27,6 +27,12 @@ enum ProfileContentCategory: String {
     
     case userStatus = "使用者帳號類別"
     
+    case store = "店家"
+    
+    case storePhone = "店家電話"
+    
+    case bookingTime = "預定時間"
+    
     func cellForIndexPathInMain(_ indexPath: IndexPath, tableView: UITableView, userData: UserData?) -> UITableViewCell {
 
         guard let cell = tableView.dequeueReusableCell(
@@ -107,5 +113,36 @@ enum ProfileContentCategory: String {
 
         return cell
 
+    }
+    
+    func cellForIndexPathInMessageConfirm(_ indexPath: IndexPath, tableView: UITableView, bookingData: UserBookingData?, storeData: StoreData?, delgate: MessageConfirmCellDelgate) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: MessageConfirmPageTableViewCell.self),
+            for: indexPath) as? MessageConfirmPageTableViewCell else { return UITableViewCell()}
+        
+        switch self {
+        case .name:
+            cell.setupCellFirst(title: rawValue, description: bookingData?.userInfo.name, messageConfirmDelgate: delgate)
+        case .phone:
+            cell.setupCellDefault(title: rawValue, description: bookingData?.userInfo.phone)
+        case .email:
+            cell.setupCellDefault(title: rawValue, description: bookingData?.userInfo.email)
+        case .band:
+            cell.setupCellDefault(title: rawValue, description: bookingData?.userInfo.band)
+        case .facebook:
+            cell.setupCellDefault(title: rawValue, description: bookingData?.userInfo.band)
+        case .store:
+            cell.setupCellFirst(title: rawValue, description: storeData?.name, messageConfirmDelgate: delgate)
+        case .storePhone:
+            cell.setupCellDefault(title: rawValue, description: storeData?.phone)
+        case .bookingTime:
+            let title = DataTransform.dataToDate(bookingTime: bookingData?.bookingTime)
+            cell.setupCellDefault(title: rawValue, description: title)
+        default:
+            return cell
+        }
+        
+        return cell
     }
 }

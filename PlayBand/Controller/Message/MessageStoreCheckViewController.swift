@@ -10,6 +10,7 @@ import UIKit
 
 class MessageStoreCheckViewController: UIViewController {
 
+    @IBOutlet weak var buttonViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             
@@ -18,18 +19,90 @@ class MessageStoreCheckViewController: UIViewController {
     }
     
     @IBAction func backAction(_ sender: UIButton) {
+        
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func deleteAction() {
+        guard let bookingData = userBookingData else { return }
+        
+        FirebaseManger.shared.refuseBooking(
+        pathID: bookingData.pathID, storeName:
+        bookingData.store, userUID: bookingData.userUID) { (result) in
+            switch result {
+            case .success(let message):
+                
+                UIAlertController.alertMessageAnimation(
+                    title: message, message: nil, viewController: self,
+                    completionHanderInDismiss: { [weak self] in
+                        self?.dismiss(animated: true, completion: nil)
+                })
+            case .failure(let error):
+                UIAlertController.alertMessageAnimation(
+                    title: FirebaseEnum.fail.rawValue, message: error.localizedDescription,
+                    viewController: self, completionHanderInDismiss: nil)
+            }
+        }
+    }
+    
+    @IBAction func confirmAction() {
+        guard let bookingData = userBookingData else { return }
+        
+        FirebaseManger.shared.updataBookingConfirm(
+        storeName: bookingData.store, pathID: bookingData.pathID,
+        userUID: bookingData.userUID) { (result) in
+            switch result {
+            case .success(let message):
+                UIAlertController.alertMessageAnimation(
+                    title: message, message: nil, viewController: self,
+                    completionHanderInDismiss: { [weak self] in
+                    self?.dismiss(animated: true, completion: nil)
+                })
+                
+            case.failure(let error):
+                UIAlertController.alertMessageAnimation(
+                    title: FirebaseEnum.fail.rawValue, message: error.localizedDescription,
+                    viewController: self, completionHanderInDismiss: nil)
+            }
+        }
+    }
+    
+    @IBOutlet weak var titleImage: UIImageView!
+    
+    @IBOutlet weak var buttonView: UIView!
+    var userBookingData: UserBookingData?
+    var store: StoreData?
+    var category: [ProfileContentCategory] = [.name, .band, .email, .facebook, .bookingTime, .store, .storePhone]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupViewModel()
+        if FirebaseManger.shared.userStatus == UsersKey.Status.user.rawValue {
+            buttonViewConstraint.constant = -70
+        }
     }
+    
     private func setupTableView() {
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.lv_registerCellWithNib(identifier: String(describing: MessageConfirmPageTableViewCell.self), bundle: nil)
+        tableView.lv_registerCellWithNib(
+            identifier: String(describing: MessageConfirmPageTableViewCell.self),
+            bundle: nil)
+    }
+    
+    private func setupViewModel() {
+        
+        let stores = FirebaseManger.shared.storeDatas
+        var url = String()
+        for store in (stores.filter({$0.name == userBookingData?.store})) {
+            
+            url = store.photourl
+            self.store = store
+        }
+        self.titleImage.lv_setImageWithURL(url: url)
     }
 }
 
@@ -37,24 +110,38 @@ extension MessageStoreCheckViewController: UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 1
+        return category.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MessageConfirmPageTableViewCell.self), for: indexPath) as? MessageConfirmPageTableViewCell else {
-            return UITableViewCell()
-        }
-        cell.button.addTarget(self, action: #selector(checkUser), for: .touchUpInside)
-        return cell
+        return category[indexPath.row].cellForIndexPathInMessageConfirm(
+            indexPath, tableView: tableView, bookingData: self.userBookingData,
+            storeData: self.store, delgate: self)
     }
+
+}
+
+extension MessageStoreCheckViewController: MessageConfirmCellDelgate {
     
-    @objc func checkUser() {
+    func buttonAction(title: String) {
         
-        guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: String(describing: MessageUserProfileViewController.self)) else {
-            return
+        switch title {
+        case ProfileContentCategory.name.rawValue:
+            
+            guard let nextVC = self.storyboard?.instantiateViewController(
+                withIdentifier: String(
+                    describing: MessageUserProfileViewController.self)) as? MessageUserProfileViewController else {
+                        return
+            }
+            
+            present(nextVC, animated: true, completion: nil)
+            
+        case ProfileContentCategory.store.rawValue:
+            
+            break
+        default:
+            break
         }
-        
-        present(nextVC, animated: true, completion: nil)
     }
 }

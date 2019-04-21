@@ -31,7 +31,7 @@ struct BookingTime: Equatable, Comparable {
         }
     }
     
-    init? (dictionary:[String: Any]) {
+    init? (dictionary: [String: Any]) {
         
         guard let day = dictionary[FirebaseBookingKey.day.rawValue] as? Int else {return nil}
         guard let year = dictionary[FirebaseBookingKey.year.rawValue] as? Int else {return nil}

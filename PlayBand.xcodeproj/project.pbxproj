@@ -13,7 +13,11 @@
 		5907F69B2259E2BD008BB604 /* StoreContentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */; };
 		59207AA3225AEC2D00B50E7C /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59207AA2225AEC2D00B50E7C /* CalendarTableViewCell.swift */; };
 		59207AA5225AF09400B50E7C /* BookingTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59207AA4225AF09400B50E7C /* BookingTime.swift */; };
+		5929502F2269A1EA00FD5DC5 /* FirebaseEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5929502E2269A1EA00FD5DC5 /* FirebaseEnum.swift */; };
+		592950312269A24F00FD5DC5 /* DataTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592950302269A24F00FD5DC5 /* DataTransform.swift */; };
+		592950332269C4A600FD5DC5 /* MessageCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592950322269C4A600FD5DC5 /* MessageCategory.swift */; };
 		592D2137226244300017A746 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 592D2136226244300017A746 /* GoogleService-Info.plist */; };
+		593B4FF7226B18A10069F24F /* FirebaseMangerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593B4FF6226B18A10069F24F /* FirebaseMangerExtension.swift */; };
 		593F6E102263C5810014219B /* IQKeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593F6E0F2263C5810014219B /* IQKeyboardManager.swift */; };
 		5941D82D225359D500FDEEBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D82C225359D500FDEEBA /* AppDelegate.swift */; };
 		5941D832225359D500FDEEBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5941D830225359D500FDEEBA /* Main.storyboard */; };
@@ -92,7 +96,11 @@
 		5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreContentCategory.swift; sourceTree = "<group>"; };
 		59207AA2225AEC2D00B50E7C /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		59207AA4225AF09400B50E7C /* BookingTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTime.swift; sourceTree = "<group>"; };
+		5929502E2269A1EA00FD5DC5 /* FirebaseEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEnum.swift; sourceTree = "<group>"; };
+		592950302269A24F00FD5DC5 /* DataTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransform.swift; sourceTree = "<group>"; };
+		592950322269C4A600FD5DC5 /* MessageCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCategory.swift; sourceTree = "<group>"; };
 		592D2136226244300017A746 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		593B4FF6226B18A10069F24F /* FirebaseMangerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseMangerExtension.swift; sourceTree = "<group>"; };
 		593F6E0F2263C5810014219B /* IQKeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQKeyboardManager.swift; sourceTree = "<group>"; };
 		5941D829225359D500FDEEBA /* PlayBand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayBand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5941D82C225359D500FDEEBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -309,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				59A08E962267931B00F405B5 /* UserListDataStruct.swift */,
+				592950322269C4A600FD5DC5 /* MessageCategory.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -408,6 +417,9 @@
 				5907F6992259DE60008BB604 /* Booking */,
 				59ABB027225878A700AE937A /* Profile */,
 				59FCFD3822620CAE006402E5 /* Firebase.swift */,
+				593B4FF6226B18A10069F24F /* FirebaseMangerExtension.swift */,
+				5929502E2269A1EA00FD5DC5 /* FirebaseEnum.swift */,
+				592950302269A24F00FD5DC5 /* DataTransform.swift */,
 				59D717AC2265A8F3009772FC /* ResultEnum.swift */,
 			);
 			path = Model;
@@ -698,6 +710,8 @@
 				59949297225A7FCE00726BF3 /* CalendarViewController.swift in Sources */,
 				59ABB026225877C400AE937A /* SettingViewController.swift in Sources */,
 				598B8CDB2254C4610061F03B /* ProfileContentCategory.swift in Sources */,
+				593B4FF7226B18A10069F24F /* FirebaseMangerExtension.swift in Sources */,
+				592950312269A24F00FD5DC5 /* DataTransform.swift in Sources */,
 				59F81FA12254A3F200C04E32 /* UIView+Extension.swift in Sources */,
 				59BB3D5C22643E3300E46BEE /* UIAlertController+Extension.swift in Sources */,
 				598B8CD82254BFF80061F03B /* UITableView+Extension.swift in Sources */,
@@ -726,9 +740,11 @@
 				59530B17225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift in Sources */,
 				59F81F9C22547C3A00C04E32 /* UIImage+Extension.swift in Sources */,
 				59BB3D642264AAE800E46BEE /* EditPageTableViewCell.swift in Sources */,
+				592950332269C4A600FD5DC5 /* MessageCategory.swift in Sources */,
 				59A08E972267931B00F405B5 /* UserListDataStruct.swift in Sources */,
 				594CAA8A226395F5009A0921 /* UserDataStruct.swift in Sources */,
 				59DFF85A22578FFD00273724 /* EditTableViewCell.swift in Sources */,
+				5929502F2269A1EA00FD5DC5 /* FirebaseEnum.swift in Sources */,
 				5980519D225F2D45002036FD /* MessageViewController.swift in Sources */,
 				594ED6B1226058E90054CCC9 /* MessageConfirmPageTableViewCell.swift in Sources */,
 			);

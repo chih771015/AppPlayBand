@@ -34,6 +34,11 @@ class SearchStoreViewController: UIViewController {
     
     private func getStoreData() {
         
+        if FirebaseManger.shared.storeDatas.count != 0 {
+            self.storeDatas = FirebaseManger.shared.storeDatas
+            return
+        }
+        
         FirebaseManger.shared.getStoreInfo { [weak self] result in
             
             switch result {

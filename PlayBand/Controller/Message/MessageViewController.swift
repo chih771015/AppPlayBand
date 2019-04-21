@@ -50,10 +50,12 @@ class MessageViewController: UIViewController {
         
         if status == UsersKey.Status.user.rawValue {
             
+            firebaseManger.getUserBookingData()
             self.userBookingData = firebaseManger.userBookingData
         }
         if status == UsersKey.Status.manger.rawValue {
             
+            firebaseManger.getMangerBookingData()
             self.userBookingData = firebaseManger.mangerStoreData
         }
     }
@@ -90,10 +92,13 @@ extension MessageViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        guard let nextVC = storyboard?.instantiateViewController(withIdentifier: String(describing: MessageStoreCheckViewController.self)) else {
+        
+        guard let nextVC = storyboard?.instantiateViewController(
+            withIdentifier: String(
+                describing: MessageStoreCheckViewController.self)) as? MessageStoreCheckViewController else {
             return
-            
         }
+        nextVC.userBookingData = userBookingData[indexPath.row]
         self.present(nextVC, animated: true, completion: nil)
     }
 }

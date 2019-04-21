@@ -115,16 +115,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="27540325_574597332884961_4955653517050363908_n" translatesAutoresizingMaskIntoConstraints="NO" id="tbf-NF-3NX">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="tbf-NF-3NX">
                                 <rect key="frame" x="0.0" y="44" width="414" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="qvG-BQ-YoE"/>
                                 </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xan-BO-FNJ">
-                                <rect key="frame" x="0.0" y="184" width="414" height="608"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SZM-v7-fEb">
                                 <rect key="frame" x="0.0" y="792" width="414" height="70"/>
                                 <subviews>
@@ -132,11 +128,17 @@
                                         <rect key="frame" x="215" y="16" width="183" height="38"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="confirmAction" destination="MyI-s5-Rwx" eventType="touchUpInside" id="j0d-w2-Cnn"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2k0-ro-uw6">
                                         <rect key="frame" x="16" y="16" width="183" height="38"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="deleteAction" destination="MyI-s5-Rwx" eventType="touchUpInside" id="bfk-v8-asK"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.50217372660000004" green="0.81188531090000005" blue="0.67815955029999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -152,6 +154,10 @@
                                     <constraint firstItem="TTB-Gs-T1t" firstAttribute="leading" secondItem="2k0-ro-uw6" secondAttribute="trailing" constant="16" id="lUQ-2U-8fv"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xan-BO-FNJ">
+                                <rect key="frame" x="0.0" y="184" width="414" height="608"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c6H-MM-sjd">
                                 <rect key="frame" x="21" y="53" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -177,7 +183,10 @@
                         <viewLayoutGuide key="safeArea" id="ZEf-Pp-cPk"/>
                     </view>
                     <connections>
+                        <outlet property="buttonView" destination="SZM-v7-fEb" id="OIx-nS-NKA"/>
+                        <outlet property="buttonViewConstraint" destination="G7j-zj-Wil" id="7Kv-8f-C6f"/>
                         <outlet property="tableView" destination="xan-BO-FNJ" id="lR6-iu-vdn"/>
+                        <outlet property="titleImage" destination="tbf-NF-3NX" id="CQt-wu-YYi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5Y-X7-K0b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -298,5 +307,6 @@
         <image name="27540325_574597332884961_4955653517050363908_n" width="675" height="675"/>
         <image name="Icons_44px_Back01" width="44" height="44"/>
         <image name="Icons_44px_Failed" width="44" height="44"/>
+        <image name="user" width="24" height="24"/>
     </resources>
 </document>

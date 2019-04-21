@@ -20,7 +20,7 @@ extension UIAlertController {
         }
         viewController?.present(alert, animated: true) {
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 alert.dismiss(animated: true, completion: nil)
                 guard let completionHander = completionHanderInDismiss else {return}
                 completionHander()

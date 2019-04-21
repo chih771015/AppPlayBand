@@ -13,7 +13,10 @@ class ConfirmViewController: UIViewController {
     @IBAction func bookingAction() {
         
         guard let storeName = storeData?.name else { return }
-        FirebaseManger.shared.bookingTimeEdit(storeName: storeName, bookingDatas: bookingTimeDatas) { (result) in
+        FirebaseManger.shared.bookingTimeEdit(
+        storeName: storeName,
+        bookingDatas: bookingTimeDatas,
+        userMessage: "hi") { (result) in
             
             switch result {
                 
@@ -32,14 +35,6 @@ class ConfirmViewController: UIViewController {
                 
             }
         }
-//            FirebaseManger.shared.dataBase().collection("Booking").addDocument(data: [
-//                "Year": bookingtime.date.year,
-//                "Month": bookingtime.date.month,
-//                "Day": bookingtime.date.day,
-//                "hours": bookingtime.hour], completion: { (error) in
-//                    print(error)
-//            })
-        
     }
     @IBOutlet weak var countHourLabel: UILabel!
     @IBOutlet weak var tableView: UITableView! {

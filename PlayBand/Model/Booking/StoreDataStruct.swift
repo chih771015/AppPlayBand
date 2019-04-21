@@ -25,7 +25,7 @@ struct StoreData {
         let price: String
     }
     
-    init?(dictionary: [String: Any]) {
+    init? (dictionary: [String: Any]) {
         guard let name = dictionary[StoreDataKey.name.rawValue] as? String else {return nil}
         guard let openTime = dictionary[StoreDataKey.opentime.rawValue] as? String else {return nil}
         guard let closeTime = dictionary[StoreDataKey.closetime.rawValue] as? String else {return nil}
