@@ -19,6 +19,7 @@ struct StoreData {
     let information: String
     var rooms: [Room] = []
     let city: String
+    var images: [String] = []
     
     struct Room {
         
@@ -43,6 +44,11 @@ struct StoreData {
             let roomData = Room(name: name, price: price)
             self.rooms.append(roomData)
         }
+        
+        if let images = dictionary[StoreDataKey.images.rawValue] as? [String] {
+            
+            self.images = images
+        }
         self.name = name
         self.openTime = openTime
         self.closeTime = closeTime
@@ -65,5 +71,6 @@ struct StoreData {
         case price
         case information
         case city
+        case images
     }
 }

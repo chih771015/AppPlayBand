@@ -11,18 +11,28 @@ import UIKit
 
 enum StoreContentCategory: String {
 
-    case information
+    case name = "店名"
+    
+    case address = "地址"
+    
+    case phone = "電話"
 
     case price = "價錢"
 
     case description = "資訊"
 
     case time = "營業時間"
+    
+    case images
 
     var identifier: String {
         switch self {
-        case .information : return String(describing: StoreInformationTableViewCell.self)
+        case .name : return String(describing: StoreDescriptionTableViewCell.self)
         case .price, .description, .time: return String(describing: StoreDescriptionTableViewCell.self)
+        case .images:
+            return String(describing: StoreTitleImageTableViewCell.self)
+        default:
+            return String(describing: StoreDescriptionTableViewCell.self)
         }
 
     }
@@ -33,25 +43,32 @@ enum StoreContentCategory: String {
         guard let storeData = data else {return cell}
         guard let desCell = cell as? StoreDescriptionTableViewCell else {
         
-            guard let informationcell = cell as? StoreInformationTableViewCell else {return cell}
-            informationcell.setupCell(name: storeData.name, phone: storeData.phone, address: storeData.address)
-            return informationcell
+            guard let imageCell = cell as? StoreTitleImageTableViewCell else {return cell}
+            var images = [storeData.photourl]
+            for image in storeData.images {
+                images.append(image)
+            }
+            imageCell.images = images
+            return imageCell
         }
         switch self {
-
-        case .information:
-            
-            guard let informationcell = cell as? StoreInformationTableViewCell else {return cell}
-            informationcell.setupCell(name: data?.name, phone: data?.phone, address: data?.address)
-            return informationcell
-            
+        case .images:
+            return desCell
         case .price:
             
             var price = ""
             
+            var roomCount = 0
             for room in storeData.rooms {
                 
-                price += "\(room.price)\n"
+                if roomCount != 0 {
+                    
+                    price += "\n$\(room.price)"
+                } else {
+                    
+                    price += "$\(room.price)"
+                }
+                roomCount += 1
             }
             desCell.setupCell(title: rawValue, description: price)
             
@@ -61,10 +78,13 @@ enum StoreContentCategory: String {
             
         case .description:
             
-            desCell.setupCell(
-                title: rawValue,
-                description: storeData.information
-            )
+            desCell.setupCell(title: rawValue, description: storeData.information)
+        case .name:
+            desCell.setupCell(title: rawValue, description: storeData.name)
+        case .phone:
+            desCell.setupCell(title: rawValue, description: storeData.phone)
+        case .address:
+            desCell.setupCell(title: rawValue, description: storeData.address)
         }
         return desCell
     }

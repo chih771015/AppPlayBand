@@ -50,13 +50,25 @@ extension UIView {
         //        colorView.layoutIfNeeded()
         gradientLayer.frame = self.bounds
         let startColor = UIColor.playBandColorGreen
-        let endColor = UIColor.playBandColorEnd
+        let endColor = UIColor.playBandColorLightGreen
         gradientLayer.colors = [startColor?.cgColor, endColor?.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.5)
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         self.layer.addSublayer(gradientLayer)
     }
     
+    func addGradientColorLandscape() {
+        
+        let gradientLayer = CAGradientLayer()
+        //        colorView.layoutIfNeeded()
+        gradientLayer.frame = self.bounds
+        let startColor = UIColor.playBandColorEnd
+        let endColor = UIColor.playBandColorLightGreen
+        gradientLayer.colors = [startColor?.cgColor, endColor?.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        self.layer.addSublayer(gradientLayer)
+    }
     func addShadow() {
         
         self.layer.shadowOffset = CGSize(width: 3, height: 3)

@@ -78,7 +78,7 @@ private enum Tab {
 
 class PBTabBarController: UITabBarController, UITabBarControllerDelegate {
 
-    private let tabs: [Tab] = [.news, .booking, .message, .profile]
+    private let tabs: [Tab] = [ .booking, .message, .profile]
 
     override func viewDidLoad() {
         super.viewDidLoad()

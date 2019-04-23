@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +23,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LineIn" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PxA-RK-gkG">
                         <rect key="frame" x="24" y="156" width="346" height="36"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" name="colorGreen"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="27540325_574597332884961_4955653517050363908_n" translatesAutoresizingMaskIntoConstraints="NO" id="W7c-tx-h56">
@@ -32,21 +33,21 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCx-Zh-Wh4">
-                        <rect key="frame" x="24" y="222" width="346" height="36.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                        <rect key="frame" x="24" y="214.5" width="346" height="44"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                         <color key="textColor" white="0.37726526826484019" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfW-Vb-d6f">
                         <rect key="frame" x="24" y="273.5" width="346" height="1"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="endColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="wxF-Jh-T14"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="city" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoL-er-Ny3">
-                        <rect key="frame" x="24" y="197" width="346" height="17"/>
-                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                        <rect key="frame" x="24" y="196" width="346" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -64,9 +65,9 @@
                     <constraint firstAttribute="bottom" secondItem="dCx-Zh-Wh4" secondAttribute="bottom" constant="16" id="ehL-5o-mRX"/>
                     <constraint firstItem="rfW-Vb-d6f" firstAttribute="leading" secondItem="W7c-tx-h56" secondAttribute="leading" id="gbc-hI-4Cg"/>
                     <constraint firstItem="PxA-RK-gkG" firstAttribute="leading" secondItem="W7c-tx-h56" secondAttribute="leading" id="mFB-3B-qYV"/>
-                    <constraint firstItem="CoL-er-Ny3" firstAttribute="top" secondItem="PxA-RK-gkG" secondAttribute="bottom" constant="5" id="p99-pp-3wM"/>
+                    <constraint firstItem="CoL-er-Ny3" firstAttribute="top" secondItem="PxA-RK-gkG" secondAttribute="bottom" constant="4" id="p99-pp-3wM"/>
                     <constraint firstItem="CoL-er-Ny3" firstAttribute="leading" secondItem="W7c-tx-h56" secondAttribute="leading" id="rHe-mH-vXm"/>
-                    <constraint firstItem="dCx-Zh-Wh4" firstAttribute="top" secondItem="CoL-er-Ny3" secondAttribute="bottom" constant="8" id="vv0-h8-hpk"/>
+                    <constraint firstItem="dCx-Zh-Wh4" firstAttribute="top" secondItem="CoL-er-Ny3" secondAttribute="bottom" constant="4" id="vv0-h8-hpk"/>
                     <constraint firstItem="dCx-Zh-Wh4" firstAttribute="trailing" secondItem="W7c-tx-h56" secondAttribute="trailing" id="xlF-5G-oeG"/>
                 </constraints>
             </tableViewCellContentView>
@@ -82,5 +83,11 @@
     </objects>
     <resources>
         <image name="27540325_574597332884961_4955653517050363908_n" width="675" height="675"/>
+        <namedColor name="colorGreen">
+            <color red="0.50196078431372548" green="0.81176470588235294" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="endColor">
+            <color red="0.58039215686274515" green="0.8901960784313725" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

@@ -64,15 +64,16 @@ class ProfileViewController: UIViewController {
     
     private func setupColorView() {
         // Do any additional setup after loading the view.
-        let gradientLayer = CAGradientLayer()
-//        colorView.layoutIfNeeded()
-        gradientLayer.frame = colorView.bounds
-        let startColor = UIColor.playBandColorGreen
-        let endColor = UIColor.playBandColorEnd
-        gradientLayer.colors = [startColor?.cgColor, endColor?.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
-        colorView.layer.addSublayer(gradientLayer)
+//        let gradientLayer = CAGradientLayer()
+////        colorView.layoutIfNeeded()
+//        gradientLayer.frame = colorView.bounds
+//        let startColor = UIColor.playBandColorGreen
+//        let endColor = UIColor.playBandColorEnd
+//        gradientLayer.colors = [startColor?.cgColor, endColor?.cgColor]
+//        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.5)
+//        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+//        colorView.layer.addSublayer(gradientLayer)
+        colorView.addGradientColor()
         colorView.layer.shadowOffset = CGSize(width: 3, height: 3)
         colorView.layer.shadowOpacity = 0.7
         colorView.layer.shadowColor = UIColor.lightGray.cgColor

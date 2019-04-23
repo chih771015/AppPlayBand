@@ -10,6 +10,7 @@ import UIKit
 
 class StoreDetailViewController: UIViewController {
 
+    @IBOutlet weak var button: UIButton!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
 
@@ -22,15 +23,14 @@ class StoreDetailViewController: UIViewController {
 //        self.navigationController?.popViewController(animated: true)
     }
     
-    @IBOutlet weak var storeImage: UIImageView!
-    private let datas: [StoreContentCategory] = [.information, .price, .time, .description]
+    private let datas: [StoreContentCategory] = [.images, .name, .phone, .address, .price, .time, .description]
     
     var storeData: StoreData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.storeImage.lv_setImageWithURL(url: storeData?.photourl ?? "")
+        setupButton()
+    
     }
 
     private func setupTableView() {
@@ -43,20 +43,16 @@ class StoreDetailViewController: UIViewController {
         tableView.lv_registerCellWithNib(
             identifier: String(describing: StoreInformationTableViewCell.self),
             bundle: nil)
+        tableView.lv_registerCellWithNib(
+            identifier: String(describing: StoreTitleImageTableViewCell.self),
+            bundle: nil)
     }
     
-//    private func setupNavigationBar() {
-//
-//        self.navigationController?.navigationBar.isHidden = true
-//    }
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        setupNavigationBar()
-//    }
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        self.navigationController?.navigationBar.isHidden = false
-//    }
+    private func setupButton() {
+        
+        button.addGradientColorLandscape()
+        button.setTitleColor(.white, for: .normal)
+    }
 }
 
 extension StoreDetailViewController: UITableViewDataSource, UITableViewDelegate {

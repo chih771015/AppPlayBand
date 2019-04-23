@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,26 +21,26 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NE5-t6-RnM">
-                        <rect key="frame" x="24" y="16" width="337" height="24"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="30" y="30" width="317" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" name="colorGreen"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdw-sW-AZf">
-                        <rect key="frame" x="24" y="56" width="337" height="88.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="30" y="61.5" width="317" height="79"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="0.37726526830000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="bdw-sW-AZf" secondAttribute="trailing" constant="16" id="0cQ-gw-B76"/>
                     <constraint firstItem="bdw-sW-AZf" firstAttribute="leading" secondItem="NE5-t6-RnM" secondAttribute="leading" id="6Am-pg-lYR"/>
-                    <constraint firstItem="NE5-t6-RnM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="Qzl-ft-7Gm"/>
-                    <constraint firstItem="NE5-t6-RnM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Vw7-bt-AUE"/>
-                    <constraint firstAttribute="trailing" secondItem="NE5-t6-RnM" secondAttribute="trailing" constant="16" id="mpU-NV-6sN"/>
-                    <constraint firstAttribute="bottom" secondItem="bdw-sW-AZf" secondAttribute="bottom" constant="6" id="pWv-KZ-Wbu"/>
-                    <constraint firstItem="bdw-sW-AZf" firstAttribute="top" secondItem="NE5-t6-RnM" secondAttribute="bottom" constant="16" id="zgy-Ck-ONd"/>
+                    <constraint firstItem="bdw-sW-AZf" firstAttribute="trailing" secondItem="NE5-t6-RnM" secondAttribute="trailing" id="72O-u0-ycr"/>
+                    <constraint firstItem="NE5-t6-RnM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="Qzl-ft-7Gm"/>
+                    <constraint firstItem="NE5-t6-RnM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="Vw7-bt-AUE"/>
+                    <constraint firstAttribute="trailing" secondItem="NE5-t6-RnM" secondAttribute="trailing" constant="30" id="mpU-NV-6sN"/>
+                    <constraint firstAttribute="bottom" secondItem="bdw-sW-AZf" secondAttribute="bottom" constant="10" id="pWv-KZ-Wbu"/>
+                    <constraint firstItem="bdw-sW-AZf" firstAttribute="top" secondItem="NE5-t6-RnM" secondAttribute="bottom" constant="12" id="zgy-Ck-ONd"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -50,4 +51,9 @@
             <point key="canvasLocation" x="91" y="55"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="colorGreen">
+            <color red="0.50196078431372548" green="0.81176470588235294" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

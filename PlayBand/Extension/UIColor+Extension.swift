@@ -12,12 +12,16 @@ private enum PBColor: String {
     
     case colorGreen
     case endColor
+    case lightGreen
+    case lightMoreGreen
 }
 
 extension UIColor {
     
     static let playBandColorGreen = PBColor(.colorGreen)
     static let playBandColorEnd = PBColor(.endColor)
+    static let playBandColorLightGreen = PBColor(.lightGreen)
+    static let playBandColorLightMoreGreen = PBColor(.lightMoreGreen)
     
     private static func PBColor(_ color: PBColor) -> UIColor? {
         
