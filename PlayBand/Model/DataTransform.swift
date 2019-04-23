@@ -32,7 +32,8 @@ class DataTransform {
                                  UsersKey.email.rawValue: user.email,
                                  UsersKey.phone.rawValue: user.phone,
                                  UsersKey.facebook.rawValue: user.facebook,
-                                 UsersKey.uid.rawValue: uid]] as [String: Any]
+                                 UsersKey.uid.rawValue: uid,
+                                 UsersKey.photoURL.rawValue: user.photoURL]] as [String: Any]
         
         return dictionary
     }

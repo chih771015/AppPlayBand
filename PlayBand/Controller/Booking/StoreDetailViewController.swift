@@ -16,14 +16,21 @@ class StoreDetailViewController: UIViewController {
             setupTableView()
         }
     }
-
+    
+    @IBAction func backAction() {
+        
+//        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBOutlet weak var storeImage: UIImageView!
     private let datas: [StoreContentCategory] = [.information, .price, .time, .description]
     
     var storeData: StoreData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.storeImage.lv_setImageWithURL(url: storeData?.photourl ?? "")
     }
 
     private func setupTableView() {
@@ -37,6 +44,19 @@ class StoreDetailViewController: UIViewController {
             identifier: String(describing: StoreInformationTableViewCell.self),
             bundle: nil)
     }
+    
+//    private func setupNavigationBar() {
+//
+//        self.navigationController?.navigationBar.isHidden = true
+//    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        setupNavigationBar()
+//    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        self.navigationController?.navigationBar.isHidden = false
+//    }
 }
 
 extension StoreDetailViewController: UITableViewDataSource, UITableViewDelegate {

@@ -19,8 +19,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="386" height="294.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBQ-jd-6Yy">
+                        <rect key="frame" x="24" y="0.0" width="338" height="270.5"/>
+                        <color key="backgroundColor" red="0.50217372660000004" green="0.81188531090000005" blue="0.67815955029999997" alpha="0.49772581339999999" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="LineInStudio" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yt-X3-cNw">
-                        <rect key="frame" x="24" y="16" width="346" height="29"/>
+                        <rect key="frame" x="40" y="16" width="306" height="29"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -31,7 +35,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="台北市和平東路三段215號地下一樓" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQm-iU-TkA">
-                        <rect key="frame" x="24" y="261.5" width="346" height="17"/>
+                        <rect key="frame" x="40" y="237.5" width="306" height="17"/>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -42,7 +46,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0287654321" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtm-de-6wh">
-                        <rect key="frame" x="24" y="61" width="346" height="184.5"/>
+                        <rect key="frame" x="40" y="61" width="306" height="160.5"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -54,15 +58,19 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="4Yt-X3-cNw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="7GR-hq-LpB"/>
-                    <constraint firstAttribute="trailing" secondItem="ZQm-iU-TkA" secondAttribute="trailing" constant="16" id="8Qa-Sy-HHl"/>
+                    <constraint firstAttribute="bottom" secondItem="cBQ-jd-6Yy" secondAttribute="bottom" constant="24" id="3l8-QL-DzL"/>
+                    <constraint firstItem="cBQ-jd-6Yy" firstAttribute="trailing" secondItem="ZQm-iU-TkA" secondAttribute="trailing" constant="16" id="8Qa-Sy-HHl"/>
                     <constraint firstItem="wtm-de-6wh" firstAttribute="leading" secondItem="4Yt-X3-cNw" secondAttribute="leading" id="ARc-Bd-iEW"/>
                     <constraint firstItem="ZQm-iU-TkA" firstAttribute="leading" secondItem="4Yt-X3-cNw" secondAttribute="leading" id="Bpe-Se-HZE"/>
-                    <constraint firstAttribute="bottom" secondItem="ZQm-iU-TkA" secondAttribute="bottom" constant="16" id="Dk7-ix-9s3"/>
-                    <constraint firstAttribute="trailing" secondItem="wtm-de-6wh" secondAttribute="trailing" constant="16" id="Kqw-MI-z3C"/>
-                    <constraint firstAttribute="trailing" secondItem="4Yt-X3-cNw" secondAttribute="trailing" constant="16" id="TiV-J6-aRn"/>
+                    <constraint firstItem="cBQ-jd-6Yy" firstAttribute="bottom" secondItem="ZQm-iU-TkA" secondAttribute="bottom" constant="16" id="Dk7-ix-9s3"/>
+                    <constraint firstItem="cBQ-jd-6Yy" firstAttribute="trailing" secondItem="wtm-de-6wh" secondAttribute="trailing" constant="16" id="Kqw-MI-z3C"/>
+                    <constraint firstItem="cBQ-jd-6Yy" firstAttribute="trailing" secondItem="4Yt-X3-cNw" secondAttribute="trailing" constant="16" id="TiV-J6-aRn"/>
+                    <constraint firstItem="4Yt-X3-cNw" firstAttribute="leading" secondItem="cBQ-jd-6Yy" secondAttribute="leading" constant="16" id="XRg-4b-5YI"/>
                     <constraint firstItem="ZQm-iU-TkA" firstAttribute="top" secondItem="wtm-de-6wh" secondAttribute="bottom" constant="16" id="faV-WH-vei"/>
+                    <constraint firstAttribute="trailing" secondItem="cBQ-jd-6Yy" secondAttribute="trailing" constant="24" id="iNW-2b-bwZ"/>
+                    <constraint firstItem="cBQ-jd-6Yy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="k70-ox-NdH"/>
                     <constraint firstItem="4Yt-X3-cNw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="kjW-7T-rrD"/>
+                    <constraint firstItem="cBQ-jd-6Yy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="xcj-Z4-aVx"/>
                     <constraint firstItem="wtm-de-6wh" firstAttribute="top" secondItem="4Yt-X3-cNw" secondAttribute="bottom" constant="16" id="zdc-NG-gx0"/>
                 </constraints>
             </tableViewCellContentView>

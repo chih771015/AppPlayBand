@@ -18,6 +18,7 @@ struct StoreData {
     let photourl: String
     let information: String
     var rooms: [Room] = []
+    let city: String
     
     struct Room {
         
@@ -34,6 +35,7 @@ struct StoreData {
         guard let photourl = dictionary[StoreDataKey.photourl.rawValue] as? String else {return nil}
         guard let information = dictionary[StoreDataKey.information.rawValue] as? String else {return nil}
         guard let rooms = dictionary[StoreDataKey.rooms.rawValue] as? [[String: Any]] else {return nil}
+        guard let city = dictionary[StoreDataKey.city.rawValue] as? String else {return nil}
         for room in rooms {
             
             guard let name = room[StoreDataKey.name.rawValue] as? String else {return nil}
@@ -41,7 +43,6 @@ struct StoreData {
             let roomData = Room(name: name, price: price)
             self.rooms.append(roomData)
         }
-        
         self.name = name
         self.openTime = openTime
         self.closeTime = closeTime
@@ -49,6 +50,7 @@ struct StoreData {
         self.address = address
         self.photourl = photourl
         self.information = information
+        self.city = city
     }
     
     enum StoreDataKey: String {
@@ -62,5 +64,6 @@ struct StoreData {
         case rooms
         case price
         case information
+        case city
     }
 }

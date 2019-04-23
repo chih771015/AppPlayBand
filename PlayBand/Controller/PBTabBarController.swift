@@ -86,5 +86,7 @@ class PBTabBarController: UITabBarController, UITabBarControllerDelegate {
         viewControllers = tabs.map({ $0.controller() })
 
         delegate = self
+        tabBar.tintColor = UIColor.playBandColorGreen
     }
+    
 }

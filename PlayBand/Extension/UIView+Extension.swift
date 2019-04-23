@@ -43,4 +43,24 @@ extension UIView {
             layer.cornerRadius = newValue
         }
     }
+    
+    func addGradientColor() {
+        
+        let gradientLayer = CAGradientLayer()
+        //        colorView.layoutIfNeeded()
+        gradientLayer.frame = self.bounds
+        let startColor = UIColor.playBandColorGreen
+        let endColor = UIColor.playBandColorEnd
+        gradientLayer.colors = [startColor?.cgColor, endColor?.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        self.layer.addSublayer(gradientLayer)
+    }
+    
+    func addShadow() {
+        
+        self.layer.shadowOffset = CGSize(width: 3, height: 3)
+        self.layer.shadowOpacity = 0.7
+        self.layer.shadowColor = UIColor.lightGray.cgColor
+    }
 }

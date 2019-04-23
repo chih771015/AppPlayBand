@@ -10,8 +10,6 @@ import UIKit
 
 class CalendarTableViewCell: UITableViewCell {
     
-    
-    
     @IBOutlet weak var bookingView: UIView! 
     @IBOutlet weak var timeLabel: UILabel!
 
@@ -47,6 +45,7 @@ class CalendarTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         
     }
+    
     func setupCell(hour: Int) {
 
         timeLabel.text = String(hour) + ":00"

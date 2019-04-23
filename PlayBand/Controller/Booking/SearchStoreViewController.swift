@@ -25,13 +25,14 @@ class SearchStoreViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var backgroundColorView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         getStoreData()
+    //    self.backgroundColorView.addGradientColor()
     }
-    
     private func getStoreData() {
         
         if FirebaseManger.shared.storeDatas.count != 0 {
@@ -65,40 +66,53 @@ class SearchStoreViewController: UIViewController {
             identifier: String(describing: SearchStoreTableViewCell.self),
             bundle: nil)
     }
+    
+//    private func setupNavigationBar() {
+//
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationController?.navigationBar.isTranslucent = true
+//        self.navigationController?.view.backgroundColor = UIColor.clear
+//    }
 }
 
 extension SearchStoreViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return storeDatas.count
+        return storeDatas.count * 3
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: String(
-                describing: SearchStoreTableViewCell.self
-            ),
-            for: indexPath
-        ) as? SearchStoreTableViewCell else { return UITableViewCell()}
-        cell.setupCell(title: storeDatas[indexPath.row].name,
-                       imageURL: storeDatas[indexPath.row].photourl
-        )
+                describing: SearchStoreTableViewCell.self),
+            for: indexPath) as? SearchStoreTableViewCell else {
+                return UITableViewCell()
+                
+        }
+        var price = ""
+        for room in storeDatas[0].rooms {
+            
+            price += "$\(room.price)   "
+        }
+        cell.setupCell(title: storeDatas[0].name, imageURL: storeDatas[0].photourl,
+                       city: storeDatas[0].city, price: price)
         return cell
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
-        return 175
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//
+//        return 230
+//    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         guard let nextViewController = self.storyboard?.instantiateViewController(
             withIdentifier: String(describing: StoreDetailViewController.self)
         ) as? StoreDetailViewController else {return}
-        nextViewController.storeData = self.storeDatas[indexPath.row]
+        nextViewController.storeData = self.storeDatas[0]
         navigationController?.pushViewController(nextViewController, animated: true)
     }
 }

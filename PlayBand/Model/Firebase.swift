@@ -68,6 +68,10 @@ class FirebaseManger {
         
         do {
             try Auth.auth().signOut()
+            self.userData = nil
+            self.storeDatas = []
+            self.mangerStoreData = []
+            self.userBookingData = []
             completionHandler(FirebaseEnum.logout.rawValue)
         } catch let signOutError as NSError {
             completionHandler(signOutError.localizedDescription)

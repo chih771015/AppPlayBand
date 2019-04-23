@@ -31,7 +31,10 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userImage: ProfileUserPictureImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
+    @IBOutlet weak var colorView: UIView!
+    
     var user: UserData? {
+        
         didSet {
             tableView.reloadData()
             guard let url = user?.photoURL else {return}
@@ -42,19 +45,45 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        setupNavigationBar()
+        setupColorView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.user = FirebaseManger.shared.userData
     }
+    
+    private func setupNavigationBar() {
+    
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = UIColor.clear
+    }
+    
+    private func setupColorView() {
+        // Do any additional setup after loading the view.
+        let gradientLayer = CAGradientLayer()
+//        colorView.layoutIfNeeded()
+        gradientLayer.frame = colorView.bounds
+        let startColor = UIColor.playBandColorGreen
+        let endColor = UIColor.playBandColorEnd
+        gradientLayer.colors = [startColor?.cgColor, endColor?.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        colorView.layer.addSublayer(gradientLayer)
+        colorView.layer.shadowOffset = CGSize(width: 3, height: 3)
+        colorView.layer.shadowOpacity = 0.7
+        colorView.layer.shadowColor = UIColor.lightGray.cgColor
+        
+    }
     private func setupTableView() {
 
         tableView.lv_registerCellWithNib(
             identifier: String(describing: ProfileInformationTableViewCell.self),
             bundle: nil)
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 5))
     }
 }
 
@@ -74,6 +103,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
         return datas[indexPath.row].cellForIndexPathInMain(indexPath, tableView: tableView, userData: user)
     }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 8
+//    }
+//    func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
+//        return 0.5
+//    }
 }
 
 extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
