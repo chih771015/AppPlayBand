@@ -70,6 +70,7 @@
 		59B43E12226ECAD000598538 /* StoreImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59B43E10226ECAD000598538 /* StoreImageCollectionViewCell.xib */; };
 		59B43E14226ECD4300598538 /* UICollectionVIew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B43E13226ECD4300598538 /* UICollectionVIew+Extension.swift */; };
 		59B43E16226EEDF300598538 /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B43E15226EEDF300598538 /* BaseNavigationViewController.swift */; };
+		59B43E18226F03A300598538 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B43E17226F03A300598538 /* UIButton+Extension.swift */; };
 		59BB3D5C22643E3300E46BEE /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB3D5B22643E3300E46BEE /* UIAlertController+Extension.swift */; };
 		59BB3D5E2264AA8D00E46BEE /* EditPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB3D5D2264AA8D00E46BEE /* EditPageViewController.swift */; };
 		59BB3D602264AAAE00E46BEE /* EditPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59BB3D5F2264AAAE00E46BEE /* EditPage.storyboard */; };
@@ -162,6 +163,7 @@
 		59B43E10226ECAD000598538 /* StoreImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		59B43E13226ECD4300598538 /* UICollectionVIew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionVIew+Extension.swift"; sourceTree = "<group>"; };
 		59B43E15226EEDF300598538 /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
+		59B43E17226F03A300598538 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		59BB3D5B22643E3300E46BEE /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		59BB3D5D2264AA8D00E46BEE /* EditPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPageViewController.swift; sourceTree = "<group>"; };
 		59BB3D5F2264AAAE00E46BEE /* EditPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditPage.storyboard; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 				59D717A822658742009772FC /* UIImageView+Extension.swift */,
 				5959C805226DA1C300AA62AD /* UIColor+Extension.swift */,
 				59B43E13226ECD4300598538 /* UICollectionVIew+Extension.swift */,
+				59B43E17226F03A300598538 /* UIButton+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -763,6 +766,7 @@
 				59ABB0382259084800AE937A /* StoreDetailViewController.swift in Sources */,
 				59B43E14226ECD4300598538 /* UICollectionVIew+Extension.swift in Sources */,
 				594ED6BB226074BE0054CCC9 /* MessageUserProfileViewController.swift in Sources */,
+				59B43E18226F03A300598538 /* UIButton+Extension.swift in Sources */,
 				594ED6B622605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.swift in Sources */,
 				597F044D225EE79D00BAAFEE /* SignInViewController.swift in Sources */,
 				59530B17225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift in Sources */,

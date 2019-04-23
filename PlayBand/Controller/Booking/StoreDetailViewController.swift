@@ -50,8 +50,7 @@ class StoreDetailViewController: UIViewController {
     
     private func setupButton() {
         
-        button.addGradientColorLandscape()
-        button.setTitleColor(.white, for: .normal)
+        button.setupButtonModelPlayBand()
     }
 }
 

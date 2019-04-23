@@ -10,7 +10,17 @@ import UIKit
 
 class CalendarTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var bookingView: UIView! 
+    private enum TitleText: String {
+        case user = "您預定的時間"
+        case firebase = "此時間已被預訂囉"
+    }
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var bookingView: UIView! {
+        didSet {
+            bookingView.layer.cornerRadius = 16
+        }
+    }
     @IBOutlet weak var timeLabel: UILabel!
 
     @IBAction func bookingAction() {
@@ -30,35 +40,38 @@ class CalendarTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
-    func createGradientLayer() {
-
-        let gradientLayer = CAGradientLayer()
-
-        gradientLayer.frame = self.bounds
-
-        gradientLayer.colors = [UIColor.red.cgColor, UIColor.yellow.cgColor]
-
-        self.layer.addSublayer(gradientLayer)
-    }
-    
-    override func prepareForReuse() {
-        
-    }
     
     func setupCell(hour: Int) {
 
-        timeLabel.text = String(hour) + ":00"
-        bookingButton.tag = hour
+        setupText(hour: hour)
  //       bookingView.backgroundColor = .white
         bookingButton.isHidden = false
         bookingView.isHidden = true
-        bookingView.backgroundColor = UIColor(red: 128/255, green: 207/255, blue: 173/255, alpha: 1)
+        bookingView.backgroundColor = UIColor.white
+        bookingButton.setImage(UIImage.asset(.add), for: .normal)
     }
-
-    func resetCell() {
-
-        bookingView.backgroundColor = .white
+    
+    func userBookingSetup(hour: Int) {
+        
+        setupText(hour: hour)
+        bookingButton.isHidden = false
+        bookingView.isHidden = false
+        bookingButton.setImage(UIImage.asset(.substract), for: .normal)
+        bookingView.backgroundColor = UIColor.playBandColorEnd
+        titleLabel.text = TitleText.user.rawValue
     }
-
+    
+    func fireBaseBookingSetup(hour: Int) {
+        
+        setupText(hour: hour)
+        bookingButton.isHidden = true
+        bookingView.isHidden = false
+        bookingView.backgroundColor = UIColor.playBandColorPinkRed
+        titleLabel.text = TitleText.firebase.rawValue
+    }
+    private func setupText(hour: Int) {
+        
+        self.timeLabel.text = String(hour) + ":00"
+        bookingButton.tag = hour
+    }
 }

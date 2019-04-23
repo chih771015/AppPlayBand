@@ -11,12 +11,39 @@ import JKCalendar
 
 class CalendarViewController: UIViewController {
 
-    let markColor = UIColor(red: 40/255, green: 178/255, blue: 253/255, alpha: 1)
+    private enum ButtonText {
+        
+        case buttonIsEnabled(Int)
+        case buttonIsNotEnabled
+        
+        func returnString() -> String {
+            
+            switch self {
+            case .buttonIsEnabled(let count):
+                
+                return "現有預定\(count)小時"
+            case .buttonIsNotEnabled:
+                
+                return "你還沒預訂喔"
+            }
+        }
+    }
+    
+    @IBOutlet weak var button: UIButton! {
+        
+        didSet {
+            
+            button.setupButtonModelPlayBand()
+            buttonLogic()
+        }
+    }
+    var markColor = UIColor(red: 40/255, green: 178/255, blue: 253/255, alpha: 1)
     var selectDay: JKDay = JKDay(date: Date())
     var bookingTimeDatas: [BookingTime] = [] {
         didSet {
          
             self.bookingTimeDatas.sort(by: <)
+            buttonLogic()
             calendarTableView.reloadData()
         }
     }
@@ -26,7 +53,6 @@ class CalendarViewController: UIViewController {
         didSet {
          
             calendarTableView.reloadData()
-            print("firebaseBookingData in set")
         }
     }
 
@@ -42,6 +68,9 @@ class CalendarViewController: UIViewController {
         calendarTableView.calendar.focusWeek = selectDay.weekOfMonth - 1
         
         getFirebaseBookingData()
+        calendarTableView.rowHeight = 60
+        guard let greenColor = UIColor.playBandColorEnd else {return}
+        markColor = greenColor
     }
 
     private func getFirebaseBookingData() {
@@ -54,15 +83,10 @@ class CalendarViewController: UIViewController {
                 
             case .success(let data):
                 self?.firebaseBookingData = data
-                print(data)
             case .failure(let error):
                 print(error)
             }
         }
-    }
-    
-    @IBAction func handleBackButtonClick(_ sender: Any) {
-        _ = navigationController?.popViewController(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -76,7 +100,24 @@ class CalendarViewController: UIViewController {
             self?.bookingTimeDatas = changeDatas
         }
     }
+    private func buttonLogic() {
+        
+        switch bookingTimeDatas.count {
+        case 0:
+            button.alpha = 0.7
+            button.isEnabled = false
+            button.setTitle(ButtonText.buttonIsNotEnabled.returnString(), for: .normal)
+        default:
+            button.alpha = 1
+            button.isEnabled = true
+            var hourCount = 0
+            for hours in bookingTimeDatas {
 
+                hourCount += hours.hour.count
+            }
+            button.setTitle(ButtonText.buttonIsEnabled(hourCount).returnString(), for: .normal)
+        }
+    }
 }
 
 extension CalendarViewController: JKCalendarDelegate {
@@ -150,56 +191,31 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 14
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: CalendarTableViewCell.self),
             for: indexPath) as? CalendarTableViewCell else {return UITableViewCell()}
 
         let hour = indexPath.row + 10
-        for firebasedata in firebaseBookingData {
+        let time = BookingDate(year: selectDay.year, month: selectDay.month, day: selectDay.day)
+        
+        if firebaseBookingData.filter({$0.date == time}).filter({$0.hour.contains(hour)}).count != 0 {
             
-            if firebasedata.date.year == selectDay.year &&
-                firebasedata.date.month == selectDay.month &&
-                firebasedata.date.day == selectDay.day {
-                
-                    for hours in firebasedata.hour {
-                        
-                        if hours == hour {
-                            
-                            cell.setupCell(hour: hour)
-                            cell.bookingButton.isHidden = true
-                            cell.bookingView.backgroundColor = .red
-                            cell.bookingView.isHidden = false
-                            return cell
-                        }
-                    }
-                }
+            cell.fireBaseBookingSetup(hour: hour)
+            return cell
         }
-
         cell.bookingButton.addTarget(self, action: #selector(addBooking(sender:)), for: .touchUpInside)
-        for data in bookingTimeDatas {
+        
+        if bookingTimeDatas.filter({$0.date == time}).filter({$0.hour.contains(hour)}).count != 0 {
 
-            if data.date.year == selectDay.year &&
-                data.date.month == selectDay.month &&
-                data.date.day == selectDay.day {
-                for hours in data.hour {
-                    
-                    if hours == hour {
-                        
-                        cell.setupCell(hour: hour)
-                        cell.bookingButton.setImage(UIImage.asset(.substract), for: .normal)
-                        cell.bookingView.isHidden = false
-                        return cell
-                    }
-                }
-            }
+            cell.userBookingSetup(hour: hour)
+            return cell
         }
+
         cell.setupCell(hour: hour)
-        cell.bookingButton.setImage(UIImage.asset(.add), for: .normal)
         return cell
     }
-
 }
 
 extension CalendarViewController {
@@ -210,32 +226,56 @@ extension CalendarViewController {
             year: selectDay.year,
             month: selectDay.month,
             day: selectDay.day)
-        var count = 0
-        var counthour = 0
-        for booking in bookingTimeDatas {
-
-            if booking.date == bookingDate {
-
-                for hour in booking.hour {
-
-                    if hour == sender.tag {
-                        
-                        if bookingTimeDatas[count].hour.count == 1 {
-                            
-                            bookingTimeDatas.remove(at: count)
-                            return
-                        }
-                        bookingTimeDatas[count].hour.remove(at: counthour)
-                        
-                        return
-                    }
-                    counthour += 1
+        let hour = sender.tag
+        
+        if let sameDate = bookingTimeDatas.first(where: {$0.date == bookingDate}) {
+            
+            guard let index = bookingTimeDatas.index(of: sameDate) else {return}
+            
+            if sameDate.hour.contains(hour) {
+                
+                guard let indexHour = bookingTimeDatas[index].hour.index(of: hour) else {return}
+                bookingTimeDatas[index].hour.remove(at: indexHour)
+                
+                if bookingTimeDatas[index].hour.count == 0 {
+                    
+                    bookingTimeDatas.remove(at: index)
                 }
-                bookingTimeDatas[count].hour.append(sender.tag)
-                return
+            } else {
+                
+                bookingTimeDatas[index].hour.append(hour)
             }
-            count += 1
+            
+        } else {
+            
+            bookingTimeDatas.append(BookingTime(date: bookingDate, hour: [hour]))
         }
-        bookingTimeDatas.append(BookingTime(date: bookingDate, hour: [sender.tag]))
+//        var count = 0
+//        var counthour = 0
+//        for booking in bookingTimeDatas {
+//
+//            if booking.date == bookingDate {
+//
+//                for hour in booking.hour {
+//
+//                    if hour == sender.tag {
+//
+//                        if bookingTimeDatas[count].hour.count == 1 {
+//
+//                            bookingTimeDatas.remove(at: count)
+//                            return
+//                        }
+//                        bookingTimeDatas[count].hour.remove(at: counthour)
+//
+//                        return
+//                    }
+//                    counthour += 1
+//                }
+//                bookingTimeDatas[count].hour.append(sender.tag)
+//                return
+//            }
+//            count += 1
+//        }
+//        bookingTimeDatas.append(BookingTime(date: bookingDate, hour: [sender.tag]))
     }
 }
