@@ -68,4 +68,15 @@ extension UIView {
         self.layer.shadowOpacity = 0.7
         self.layer.shadowColor = UIColor.lightGray.cgColor
     }
+    
+    func stickSubView(_ objectView: UIView) {
+        
+        objectView.removeFromSuperview()
+        addSubview(objectView)
+        objectView.translatesAutoresizingMaskIntoConstraints = false
+        objectView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        objectView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        objectView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        objectView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+    }
 }
