@@ -59,14 +59,7 @@ extension UIView {
     
     func addGradientColorLandscape() {
         
-        let gradientLayer = CAGradientLayer()
-        //        colorView.layoutIfNeeded()
-        gradientLayer.frame = self.bounds
-        let startColor = UIColor.playBandColorEnd
-        let endColor = UIColor.playBandColorLightGreen
-        gradientLayer.colors = [startColor?.cgColor, endColor?.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        let gradientLayer = CALayer.getPBGradientLayer(bounds: self.bounds)
         self.layer.addSublayer(gradientLayer)
     }
     func addShadow() {

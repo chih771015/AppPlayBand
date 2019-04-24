@@ -14,7 +14,7 @@ class BaseNavigationViewController: UINavigationController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        guard let color = UIColor.playBandColorGreen else {return}
+        guard let color = UIColor.playBandColorEnd else {return}
         let white = UIColor.white
         self.navigationBar.barTintColor = color
         self.navigationBar.tintColor = white

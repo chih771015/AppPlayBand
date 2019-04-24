@@ -11,6 +11,10 @@ import UIKit
 class ConfirmTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var colorView: UIView!
+    
+    var caGradientLayer: CAGradientLayer?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,5 +25,15 @@ class ConfirmTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func setupCell(text: String) {
+        self.layoutIfNeeded()
+//        colorView.layoutIfNeeded()
+        caGradientLayer?.removeFromSuperlayer()
+        self.titleLabel.text = text
+        let layer = CALayer.getPBGradientLayer(bounds: colorView.bounds)
+        colorView.layer.addSublayer(layer)
+        colorView.addShadow()
+        caGradientLayer = layer
+    }
 }

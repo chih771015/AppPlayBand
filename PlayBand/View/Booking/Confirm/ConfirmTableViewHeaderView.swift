@@ -14,11 +14,22 @@ class ConfirmTableViewHeaderView: UITableViewHeaderFooterView {
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    @IBOutlet weak var sectionLabel: UILabel!
+    @IBOutlet weak var backgroundModelView: UIView! {
+        
+        didSet {
+            
+            backgroundModelView.addShadow()
+        }
+    }
     
-    @IBOutlet weak var backgroundModelView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func setupHeadView(storePhoto: String, storeName: String) {
+        
+        self.titleImage.lv_setImageWithURL(url: storePhoto)
+        self.titleLabel.text = storeName
     }
 }

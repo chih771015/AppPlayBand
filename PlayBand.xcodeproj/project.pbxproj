@@ -47,6 +47,7 @@
 		597F0453225F26A100BAAFEE /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597F0451225F26A100BAAFEE /* MessageTableViewCell.swift */; };
 		597F0454225F26A100BAAFEE /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597F0452225F26A100BAAFEE /* MessageTableViewCell.xib */; };
 		5980519D225F2D45002036FD /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5980519C225F2D45002036FD /* MessageViewController.swift */; };
+		59852EAE226F630E00D1D7EE /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59852EAD226F630E00D1D7EE /* CALayer+Extension.swift */; };
 		598B8CD52254B9530061F03B /* ProfileInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B8CD32254B9530061F03B /* ProfileInformationTableViewCell.swift */; };
 		598B8CD62254B9530061F03B /* ProfileInformationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 598B8CD42254B9530061F03B /* ProfileInformationTableViewCell.xib */; };
 		598B8CD82254BFF80061F03B /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B8CD72254BFF80061F03B /* UITableView+Extension.swift */; };
@@ -140,6 +141,7 @@
 		597F0451225F26A100BAAFEE /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		597F0452225F26A100BAAFEE /* MessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
 		5980519C225F2D45002036FD /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		59852EAD226F630E00D1D7EE /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		598B8CD32254B9530061F03B /* ProfileInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationTableViewCell.swift; sourceTree = "<group>"; };
 		598B8CD42254B9530061F03B /* ProfileInformationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileInformationTableViewCell.xib; sourceTree = "<group>"; };
 		598B8CD72254BFF80061F03B /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 		59BB3D612264AABF00E46BEE /* EditPage */ = {
 			isa = PBXGroup;
 			children = (
+				5941D830225359D500FDEEBA /* Main.storyboard */,
 				59BB3D622264AAE800E46BEE /* EditPageTableViewCell.swift */,
 				59BB3D632264AAE800E46BEE /* EditPageTableViewCell.xib */,
 			);
@@ -452,7 +455,6 @@
 				59ABB0312258B25C00AE937A /* Booking */,
 				59BB3D612264AABF00E46BEE /* EditPage */,
 				59F81FA52254A6C800C04E32 /* Profile */,
-				5941D830225359D500FDEEBA /* Main.storyboard */,
 				59F81F93225463BB00C04E32 /* Profile.storyboard */,
 				59F81F952254640200C04E32 /* News.storyboard */,
 				59F81F972254641400C04E32 /* Booking.storyboard */,
@@ -492,6 +494,7 @@
 				5959C805226DA1C300AA62AD /* UIColor+Extension.swift */,
 				59B43E13226ECD4300598538 /* UICollectionVIew+Extension.swift */,
 				59B43E17226F03A300598538 /* UIButton+Extension.swift */,
+				59852EAD226F630E00D1D7EE /* CALayer+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -773,6 +776,7 @@
 				59F81F9C22547C3A00C04E32 /* UIImage+Extension.swift in Sources */,
 				59BB3D642264AAE800E46BEE /* EditPageTableViewCell.swift in Sources */,
 				592950332269C4A600FD5DC5 /* MessageCategory.swift in Sources */,
+				59852EAE226F630E00D1D7EE /* CALayer+Extension.swift in Sources */,
 				59A08E972267931B00F405B5 /* UserListDataStruct.swift in Sources */,
 				594CAA8A226395F5009A0921 /* UserDataStruct.swift in Sources */,
 				59DFF85A22578FFD00273724 /* EditTableViewCell.swift in Sources */,

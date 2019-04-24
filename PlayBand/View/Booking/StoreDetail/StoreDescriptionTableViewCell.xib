@@ -21,13 +21,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NE5-t6-RnM">
-                        <rect key="frame" x="30" y="30" width="317" height="19.5"/>
+                        <rect key="frame" x="30" y="26" width="317" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" name="colorGreen"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdw-sW-AZf">
-                        <rect key="frame" x="30" y="61.5" width="317" height="79"/>
+                        <rect key="frame" x="30" y="57.5" width="317" height="83"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" white="0.37726526830000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -37,7 +37,7 @@
                     <constraint firstItem="bdw-sW-AZf" firstAttribute="leading" secondItem="NE5-t6-RnM" secondAttribute="leading" id="6Am-pg-lYR"/>
                     <constraint firstItem="bdw-sW-AZf" firstAttribute="trailing" secondItem="NE5-t6-RnM" secondAttribute="trailing" id="72O-u0-ycr"/>
                     <constraint firstItem="NE5-t6-RnM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="Qzl-ft-7Gm"/>
-                    <constraint firstItem="NE5-t6-RnM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="Vw7-bt-AUE"/>
+                    <constraint firstItem="NE5-t6-RnM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="26" id="Vw7-bt-AUE"/>
                     <constraint firstAttribute="trailing" secondItem="NE5-t6-RnM" secondAttribute="trailing" constant="30" id="mpU-NV-6sN"/>
                     <constraint firstAttribute="bottom" secondItem="bdw-sW-AZf" secondAttribute="bottom" constant="10" id="pWv-KZ-Wbu"/>
                     <constraint firstItem="bdw-sW-AZf" firstAttribute="top" secondItem="NE5-t6-RnM" secondAttribute="bottom" constant="12" id="zgy-Ck-ONd"/>

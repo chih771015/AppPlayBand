@@ -24,7 +24,7 @@ class CalendarViewController: UIViewController {
                 return "現有預定\(count)小時"
             case .buttonIsNotEnabled:
                 
-                return "你還沒預訂喔"
+                return "尚未預訂"
             }
         }
     }
@@ -32,8 +32,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var button: UIButton! {
         
         didSet {
-            
-            button.setupButtonModelPlayBand()
+        
             buttonLogic()
         }
     }
@@ -71,6 +70,8 @@ class CalendarViewController: UIViewController {
         calendarTableView.rowHeight = 60
         guard let greenColor = UIColor.playBandColorEnd else {return}
         markColor = greenColor
+        
+        button.setupButtonModelPlayBand()
     }
 
     private func getFirebaseBookingData() {

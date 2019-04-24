@@ -11,8 +11,9 @@ import UIKit
 extension UIButton {
     
     func setupButtonModelPlayBand() {
-        
-        self.addGradientColorLandscape()
+        self.layoutIfNeeded()
+        let gradientLayer = CALayer.getPBGradientLayer(bounds: self.bounds)
+        self.layer.insertSublayer(gradientLayer, below: self.imageView?.layer)
         self.setTitleColor(.white, for: .normal)
         self.layer.cornerRadius = 19
         self.clipsToBounds = true

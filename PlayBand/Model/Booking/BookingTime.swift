@@ -45,6 +45,11 @@ struct BookingTime: Equatable, Comparable {
         self.date = date
         self.hour = hour
     }
+    
+    func hoursCount() -> Int {
+        
+        return hour.count
+    }
 }
 
 struct BookingDate: Equatable {

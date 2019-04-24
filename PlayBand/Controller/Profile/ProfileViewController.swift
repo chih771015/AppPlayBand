@@ -19,7 +19,7 @@ class ProfileViewController: UIViewController {
             setupTableView()
         }
     }
-
+    
     @IBAction func presentPhotoVC() {
 
         let nextViewController = PhotoChoiceViewController(title: "上傳圖片", message: "請選擇圖片", preferredStyle: .actionSheet)
@@ -43,8 +43,11 @@ class ProfileViewController: UIViewController {
     }
     private let datas: [ProfileContentCategory] = [.name, .band, .phone, .email, .facebook]
 
+    private var gradientLayer: CAGradientLayer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.layoutIfNeeded()
         setupNavigationBar()
         setupColorView()
     }
@@ -52,6 +55,13 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.user = FirebaseManger.shared.userData
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        setupLayer()
     }
     
     private func setupNavigationBar() {
@@ -64,20 +74,19 @@ class ProfileViewController: UIViewController {
     
     private func setupColorView() {
         // Do any additional setup after loading the view.
-//        let gradientLayer = CAGradientLayer()
-////        colorView.layoutIfNeeded()
-//        gradientLayer.frame = colorView.bounds
-//        let startColor = UIColor.playBandColorGreen
-//        let endColor = UIColor.playBandColorEnd
-//        gradientLayer.colors = [startColor?.cgColor, endColor?.cgColor]
-//        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.5)
-//        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
-//        colorView.layer.addSublayer(gradientLayer)
-        colorView.addGradientColor()
+
+        colorView.layoutIfNeeded()
         colorView.layer.shadowOffset = CGSize(width: 3, height: 3)
         colorView.layer.shadowOpacity = 0.7
         colorView.layer.shadowColor = UIColor.lightGray.cgColor
         
+    }
+    
+    private func setupLayer() {
+        gradientLayer?.removeFromSuperlayer()
+        let layer = CALayer.getPBGradientLayer(bounds: colorView.bounds)
+        colorView.layer.addSublayer(layer)
+        gradientLayer = layer
     }
     private func setupTableView() {
 
@@ -104,12 +113,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
         return datas[indexPath.row].cellForIndexPathInMain(indexPath, tableView: tableView, userData: user)
     }
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 8
-//    }
-//    func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
-//        return 0.5
-//    }
 }
 
 extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {

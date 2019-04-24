@@ -29,6 +29,7 @@ class StoreDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.layoutIfNeeded()
         setupButton()
     
     }

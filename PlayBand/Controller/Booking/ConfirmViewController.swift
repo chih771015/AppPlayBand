@@ -9,7 +9,13 @@
 import UIKit
 
 class ConfirmViewController: UIViewController {
-
+    
+    private enum ButtonText: String {
+        
+        case booking = "送出預定訂單"
+    }
+    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var footerView: UIView!
     @IBAction func bookingAction() {
         
         guard let storeName = storeData?.name else { return }
@@ -48,7 +54,7 @@ class ConfirmViewController: UIViewController {
         
         didSet {
             
-            tableView.reloadData()
+            //tableView.reloadData()
             bookingDatasChange?(bookingTimeDatas)
         }
     }
@@ -56,8 +62,9 @@ class ConfirmViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.layoutIfNeeded()
         // Do any additional setup after loading the view.
+        setupButton()
     }
 
     private func setupTableView() {
@@ -75,13 +82,20 @@ class ConfirmViewController: UIViewController {
          guard let headerView = UINib(
             nibName: String(describing: ConfirmTableViewHeaderView.self),
             bundle: nil
-            ).instantiate(
-                withOwner: nil,
-                options: nil)[0] as? ConfirmTableViewHeaderView
+            ).instantiate(withOwner: nil,
+                          options: nil)[0] as? ConfirmTableViewHeaderView
             else { return }
-
+        
+        tableView.layoutIfNeeded()
         tableView.tableHeaderView = headerView
-
+        
+    }
+    
+    private func setupButton() {
+        
+        button.setTitle(ButtonText.booking.rawValue, for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.setupButtonModelPlayBand()
     }
 }
 
@@ -106,15 +120,14 @@ extension ConfirmViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(
-                describing: ConfirmTableViewCell.self
-            ),
-            for: indexPath
-        ) as? ConfirmTableViewCell else {
+            withIdentifier: String(describing: ConfirmTableViewCell.self),
+            for: indexPath) as? ConfirmTableViewCell else {
 
                 return UITableViewCell()
             }
-        cell.titleLabel.text = "\(bookingTimeDatas[indexPath.section].hour[indexPath.row]):00"
+        let text = "\(bookingTimeDatas[indexPath.section].hour[indexPath.row]):00"
+        cell.setupCell(text: text)
+        //cell.titleLabel.text = "\(bookingTimeDatas[indexPath.section].hour[indexPath.row]):00"
         return cell
     }
     
@@ -131,10 +144,19 @@ extension ConfirmViewController: UITableViewDelegate, UITableViewDataSource {
             if bookingTimeDatas[indexPath.section].hour.count == 1 {
                 
                 bookingTimeDatas.remove(at: indexPath.section)
+                let indexSet = IndexSet(arrayLiteral: indexPath.section)
+                tableView.deleteSections(indexSet, with: .automatic)
+                
             } else {
                 
                 bookingTimeDatas[indexPath.section].hour.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 70
     }
 }

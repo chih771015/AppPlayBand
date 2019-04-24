@@ -20,14 +20,19 @@ class StoreTitleImageTableViewCell: UITableViewCell {
     }
     
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView! {
+        
+        didSet {
+            setupCollectionView()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         setupCollectionView()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -44,15 +49,18 @@ class StoreTitleImageTableViewCell: UITableViewCell {
         guard let collectionViewLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {return}
         collectionViewLayout.minimumLineSpacing = 0
         collectionViewLayout.minimumInteritemSpacing = 0
-        collectionViewLayout.itemSize = self.bounds.size
         collectionViewLayout.sectionInset = UIEdgeInsets.zero
         collectionViewLayout.scrollDirection = .horizontal
-       // collectionView.setCollectionViewLayout(collectionViewLayout, animated: true)
+        
     }
     
 }
 
-extension StoreTitleImageTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension StoreTitleImageTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return self.bounds.size
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
