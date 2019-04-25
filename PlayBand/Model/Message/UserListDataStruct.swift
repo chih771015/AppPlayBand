@@ -16,8 +16,8 @@ struct UserBookingData {
     let userInfo: UserData
     let userUID: String
     let store: String
-    let userMessage: String?
-    let storeMessage: String?
+    let userMessage: String
+    let storeMessage: String
     
     init? (dictionary: [String: Any]) {
         

@@ -59,7 +59,9 @@ extension MessageOrderViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MessageOrderTableViewCell.self), for: indexPath) as? MessageOrderTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: MessageOrderTableViewCell.self),
+            for: indexPath) as? MessageOrderTableViewCell else {
             return UITableViewCell()
         }
         
@@ -74,6 +76,14 @@ extension MessageOrderViewController: UITableViewDataSource, UITableViewDelegate
         let url = data.userInfo.photoURL
         cell.setupCell(title: title, date: date, hours: hours, status: status, url: url)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let nextVC = self.storyboard?.instantiateViewController(
+            withIdentifier: String(describing: MessageOrderDetailViewController.self)) as? MessageOrderDetailViewController else {return}
+        nextVC.setupBookingData(data: bookingData[indexPath.row])
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 
 }

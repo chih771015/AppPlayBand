@@ -21,25 +21,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgA-5y-PRr">
-                        <rect key="frame" x="30" y="8" width="315" height="53.5"/>
+                        <rect key="frame" x="60" y="8" width="255" height="53.5"/>
                         <color key="backgroundColor" name="endColor"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="預定時間:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vhq-Ts-ItC">
-                        <rect key="frame" x="30" y="24" width="315" height="21.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
+                        <rect key="frame" x="60" y="12" width="255" height="45.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Vhq-Ts-ItC" firstAttribute="bottom" secondItem="sgA-5y-PRr" secondAttribute="bottom" constant="-16" id="37n-Bw-Qsg"/>
+                    <constraint firstItem="Vhq-Ts-ItC" firstAttribute="bottom" secondItem="sgA-5y-PRr" secondAttribute="bottom" constant="-4" id="37n-Bw-Qsg"/>
                     <constraint firstItem="Vhq-Ts-ItC" firstAttribute="leading" secondItem="sgA-5y-PRr" secondAttribute="leading" id="3OZ-sT-0Js"/>
                     <constraint firstItem="Vhq-Ts-ItC" firstAttribute="trailing" secondItem="sgA-5y-PRr" secondAttribute="trailing" id="6ak-ng-dzM"/>
-                    <constraint firstItem="sgA-5y-PRr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="FfF-OM-Quh"/>
+                    <constraint firstItem="sgA-5y-PRr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="60" id="FfF-OM-Quh"/>
                     <constraint firstAttribute="bottom" secondItem="sgA-5y-PRr" secondAttribute="bottom" constant="8" id="Iej-Y2-RjF"/>
                     <constraint firstItem="sgA-5y-PRr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Qk5-OG-pVj"/>
-                    <constraint firstAttribute="trailing" secondItem="sgA-5y-PRr" secondAttribute="trailing" constant="30" id="ULV-Fx-eT1"/>
-                    <constraint firstItem="Vhq-Ts-ItC" firstAttribute="top" secondItem="sgA-5y-PRr" secondAttribute="top" constant="16" id="yNi-mf-FhD"/>
+                    <constraint firstAttribute="trailing" secondItem="sgA-5y-PRr" secondAttribute="trailing" constant="60" id="ULV-Fx-eT1"/>
+                    <constraint firstItem="Vhq-Ts-ItC" firstAttribute="top" secondItem="sgA-5y-PRr" secondAttribute="top" constant="4" id="yNi-mf-FhD"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

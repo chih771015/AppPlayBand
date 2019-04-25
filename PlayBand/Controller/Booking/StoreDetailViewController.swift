@@ -58,7 +58,7 @@ class StoreDetailViewController: UIViewController {
 extension StoreDetailViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         return datas.count
     }
 

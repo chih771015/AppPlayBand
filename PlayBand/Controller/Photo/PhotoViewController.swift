@@ -81,7 +81,7 @@ class PhotoChoiceViewController: UIAlertController {
         
         let imageFromCameraAction = UIAlertAction(title: "相機", style: .default) { [weak self] (_) in
             
-            imagePickerController.sourceType = .photoLibrary
+            imagePickerController.sourceType = .camera
             guard let nextVC = self?.presentVC else {return}
             nextVC.present(imagePickerController, animated: true, completion: nil)
         }

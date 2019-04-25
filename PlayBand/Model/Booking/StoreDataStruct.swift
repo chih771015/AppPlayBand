@@ -73,4 +73,11 @@ struct StoreData {
         case city
         case images
     }
+    
+    func getStoreOpenHours() -> Int {
+        
+        guard let close = Int(closeTime) else {return 0}
+        guard let open = Int(openTime) else {return 0}
+        return close - open
+    }
 }

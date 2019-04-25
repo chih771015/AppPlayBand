@@ -14,6 +14,7 @@ class ConfirmViewController: UIViewController {
         
         case booking = "送出預定訂單"
     }
+    
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var footerView: UIView!
     @IBAction func bookingAction() {
@@ -44,6 +45,7 @@ class ConfirmViewController: UIViewController {
     }
     @IBOutlet weak var countHourLabel: UILabel!
     @IBOutlet weak var tableView: UITableView! {
+        
         didSet {
 
             setupTableView()
@@ -54,11 +56,15 @@ class ConfirmViewController: UIViewController {
         
         didSet {
             
-            //tableView.reloadData()
             bookingDatasChange?(bookingTimeDatas)
         }
     }
-    var storeData: StoreData?
+    var storeData: StoreData? {
+        didSet {
+            
+            setupTableHeaderView()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,8 +84,11 @@ class ConfirmViewController: UIViewController {
             ),
             bundle: nil
         )
-
-         guard let headerView = UINib(
+    }
+    
+    private func setupTableHeaderView() {
+        
+        guard let headerView = UINib(
             nibName: String(describing: ConfirmTableViewHeaderView.self),
             bundle: nil
             ).instantiate(withOwner: nil,
@@ -88,7 +97,8 @@ class ConfirmViewController: UIViewController {
         
         tableView.layoutIfNeeded()
         tableView.tableHeaderView = headerView
-        
+        guard let data = storeData else { return }
+        headerView.setupHeadView(storePhoto: data.photourl, storeName: data.name)
     }
     
     private func setupButton() {
@@ -102,13 +112,13 @@ class ConfirmViewController: UIViewController {
 extension ConfirmViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-
+        
         guard let sectionHeader = tableView.dequeueReusableHeaderFooterView(
             withIdentifier: String(
                 describing: ConfirmTableViewSectionHeaderView.self)
             ) as? ConfirmTableViewSectionHeaderView else { return UIView()}
-        sectionHeader.dateLabel.text = "\(bookingTimeDatas[section].date.year)年 \(bookingTimeDatas[section].date.month)月\(bookingTimeDatas[section].date.day)日"
-        sectionHeader.timeLabel.text = "總共\(bookingTimeDatas[section].hour.count)小時"
+        sectionHeader.setupCell(date: bookingTimeDatas[section].date.dateString(),
+                                time: bookingTimeDatas[section].hoursString())
         return sectionHeader
     }
 
@@ -127,7 +137,6 @@ extension ConfirmViewController: UITableViewDelegate, UITableViewDataSource {
             }
         let text = "\(bookingTimeDatas[indexPath.section].hour[indexPath.row]):00"
         cell.setupCell(text: text)
-        //cell.titleLabel.text = "\(bookingTimeDatas[indexPath.section].hour[indexPath.row]):00"
         return cell
     }
     
@@ -140,23 +149,25 @@ extension ConfirmViewController: UITableViewDelegate, UITableViewDataSource {
                    commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
+            let indexSet = IndexSet(arrayLiteral: indexPath.section)
             if bookingTimeDatas[indexPath.section].hour.count == 1 {
                 
                 bookingTimeDatas.remove(at: indexPath.section)
-                let indexSet = IndexSet(arrayLiteral: indexPath.section)
                 tableView.deleteSections(indexSet, with: .automatic)
-                
             } else {
                 
                 bookingTimeDatas[indexPath.section].hour.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
+                guard let header = tableView.headerView(forSection: indexPath.section) as? ConfirmTableViewSectionHeaderView else {return}
+                
+                header.deleteRowSetup(time: bookingTimeDatas[indexPath.section].hoursString())
+            
             }
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 70
+        return 56
     }
 }

@@ -50,6 +50,11 @@ struct BookingTime: Equatable, Comparable {
         
         return hour.count
     }
+    
+    func hoursString() -> String {
+        
+        return "總共\(hoursCount())小時"
+    }
 }
 
 struct BookingDate: Equatable {
@@ -60,5 +65,10 @@ struct BookingDate: Equatable {
     
     static func == (lhs: BookingDate, rhs: BookingDate) -> Bool {
         return lhs.year == rhs.year && lhs.month == rhs.month && lhs.day == rhs.day
+    }
+    
+    func dateString() -> String {
+        
+        return "\(year)年\(month)月\(day)日"
     }
 }

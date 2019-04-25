@@ -166,11 +166,11 @@
                                                     <rect key="frame" x="70" y="0.0" width="289" height="43.5"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1OG-HV-1ob">
-                                                            <rect key="frame" x="2" y="8" width="262.5" height="27.5"/>
+                                                            <rect key="frame" x="2" y="10" width="262.5" height="23.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpp-wv-Lnz">
-                                                                    <rect key="frame" x="10" y="10" width="242.5" height="7.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                                    <rect key="frame" x="10" y="10" width="242.5" height="3.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -199,11 +199,11 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="uiU-nB-bZt" firstAttribute="top" secondItem="rrd-IN-g5A" secondAttribute="top" constant="16" id="01I-Rm-UaP"/>
-                                                        <constraint firstItem="1OG-HV-1ob" firstAttribute="top" secondItem="rrd-IN-g5A" secondAttribute="top" constant="8" id="01J-OO-XVQ"/>
+                                                        <constraint firstItem="1OG-HV-1ob" firstAttribute="top" secondItem="rrd-IN-g5A" secondAttribute="top" constant="10" id="01J-OO-XVQ"/>
                                                         <constraint firstItem="1OG-HV-1ob" firstAttribute="leading" secondItem="rrd-IN-g5A" secondAttribute="leading" constant="2" id="Qp0-uf-nwH"/>
                                                         <constraint firstAttribute="trailing" secondItem="uiU-nB-bZt" secondAttribute="trailing" constant="7" id="cew-o5-DQr"/>
                                                         <constraint firstAttribute="bottom" secondItem="uiU-nB-bZt" secondAttribute="bottom" constant="16" id="n8y-SW-KPS"/>
-                                                        <constraint firstAttribute="bottom" secondItem="1OG-HV-1ob" secondAttribute="bottom" constant="8" id="pAu-wA-LdU"/>
+                                                        <constraint firstAttribute="bottom" secondItem="1OG-HV-1ob" secondAttribute="bottom" constant="10" id="pAu-wA-LdU"/>
                                                         <constraint firstItem="uiU-nB-bZt" firstAttribute="leading" secondItem="1OG-HV-1ob" secondAttribute="trailing" constant="6" id="zdK-T7-BvM"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -315,33 +315,33 @@
                                 <rect key="frame" x="0.0" y="520" width="375" height="87"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="總計小時" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21W-Xh-Aac">
-                                        <rect key="frame" x="289.5" y="8" width="69.5" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="273.5" y="8" width="57.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" name="endColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="留下訊息" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VEa-g6-FG9">
-                                        <rect key="frame" x="16" y="41" width="343" height="30"/>
+                                        <rect key="frame" x="44" y="35" width="287" height="36"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="備註訊息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVA-3b-fnV">
-                                        <rect key="frame" x="16" y="8" width="70" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="44" y="8" width="57.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" name="endColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="21W-Xh-Aac" secondAttribute="trailing" constant="16" id="7tX-zu-b82"/>
-                                    <constraint firstItem="VEa-g6-FG9" firstAttribute="top" secondItem="21W-Xh-Aac" secondAttribute="bottom" constant="12" id="GTu-lN-8RR"/>
+                                    <constraint firstItem="VEa-g6-FG9" firstAttribute="top" secondItem="21W-Xh-Aac" secondAttribute="bottom" constant="10" id="GTu-lN-8RR"/>
+                                    <constraint firstItem="21W-Xh-Aac" firstAttribute="trailing" secondItem="VEa-g6-FG9" secondAttribute="trailing" id="GXT-Sl-gNC"/>
                                     <constraint firstItem="21W-Xh-Aac" firstAttribute="top" secondItem="WaV-rg-xfx" secondAttribute="top" constant="8" id="NhT-kK-2rs"/>
-                                    <constraint firstAttribute="trailing" secondItem="VEa-g6-FG9" secondAttribute="trailing" constant="16" id="PH1-vj-Z2a"/>
+                                    <constraint firstAttribute="trailing" secondItem="VEa-g6-FG9" secondAttribute="trailing" constant="44" id="PH1-vj-Z2a"/>
                                     <constraint firstItem="DVA-3b-fnV" firstAttribute="leading" secondItem="VEa-g6-FG9" secondAttribute="leading" id="So8-sS-b1R"/>
                                     <constraint firstItem="DVA-3b-fnV" firstAttribute="centerY" secondItem="21W-Xh-Aac" secondAttribute="centerY" id="U6c-U7-4YC"/>
                                     <constraint firstAttribute="bottom" secondItem="VEa-g6-FG9" secondAttribute="bottom" constant="16" id="aJa-Qt-FjM"/>
-                                    <constraint firstItem="VEa-g6-FG9" firstAttribute="leading" secondItem="WaV-rg-xfx" secondAttribute="leading" constant="16" id="dzb-g1-kw8"/>
+                                    <constraint firstItem="VEa-g6-FG9" firstAttribute="leading" secondItem="WaV-rg-xfx" secondAttribute="leading" constant="44" id="dzb-g1-kw8"/>
                                     <constraint firstAttribute="height" constant="87" id="t7d-Nt-cyy"/>
                                 </constraints>
                             </view>

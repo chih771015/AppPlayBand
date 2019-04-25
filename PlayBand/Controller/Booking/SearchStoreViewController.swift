@@ -31,7 +31,6 @@ class SearchStoreViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         getStoreData()
-    //    self.backgroundColorView.addGradientColor()
     }
     private func getStoreData() {
         
@@ -67,13 +66,6 @@ class SearchStoreViewController: UIViewController {
             bundle: nil)
     }
     
-//    private func setupNavigationBar() {
-//
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
-//        self.navigationController?.navigationBar.isTranslucent = true
-//        self.navigationController?.view.backgroundColor = UIColor.clear
-//    }
 }
 
 extension SearchStoreViewController: UITableViewDataSource, UITableViewDelegate {
@@ -101,11 +93,6 @@ extension SearchStoreViewController: UITableViewDataSource, UITableViewDelegate 
                        city: storeDatas[0].city, price: price)
         return cell
     }
-
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//
-//        return 230
-//    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 

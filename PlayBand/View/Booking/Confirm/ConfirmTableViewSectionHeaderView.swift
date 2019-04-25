@@ -17,4 +17,14 @@ class ConfirmTableViewSectionHeaderView: UITableViewHeaderFooterView {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func setupCell(date: String, time: String) {
+        
+        self.dateLabel.text = date
+        self.timeLabel.text = time
+    }
+    func deleteRowSetup(time: String) {
+        
+        self.timeLabel.text = time
+    }
 }
