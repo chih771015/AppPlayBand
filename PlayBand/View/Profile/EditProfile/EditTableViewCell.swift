@@ -10,6 +10,7 @@ import UIKit
 
 class EditTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
 
     override func awakeFromNib() {
@@ -23,11 +24,17 @@ class EditTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func setupEditCell(placeholder: String) {
-
+    func setupEditCell(placeholder: String, text: String?) {
+        self.titleLabel.text = placeholder
         textField.placeholder = placeholder
+        self.textField.text = text
     }
-    
+    func setupEditPasswordCell(placeholder: String) {
+        
+        self.titleLabel.text = placeholder
+        textField.placeholder = placeholder
+        textField.isSecureTextEntry = true
+    }
     func setupEditPickerCell(placehoder: String) {
         
         let pickView = UIPickerView()
@@ -35,6 +42,11 @@ class EditTableViewCell: UITableViewCell {
         pickView.dataSource = self
         textField.inputView = pickView
         textField.placeholder = placehoder
+    }
+    
+    override func prepareForReuse() {
+        
+        textField.isSecureTextEntry = false
     }
 }
 
@@ -64,5 +76,3 @@ extension EditTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
         }
     }
 }
-
-

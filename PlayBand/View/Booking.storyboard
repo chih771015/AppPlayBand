@@ -293,6 +293,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHS-f7-RkG">
                                         <rect key="frame" x="16" y="0.0" width="343" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="bookingAction" destination="JoO-BL-GHF" eventType="touchUpInside" id="Aje-W6-aeW"/>

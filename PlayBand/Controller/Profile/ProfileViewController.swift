@@ -30,7 +30,6 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet weak var userImage: ProfileUserPictureImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    
     @IBOutlet weak var colorView: UIView!
     
     var user: UserData? {
@@ -56,11 +55,28 @@ class ProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         self.user = FirebaseManger.shared.userData
         
+        let color = UIColor.white
+//
+////        self.navigationController?.navigationBar.barTintColor = color
+//        UINavigationBar.appearance().tintColor = color
+//        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
+//       // UINavigationBar.appearance().titleTextAttributes = color
+        self.navigationController?.navigationBar.tintColor = color
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
+        self.navigationController?.navigationBar.prepareForInterfaceBuilder()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        let color = UIColor.white
+//
+//        self.navigationController?.navigationBar.barTintColor = color
+        self.navigationController?.navigationBar.tintColor = color
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
+//        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
+
         setupLayer()
     }
     
@@ -68,8 +84,8 @@ class ProfileViewController: UIViewController {
     
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = UIColor.clear
+//        self.navigationController?.navigationBar.isTranslucent = true
+//        self.navigationController?.view.backgroundColor = UIColor.clear
     }
     
     private func setupColorView() {

@@ -59,6 +59,8 @@
 		598B8CDB2254C4610061F03B /* ProfileContentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B8CDA2254C4610061F03B /* ProfileContentCategory.swift */; };
 		59949295225A7D9C00726BF3 /* CalendarFrameWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59949294225A7D9C00726BF3 /* CalendarFrameWork.swift */; };
 		59949297225A7FCE00726BF3 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59949296225A7FCE00726BF3 /* CalendarViewController.swift */; };
+		5995BEFE2272D6610078C39A /* EditSectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995BEFC2272D6610078C39A /* EditSectionHeaderTableViewCell.swift */; };
+		5995BEFF2272D6610078C39A /* EditSectionHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5995BEFD2272D6610078C39A /* EditSectionHeaderTableViewCell.xib */; };
 		59A08E972267931B00F405B5 /* UserListDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A08E962267931B00F405B5 /* UserListDataStruct.swift */; };
 		59ABB0232258732B00AE937A /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ABB0212258732B00AE937A /* SettingTableViewCell.swift */; };
 		59ABB0242258732B00AE937A /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59ABB0222258732B00AE937A /* SettingTableViewCell.xib */; };
@@ -161,6 +163,8 @@
 		598B8CDA2254C4610061F03B /* ProfileContentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContentCategory.swift; sourceTree = "<group>"; };
 		59949294225A7D9C00726BF3 /* CalendarFrameWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFrameWork.swift; sourceTree = "<group>"; };
 		59949296225A7FCE00726BF3 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		5995BEFC2272D6610078C39A /* EditSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditSectionHeaderTableViewCell.swift; path = PlayBand/View/Profile/EditProfile/EditSectionHeaderTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		5995BEFD2272D6610078C39A /* EditSectionHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = EditSectionHeaderTableViewCell.xib; path = PlayBand/View/Profile/EditProfile/EditSectionHeaderTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		59A08E962267931B00F405B5 /* UserListDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListDataStruct.swift; sourceTree = "<group>"; };
 		59ABB0212258732B00AE937A /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		59ABB0222258732B00AE937A /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
@@ -428,9 +432,10 @@
 		59BB3D612264AABF00E46BEE /* EditPage */ = {
 			isa = PBXGroup;
 			children = (
-				5941D830225359D500FDEEBA /* Main.storyboard */,
 				59BB3D622264AAE800E46BEE /* EditPageTableViewCell.swift */,
 				59BB3D632264AAE800E46BEE /* EditPageTableViewCell.xib */,
+				5995BEFC2272D6610078C39A /* EditSectionHeaderTableViewCell.swift */,
+				5995BEFD2272D6610078C39A /* EditSectionHeaderTableViewCell.xib */,
 			);
 			path = EditPage;
 			sourceTree = "<group>";
@@ -475,6 +480,7 @@
 				59BB3D612264AABF00E46BEE /* EditPage */,
 				59F81FA52254A6C800C04E32 /* Profile */,
 				59F81F93225463BB00C04E32 /* Profile.storyboard */,
+				5941D830225359D500FDEEBA /* Main.storyboard */,
 				59F81F952254640200C04E32 /* News.storyboard */,
 				59F81F972254641400C04E32 /* Booking.storyboard */,
 				59F81F992254642F00C04E32 /* Message.storyboard */,
@@ -650,6 +656,7 @@
 				59530B11225C7B58002F18AB /* ConfirmTableViewCell.xib in Resources */,
 				59DFF85B22578FFD00273724 /* EditTableViewCell.xib in Resources */,
 				59BB3D652264AAE800E46BEE /* EditPageTableViewCell.xib in Resources */,
+				5995BEFF2272D6610078C39A /* EditSectionHeaderTableViewCell.xib in Resources */,
 				59FF33CD22701D3F00F8DCAA /* MessageOrderTableViewCell.xib in Resources */,
 				59ABB0352258B32B00AE937A /* SearchStoreTableViewCell.xib in Resources */,
 				59F81F94225463BB00C04E32 /* Profile.storyboard in Resources */,
@@ -814,6 +821,7 @@
 				59530B17225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift in Sources */,
 				59F81F9C22547C3A00C04E32 /* UIImage+Extension.swift in Sources */,
 				59FF33CF2270316800F8DCAA /* MessageOrderViewController.swift in Sources */,
+				5995BEFE2272D6610078C39A /* EditSectionHeaderTableViewCell.swift in Sources */,
 				59BB3D642264AAE800E46BEE /* EditPageTableViewCell.swift in Sources */,
 				592950332269C4A600FD5DC5 /* MessageCategory.swift in Sources */,
 				59852EAE226F630E00D1D7EE /* CALayer+Extension.swift in Sources */,

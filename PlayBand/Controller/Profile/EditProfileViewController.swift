@@ -9,7 +9,13 @@
 import UIKit
 
 class EditProfileViewController: UIViewController {
-
+    
+    enum PageName: String {
+        
+        case name = "修改用戶資料"
+    }
+    
+    @IBOutlet weak var button: UIButton!
     @IBAction func editProfileAction() {
         
         guard let name = (tableView.cellForRow(
@@ -55,9 +61,7 @@ class EditProfileViewController: UIViewController {
     }
     @IBOutlet weak var tableView: UITableView! {
         didSet {
-
-            tableView.delegate = self
-            tableView.dataSource = self
+            
             setupTableView()
         }
     }
@@ -66,17 +70,53 @@ class EditProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupButton()
+        setupNavigationBar()
         // Do any additional setup after loading the view.
     }
 
+    private func setupNavigationBar() {
+        
+        guard let color = UIColor.playBandColorEnd else {return}
+        
+        self.navigationController?.navigationBar.tintColor = color
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    }
+    
+    private func setupButton() {
+        view.layoutIfNeeded()
+        button.setupButtonModelPlayBand()
+    }
     private func setupTableView() {
-
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.lv_registerCellWithNib(identifier: String(describing: EditTableViewCell.self), bundle: nil)
+        tableView.lv_registerCellWithNib(identifier: String(describing: EditSectionHeaderTableViewCell.self), bundle: nil)
     }
 }
 
 extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        guard let header = tableView.dequeueReusableCell(withIdentifier: String(describing: EditSectionHeaderTableViewCell.self)) as? EditSectionHeaderTableViewCell else {
+            return UIView()
+        }
+        header.setupCell(title: PageName.name.rawValue)
+        return header
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         return datas.count

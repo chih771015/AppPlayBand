@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum ProfileContentCategory: String {
-
+    
     case name = "姓名"
 
     case email = "Email"
@@ -25,6 +25,8 @@ enum ProfileContentCategory: String {
     
     case password = "密碼"
     
+    case passwordConfirm = "請再次輸入密碼"
+    
     case userStatus = "使用者帳號類別"
     
     case store = "店家"
@@ -33,7 +35,8 @@ enum ProfileContentCategory: String {
     
     case bookingTime = "預定時間"
     
-    func cellForIndexPathInMain(_ indexPath: IndexPath, tableView: UITableView, userData: UserData?) -> UITableViewCell {
+    func cellForIndexPathInMain(_ indexPath: IndexPath, tableView: UITableView,
+                                userData: UserData?) -> UITableViewCell {
 
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: ProfileInformationTableViewCell.self),
@@ -80,40 +83,50 @@ enum ProfileContentCategory: String {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: EditTableViewCell.self),
             for: indexPath) as? EditTableViewCell else { return UITableViewCell()}
-
+        
+        let userData = FirebaseManger.shared.userData
+        
         switch self {
 
         case .name:
 
-           cell.setupEditCell(placeholder: rawValue)
+            cell.setupEditCell(placeholder: rawValue, text: userData?.name)
 
         case .email:
 
-            cell.setupEditCell(placeholder: rawValue)
+            cell.setupEditCell(placeholder: rawValue, text: userData?.email)
 
         case .band:
 
-            cell.setupEditCell(placeholder: rawValue)
+            cell.setupEditCell(placeholder: rawValue, text: userData?.band)
 
         case .phone:
 
-            cell.setupEditCell(placeholder: rawValue)
+            cell.setupEditCell(placeholder: rawValue, text: userData?.phone)
 
         case .facebook:
 
-            cell.setupEditCell(placeholder: rawValue)
+            cell.setupEditCell(placeholder: rawValue, text: userData?.facebook)
             
         case .userStatus:
             
             cell.setupEditPickerCell(placehoder: rawValue)
             
+        case .password:
+            
+            cell.setupEditPasswordCell(placeholder: rawValue)
+        case .passwordConfirm:
+            
+            cell.setupEditPasswordCell(placeholder: rawValue)
         default:
-            cell.setupEditCell(placeholder: rawValue)
+            cell.setupEditCell(placeholder: rawValue, text: "??")
         }
 
         return cell
 
     }
+    
+    
     
     func cellForIndexPathInMessageConfirm(_ indexPath: IndexPath, tableView: UITableView, bookingData: UserBookingData?, storeData: StoreData?, delgate: MessageConfirmCellDelgate) -> UITableViewCell {
         

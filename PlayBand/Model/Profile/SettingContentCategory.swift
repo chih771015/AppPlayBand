@@ -54,6 +54,7 @@ enum SettingContentCategory: String {
 
         case .passwordChange:
             
+            //viewController.performSegue(withIdentifier: "PushPasswordChange", sender: nil)
             let nextVC = UIStoryboard.profile.instantiateViewController(withIdentifier: String(describing: PasswordChangeViewController.self))
             viewController.navigationController?.pushViewController(nextVC, animated: true)
             print("passowordChange")

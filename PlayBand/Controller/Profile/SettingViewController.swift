@@ -21,10 +21,18 @@ class SettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupNavigationBar()
         // Do any additional setup after loading the view.
     }
-
+    
+    private func setupNavigationBar() {
+        
+        let color = UIColor.blue        
+        self.navigationController?.navigationBar.barTintColor = color
+        self.navigationController?.navigationBar.tintColor = color
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
+    }
+    
     private func setupTableView() {
 
         tableView.delegate = self
