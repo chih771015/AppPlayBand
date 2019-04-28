@@ -36,7 +36,15 @@ class CalendarViewController: UIViewController {
             buttonLogic()
         }
     }
-    var markColor = UIColor(red: 40/255, green: 178/255, blue: 253/255, alpha: 1)
+    var markColor: UIColor {
+        
+        guard let color = UIColor.playBandColorEnd else {
+            
+            return UIColor.lightGray
+        }
+        
+        return color
+    }
     var selectDay: JKDay = JKDay(date: Date())
     var bookingTimeDatas: [BookingTime] = [] {
         didSet {
@@ -68,9 +76,6 @@ class CalendarViewController: UIViewController {
         
         getFirebaseBookingData()
         calendarTableView.rowHeight = 60
-        guard let greenColor = UIColor.playBandColorEnd else {return}
-        markColor = greenColor
-        
         button.setupButtonModelPlayBand()
     }
 
@@ -186,10 +191,12 @@ extension CalendarViewController: JKCalendarDataSource {
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
+        
         return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return storeData?.getStoreOpenHours() ?? 0
     }
     
@@ -198,7 +205,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
             withIdentifier: String(describing: CalendarTableViewCell.self),
             for: indexPath) as? CalendarTableViewCell else {return UITableViewCell()}
 
-        let hour = indexPath.row + 10
+        let hour = indexPath.row + (Int(storeData?.openTime ?? "0") ?? 0)
         let time = BookingDate(year: selectDay.year, month: selectDay.month, day: selectDay.day)
         
         if firebaseBookingData.filter({$0.date == time}).filter({$0.hour.contains(hour)}).count != 0 {

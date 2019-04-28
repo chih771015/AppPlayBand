@@ -10,7 +10,7 @@ import UIKit
 
 extension CALayer {
     
-    static func getPBGradientLayer (bounds: CGRect) -> CAGradientLayer {
+    static func getPBGradientLayer (bounds: CGRect, cornerRadius: CGFloat = 0) -> CAGradientLayer {
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
@@ -19,6 +19,7 @@ extension CALayer {
         gradientLayer.colors = [startColor?.cgColor, endColor?.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        gradientLayer.cornerRadius = cornerRadius
         return gradientLayer
     }
 }

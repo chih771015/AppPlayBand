@@ -54,23 +54,32 @@ enum SettingContentCategory: String {
 
         case .passwordChange:
             
-            //viewController.performSegue(withIdentifier: "PushPasswordChange", sender: nil)
             let nextVC = UIStoryboard.profile.instantiateViewController(withIdentifier: String(describing: PasswordChangeViewController.self))
             viewController.navigationController?.pushViewController(nextVC, animated: true)
-            print("passowordChange")
+
         case .logout:
-            FirebaseManger.shared.logout(completionHandler: { result in
+            
+            FirebaseManger.shared.logout(completionHandler: { [weak viewController] result in
                 
-                UIAlertController.alertMessageAnimation(title: result, message: nil, viewController: viewController, completionHanderInDismiss: {
+                switch result {
                     
-                    guard let appdelgate = UIApplication.shared.delegate as? AppDelegate else {
-                        return
-                    }
-                    guard let nextVC = UIStoryboard.signIn.instantiateInitialViewController() else {
-                        return
-                    }
-                    appdelgate.window?.rootViewController = nextVC
-                })
+                case .success(let message):
+                    
+                    viewController?.addSucessAlertMessage(title: message, message: nil, completionHanderInDismiss: {
+                        
+                        guard let appdelgate = UIApplication.shared.delegate as? AppDelegate else {
+                            return
+                        }
+                        guard let nextVC = UIStoryboard.signIn.instantiateInitialViewController() else {
+                            return
+                        }
+                        appdelgate.window?.rootViewController = nextVC
+                    })
+                case .failure(let error):
+                    
+                    viewController?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
+                }
+                
             })
         default:
             return

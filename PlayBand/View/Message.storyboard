@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Message View Controller-->
+        <!--預定資料-->
         <scene sceneID="ISE-2S-Kaj">
             <objects>
                 <viewController id="rXd-0w-jIr" customClass="MessageViewController" customModule="PlayBand" customModuleProvider="target" sceneMemberID="viewController">
@@ -137,7 +137,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xaM-M6-iCd"/>
                     </view>
-                    <navigationItem key="navigationItem" id="4yT-67-Y2H"/>
+                    <navigationItem key="navigationItem" title="預定資料" id="4yT-67-Y2H"/>
                     <connections>
                         <outlet property="confirmButton" destination="l0D-jW-5Oz" id="fbg-1G-LdU"/>
                         <outlet property="refuseButton" destination="idS-ck-SbT" id="FeR-di-bZh"/>
@@ -150,7 +150,7 @@
             </objects>
             <point key="canvasLocation" x="164" y="54.422788605697157"/>
         </scene>
-        <!--Message Order Detail View Controller-->
+        <!--預定詳細-->
         <scene sceneID="6zL-T7-Sn0">
             <objects>
                 <viewController storyboardIdentifier="MessageOrderDetailViewController" id="X4g-wP-19I" customClass="MessageOrderDetailViewController" customModule="PlayBand" customModuleProvider="target" sceneMemberID="viewController">
@@ -233,6 +233,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="t6j-Hi-x27"/>
                     </view>
+                    <navigationItem key="navigationItem" title="預定詳細" id="6dj-Pk-a6b"/>
                     <connections>
                         <outlet property="buttonView" destination="Qp0-iu-SQJ" id="fzd-Ch-iBc"/>
                         <outlet property="buttonViewHeight" destination="aiv-tQ-H7c" id="Oal-75-Axn"/>
@@ -513,7 +514,7 @@
             <color red="0.88235294117647056" green="0.61568627450980395" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="endColor">
-            <color red="0.58039215686274515" green="0.8901960784313725" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.039215686274509803" green="0.83529411764705885" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

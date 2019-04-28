@@ -13,6 +13,7 @@ class EditProfileViewController: UIViewController {
     enum PageName: String {
         
         case name = "修改用戶資料"
+        case success = "修改會員資料成功"
     }
     
     @IBOutlet weak var button: UIButton!
@@ -42,20 +43,15 @@ class EditProfileViewController: UIViewController {
         FirebaseManger.shared.editProfileInfo(userData: userData) { [weak self] (error) in
             
             if error == nil {
-                UIAlertController.alertMessageAnimation(
-                    title: "修改會員資料成功",
-                    message: nil,
-                    viewController: self,
-                    completionHanderInDismiss: { [weak self] in
-                        self?.navigationController?.popViewController(animated: true)
-                    })
+                
+                self?.addSucessAlertMessage(title: PageName.success.rawValue, message: nil, completionHanderInDismiss: { [weak self] in
+                    
+                    self?.navigationController?.popViewController(animated: true)
+                })
+
             } else {
                 
-                UIAlertController.alertMessageAnimation(
-                    title: FirebaseEnum.fail.rawValue,
-                    message: error?.localizedDescription,
-                    viewController: self,
-                    completionHanderInDismiss: nil)
+                self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error?.localizedDescription, completionHanderInDismiss: nil)
             }
         }
     }
@@ -124,6 +120,13 @@ extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        return datas[indexPath.row].cellForIndexPathInEdit(indexPath, tableView: tableView)
+        return datas[indexPath.row].cellForIndexPathInEdit(indexPath, tableView: tableView, textFieldDelegate: self)
+    }
+}
+
+extension EditProfileViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
     }
 }

@@ -22,6 +22,8 @@
 		592D2137226244300017A746 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 592D2136226244300017A746 /* GoogleService-Info.plist */; };
 		592FF2D82272271000872A17 /* MessageImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592FF2D62272271000872A17 /* MessageImageTableViewCell.swift */; };
 		592FF2D92272271000872A17 /* MessageImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592FF2D72272271000872A17 /* MessageImageTableViewCell.xib */; };
+		5933CBBE2274774600E0C114 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5933CBBD2274774600E0C114 /* UIViewController+Extension.swift */; };
+		5933CBC02275A3A300E0C114 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5933CBBF2275A3A300E0C114 /* NoDataView.swift */; };
 		593B4FF7226B18A10069F24F /* FirebaseMangerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593B4FF6226B18A10069F24F /* FirebaseMangerExtension.swift */; };
 		593F6E102263C5810014219B /* IQKeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593F6E0F2263C5810014219B /* IQKeyboardManager.swift */; };
 		5941D82D225359D500FDEEBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D82C225359D500FDEEBA /* AppDelegate.swift */; };
@@ -124,6 +126,8 @@
 		592D2136226244300017A746 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		592FF2D62272271000872A17 /* MessageImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageImageTableViewCell.swift; sourceTree = "<group>"; };
 		592FF2D72272271000872A17 /* MessageImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageImageTableViewCell.xib; sourceTree = "<group>"; };
+		5933CBBD2274774600E0C114 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		5933CBBF2275A3A300E0C114 /* NoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
 		593B4FF6226B18A10069F24F /* FirebaseMangerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseMangerExtension.swift; sourceTree = "<group>"; };
 		593F6E0F2263C5810014219B /* IQKeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQKeyboardManager.swift; sourceTree = "<group>"; };
 		5941D829225359D500FDEEBA /* PlayBand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayBand.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -487,6 +491,7 @@
 				59DFF8502257409300273724 /* Photo.storyboard */,
 				597F0449225EDDD600BAAFEE /* SignIn.storyboard */,
 				59BB3D5F2264AAAE00E46BEE /* EditPage.storyboard */,
+				5933CBBF2275A3A300E0C114 /* NoDataView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -520,6 +525,7 @@
 				59B43E13226ECD4300598538 /* UICollectionVIew+Extension.swift */,
 				59B43E17226F03A300598538 /* UIButton+Extension.swift */,
 				59852EAD226F630E00D1D7EE /* CALayer+Extension.swift */,
+				5933CBBD2274774600E0C114 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -793,6 +799,7 @@
 				598B8CD82254BFF80061F03B /* UITableView+Extension.swift in Sources */,
 				59ABB0232258732B00AE937A /* SettingTableViewCell.swift in Sources */,
 				59ABB029225878C700AE937A /* SettingContentCategory.swift in Sources */,
+				5933CBBE2274774600E0C114 /* UIViewController+Extension.swift in Sources */,
 				592674832270D8A60050E161 /* MessageDetailTableViewCell.swift in Sources */,
 				59DFF8542257465800273724 /* PhotoViewController.swift in Sources */,
 				5907F69B2259E2BD008BB604 /* StoreContentCategory.swift in Sources */,
@@ -807,6 +814,7 @@
 				59D717AD2265A8F3009772FC /* ResultEnum.swift in Sources */,
 				59949295225A7D9C00726BF3 /* CalendarFrameWork.swift in Sources */,
 				59F81F9F22549FCD00C04E32 /* ProfileViewController.swift in Sources */,
+				5933CBC02275A3A300E0C114 /* NoDataView.swift in Sources */,
 				59D717AB22658B6A009772FC /* StoreDataStruct.swift in Sources */,
 				59530B13225C7F92002F18AB /* ConfirmTableViewHeaderView.swift in Sources */,
 				59F81F8F2254625C00C04E32 /* PBTabBarController.swift in Sources */,

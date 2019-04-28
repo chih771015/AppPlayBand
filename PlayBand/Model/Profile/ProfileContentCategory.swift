@@ -78,7 +78,7 @@ enum ProfileContentCategory: String {
 
     }
 
-    func cellForIndexPathInEdit(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
+    func cellForIndexPathInEdit(_ indexPath: IndexPath, tableView: UITableView, textFieldDelegate: UITextFieldDelegate) -> UITableViewCell {
 
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: EditTableViewCell.self),
@@ -114,10 +114,10 @@ enum ProfileContentCategory: String {
             
         case .password:
             
-            cell.setupEditPasswordCell(placeholder: rawValue)
+            cell.setupEditPasswordCell(placeholder: rawValue, textFieldDelgate: textFieldDelegate)
         case .passwordConfirm:
             
-            cell.setupEditPasswordCell(placeholder: rawValue)
+            cell.setupEditPasswordCell(placeholder: rawValue, textFieldDelgate: textFieldDelegate)
         default:
             cell.setupEditCell(placeholder: rawValue, text: "??")
         }

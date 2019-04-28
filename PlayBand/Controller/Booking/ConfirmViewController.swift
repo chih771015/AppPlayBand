@@ -10,35 +10,44 @@ import UIKit
 
 class ConfirmViewController: UIViewController {
     
-    private enum ButtonText: String {
+    private enum Text: String {
         
         case booking = "送出預定訂單"
+        case message = "沒有訊息"
     }
     
+    @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var button: UIButton!
-    @IBOutlet weak var footerView: UIView!
     @IBAction func bookingAction() {
         
         guard let storeName = storeData?.name else { return }
+        var message = String()
+        if messageTextField.text?.isEmpty == true ||
+            messageTextField.text?.trimmingCharacters(in: .whitespaces).isEmpty == true {
+            
+            message = Text.message.rawValue
+        } else {
+            
+            message = messageTextField.text ?? Text.message.rawValue
+        }
+        
         FirebaseManger.shared.bookingTimeEdit(
         storeName: storeName,
         bookingDatas: bookingTimeDatas,
-        userMessage: "hi") { (result) in
+        userMessage: message) { [weak self] (result) in
             
             switch result {
                 
             case .success(let message):
-                UIAlertController.alertMessageAnimation(
-                    title: message,
-                    message: nil,
-                    viewController: self, completionHanderInDismiss: { [weak self] in
-                        self?.navigationController?.popToRootViewController(animated: true)
+                
+                self?.addSucessAlertMessage(title: message, message: nil, completionHanderInDismiss: {
+                    
+                    self?.navigationController?.popToRootViewController(animated: true)
                 })
+                
             case .failure(let error):
-                UIAlertController.alertMessageAnimation(
-                    title: FirebaseEnum.fail.rawValue,
-                    message: error.localizedDescription,
-                    viewController: self, completionHanderInDismiss: nil)
+                
+                self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
                 
             }
         }
@@ -57,6 +66,7 @@ class ConfirmViewController: UIViewController {
         didSet {
             
             bookingDatasChange?(bookingTimeDatas)
+            setupConuterLabel()
         }
     }
     var storeData: StoreData? {
@@ -103,9 +113,20 @@ class ConfirmViewController: UIViewController {
     
     private func setupButton() {
         
-        button.setTitle(ButtonText.booking.rawValue, for: .normal)
+        button.setTitle(Text.booking.rawValue, for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.setupButtonModelPlayBand()
+    }
+    
+    private func setupConuterLabel() {
+        
+        var hour = 0
+        for bookingData in bookingTimeDatas {
+            
+            hour += bookingData.hoursCount()
+        }
+        let text = "總共\(hour)小時"
+        countHourLabel.text = text
     }
 }
 
@@ -135,6 +156,7 @@ extension ConfirmViewController: UITableViewDelegate, UITableViewDataSource {
 
                 return UITableViewCell()
             }
+        
         let text = "\(bookingTimeDatas[indexPath.section].hour[indexPath.row]):00"
         cell.setupCell(text: text)
         return cell

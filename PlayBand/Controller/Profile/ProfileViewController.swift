@@ -61,6 +61,7 @@ class ProfileViewController: UIViewController {
 //        UINavigationBar.appearance().tintColor = color
 //        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
 //       // UINavigationBar.appearance().titleTextAttributes = color
+        
         self.navigationController?.navigationBar.tintColor = color
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
         self.navigationController?.navigationBar.prepareForInterfaceBuilder()
@@ -99,13 +100,15 @@ class ProfileViewController: UIViewController {
     }
     
     private func setupLayer() {
+        
         gradientLayer?.removeFromSuperlayer()
         let layer = CALayer.getPBGradientLayer(bounds: colorView.bounds)
         colorView.layer.addSublayer(layer)
         gradientLayer = layer
     }
+    
     private func setupTableView() {
-
+        
         tableView.lv_registerCellWithNib(
             identifier: String(describing: ProfileInformationTableViewCell.self),
             bundle: nil)
@@ -148,22 +151,23 @@ extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerCo
             
             let resizeImage = selectedImage.resizeImage(targetSize: CGSize(width: 500, height: selectedImage.size.height / selectedImage.size.width * 500))
             
-            FirebaseManger.shared.uploadIamge(uniqueString: uniqueString, image: resizeImage) { (result) in
+            FirebaseManger.shared.uploadIamge(uniqueString: uniqueString, image: resizeImage) { [weak self] (result) in
                 
                 switch result {
                     
-                case .success(let string):
-                    UIAlertController.alertMessageAnimation(title: string, message: nil, viewController: self, completionHanderInDismiss: nil)
+                case .success(let message):
+                    
+                    self?.addSucessAlertMessage(title: message, message: nil, completionHanderInDismiss: nil)
+                    
                     FirebaseManger.shared.getUserInfo()
                 
                 case .failure(let error):
                     
-                      UIAlertController.alertMessageAnimation(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, viewController: self, completionHanderInDismiss: nil)
+                    self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
                 }
             }
-            
         }
+        
         picker.dismiss(animated: true, completion: nil)
     }
-    
 }

@@ -23,7 +23,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LineIn" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PxA-RK-gkG">
                         <rect key="frame" x="24" y="156" width="346" height="36"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
-                        <color key="textColor" name="colorGreen"/>
+                        <color key="textColor" name="endColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="27540325_574597332884961_4955653517050363908_n" translatesAutoresizingMaskIntoConstraints="NO" id="W7c-tx-h56">
@@ -83,11 +83,8 @@
     </objects>
     <resources>
         <image name="27540325_574597332884961_4955653517050363908_n" width="675" height="675"/>
-        <namedColor name="colorGreen">
-            <color red="0.50196078431372548" green="0.81176470588235294" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="endColor">
-            <color red="0.58039215686274515" green="0.8901960784313725" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.039215686274509803" green="0.83529411764705885" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

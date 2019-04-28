@@ -9,6 +9,7 @@
 import Firebase
 
 class FirebaseManger {
+    
     typealias AuthResult = (AuthDataResult?, Error?) -> Void
     typealias ListeningResult = (Auth, User?) -> Void
     
@@ -57,24 +58,29 @@ class FirebaseManger {
                 self.getUserInfo()
             }
         }
-        getStoreInfo(completionHandler: nil)
+    }
+    
+    private func resetData() {
+        
+        self.storeDatas = []
+        self.userData = nil
+        self.userBookingData = []
+        self.mangerStoreData = []
+        self.userStatus = String()
     }
     
     func listenAccount(completionHandler: @escaping ListeningResult) {
         Auth.auth().addStateDidChangeListener(completionHandler)
     }
     
-    func logout(completionHandler: (String) -> Void) {
+    func logout(completionHandler: (Result<String>) -> Void) {
         
         do {
             try Auth.auth().signOut()
-            self.userData = nil
-            self.storeDatas = []
-            self.mangerStoreData = []
-            self.userBookingData = []
-            completionHandler(FirebaseEnum.logout.rawValue)
+            resetData()
+            completionHandler(.success(FirebaseEnum.logout.rawValue))
         } catch let signOutError as NSError {
-            completionHandler(signOutError.localizedDescription)
+            completionHandler(.failure(signOutError))
             print ("Error signing out: %@", signOutError)
         }
     }
@@ -287,7 +293,7 @@ class FirebaseManger {
         dataBase().collection(FirebaseEnum.store.rawValue).document(storeName)
             .collection(FirebaseEnum.confirm.rawValue).getDocuments { (querySnapshot, error) in
                 
-                if let error = error {
+                if error != nil {
                     
                     return
                 }

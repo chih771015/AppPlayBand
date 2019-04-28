@@ -129,7 +129,7 @@
             </objects>
             <point key="canvasLocation" x="218.84057971014494" y="63.616071428571423"/>
         </scene>
-        <!--Calendar View Controller-->
+        <!--店家時間-->
         <scene sceneID="pf6-Wz-ojI">
             <objects>
                 <viewController id="hM9-3v-Qek" customClass="CalendarViewController" customModule="PlayBand" customModuleProvider="target" sceneMemberID="viewController">
@@ -270,6 +270,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xXF-PV-vm0"/>
                     </view>
+                    <navigationItem key="navigationItem" title="店家時間" id="0fb-Kc-94X"/>
                     <connections>
                         <outlet property="button" destination="UVG-y5-Zgk" id="uAM-7q-JJO"/>
                         <outlet property="calendarTableView" destination="eyu-ma-1qC" id="5bE-bt-VVM"/>
@@ -279,7 +280,7 @@
             </objects>
             <point key="canvasLocation" x="2974" y="64"/>
         </scene>
-        <!--Confirm View Controller-->
+        <!--預定時間-->
         <scene sceneID="6uN-k5-XJ1">
             <objects>
                 <viewController id="JoO-BL-GHF" customClass="ConfirmViewController" customModule="PlayBand" customModuleProvider="target" sceneMemberID="viewController">
@@ -362,9 +363,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PFv-hq-0sc"/>
                     </view>
+                    <navigationItem key="navigationItem" title="預定時間" id="Ywa-97-qNr"/>
                     <connections>
                         <outlet property="button" destination="KHS-f7-RkG" id="H4g-l8-rOJ"/>
                         <outlet property="countHourLabel" destination="21W-Xh-Aac" id="pA4-k4-Gkn"/>
+                        <outlet property="messageTextField" destination="VEa-g6-FG9" id="nph-ig-UXf"/>
                         <outlet property="tableView" destination="Wte-CZ-KKX" id="RdF-ko-CHL"/>
                     </connections>
                 </viewController>
@@ -376,7 +379,7 @@
     <resources>
         <image name="add" width="512" height="512"/>
         <namedColor name="endColor">
-            <color red="0.58039215686274515" green="0.8901960784313725" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.039215686274509803" green="0.83529411764705885" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

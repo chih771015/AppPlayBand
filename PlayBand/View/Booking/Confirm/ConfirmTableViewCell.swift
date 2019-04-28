@@ -11,7 +11,14 @@ import UIKit
 class ConfirmTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var colorView: UIView!
+    @IBOutlet weak var colorView: UIView! {
+        
+        didSet {
+            
+            colorView.layer.cornerRadius = 19
+            colorView.addShadow()
+        }
+    }
     
     var caGradientLayer: CAGradientLayer?
     
@@ -27,13 +34,13 @@ class ConfirmTableViewCell: UITableViewCell {
     }
     
     func setupCell(text: String) {
+        
         self.layoutIfNeeded()
-//        colorView.layoutIfNeeded()
+        
         caGradientLayer?.removeFromSuperlayer()
         self.titleLabel.text = text
-        let layer = CALayer.getPBGradientLayer(bounds: colorView.bounds)
+        let layer = CALayer.getPBGradientLayer(bounds: colorView.bounds, cornerRadius: 19)
         colorView.layer.addSublayer(layer)
-        colorView.addShadow()
         caGradientLayer = layer
     }
 }

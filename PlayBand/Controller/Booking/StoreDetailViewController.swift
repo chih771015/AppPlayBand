@@ -25,7 +25,13 @@ class StoreDetailViewController: UIViewController {
     
     private let datas: [StoreContentCategory] = [.images, .name, .phone, .address, .price, .time, .description]
     
-    var storeData: StoreData?
+    var storeData: StoreData? {
+        
+        didSet {
+            
+            self.navigationItem.title = storeData?.name
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

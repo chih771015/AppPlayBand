@@ -16,30 +16,41 @@ class SignInViewController: UIViewController {
         
         guard let account = accountTextField.text, accountTextField.text?.count != 0 else {
             
-            UIAlertController.alertMessageAnimation(title: FirebaseEnum.fail.rawValue, message: "請輸入帳號", viewController: self, completionHanderInDismiss: nil)
+            self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: "請輸入帳號", completionHanderInDismiss: nil)
+            
             return
         }
         guard let password = passwordTextField.text, passwordTextField.text?.count != 0 else {
             
-            UIAlertController.alertMessageAnimation(title: FirebaseEnum.fail.rawValue, message: "請輸入密碼", viewController: self, completionHanderInDismiss: nil)
+            self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: "請輸入密碼", completionHanderInDismiss: nil)
+            
             return
         }
         
-        firebase.signInAccount(email: account, password: password) {[weak self] (result, error) in
+        firebase.signInAccount(
+        email: account, password: password) {[weak self] (result, error) in
             if error != nil {
                 
-                UIAlertController.alertMessageAnimation(title: FirebaseEnum.fail.rawValue, message: error?.localizedDescription, viewController: self, completionHanderInDismiss: nil)
+                self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error?.localizedDescription, completionHanderInDismiss: nil)
+
             } else {
                 
-                let alert = UIAlertController(title: nil, message: "登入成功", preferredStyle: .alert)
-                self?.present(alert, animated: true) {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                        alert.dismiss(animated: true, completion: nil)
-                        let mainVC = UIStoryboard.main.instantiateInitialViewController()
-                        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-                        appDelegate.window?.rootViewController = mainVC
-                    })
-                }
+                self?.addSucessAlertMessage(title: nil, message: "登入成功", completionHanderInDismiss: {
+                    
+                    let mainVC = UIStoryboard.main.instantiateInitialViewController()
+                    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+                    appDelegate.window?.rootViewController = mainVC
+                    
+                })
+//                let alert = UIAlertController(title: nil, message: "登入成功", preferredStyle: .alert)
+//                self?.present(alert, animated: true) {
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+//                        alert.dismiss(animated: true, completion: nil)
+//                        let mainVC = UIStoryboard.main.instantiateInitialViewController()
+//                        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+//                        appDelegate.window?.rootViewController = mainVC
+//                    })
+//                }
             }
         }
     }
@@ -56,10 +67,12 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var changeModelButton: UIButton!
     
     @IBAction func changeModelAction() {
+        
     }
     @IBOutlet weak var accountTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
+    
     @IBAction func guestAction() {
         
         let mainVC = UIStoryboard.main.instantiateInitialViewController()

@@ -30,10 +30,9 @@ class SignUpViewController: EditProfileViewController {
                 guard result != nil else {
                     guard let errorConfirm = error else {return}
                     print(errorConfirm)
-                    UIAlertController.alertMessageAnimation(
-                        title: FirebaseEnum.fail.rawValue,
-                        message: errorConfirm.localizedDescription,
-                        viewController: self, completionHanderInDismiss: nil)
+                    
+                    self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: errorConfirm.localizedDescription, completionHanderInDismiss: nil)
+
                     return
             }
 
@@ -44,31 +43,39 @@ class SignUpViewController: EditProfileViewController {
                 
                 guard result != nil else {
                     
-                    UIAlertController.alertMessageAnimation(
-                        title: FirebaseEnum.fail.rawValue,
-                        message: error?.localizedDescription,
-                        viewController: self,
-                        completionHanderInDismiss: nil)
+                    self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error?.localizedDescription, completionHanderInDismiss: nil)
+                    
                     return
                 }
                 
-                let nextVC = UIAlertController(title: "歡迎進入", message: nil, preferredStyle: .alert)
-                    self?.present(nextVC, animated: true, completion: { 
+                    self?.addSucessAlertMessage(title: "歡迎進入", message: nil, completionHanderInDismiss: {
                         
-                        nextVC.dismiss(animated: true, completion: { [weak self] in
-                            
-                            guard let rootVC = UIStoryboard.main.instantiateInitialViewController() else {return}
-                            guard let appdelgate = UIApplication.shared.delegate as? AppDelegate else {return}
-                            appdelgate.window?.rootViewController = rootVC
-                            self?.presentedViewController?.dismiss(animated: false, completion: nil)
-                            self?.dismiss(animated: false, completion: nil)
-                        })
+                        guard let rootVC = UIStoryboard.main.instantiateInitialViewController() else {return}
+                        guard let appdelgate = UIApplication.shared.delegate as? AppDelegate else {return}
+                        appdelgate.window?.rootViewController = rootVC
+                        self?.presentedViewController?.dismiss(animated: false, completion: nil)
+                        self?.dismiss(animated: false, completion: nil)
+                        
                     })
+                    
+//                let nextVC = UIAlertController(title: "歡迎進入", message: nil, preferredStyle: .alert)
+//                    self?.present(nextVC, animated: true, completion: { 
+//                        
+//                        nextVC.dismiss(animated: true, completion: { [weak self] in
+//                            
+//                            guard let rootVC = UIStoryboard.main.instantiateInitialViewController() else {return}
+//                            guard let appdelgate = UIApplication.shared.delegate as? AppDelegate else {return}
+//                            appdelgate.window?.rootViewController = rootVC
+//                            self?.presentedViewController?.dismiss(animated: false, completion: nil)
+//                            self?.dismiss(animated: false, completion: nil)
+//                        })
+//                    })
             })
         })
     }
     
-    var dataSignUp: [ProfileContentCategory] = [.account, .password, .email, .name, .phone, .band, .facebook, .userStatus]
+    var dataSignUp: [ProfileContentCategory] = [.account, .password, .email, .name,
+                                                .phone, .band, .facebook, .userStatus]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -82,6 +89,14 @@ class SignUpViewController: EditProfileViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return dataSignUp[indexPath.row].cellForIndexPathInEdit(indexPath, tableView: tableView)
+        return dataSignUp[indexPath.row].cellForIndexPathInEdit(
+            indexPath, tableView: tableView, textFieldDelegate: self)
+    }
+}
+
+extension SignUpViewController {
+    
+    override func textFieldDidEndEditing(_ textField: UITextField) {
+        
     }
 }

@@ -11,26 +11,19 @@ import UIKit
 class PasswordChangeViewController: UIViewController {
 
     private enum TitleName: String {
+        
         case title = "更改密碼"
     }
     
     @IBAction func changePasswordAction() {
         guard let password = self.password else {
             
-             UIAlertController.alertMessageAnimation(
-                title: FirebaseEnum.fail.rawValue,
-                message: ProfileEnum.textFieldNoValue.rawValue,
-                viewController: self,
-                completionHanderInDismiss: nil)
+            self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: ProfileEnum.textFieldNoValue.rawValue, completionHanderInDismiss: nil)
             return
         }
         guard let confirm = self.passwordConfirm else {
             
-            UIAlertController.alertMessageAnimation(
-                title: FirebaseEnum.fail.rawValue,
-                message: ProfileEnum.textFieldNoValue.rawValue,
-                viewController: self,
-                completionHanderInDismiss: nil)
+            self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: ProfileEnum.textFieldNoValue.rawValue, completionHanderInDismiss: nil)
             return
         }
         
@@ -41,28 +34,19 @@ class PasswordChangeViewController: UIViewController {
 
                 case .success(let data):
                     
-                    UIAlertController.alertMessageAnimation(
-                        title: data,
-                        message: nil,
-                        viewController: self,
-                        completionHanderInDismiss: {
-                        
+                    self?.addSucessAlertMessage(title: data, message: nil, completionHanderInDismiss: { [weak self] in
                         self?.navigationController?.popToRootViewController(animated: true)
-                        })
+                    })
+                    
                 case .failure(let error):
                     
-                    UIAlertController.alertMessageAnimation(
-                        
-                        title: FirebaseEnum.fail.rawValue,
-                        message: error.localizedDescription,
-                        viewController: self,
-                        completionHanderInDismiss: nil)
+                    self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
                 }
             }
             
         } else {
             
-            UIAlertController.alertMessageAnimation(title: FirebaseEnum.fail.rawValue, message: ProfileEnum.passwordNotSame.rawValue, viewController: self, completionHanderInDismiss: nil)
+            self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: ProfileEnum.passwordNotSame.rawValue, completionHanderInDismiss: nil)
             
         }
     }
@@ -78,25 +62,9 @@ class PasswordChangeViewController: UIViewController {
         }
     }
     
-    private var password: String? {
-        
-        guard let index = cellCategory.index(of: .password) else {return nil}
-        let indexPath = IndexPath(row: index, section: 0)
-        guard let text = (tableView.cellForRow(at: indexPath) as? EditTableViewCell)?.textField.text else {
-            return nil
-        }
-        return text
-    }
+    private var password: String?
     
-    private var passwordConfirm: String? {
-
-        guard let index = cellCategory.index(of: .passwordConfirm) else {return nil}
-        let indexPath = IndexPath(row: index, section: 0)
-        guard let text = (tableView.cellForRow(at: indexPath) as? EditTableViewCell)?.textField.text else {
-            return nil
-        }
-        return text
-    }
+    private var passwordConfirm: String?
     
     private let cellCategory: [ProfileContentCategory] = [.password, .passwordConfirm]
     override func viewDidLoad() {
@@ -110,10 +78,12 @@ class PasswordChangeViewController: UIViewController {
         button.setupButtonModelPlayBand()
     }
     private func setupTableView() {
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.lv_registerCellWithNib(identifier: String(describing: EditTableViewCell.self), bundle: nil)
-        tableView.lv_registerCellWithNib(identifier: String(describing: EditSectionHeaderTableViewCell.self), bundle: nil)
+        tableView.lv_registerCellWithNib(
+            identifier: String(describing: EditSectionHeaderTableViewCell.self), bundle: nil)
     }
 
 }
@@ -121,7 +91,9 @@ class PasswordChangeViewController: UIViewController {
 extension PasswordChangeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableCell(withIdentifier: String(describing: EditSectionHeaderTableViewCell.self)) as? EditSectionHeaderTableViewCell else {
+        guard let header = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: EditSectionHeaderTableViewCell.self)
+            ) as? EditSectionHeaderTableViewCell else {
             return UIView()
         }
         header.setupCell(title: TitleName.title.rawValue)
@@ -134,6 +106,26 @@ extension PasswordChangeViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return cellCategory[indexPath.row].cellForIndexPathInEdit(indexPath, tableView: tableView)
+        return cellCategory[indexPath.row].cellForIndexPathInEdit(
+            indexPath, tableView: tableView, textFieldDelegate: self)
+    }
+}
+
+extension PasswordChangeViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        switch textField.placeholder {
+        case ProfileContentCategory.password.rawValue:
+            
+            self.password = textField.text
+        case ProfileContentCategory.passwordConfirm.rawValue:
+            
+            self.passwordConfirm = textField.text
+            
+        default:
+            
+            return
+        }
     }
 }

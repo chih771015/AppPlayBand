@@ -26,6 +26,8 @@ class SearchStoreViewController: UIViewController {
     }
     
     @IBOutlet weak var backgroundColorView: UIView!
+    
+    private let noDataView = NoDataView()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,11 +35,6 @@ class SearchStoreViewController: UIViewController {
         getStoreData()
     }
     private func getStoreData() {
-        
-        if FirebaseManger.shared.storeDatas.count != 0 {
-            self.storeDatas = FirebaseManger.shared.storeDatas
-            return
-        }
         
         FirebaseManger.shared.getStoreInfo { [weak self] result in
             
@@ -48,11 +45,9 @@ class SearchStoreViewController: UIViewController {
                 
             case .failure(let error):
                 
-                UIAlertController.alertMessageAnimation(
-                    title: FirebaseEnum.fail.rawValue,
-                    message: error.localizedDescription,
-                    viewController: self,
-                    completionHanderInDismiss: nil)
+                self?.noDataView.setupView(at: self?.tableView)
+                self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
+             
             }
         }
     }

@@ -29,8 +29,8 @@ class EditTableViewCell: UITableViewCell {
         textField.placeholder = placeholder
         self.textField.text = text
     }
-    func setupEditPasswordCell(placeholder: String) {
-        
+    func setupEditPasswordCell(placeholder: String, textFieldDelgate: UITextFieldDelegate) {
+        textField.delegate = textFieldDelgate
         self.titleLabel.text = placeholder
         textField.placeholder = placeholder
         textField.isSecureTextEntry = true

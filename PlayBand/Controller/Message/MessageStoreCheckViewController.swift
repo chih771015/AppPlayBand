@@ -29,18 +29,19 @@ class MessageStoreCheckViewController: UIViewController {
         FirebaseManger.shared.refuseBooking(
         pathID: bookingData.pathID, storeName:
         bookingData.store, userUID: bookingData.userUID) { (result) in
+            
             switch result {
+                
             case .success(let message):
                 
-                UIAlertController.alertMessageAnimation(
-                    title: message, message: nil, viewController: self,
-                    completionHanderInDismiss: { [weak self] in
-                        self?.dismiss(animated: true, completion: nil)
+                self.addSucessAlertMessage(title: message, message: nil, completionHanderInDismiss: { [weak self] in
+                    
+                    self?.dismiss(animated: true, completion: nil)
                 })
+                
             case .failure(let error):
-                UIAlertController.alertMessageAnimation(
-                    title: FirebaseEnum.fail.rawValue, message: error.localizedDescription,
-                    viewController: self, completionHanderInDismiss: nil)
+                
+                self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
             }
         }
     }
@@ -53,16 +54,16 @@ class MessageStoreCheckViewController: UIViewController {
         userUID: bookingData.userUID) { (result) in
             switch result {
             case .success(let message):
-                UIAlertController.alertMessageAnimation(
-                    title: message, message: nil, viewController: self,
-                    completionHanderInDismiss: { [weak self] in
+                
+                self.addSucessAlertMessage(title: message, message: nil, completionHanderInDismiss: { [weak self] in
+                    
                     self?.dismiss(animated: true, completion: nil)
                 })
                 
             case.failure(let error):
-                UIAlertController.alertMessageAnimation(
-                    title: FirebaseEnum.fail.rawValue, message: error.localizedDescription,
-                    viewController: self, completionHanderInDismiss: nil)
+                
+                self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
+
             }
         }
     }
