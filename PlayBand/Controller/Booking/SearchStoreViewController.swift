@@ -11,6 +11,7 @@ import UIKit
 class SearchStoreViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView! {
+        
         didSet {
 
             tableViewSetup()
@@ -28,26 +29,41 @@ class SearchStoreViewController: UIViewController {
     @IBOutlet weak var backgroundColorView: UIView!
     
     private let noDataView = NoDataView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        getStoreData()
+        tableView.beginHeaderRefreshing()
     }
     private func getStoreData() {
         
-        FirebaseManger.shared.getStoreInfo { [weak self] result in
+        self.storeDatas = []
+        
+        PBProgressHUD.addLoadingView(animated: true)
+        
+        DispatchQueue.global().async {
             
-            switch result {
-            case .success(let data):
+            FirebaseManger.shared.getStoreInfo { [weak self] result in
                 
-                self?.storeDatas = data
-                
-            case .failure(let error):
-                
-                self?.noDataView.setupView(at: self?.tableView)
-                self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
-             
+                DispatchQueue.main.async {
+                    
+                    PBProgressHUD.dismissLoadingView(animated: true)
+                    
+                    self?.tableView.endHeaderRefreshing()
+                    
+                    switch result {
+                        
+                    case .success(let data):
+                        
+                        self?.storeDatas = data
+                        
+                    case .failure(let error):
+                        
+                        self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue,
+                                                   message: error.localizedDescription, completionHanderInDismiss: nil)
+                    }
+                }
             }
         }
     }
@@ -59,15 +75,19 @@ class SearchStoreViewController: UIViewController {
         tableView.lv_registerCellWithNib(
             identifier: String(describing: SearchStoreTableViewCell.self),
             bundle: nil)
+        
+        tableView.addRefreshHeader { [weak self] in
+            
+            self?.getStoreData()
+        }
     }
-    
 }
 
 extension SearchStoreViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return storeDatas.count * 3
+        return storeDatas.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,12 +100,13 @@ extension SearchStoreViewController: UITableViewDataSource, UITableViewDelegate 
                 
         }
         var price = ""
-        for room in storeDatas[0].rooms {
+        let storeData = storeDatas[indexPath.row]
+        for room in storeData.rooms {
             
             price += "$\(room.price)   "
         }
-        cell.setupCell(title: storeDatas[0].name, imageURL: storeDatas[0].photourl,
-                       city: storeDatas[0].city, price: price)
+        cell.setupCell(title: storeData.name, imageURL: storeData.photourl,
+                       city: storeData.city, price: price)
         return cell
     }
 
@@ -94,7 +115,8 @@ extension SearchStoreViewController: UITableViewDataSource, UITableViewDelegate 
         guard let nextViewController = self.storyboard?.instantiateViewController(
             withIdentifier: String(describing: StoreDetailViewController.self)
         ) as? StoreDetailViewController else {return}
-        nextViewController.storeData = self.storeDatas[0]
+        nextViewController.storeData = self.storeDatas[indexPath.row]
         navigationController?.pushViewController(nextViewController, animated: true)
     }
+    
 }

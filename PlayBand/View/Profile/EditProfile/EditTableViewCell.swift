@@ -24,15 +24,17 @@ class EditTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func setupEditCell(placeholder: String, text: String?) {
+    func setupEditCell(placeholder: String, text: String?, textFieldDelgate: UITextFieldDelegate) {
+        textField.delegate = textFieldDelgate
         self.titleLabel.text = placeholder
         textField.placeholder = placeholder
         self.textField.text = text
     }
-    func setupEditPasswordCell(placeholder: String, textFieldDelgate: UITextFieldDelegate) {
+    func setupEditPasswordCell(placeholder: String, textFieldDelgate: UITextFieldDelegate, text: String?) {
         textField.delegate = textFieldDelgate
         self.titleLabel.text = placeholder
         textField.placeholder = placeholder
+        self.textField.text = text
         textField.isSecureTextEntry = true
     }
     func setupEditPickerCell(placehoder: String) {

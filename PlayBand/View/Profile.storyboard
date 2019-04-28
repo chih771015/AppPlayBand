@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Profile-->
+        <!--Profile View Controller-->
         <scene sceneID="8XM-2v-uWj">
             <objects>
                 <viewController id="ozj-Gu-UGt" customClass="ProfileViewController" customModule="PlayBand" customModuleProvider="target" sceneMemberID="viewController">
@@ -32,14 +32,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
                                 <color key="backgroundColor" red="0.50217372660000004" green="0.81188531090000005" blue="0.67815955029999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Och-Hg-tx3">
-                                <rect key="frame" x="170" y="174" width="35" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名字" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Och-Hg-tx3">
+                                <rect key="frame" x="16" y="174" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="BTL-Rs-yJP" customClass="ProfileUserPictureImageView" customModule="PlayBand" customModuleProvider="target">
                                 <rect key="frame" x="147.5" y="80" width="80" height="80"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="BTL-Rs-yJP" secondAttribute="height" multiplier="1:1" id="znS-Cf-MTK"/>
                                 </constraints>
@@ -127,14 +128,16 @@
                             <constraint firstItem="FbB-nI-fA6" firstAttribute="width" secondItem="BTL-Rs-yJP" secondAttribute="width" multiplier="6:20" id="aK6-3a-8jG"/>
                             <constraint firstItem="gkd-fK-U5Z" firstAttribute="leading" secondItem="EVh-R3-oSo" secondAttribute="leading" id="aa8-5v-0xi"/>
                             <constraint firstItem="C4s-sF-wRV" firstAttribute="width" secondItem="BTL-Rs-yJP" secondAttribute="width" multiplier="49:40" id="cSu-Yg-ghJ"/>
+                            <constraint firstItem="EVh-R3-oSo" firstAttribute="trailing" secondItem="Och-Hg-tx3" secondAttribute="trailing" constant="16" id="cur-Es-tKG"/>
                             <constraint firstItem="EVh-R3-oSo" firstAttribute="trailing" secondItem="gkd-fK-U5Z" secondAttribute="trailing" id="dd3-4z-7Fa"/>
                             <constraint firstItem="BTL-Rs-yJP" firstAttribute="width" secondItem="8CS-Wq-sMb" secondAttribute="width" multiplier="80:375" id="e23-l2-LTN"/>
                             <constraint firstItem="gkd-fK-U5Z" firstAttribute="top" secondItem="5xz-BN-TGK" secondAttribute="bottom" id="oXR-Ar-Zjg"/>
+                            <constraint firstItem="Och-Hg-tx3" firstAttribute="leading" secondItem="EVh-R3-oSo" secondAttribute="leading" constant="16" id="r5P-N7-nBp"/>
                             <constraint firstItem="BTL-Rs-yJP" firstAttribute="top" secondItem="EVh-R3-oSo" secondAttribute="top" constant="16" id="wdh-FS-K6p"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EVh-R3-oSo"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="xTb-a4-uDC">
+                    <navigationItem key="navigationItem" id="xTb-a4-uDC">
                         <barButtonItem key="rightBarButtonItem" id="iXG-Mz-zcM">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lQs-UU-rbJ">
                                 <rect key="frame" x="281" y="10" width="78" height="24"/>
@@ -335,7 +338,7 @@
         <image name="settings" width="16" height="16"/>
         <image name="user" width="24" height="24"/>
         <namedColor name="endColor">
-            <color red="0.58039215686274515" green="0.8901960784313725" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.039215686274509803" green="0.83529411764705885" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

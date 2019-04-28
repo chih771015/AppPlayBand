@@ -22,7 +22,8 @@ class ProfileViewController: UIViewController {
     
     @IBAction func presentPhotoVC() {
 
-        let nextViewController = PhotoChoiceViewController(title: "上傳圖片", message: "請選擇圖片", preferredStyle: .actionSheet)
+        let nextViewController = PhotoChoiceViewController(
+            title: "上傳圖片", message: "請選擇圖片", preferredStyle: .actionSheet)
         nextViewController.presentVC = self
         present(nextViewController, animated: true, completion: nil)
 
@@ -35,48 +36,70 @@ class ProfileViewController: UIViewController {
     var user: UserData? {
         
         didSet {
+    
             tableView.reloadData()
+            self.nameLabel.text = user?.name
             guard let url = user?.photoURL else {return}
             userImage.lv_setImageWithURL(url: url)
         }
     }
-    private let datas: [ProfileContentCategory] = [.name, .band, .phone, .email, .facebook]
+    private let datas: [ProfileContentCategory] = [.uid, .band, .phone, .email, .facebook]
 
     private var gradientLayer: CAGradientLayer?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.view.layoutIfNeeded()
         setupNavigationBar()
         setupColorView()
+        setupUserData()
+    }
+    
+    private func setupUserData() {
+        
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(getUserData(notifciation:)),
+            name: NSNotification.Name(NotificationCenterName.userData.rawValue),
+            object: nil)
+        if FirebaseManger.shared.userData != nil {
+            
+            self.user = FirebaseManger.shared.userData
+        } else if FirebaseManger.shared.user().currentUser != nil {
+            
+            PBProgressHUD.addLoadingView(animated: true)
+        }
+    }
+    
+    @objc func getUserData(notifciation: NSNotification) {
+        
+        if notifciation.name == NSNotification.Name(NotificationCenterName.userData.rawValue) {
+            
+            guard let userData = notifciation.object as? UserData else {return}
+            self.user = userData
+            
+            PBProgressHUD.dismissLoadingView(animated: true)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.user = FirebaseManger.shared.userData
-        
-        let color = UIColor.white
-//
-////        self.navigationController?.navigationBar.barTintColor = color
-//        UINavigationBar.appearance().tintColor = color
-//        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
-//       // UINavigationBar.appearance().titleTextAttributes = color
+       
+        guard let color = UIColor.playBandColorEnd else {return}
         
         self.navigationController?.navigationBar.tintColor = color
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
-        self.navigationController?.navigationBar.prepareForInterfaceBuilder()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let color = UIColor.white
-//
-//        self.navigationController?.navigationBar.barTintColor = color
-        self.navigationController?.navigationBar.tintColor = color
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
-//        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
+//        let color = UIColor.white
+////
+////        self.navigationController?.navigationBar.barTintColor = color
+//        self.navigationController?.navigationBar.tintColor = color
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
+////        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
 
         setupLayer()
     }
@@ -119,6 +142,7 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if user != nil {
             
             return datas.count

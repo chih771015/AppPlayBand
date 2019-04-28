@@ -7,51 +7,6 @@
 //
 
 import UIKit
-//
-//class PhotoViewController: UIViewController {
-//
-//    @IBAction func dismissVC() {
-//
-//        dismiss(animated: true, completion: nil)
-//    }
-//
-//    @IBAction func chancePhoto() {
-//
-//        let imagePickVC = UIImagePickerController()
-//        imagePickVC.sourceType = .photoLibrary
-//        imagePickVC.delegate = self
-//        present(imagePickVC, animated: true, completion: nil)
-//    }
-//
-//    @IBAction func useCamera() {
-//
-//        let imagePickVC = UIImagePickerController()
-//        imagePickVC.sourceType = .camera
-//        imagePickVC.delegate = self
-//   //     imagePickVC.allowsEditing = true
-//        present(imagePickVC, animated: true, completion: nil)
-//    }
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        // Do any additional setup after loading the view.
-//    }
-//
-//}
-//
-//extension PhotoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-//
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//
-//        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-//
-//            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-//
-//            dismiss(animated: true, completion: nil)
-//        }
-//    }
-//}
 
 class PhotoChoiceViewController: UIAlertController {
     
@@ -62,11 +17,7 @@ class PhotoChoiceViewController: UIAlertController {
         super.viewDidLoad()
         setupAction()
     }
-    
-    deinit {
-        print("dead")
-    }
-    
+
     private func setupAction() {
         
         let imagePickerController = UIImagePickerController()

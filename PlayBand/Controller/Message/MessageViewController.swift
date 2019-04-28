@@ -59,32 +59,50 @@ class MessageViewController: UIViewController {
         view.layoutIfNeeded()
         
         // Do any additional setup after loading the view.
+        setupData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
-        setupData()
     }
     
     private func setupData() {
         
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(getBookingData(notification:)),
+            name: NSNotification.Name(NotificationCenterName.bookingData.rawValue),
+            object: nil)
+        fetchData()
+    }
+    
+    private func fetchData() {
+        
+        PBProgressHUD.addLoadingView(animated: true)
         let status = firebaseManger.userStatus
         
         if status == UsersKey.Status.user.rawValue {
             
             firebaseManger.getUserBookingData()
-            self.userBookingData = firebaseManger.userBookingData
-        }
-        if status == UsersKey.Status.manger.rawValue {
+        } else if status == UsersKey.Status.manger.rawValue {
             
             firebaseManger.getMangerBookingData()
-            self.userBookingData = firebaseManger.mangerStoreData
+        } else {
+            
+            PBProgressHUD.dismissLoadingView(animated: true)
         }
+     
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard let childVC = segue.destination as? MessageOrderViewController else {return}
+        guard let childVC = segue.destination as? MessageOrderViewController else { return }
+        
+        childVC.setupRefreshHandler { [weak self] in
+            
+            self?.userBookingData = []
+            self?.fetchData()
+        }
         
         let identifier = segue.identifier
         
@@ -111,6 +129,18 @@ class MessageViewController: UIViewController {
         let datas = userBookingData.filter({$0.status == status.rawValue})
         
         return datas
+    }
+    
+    @objc func getBookingData(notification: NSNotification) {
+        
+        PBProgressHUD.dismissLoadingView(animated: true)
+        
+        if notification.name == NSNotification.Name(NotificationCenterName.bookingData.rawValue) {
+            
+            guard let bookingDatas = notification.object as? [UserBookingData] else {return}
+            self.userBookingData = bookingDatas
+        }
+        
     }
 }
 

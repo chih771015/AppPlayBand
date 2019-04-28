@@ -11,6 +11,7 @@ import UIKit
 extension UIButton {
     
     func setupButtonModelPlayBand() {
+        
         self.layoutIfNeeded()
         let gradientLayer = CALayer.getPBGradientLayer(bounds: self.bounds)
         self.layer.insertSublayer(gradientLayer, below: self.imageView?.layer)

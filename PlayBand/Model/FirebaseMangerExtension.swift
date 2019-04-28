@@ -32,25 +32,25 @@ extension FirebaseManger {
     
     func getStoreInfo(completionHandler: ((Result<[StoreData]>) -> Void)?) {
         
-        if self.storeDatas.count != 0 {
-            
-            completionHandler?(.success(self.storeDatas))
-            return
-        }
-        
         dataBase().collection(FirebaseEnum.store.rawValue).getDocuments { (querySnapshot, error) in
             
             if let error = error {
                 
                 completionHandler?(.failure(error))
             } else {
+                
                 guard let documents = querySnapshot?.documents else {
+                    
+                    completionHandler?(.failure(FirebaseDataError.document))
                     return
                 }
                 var storeDatas: [StoreData] = []
                 for document in documents {
                     
-                    guard let storeData = StoreData(dictionary: document.data()) else { return }
+                    guard let storeData = StoreData(dictionary: document.data()) else {
+                        completionHandler?(.failure(FirebaseDataError.decodeFail))
+                        return
+                    }
                     storeDatas.append(storeData)
                 }
                 self.storeDatas = storeDatas

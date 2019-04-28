@@ -27,10 +27,18 @@ enum FirebaseDataError: Error {
     
     var errorMessage: String {
         
-        return "解碼錯誤"
+        switch self {
+        case .document:
+            
+            return "document錯誤"
+        case .decodeFail:
+            
+            return "解碼錯誤"
+        }
     }
     
     case decodeFail
+    case document
 }
 
 enum BookingStatus: String {
@@ -85,4 +93,11 @@ enum UsersKey: String {
         case user = "一般用戶"
         case manger = "店家"
     }
+}
+
+enum NotificationCenterName: String {
+    
+    case userData
+    case bookingData
+    
 }

@@ -47,7 +47,6 @@ extension UIView {
     func addGradientColor() {
         
         let gradientLayer = CAGradientLayer()
-        //        colorView.layoutIfNeeded()
         gradientLayer.frame = self.bounds
         let startColor = UIColor.playBandColorGreen
         let endColor = UIColor.playBandColorLightGreen

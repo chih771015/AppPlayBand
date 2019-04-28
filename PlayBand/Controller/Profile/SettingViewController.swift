@@ -17,20 +17,12 @@ class SettingViewController: UIViewController {
         }
     }
 
-    private let datas: [SettingContentCategory] = [.notification, .passwordChange, .logout]
+    private let datas: [SettingContentCategory] = [.passwordChange, .logout]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBar()
+     //   setupNavigationBar()
         // Do any additional setup after loading the view.
-    }
-    
-    private func setupNavigationBar() {
-        
-        let color = UIColor.blue        
-        self.navigationController?.navigationBar.barTintColor = color
-        self.navigationController?.navigationBar.tintColor = color
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
     }
     
     private func setupTableView() {

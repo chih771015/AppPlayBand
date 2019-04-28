@@ -16,9 +16,12 @@ class MessageOrderViewController: UIViewController {
         
         didSet {
             
+            tableView.endHeaderRefreshing()
             tableView.reloadData()
         }
     }
+    
+    private var refreshHandler: () -> Void = {}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,10 +45,18 @@ class MessageOrderViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.lv_registerCellWithNib(identifier: String(describing: MessageOrderTableViewCell.self), bundle: nil)
+        
+        tableView.addRefreshHeader { [weak self] in
+            self?.refreshHandler()
+        }
+    }
+    func setupRefreshHandler(refreshHandler: @escaping () -> Void) {
+        
+        self.refreshHandler = refreshHandler
     }
     
     func setupBookingData(data: [UserBookingData]) {
-        
+    
         self.bookingData = data
     }
 }

@@ -11,6 +11,7 @@ import Foundation
 class DataTransform {
     
     class func getUserBookingDictionary(
+        
         bookingData: BookingTime,
         documentID: String,
         uid: String,
@@ -50,5 +51,22 @@ class DataTransform {
         }
         let title = "\(year)-\(month)-\(day)\n\(hoursTitle)"
         return title
+    }
+    
+    class func userData(userData: UserData) -> [String: Any] {
+        
+        if userData.status != nil {
+            let dictionary = [ UsersKey.name.rawValue: userData.name, UsersKey.band.rawValue: userData.band,
+                UsersKey.email.rawValue: userData.email, UsersKey.phone.rawValue: userData.phone,
+                UsersKey.facebook.rawValue: userData.facebook,
+                UsersKey.status.rawValue: userData.status]
+            return dictionary
+        } else {
+            
+            let dictionary = [ UsersKey.name.rawValue: userData.name, UsersKey.band.rawValue: userData.band,
+                               UsersKey.email.rawValue: userData.email, UsersKey.phone.rawValue: userData.phone,
+                               UsersKey.facebook.rawValue: userData.facebook]
+            return dictionary
+        }
     }
 }

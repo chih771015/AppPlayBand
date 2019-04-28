@@ -17,5 +17,7 @@ target 'PlayBand' do
     pod 'Firebase/Functions'
     pod 'IQKeyboardManagerSwift'
     pod 'Kingfisher'
+    pod 'MJRefresh'
+    pod 'JGProgressHUD'
 end
 

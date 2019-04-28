@@ -22,23 +22,38 @@ class FirebaseManger {
             
             if self.userData?.status == UsersKey.Status.user.rawValue {
                 
-                getUserBookingData()
                 self.userStatus = UsersKey.Status.user.rawValue
             }
             if self.userData?.status == UsersKey.Status.manger.rawValue {
                 
-                getMangerBookingData()
                 self.userStatus = UsersKey.Status.manger.rawValue
             }
+            
+            NotificationCenter.default.post(
+                name: NSNotification.Name(rawValue: NotificationCenterName.userData.rawValue),
+                object: self.userData)
         }
     }
     
     var storeDatas: [StoreData] = []
-    var userBookingData: [UserBookingData] = []
-    var mangerStoreData: [UserBookingData] = []
+    var userBookingData: [UserBookingData] = [] {
+        didSet {
+            postBookingData(data: userBookingData)
+        }
+    }
+    var mangerStoreData: [UserBookingData] = [] {
+        didSet {
+            postBookingData(data: mangerStoreData)
+        }
+    }
     var userStatus: String = String()
-    
     private init () {}
+    private func postBookingData(data: [UserBookingData]) {
+        
+        NotificationCenter.default.post(
+            name: NSNotification.Name(rawValue: NotificationCenterName.bookingData.rawValue),
+            object: data)
+    }
     
     func signUpAccount(email: String, password: String, completionHandler: @escaping AuthResult) {
         
@@ -88,10 +103,9 @@ class FirebaseManger {
     func editProfileInfo(userData: UserData, completionHandler: @escaping (Error?) -> Void) {
         
         guard let uid = user().currentUser?.uid else {return}
-        dataBase().collection(FirebaseEnum.user.rawValue).document(uid).setData([
-        UsersKey.name.rawValue: userData.name, UsersKey.band.rawValue: userData.band,
-        UsersKey.email.rawValue: userData.email, UsersKey.phone.rawValue: userData.phone,
-        UsersKey.facebook.rawValue: userData.facebook], merge: true) { error in
+        
+        let dictionary = DataTransform.userData(userData: userData)
+        dataBase().collection(FirebaseEnum.user.rawValue).document(uid).setData(dictionary, merge: true) { error in
             if error == nil {
                 self.getUserInfo()
             }
@@ -191,12 +205,16 @@ class FirebaseManger {
         userBookingDocument.getDocuments { (querySnapshot, _) in
             
             guard let documents = querySnapshot else { return }
+            if documents.documents.isEmpty {
+                self.userBookingData = []
+            }
             
             for document in documents.documents {
                 
                 guard let list = UserListData(dictionary: document.data()) else {
-                    
-                    return }
+                    self.userBookingData = []
+                    return
+                }
                 self.getBookingMessage(listID: list.documentID, storeName: list.store, uid: uid)
             }
         }
@@ -276,14 +294,18 @@ class FirebaseManger {
         userBookingDocument.getDocuments { (querySnapshot, _) in
             
             guard let documents = querySnapshot else { return }
-            
+            if documents.documents.isEmpty {
+                self.mangerStoreData = []
+            }
             for document in documents.documents {
                 
                 guard let list = UserListData(dictionary: document.data()) else {
-                    
-                    return }
+                    self.mangerStoreData = []
+                    return
+                }
                 self.getMangerMessage(listID: list.documentID, storeName: list.store, uid: uid)
             }
+            
         }
     }
     
@@ -364,7 +386,6 @@ class FirebaseManger {
                     completionHandler(.failure(error))
                     return
                 } else {
-                    
                     self.updataBookingColloection(
                         storeName: storeName, pathID: pathID, userUID: userUID,
                         status: .refuse, completionHandler: completionHandler)

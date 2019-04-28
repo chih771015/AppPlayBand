@@ -54,7 +54,8 @@ enum SettingContentCategory: String {
 
         case .passwordChange:
             
-            let nextVC = UIStoryboard.profile.instantiateViewController(withIdentifier: String(describing: PasswordChangeViewController.self))
+            let nextVC = UIStoryboard.profile.instantiateViewController(
+                withIdentifier: String(describing: PasswordChangeViewController.self))
             viewController.navigationController?.pushViewController(nextVC, animated: true)
 
         case .logout:
@@ -77,7 +78,10 @@ enum SettingContentCategory: String {
                     })
                 case .failure(let error):
                     
-                    viewController?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
+                    viewController?.addErrorAlertMessage(
+                        title: FirebaseEnum.fail.rawValue,
+                        message: error.localizedDescription,
+                        completionHanderInDismiss: nil)
                 }
                 
             })

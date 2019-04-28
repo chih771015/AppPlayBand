@@ -77,20 +77,29 @@ class CalendarViewController: UIViewController {
         getFirebaseBookingData()
         calendarTableView.rowHeight = 60
         button.setupButtonModelPlayBand()
+        calendarTableView.isHidden = true
     }
 
     private func getFirebaseBookingData() {
         
         guard let data = storeData else { return }
         
+        PBProgressHUD.addLoadingView(animated: true)
+        
         FirebaseManger.shared.getStoreBookingInfo(name: data.name) { [weak self] (result) in
+            
+            PBProgressHUD.dismissLoadingView(animated: true)
             
             switch result {
                 
             case .success(let data):
+                self?.calendarTableView.isHidden = false
                 self?.firebaseBookingData = data
+                
             case .failure(let error):
-                print(error)
+                
+                self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue,
+                                           message: error.localizedDescription, completionHanderInDismiss: nil)
             }
         }
     }
@@ -258,32 +267,5 @@ extension CalendarViewController {
             
             bookingTimeDatas.append(BookingTime(date: bookingDate, hour: [hour]))
         }
-//        var count = 0
-//        var counthour = 0
-//        for booking in bookingTimeDatas {
-//
-//            if booking.date == bookingDate {
-//
-//                for hour in booking.hour {
-//
-//                    if hour == sender.tag {
-//
-//                        if bookingTimeDatas[count].hour.count == 1 {
-//
-//                            bookingTimeDatas.remove(at: count)
-//                            return
-//                        }
-//                        bookingTimeDatas[count].hour.remove(at: counthour)
-//
-//                        return
-//                    }
-//                    counthour += 1
-//                }
-//                bookingTimeDatas[count].hour.append(sender.tag)
-//                return
-//            }
-//            count += 1
-//        }
-//        bookingTimeDatas.append(BookingTime(date: bookingDate, hour: [sender.tag]))
     }
 }

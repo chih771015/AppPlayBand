@@ -35,7 +35,7 @@ struct UserData {
         let photoURL = dictionary[UsersKey.photoURL.rawValue] as? String
         self.photoURL = photoURL
     }
-    init(name: String, phone: String, band: String, email: String, facebook: String) {
+    init(name: String, phone: String, band: String, email: String, facebook: String, status: String? = nil) {
         
         self.name = name
         self.phone = phone
@@ -43,7 +43,7 @@ struct UserData {
         self.email = email
         self.facebook = facebook
         self.photoURL = nil
-        self.status = nil
+        self.status = status
     }
     
 }

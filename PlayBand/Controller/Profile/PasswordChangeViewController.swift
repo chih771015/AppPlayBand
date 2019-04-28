@@ -28,7 +28,11 @@ class PasswordChangeViewController: UIViewController {
         }
         
         if password == confirm {
+            PBProgressHUD.addLoadingView(animated: true)
+            
             firebase.changePassword(password: password) {[weak self] (result) in
+                
+                PBProgressHUD.dismissLoadingView(animated: true)
                 
                 switch result {
 

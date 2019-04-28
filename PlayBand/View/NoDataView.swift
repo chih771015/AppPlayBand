@@ -14,10 +14,9 @@ class NoDataView: UIView {
     
     func setupView(at someView: UIView?) {
         
-        self.removeFromSuperview()
         guard let view = someView else {return}
-        view.addSubview(self)
-        
+        self.backgroundColor = .blue
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
@@ -25,20 +24,12 @@ class NoDataView: UIView {
         
         titleLabel.text = "沒有資料"
         self.addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 80).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 80).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 80).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: 80).isActive = true
         
     }
-    
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
 
 }

@@ -35,6 +35,8 @@ enum ProfileContentCategory: String {
     
     case bookingTime = "預定時間"
     
+    case uid = "UID"
+    
     func cellForIndexPathInMain(_ indexPath: IndexPath, tableView: UITableView,
                                 userData: UserData?) -> UITableViewCell {
 
@@ -69,7 +71,9 @@ enum ProfileContentCategory: String {
         case .facebook:
 
             cell.settingProfilePage(title: rawValue, data: user.facebook)
-            
+        case .uid:
+            guard let uid = FirebaseManger.shared.user().currentUser?.uid else {return cell}
+            cell.settingProfilePage(title: rawValue, data: uid)
         default:
             cell.settingProfilePage(title: rawValue, data: "")
         }
@@ -87,26 +91,29 @@ enum ProfileContentCategory: String {
         let userData = FirebaseManger.shared.userData
         
         switch self {
-
+        
+        case .account:
+            
+            cell.setupEditCell(placeholder: rawValue, text: "", textFieldDelgate: textFieldDelegate)
         case .name:
 
-            cell.setupEditCell(placeholder: rawValue, text: userData?.name)
+            cell.setupEditCell(placeholder: rawValue, text: userData?.name, textFieldDelgate: textFieldDelegate)
 
         case .email:
 
-            cell.setupEditCell(placeholder: rawValue, text: userData?.email)
+            cell.setupEditCell(placeholder: rawValue, text: userData?.email, textFieldDelgate: textFieldDelegate)
 
         case .band:
 
-            cell.setupEditCell(placeholder: rawValue, text: userData?.band)
+            cell.setupEditCell(placeholder: rawValue, text: userData?.band, textFieldDelgate: textFieldDelegate)
 
         case .phone:
 
-            cell.setupEditCell(placeholder: rawValue, text: userData?.phone)
+            cell.setupEditCell(placeholder: rawValue, text: userData?.phone, textFieldDelgate: textFieldDelegate)
 
         case .facebook:
 
-            cell.setupEditCell(placeholder: rawValue, text: userData?.facebook)
+            cell.setupEditCell(placeholder: rawValue, text: userData?.facebook, textFieldDelgate: textFieldDelegate)
             
         case .userStatus:
             
@@ -114,48 +121,66 @@ enum ProfileContentCategory: String {
             
         case .password:
             
-            cell.setupEditPasswordCell(placeholder: rawValue, textFieldDelgate: textFieldDelegate)
+            cell.setupEditPasswordCell(placeholder: rawValue, textFieldDelgate: textFieldDelegate, text: nil)
         case .passwordConfirm:
             
-            cell.setupEditPasswordCell(placeholder: rawValue, textFieldDelgate: textFieldDelegate)
+            cell.setupEditPasswordCell(placeholder: rawValue, textFieldDelgate: textFieldDelegate, text: nil)
         default:
-            cell.setupEditCell(placeholder: rawValue, text: "??")
+            cell.setupEditCell(placeholder: rawValue, text: "??", textFieldDelgate: textFieldDelegate)
         }
 
         return cell
 
     }
     
-    
-    
-    func cellForIndexPathInMessageConfirm(_ indexPath: IndexPath, tableView: UITableView, bookingData: UserBookingData?, storeData: StoreData?, delgate: MessageConfirmCellDelgate) -> UITableViewCell {
+    func cellForIndexPathInSignUp(_ indexPath: IndexPath, tableView: UITableView, textFieldDelegate: UITextFieldDelegate, text: String?) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: MessageConfirmPageTableViewCell.self),
-            for: indexPath) as? MessageConfirmPageTableViewCell else { return UITableViewCell()}
+            withIdentifier: String(describing: EditTableViewCell.self),
+            for: indexPath) as? EditTableViewCell else { return UITableViewCell()}
+        
+        let userData = FirebaseManger.shared.userData
         
         switch self {
+            
+        case .account:
+            
+            cell.setupEditCell(placeholder: rawValue, text: "", textFieldDelgate: textFieldDelegate)
         case .name:
-            cell.setupCellFirst(title: rawValue, description: bookingData?.userInfo.name, messageConfirmDelgate: delgate)
-        case .phone:
-            cell.setupCellDefault(title: rawValue, description: bookingData?.userInfo.phone)
+            
+            cell.setupEditCell(placeholder: rawValue, text: text, textFieldDelgate: textFieldDelegate)
+            
         case .email:
-            cell.setupCellDefault(title: rawValue, description: bookingData?.userInfo.email)
+            
+            cell.setupEditCell(placeholder: "信箱帳號", text: text, textFieldDelgate: textFieldDelegate)
+            
         case .band:
-            cell.setupCellDefault(title: rawValue, description: bookingData?.userInfo.band)
+            
+            cell.setupEditCell(placeholder: rawValue, text: text, textFieldDelgate: textFieldDelegate)
+            
+        case .phone:
+            
+            cell.setupEditCell(placeholder: rawValue, text: text, textFieldDelgate: textFieldDelegate)
+            
         case .facebook:
-            cell.setupCellDefault(title: rawValue, description: bookingData?.userInfo.band)
-        case .store:
-            cell.setupCellFirst(title: rawValue, description: storeData?.name, messageConfirmDelgate: delgate)
-        case .storePhone:
-            cell.setupCellDefault(title: rawValue, description: storeData?.phone)
-        case .bookingTime:
-            let title = DataTransform.dataToDate(bookingTime: bookingData?.bookingTime)
-            cell.setupCellDefault(title: rawValue, description: title)
+            
+            cell.setupEditCell(placeholder: rawValue, text: text, textFieldDelgate: textFieldDelegate)
+            
+        case .userStatus:
+            
+            cell.setupEditPickerCell(placehoder: rawValue)
+            
+        case .password:
+            
+            cell.setupEditPasswordCell(placeholder: rawValue, textFieldDelgate: textFieldDelegate, text: text)
+        case .passwordConfirm:
+            
+            cell.setupEditPasswordCell(placeholder: rawValue, textFieldDelgate: textFieldDelegate, text: text)
         default:
-            return cell
+            cell.setupEditCell(placeholder: rawValue, text: "??", textFieldDelgate: textFieldDelegate)
         }
         
         return cell
     }
+    
 }

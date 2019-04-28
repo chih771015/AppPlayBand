@@ -40,10 +40,12 @@ class EditProfileViewController: UIViewController {
             return
         }
         let userData = UserData(name: name, phone: phone, band: band, email: email, facebook: facebook)
+        
+        PBProgressHUD.addLoadingView(animated: true)
         FirebaseManger.shared.editProfileInfo(userData: userData) { [weak self] (error) in
-            
+            PBProgressHUD.dismissLoadingView(animated: true)
             if error == nil {
-                
+        
                 self?.addSucessAlertMessage(title: PageName.success.rawValue, message: nil, completionHanderInDismiss: { [weak self] in
                     
                     self?.navigationController?.popViewController(animated: true)
@@ -78,6 +80,7 @@ class EditProfileViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = color
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -106,7 +109,9 @@ extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        guard let header = tableView.dequeueReusableCell(withIdentifier: String(describing: EditSectionHeaderTableViewCell.self)) as? EditSectionHeaderTableViewCell else {
+        guard let header = tableView.dequeueReusableCell(
+            withIdentifier: String(
+                describing: EditSectionHeaderTableViewCell.self)) as? EditSectionHeaderTableViewCell else {
             return UIView()
         }
         header.setupCell(title: PageName.name.rawValue)

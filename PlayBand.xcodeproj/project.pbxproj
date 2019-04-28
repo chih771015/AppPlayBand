@@ -48,6 +48,8 @@
 		59530B17225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59530B16225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift */; };
 		59530B19225C80A0002F18AB /* ConfirmTableViewSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59530B18225C80A0002F18AB /* ConfirmTableViewSectionHeaderView.xib */; };
 		5959C806226DA1C300AA62AD /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5959C805226DA1C300AA62AD /* UIColor+Extension.swift */; };
+		596662082275D703006DE29F /* JGProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662072275D703006DE29F /* JGProgressHUD.swift */; };
+		5966620A2275DEE9006DE29F /* MJRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662092275DEE9006DE29F /* MJRefresh.swift */; };
 		597F044A225EDDD600BAAFEE /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597F0449225EDDD600BAAFEE /* SignIn.storyboard */; };
 		597F044D225EE79D00BAAFEE /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597F044C225EE79D00BAAFEE /* SignInViewController.swift */; };
 		597F044F225F210F00BAAFEE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597F044E225F210F00BAAFEE /* SignUpViewController.swift */; };
@@ -59,7 +61,6 @@
 		598B8CD62254B9530061F03B /* ProfileInformationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 598B8CD42254B9530061F03B /* ProfileInformationTableViewCell.xib */; };
 		598B8CD82254BFF80061F03B /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B8CD72254BFF80061F03B /* UITableView+Extension.swift */; };
 		598B8CDB2254C4610061F03B /* ProfileContentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B8CDA2254C4610061F03B /* ProfileContentCategory.swift */; };
-		59949295225A7D9C00726BF3 /* CalendarFrameWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59949294225A7D9C00726BF3 /* CalendarFrameWork.swift */; };
 		59949297225A7FCE00726BF3 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59949296225A7FCE00726BF3 /* CalendarViewController.swift */; };
 		5995BEFE2272D6610078C39A /* EditSectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995BEFC2272D6610078C39A /* EditSectionHeaderTableViewCell.swift */; };
 		5995BEFF2272D6610078C39A /* EditSectionHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5995BEFD2272D6610078C39A /* EditSectionHeaderTableViewCell.xib */; };
@@ -154,6 +155,8 @@
 		59530B16225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmTableViewSectionHeaderView.swift; sourceTree = "<group>"; };
 		59530B18225C80A0002F18AB /* ConfirmTableViewSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmTableViewSectionHeaderView.xib; sourceTree = "<group>"; };
 		5959C805226DA1C300AA62AD /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		596662072275D703006DE29F /* JGProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUD.swift; sourceTree = "<group>"; };
+		596662092275DEE9006DE29F /* MJRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJRefresh.swift; sourceTree = "<group>"; };
 		597F0449225EDDD600BAAFEE /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		597F044C225EE79D00BAAFEE /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		597F044E225F210F00BAAFEE /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -165,7 +168,6 @@
 		598B8CD42254B9530061F03B /* ProfileInformationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileInformationTableViewCell.xib; sourceTree = "<group>"; };
 		598B8CD72254BFF80061F03B /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		598B8CDA2254C4610061F03B /* ProfileContentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContentCategory.swift; sourceTree = "<group>"; };
-		59949294225A7D9C00726BF3 /* CalendarFrameWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFrameWork.swift; sourceTree = "<group>"; };
 		59949296225A7FCE00726BF3 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		5995BEFC2272D6610078C39A /* EditSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditSectionHeaderTableViewCell.swift; path = PlayBand/View/Profile/EditProfile/EditSectionHeaderTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		5995BEFD2272D6610078C39A /* EditSectionHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = EditSectionHeaderTableViewCell.xib; path = PlayBand/View/Profile/EditProfile/EditSectionHeaderTableViewCell.xib; sourceTree = SOURCE_ROOT; };
@@ -353,8 +355,9 @@
 		59949293225A7D6400726BF3 /* FrameWork */ = {
 			isa = PBXGroup;
 			children = (
-				59949294225A7D9C00726BF3 /* CalendarFrameWork.swift */,
 				593F6E0F2263C5810014219B /* IQKeyboardManager.swift */,
+				596662072275D703006DE29F /* JGProgressHUD.swift */,
+				596662092275DEE9006DE29F /* MJRefresh.swift */,
 			);
 			path = FrameWork;
 			sourceTree = "<group>";
@@ -709,9 +712,11 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/JKCalendar/JKCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/JKInfinitePageView/JKInfinitePageView.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -726,9 +731,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JKCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JKInfinitePageView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -807,12 +814,12 @@
 				598B8CD52254B9530061F03B /* ProfileInformationTableViewCell.swift in Sources */,
 				592FF2D82272271000872A17 /* MessageImageTableViewCell.swift in Sources */,
 				59F81F92225462FD00C04E32 /* UIStoryBoard+Extenstion.swift in Sources */,
+				596662082275D703006DE29F /* JGProgressHUD.swift in Sources */,
 				59530B0D225C79EB002F18AB /* ConfirmViewController.swift in Sources */,
 				5941D82D225359D500FDEEBA /* AppDelegate.swift in Sources */,
 				59ABB03E2259121100AE937A /* StoreInformationTableViewCell.swift in Sources */,
 				59530B10225C7B58002F18AB /* ConfirmTableViewCell.swift in Sources */,
 				59D717AD2265A8F3009772FC /* ResultEnum.swift in Sources */,
-				59949295225A7D9C00726BF3 /* CalendarFrameWork.swift in Sources */,
 				59F81F9F22549FCD00C04E32 /* ProfileViewController.swift in Sources */,
 				5933CBC02275A3A300E0C114 /* NoDataView.swift in Sources */,
 				59D717AB22658B6A009772FC /* StoreDataStruct.swift in Sources */,
@@ -830,6 +837,7 @@
 				59F81F9C22547C3A00C04E32 /* UIImage+Extension.swift in Sources */,
 				59FF33CF2270316800F8DCAA /* MessageOrderViewController.swift in Sources */,
 				5995BEFE2272D6610078C39A /* EditSectionHeaderTableViewCell.swift in Sources */,
+				5966620A2275DEE9006DE29F /* MJRefresh.swift in Sources */,
 				59BB3D642264AAE800E46BEE /* EditPageTableViewCell.swift in Sources */,
 				592950332269C4A600FD5DC5 /* MessageCategory.swift in Sources */,
 				59852EAE226F630E00D1D7EE /* CALayer+Extension.swift in Sources */,

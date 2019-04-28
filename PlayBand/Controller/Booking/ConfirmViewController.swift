@@ -31,10 +31,14 @@ class ConfirmViewController: UIViewController {
             message = messageTextField.text ?? Text.message.rawValue
         }
         
+        PBProgressHUD.addLoadingView(animated: true)
+        
         FirebaseManger.shared.bookingTimeEdit(
         storeName: storeName,
         bookingDatas: bookingTimeDatas,
         userMessage: message) { [weak self] (result) in
+            
+            PBProgressHUD.dismissLoadingView(animated: true)
             
             switch result {
                 
