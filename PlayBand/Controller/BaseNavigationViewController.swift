@@ -16,9 +16,9 @@ class BaseNavigationViewController: UINavigationController {
         // Do any additional setup after loading the view.
         guard let color = UIColor.playBandColorEnd else {return}
         let white = UIColor.white
-        self.navigationBar.barTintColor = color
-        self.navigationBar.tintColor = white
-        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: white]
+        self.navigationBar.barTintColor = white
+        self.navigationBar.tintColor = color
+        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
     }
 
     /*

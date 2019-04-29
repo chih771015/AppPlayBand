@@ -53,11 +53,12 @@ class MessageViewController: UIViewController {
     private var tobeConfirmVC: MessageOrderViewController?
     private var confirmVC: MessageOrderViewController?
     private var refuseVC: MessageOrderViewController?
+    private var messageStatus = UsersKey.Status.user
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.layoutIfNeeded()
-        
+        scrollView.layoutIfNeeded()
         // Do any additional setup after loading the view.
         setupData()
     }
@@ -84,9 +85,11 @@ class MessageViewController: UIViewController {
         if status == UsersKey.Status.user.rawValue {
             
             firebaseManger.getUserBookingData()
+            self.messageStatus = UsersKey.Status.user
         } else if status == UsersKey.Status.manger.rawValue {
             
             firebaseManger.getMangerBookingData()
+            self.messageStatus = UsersKey.Status.manger
         } else {
             
             PBProgressHUD.dismissLoadingView(animated: true)
@@ -104,6 +107,7 @@ class MessageViewController: UIViewController {
             self?.fetchData()
         }
         
+        childVC.loadViewIfNeeded()
         let identifier = segue.identifier
         
         if identifier == SegueName.confirm.rawValue {
@@ -120,9 +124,9 @@ class MessageViewController: UIViewController {
     
     private func setupChildDatas() {
         
-        tobeConfirmVC?.setupBookingData(data: filterData(status: .tobeConfirm))
-        confirmVC?.setupBookingData(data: filterData(status: .confirm))
-        refuseVC?.setupBookingData(data: filterData(status: .refuse))
+        tobeConfirmVC?.setupBookingData(data: filterData(status: .tobeConfirm), status: self.messageStatus)
+        confirmVC?.setupBookingData(data: filterData(status: .confirm), status: self.messageStatus)
+        refuseVC?.setupBookingData(data: filterData(status: .refuse), status: self.messageStatus)
     }
     
     private func filterData(status: FirebaseBookingKey.Status) -> [UserBookingData] {

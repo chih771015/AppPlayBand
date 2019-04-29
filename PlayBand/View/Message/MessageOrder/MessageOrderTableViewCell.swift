@@ -10,6 +10,12 @@ import UIKit
 
 class MessageOrderTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var rightImage: UIImageView! {
+        didSet {
+            
+            rightImage.tintColor = .white
+        }
+    }
     @IBOutlet weak var colorView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -44,8 +50,8 @@ class MessageOrderTableViewCell: UITableViewCell {
         setupLayer()
     }
     private func setupLayer() {
+  
         self.layoutIfNeeded()
-        
         colorView.layoutIfNeeded()
         caGradientLayer?.removeFromSuperlayer()
         let layer = CALayer.getPBGradientLayer(bounds: colorView.bounds)

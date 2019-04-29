@@ -14,11 +14,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ConfirmTableViewHeaderView" customModule="PlayBand" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="232"/>
-            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWO-Q0-Wvh">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="232"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="27540325_574597332884961_4955653517050363908_n" translatesAutoresizingMaskIntoConstraints="NO" id="gIe-PE-ZGQ">
@@ -28,7 +28,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="LineInStudio" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqy-UJ-Hoa">
-                    <rect key="frame" x="44" y="193" width="291" height="31"/>
+                    <rect key="frame" x="44" y="189" width="291" height="43"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                     <color key="textColor" name="endColor"/>
                     <nil key="highlightedColor"/>
@@ -41,11 +41,11 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FWO-Q0-Wvh" secondAttribute="trailing" id="CwD-MQ-4yq"/>
                 <constraint firstItem="gqy-UJ-Hoa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="44" id="DNY-Ah-Tch"/>
                 <constraint firstItem="FWO-Q0-Wvh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="I8h-BT-cNQ"/>
-                <constraint firstItem="gIe-PE-ZGQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="KjR-Ra-Jn6"/>
+                <constraint firstItem="gIe-PE-ZGQ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="KjR-Ra-Jn6"/>
                 <constraint firstItem="FWO-Q0-Wvh" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="LGl-x5-HHj"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gqy-UJ-Hoa" secondAttribute="trailing" constant="40" id="cSG-yd-RsF"/>
-                <constraint firstItem="gqy-UJ-Hoa" firstAttribute="top" secondItem="gIe-PE-ZGQ" secondAttribute="bottom" constant="22" id="fMZ-oJ-h5M"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="gqy-UJ-Hoa" secondAttribute="bottom" constant="8" id="oEQ-q2-wUp"/>
+                <constraint firstItem="gqy-UJ-Hoa" firstAttribute="top" secondItem="gIe-PE-ZGQ" secondAttribute="bottom" constant="18" id="fMZ-oJ-h5M"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="gqy-UJ-Hoa" secondAttribute="bottom" priority="750" constant="8" id="oEQ-q2-wUp"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gIe-PE-ZGQ" secondAttribute="trailing" id="oTj-cx-8p7"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

@@ -38,8 +38,8 @@ class MessageDetailTableViewCell: UITableViewCell {
     func setupCellHavePhoto(title: String, description: String, imageURL: String?) {
         
         setupCell(title: title, description: description)
+        photoImageView.isHidden = false
         guard let url = imageURL else { return }
         photoImageView.lv_setImageWithURL(url: url)
-        photoImageView.isHidden = false
     }
 }

@@ -22,13 +22,13 @@ class MessageOrderViewController: UIViewController {
     }
     
     private var refreshHandler: () -> Void = {}
+    private var status = UsersKey.Status.user
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.view.layoutIfNeeded()
         setupTableView()
-        tableView.layoutIfNeeded()
-        
         // Do any additional setup after loading the view.
     }
     
@@ -44,20 +44,24 @@ class MessageOrderViewController: UIViewController {
     
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.lv_registerCellWithNib(identifier: String(describing: MessageOrderTableViewCell.self), bundle: nil)
+        tableView.lv_registerCellWithNib(
+            identifier: String(describing: MessageOrderTableViewCell.self),
+            bundle: nil)
         
         tableView.addRefreshHeader { [weak self] in
             self?.refreshHandler()
         }
+        tableView.layoutIfNeeded()
     }
     func setupRefreshHandler(refreshHandler: @escaping () -> Void) {
         
         self.refreshHandler = refreshHandler
     }
     
-    func setupBookingData(data: [UserBookingData]) {
+    func setupBookingData(data: [UserBookingData], status: UsersKey.Status) {
     
         self.bookingData = data
+        self.status = status
     }
 }
 
@@ -85,7 +89,17 @@ extension MessageOrderViewController: UITableViewDataSource, UITableViewDelegate
         let hours = data.bookingTime.hoursCount()
         let status = data.status
         let url = data.userInfo.photoURL
-        cell.setupCell(title: title, date: date, hours: hours, status: status, url: url)
+        let storeName = data.store
+        let storeURL = FirebaseManger.shared.storeDatas.first(where: {$0.name == storeName})?.photourl
+        
+        switch self.status {
+            
+        case .user:
+
+            cell.setupCell(title: storeName, date: date, hours: hours, status: status, url: storeURL)
+        case .manger:
+            cell.setupCell(title: title, date: date, hours: hours, status: status, url: url)
+        }
         return cell
     }
     
@@ -96,5 +110,9 @@ extension MessageOrderViewController: UITableViewDataSource, UITableViewDelegate
         nextVC.setupBookingData(data: bookingData[indexPath.row])
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
-
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+      
+        return 144
+    }
 }
