@@ -55,6 +55,21 @@ struct BookingTime: Equatable, Comparable {
         
         return "總共\(hoursCount())小時"
     }
+    func hoursStringOnebyOne() -> String {
+        var text = ""
+        
+        for time in hour {
+            
+            if time == hour.first {
+                
+                text += ("\(String(time)):00")
+            } else {
+                
+                text += ("\n\(String(time)):00")
+            }
+        }
+        return text
+    }
 }
 
 struct BookingDate: Equatable {

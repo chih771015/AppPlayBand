@@ -41,9 +41,10 @@ enum MessageCategory: String {
     case price = "價錢"
     case description = "資訊"
     case storeMessageForStore = "店家回覆"
+    case time = "預定日期"
+    case hours = "預定時間"
     
-    func cellForIndexPathInDetail(
-        _ indexPath: IndexPath, tableView: UITableView,
+    func cellForIndexPathInDetail(_ indexPath: IndexPath, tableView: UITableView,
         data: UserBookingData?) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(
@@ -57,7 +58,6 @@ enum MessageCategory: String {
         
         switch self {
         case .userName:
-            
             cell.setupCellHavePhoto(title: rawValue, description: bookingData.userInfo.name,
                                     imageURL: bookingData.userInfo.photoURL)
         case .storeName:
@@ -83,7 +83,12 @@ enum MessageCategory: String {
                 
             }
         case .status:
-            cell.setupCell(title: rawValue, description: bookingData.status)
+       
+            cell.setupCell(title: rawValue, description: bookingData.returnStatusString())
+        case .time:
+            cell.setupCell(title: rawValue, description: bookingData.bookingTime.date.dateString())
+        case .hours:
+            cell.setupCell(title: rawValue, description: bookingData.bookingTime.hoursStringOnebyOne())
         default:
             cell.setupCell(title: rawValue, description: "錯誤")
         }

@@ -25,7 +25,7 @@ extension FirebaseManger {
             }) {
                 self.userData = user
             } else {
-                print(error?.localizedDescription)
+                
             }
         }
     }
@@ -56,6 +56,32 @@ extension FirebaseManger {
                 self.storeDatas = storeDatas
                 completionHandler?(.success(self.storeDatas))
             }
+        }
+    }
+    
+    func getMangerStoreName() {
+        
+        guard let uid = user().currentUser?.uid else {return}
+        dataBase().collection(FirebaseEnum.user.rawValue).document(uid)
+            .collection(FirebaseEnum.store.rawValue).getDocuments { (querySnapshot, error) in
+            
+                if error != nil {
+                    self.storeName = ["nothing"]
+                    return
+                }
+                guard let documents = querySnapshot?.documents else {
+                    self.storeName = ["nothing"]
+                    return
+                    
+                }
+                
+                var names: [String] = []
+                for document in documents {
+                    
+                    guard let storeName = document[UsersKey.store.rawValue] as? String else {return}
+                    names.append(storeName)
+                }
+                self.storeName = names
         }
     }
 }

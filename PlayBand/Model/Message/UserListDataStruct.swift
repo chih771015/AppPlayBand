@@ -22,9 +22,9 @@ struct UserBookingData {
     init? (dictionary: [String: Any]) {
         
         guard let bookingTime = BookingTime(dictionary: dictionary) else {return nil}
-        guard let userInfo = dictionary[FirebaseBookingKey.user.rawValue] as? [String: String] else { return nil }
+        guard let userInfo = dictionary[FirebaseBookingKey.user.rawValue] as? [String: Any] else { return nil }
         guard let pathID = dictionary[FirebaseBookingKey.pathID.rawValue] as? String else {return nil}
-        guard let userUID = userInfo[UsersKey.uid.rawValue] else {return nil}
+        guard let userUID = userInfo[UsersKey.uid.rawValue] as? String else {return nil}
         guard let user = UserData(dictionary: userInfo) else {return nil}
         guard let status = dictionary[FirebaseBookingKey.status.rawValue] as? String else {return nil}
         guard let store = dictionary[FirebaseBookingKey.store.rawValue] as? String  else {return nil}
@@ -50,6 +50,19 @@ struct UserBookingData {
         self.store = store
     }
     
+    func returnStatusString() -> String {
+        
+        switch status {
+        case BookingStatus.confirm.rawValue:
+            return BookingStatus.confirm.display
+        case BookingStatus.refuse.rawValue:
+            return BookingStatus.refuse.display
+        case BookingStatus.tobeConfirm.rawValue:
+            return BookingStatus.tobeConfirm.display
+        default:
+            return "BUG"
+        }
+    }
 }
 
 struct UserListData {

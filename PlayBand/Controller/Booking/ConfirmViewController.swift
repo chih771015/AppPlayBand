@@ -47,6 +47,7 @@ class ConfirmViewController: UIViewController {
                 self?.addSucessAlertMessage(title: message, message: nil, completionHanderInDismiss: {
                     
                     self?.navigationController?.popToRootViewController(animated: true)
+                    FirebaseManger.shared.getUserBookingData()
                 })
                 
             case .failure(let error):

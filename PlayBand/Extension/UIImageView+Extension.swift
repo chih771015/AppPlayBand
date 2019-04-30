@@ -14,6 +14,7 @@ extension UIImageView {
     func lv_setImageWithURL(url: String) {
         
         guard let url = URL(string: url) else {return}
-        self.kf.setImage(with: url)
+     //   self.kf.setImage(with: url)
+        self.kf.setImage(with: url, placeholder: UIImage.asset(.user))
     }
 }

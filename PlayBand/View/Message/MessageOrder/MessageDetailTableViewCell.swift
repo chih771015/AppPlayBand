@@ -26,7 +26,7 @@ class MessageDetailTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     override func prepareForReuse() {
-        button.isHidden = false
+        button.isHidden = true
         photoImageView.isHidden = true
     }
     func setupCell(title: String, description: String) {

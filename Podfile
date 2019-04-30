@@ -19,5 +19,7 @@ target 'PlayBand' do
     pod 'Kingfisher'
     pod 'MJRefresh'
     pod 'JGProgressHUD'
+    pod 'Fabric', '~> 1.9.0'
+    pod 'Crashlytics', '~> 3.12.0'
 end
 

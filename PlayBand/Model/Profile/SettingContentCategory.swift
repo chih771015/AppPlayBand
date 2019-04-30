@@ -14,6 +14,7 @@ enum SettingContentCategory: String {
     case notification = "推播通知"
     case passwordChange = "更改密碼"
     case logout = "登出"
+    case storeApply = "店家申請"
 
     var imageTitle: String {
 
@@ -22,6 +23,7 @@ enum SettingContentCategory: String {
         case .logout: return "logout"
         case .notification: return "notification"
         case .passwordChange: return "key"
+        case .storeApply: return ""
         }
     }
 
@@ -43,7 +45,9 @@ enum SettingContentCategory: String {
         case .logout:
 
             cell.setupWithoutSwitch(title: rawValue, image: imageTitle)
-
+        case .storeApply:
+            
+            cell.setupWithoutSwitch(title: rawValue, image: imageTitle)
         }
         return cell
     }
@@ -85,6 +89,10 @@ enum SettingContentCategory: String {
                 }
                 
             })
+        case .storeApply:
+            let nextVC = UIStoryboard.profile.instantiateViewController(
+                withIdentifier: String(describing: StoreMangerViewController.self))
+            viewController.navigationController?.pushViewController(nextVC, animated: true)
         default:
             return
         }

@@ -55,6 +55,11 @@
 		597F0453225F26A100BAAFEE /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597F0451225F26A100BAAFEE /* MessageTableViewCell.swift */; };
 		597F0454225F26A100BAAFEE /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597F0452225F26A100BAAFEE /* MessageTableViewCell.xib */; };
 		5980519D225F2D45002036FD /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5980519C225F2D45002036FD /* MessageViewController.swift */; };
+		59821B2E227822CA00A61B50 /* StoreMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59821B2D227822CA00A61B50 /* StoreMangerViewController.swift */; };
+		59821B3222782B3700A61B50 /* StoreApplyContentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59821B3122782B3700A61B50 /* StoreApplyContentCategory.swift */; };
+		59821B352278402900A61B50 /* AddRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59821B342278402900A61B50 /* AddRoomViewController.swift */; };
+		59821B3A2278418F00A61B50 /* StoreAddRoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59821B382278418F00A61B50 /* StoreAddRoomTableViewCell.swift */; };
+		59821B3B2278418F00A61B50 /* StoreAddRoomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59821B392278418F00A61B50 /* StoreAddRoomTableViewCell.xib */; };
 		59852EAE226F630E00D1D7EE /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59852EAD226F630E00D1D7EE /* CALayer+Extension.swift */; };
 		598B8CD52254B9530061F03B /* ProfileInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B8CD32254B9530061F03B /* ProfileInformationTableViewCell.swift */; };
 		598B8CD62254B9530061F03B /* ProfileInformationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 598B8CD42254B9530061F03B /* ProfileInformationTableViewCell.xib */; };
@@ -161,6 +166,11 @@
 		597F0451225F26A100BAAFEE /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		597F0452225F26A100BAAFEE /* MessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
 		5980519C225F2D45002036FD /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		59821B2D227822CA00A61B50 /* StoreMangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMangerViewController.swift; sourceTree = "<group>"; };
+		59821B3122782B3700A61B50 /* StoreApplyContentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreApplyContentCategory.swift; sourceTree = "<group>"; };
+		59821B342278402900A61B50 /* AddRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoomViewController.swift; sourceTree = "<group>"; };
+		59821B382278418F00A61B50 /* StoreAddRoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAddRoomTableViewCell.swift; sourceTree = "<group>"; };
+		59821B392278418F00A61B50 /* StoreAddRoomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreAddRoomTableViewCell.xib; sourceTree = "<group>"; };
 		59852EAD226F630E00D1D7EE /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		598B8CD32254B9530061F03B /* ProfileInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationTableViewCell.swift; sourceTree = "<group>"; };
 		598B8CD42254B9530061F03B /* ProfileInformationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileInformationTableViewCell.xib; sourceTree = "<group>"; };
@@ -337,6 +347,24 @@
 				592950322269C4A600FD5DC5 /* MessageCategory.swift */,
 			);
 			path = Message;
+			sourceTree = "<group>";
+		};
+		59821B3322783FDF00A61B50 /* StoreAdd */ = {
+			isa = PBXGroup;
+			children = (
+				59821B2D227822CA00A61B50 /* StoreMangerViewController.swift */,
+				59821B342278402900A61B50 /* AddRoomViewController.swift */,
+			);
+			path = StoreAdd;
+			sourceTree = "<group>";
+		};
+		59821B372278416B00A61B50 /* StoreManger */ = {
+			isa = PBXGroup;
+			children = (
+				59821B382278418F00A61B50 /* StoreAddRoomTableViewCell.swift */,
+				59821B392278418F00A61B50 /* StoreAddRoomTableViewCell.xib */,
+			);
+			path = StoreManger;
 			sourceTree = "<group>";
 		};
 		598B8CD22254B9140061F03B /* ProfileMain */ = {
@@ -533,10 +561,12 @@
 		59F81F9D22549FBA00C04E32 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				59821B3322783FDF00A61B50 /* StoreAdd */,
 				59F81F9E22549FCD00C04E32 /* ProfileViewController.swift */,
 				59DFF85522578DAB00273724 /* EditProfileViewController.swift */,
 				59ABB025225877C400AE937A /* SettingViewController.swift */,
 				59483D792268488A00FD211E /* PasswordChangeViewController.swift */,
+				59821B3122782B3700A61B50 /* StoreApplyContentCategory.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -544,6 +574,7 @@
 		59F81FA52254A6C800C04E32 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				59821B372278416B00A61B50 /* StoreManger */,
 				59ABB020225872D100AE937A /* Setting */,
 				59DFF85722578FBF00273724 /* EditProfile */,
 				598B8CD22254B9140061F03B /* ProfileMain */,
@@ -594,6 +625,7 @@
 				5941D827225359D500FDEEBA /* Resources */,
 				7D941A20224A3869354EEFDF /* [CP] Embed Pods Frameworks */,
 				59FF19D3225C993800934EE2 /* SwiftLint */,
+				59EBF2D12276C24F00FD8623 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -649,6 +681,7 @@
 				59ABB0242258732B00AE937A /* SettingTableViewCell.xib in Resources */,
 				597F044A225EDDD600BAAFEE /* SignIn.storyboard in Resources */,
 				597F0454225F26A100BAAFEE /* MessageTableViewCell.xib in Resources */,
+				59821B3B2278418F00A61B50 /* StoreAddRoomTableViewCell.xib in Resources */,
 				5907F6982259DE3C008BB604 /* StoreDescriptionTableViewCell.xib in Resources */,
 				594ED6B2226058E90054CCC9 /* MessageConfirmPageTableViewCell.xib in Resources */,
 				59530B15225C7FE5002F18AB /* ConfirmTableViewHeaderView.xib in Resources */,
@@ -678,6 +711,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		59EBF2D12276C24F00FD8623 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				PlayBand/Info.plist,
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
+		};
 		59FF19D3225C993800934EE2 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -792,6 +843,7 @@
 				59207AA3225AEC2D00B50E7C /* CalendarTableViewCell.swift in Sources */,
 				59FCFD3922620CAE006402E5 /* Firebase.swift in Sources */,
 				59949297225A7FCE00726BF3 /* CalendarViewController.swift in Sources */,
+				59821B352278402900A61B50 /* AddRoomViewController.swift in Sources */,
 				59ABB026225877C400AE937A /* SettingViewController.swift in Sources */,
 				598B8CDB2254C4610061F03B /* ProfileContentCategory.swift in Sources */,
 				593B4FF7226B18A10069F24F /* FirebaseMangerExtension.swift in Sources */,
@@ -838,10 +890,13 @@
 				592950332269C4A600FD5DC5 /* MessageCategory.swift in Sources */,
 				59852EAE226F630E00D1D7EE /* CALayer+Extension.swift in Sources */,
 				59A08E972267931B00F405B5 /* UserListDataStruct.swift in Sources */,
+				59821B3A2278418F00A61B50 /* StoreAddRoomTableViewCell.swift in Sources */,
 				594CAA8A226395F5009A0921 /* UserDataStruct.swift in Sources */,
 				59DFF85A22578FFD00273724 /* EditTableViewCell.swift in Sources */,
 				5929502F2269A1EA00FD5DC5 /* FirebaseEnum.swift in Sources */,
+				59821B2E227822CA00A61B50 /* StoreMangerViewController.swift in Sources */,
 				5980519D225F2D45002036FD /* MessageViewController.swift in Sources */,
+				59821B3222782B3700A61B50 /* StoreApplyContentCategory.swift in Sources */,
 				594ED6B1226058E90054CCC9 /* MessageConfirmPageTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -902,7 +957,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -992,15 +1047,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G9J3D558CX;
 				INFOPLIST_FILE = PlayBand/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chihhsuan.PlayBand;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1012,15 +1067,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G9J3D558CX;
 				INFOPLIST_FILE = PlayBand/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chihhsuan.PlayBand;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

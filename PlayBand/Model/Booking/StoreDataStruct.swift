@@ -23,8 +23,19 @@ struct StoreData {
     
     struct Room {
         
-        let name: String
-        let price: String
+        var name: String
+        var price: String
+        init (name: String, price: String) {
+            
+            self.name = name
+            self.price = price
+        }
+        
+        init() {
+            
+            self.name = ""
+            self.price = ""
+        }
     }
     
     init? (dictionary: [String: Any]) {

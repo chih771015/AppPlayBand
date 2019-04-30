@@ -10,6 +10,25 @@ import UIKit
 
 class MessageViewController: UIViewController {
     
+    @IBAction func barButtonAction(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "切換模式", message: "請選擇模式", preferredStyle: .actionSheet)
+        let actionUser = UIAlertAction(title: "一般用戶模式", style: .default) { [weak self] (_) in
+            self?.messageStatus = .user
+        }
+        let actionManger = UIAlertAction(title: "管理者模式", style: .default) { [weak self] (_) in
+            self?.messageStatus = .manger
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        actionUser.setValue(UIColor.playBandColorEnd, forKey: "titleTextColor")
+        actionManger.setValue(UIColor.playBandColorEnd, forKey: "titleTextColor")
+        cancelAction.setValue(UIColor.playBandColorEnd, forKey: "titleTextColor")
+        alert.addAction(actionUser)
+        alert.addAction(actionManger)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func tobeConfirmAction() {
         
         self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
@@ -53,7 +72,12 @@ class MessageViewController: UIViewController {
     private var tobeConfirmVC: MessageOrderViewController?
     private var confirmVC: MessageOrderViewController?
     private var refuseVC: MessageOrderViewController?
-    private var messageStatus = UsersKey.Status.user
+    private var messageStatus = UsersKey.Status.user {
+        didSet {
+            self.userBookingData = []
+            self.fetchData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,21 +99,24 @@ class MessageViewController: UIViewController {
             name: NSNotification.Name(NotificationCenterName.bookingData.rawValue),
             object: nil)
         fetchData()
+        if firebaseManger.userStatus == UsersKey.Status.user.rawValue {
+            
+            self.navigationItem.rightBarButtonItems = []
+        }
     }
     
     private func fetchData() {
         
         PBProgressHUD.addLoadingView(animated: true)
-        let status = firebaseManger.userStatus
         
-        if status == UsersKey.Status.user.rawValue {
+        if self.messageStatus == UsersKey.Status.user {
             
             firebaseManger.getUserBookingData()
-            self.messageStatus = UsersKey.Status.user
-        } else if status == UsersKey.Status.manger.rawValue {
+            
+        } else if self.messageStatus == UsersKey.Status.manger {
             
             firebaseManger.getMangerBookingData()
-            self.messageStatus = UsersKey.Status.manger
+
         } else {
             
             PBProgressHUD.dismissLoadingView(animated: true)
@@ -137,10 +164,8 @@ class MessageViewController: UIViewController {
     
     @objc func getBookingData(notification: NSNotification) {
         
-        PBProgressHUD.dismissLoadingView(animated: true)
-        
         if notification.name == NSNotification.Name(NotificationCenterName.bookingData.rawValue) {
-            
+            PBProgressHUD.dismissLoadingView(animated: true)
             guard let bookingDatas = notification.object as? [UserBookingData] else {return}
             self.userBookingData = bookingDatas
         }

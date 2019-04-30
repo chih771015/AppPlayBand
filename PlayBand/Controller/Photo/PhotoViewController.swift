@@ -10,7 +10,6 @@ import UIKit
 
 class PhotoChoiceViewController: UIAlertController {
     
-    var getImage = {}
     var presentVC: (UINavigationControllerDelegate & UIImagePickerControllerDelegate & UIViewController)?
     
     override func viewDidLoad() {

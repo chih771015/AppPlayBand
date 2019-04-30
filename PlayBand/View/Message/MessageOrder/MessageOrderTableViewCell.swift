@@ -16,7 +16,11 @@ class MessageOrderTableViewCell: UITableViewCell {
             rightImage.tintColor = .white
         }
     }
-    @IBOutlet weak var colorView: UIView!
+    @IBOutlet weak var colorView: UIView! {
+        didSet {
+            colorView.addShadow()
+        }
+    }
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var dateLabel: UILabel!
@@ -46,6 +50,8 @@ class MessageOrderTableViewCell: UITableViewCell {
         self.statusLabel.text = status
         if let url = url {
             self.titleImage.lv_setImageWithURL(url: url)
+        } else {
+            self.titleImage.image = UIImage.asset(.user)
         }
         setupLayer()
     }
@@ -56,7 +62,6 @@ class MessageOrderTableViewCell: UITableViewCell {
         caGradientLayer?.removeFromSuperlayer()
         let layer = CALayer.getPBGradientLayer(bounds: colorView.bounds)
         colorView.layer.addSublayer(layer)
-        colorView.addShadow()
         caGradientLayer = layer
     }
 

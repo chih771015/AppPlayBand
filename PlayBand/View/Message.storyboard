@@ -76,7 +76,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E8p-3M-zyh">
                                                 <rect key="frame" x="0.0" y="0.0" width="125" height="48"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="待確認">
                                                     <color key="titleColor" name="endColor"/>
                                                 </state>
@@ -86,7 +86,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l0D-jW-5Oz">
                                                 <rect key="frame" x="125" y="0.0" width="125" height="48"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="已預訂">
                                                     <color key="titleColor" name="endColor"/>
                                                 </state>
@@ -96,7 +96,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idS-ck-SbT">
                                                 <rect key="frame" x="250" y="0.0" width="125" height="48"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="拒絕預定">
                                                     <color key="titleColor" name="endColor"/>
                                                 </state>
@@ -137,7 +137,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xaM-M6-iCd"/>
                     </view>
-                    <navigationItem key="navigationItem" title="預定資料" id="4yT-67-Y2H"/>
+                    <navigationItem key="navigationItem" title="預定資料" id="4yT-67-Y2H">
+                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="Ozf-Ro-OU4">
+                            <color key="tintColor" name="endColor"/>
+                            <connections>
+                                <action selector="barButtonAction:" destination="rXd-0w-jIr" id="tat-p5-p3x"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="confirmButton" destination="l0D-jW-5Oz" id="fbg-1G-LdU"/>
                         <outlet property="refuseButton" destination="idS-ck-SbT" id="FeR-di-bZh"/>
@@ -199,7 +206,6 @@
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsp-HG-ewy">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
-                                        <color key="backgroundColor" name="endColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="RMA-ml-g6J"/>
                                         </constraints>
@@ -244,7 +250,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ley-gX-rQF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1903" y="269"/>
+            <point key="canvasLocation" x="1550" y="74"/>
         </scene>
         <!--Message Store Check View Controller-->
         <scene sceneID="hh9-e9-rLH">
@@ -301,9 +307,6 @@
                                 <rect key="frame" x="21" y="53" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Icons_44px_Back01"/>
-                                <connections>
-                                    <action selector="backAction:" destination="MyI-s5-Rwx" eventType="touchUpInside" id="iS5-26-IN5"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -322,10 +325,7 @@
                         <viewLayoutGuide key="safeArea" id="ZEf-Pp-cPk"/>
                     </view>
                     <connections>
-                        <outlet property="buttonView" destination="SZM-v7-fEb" id="OIx-nS-NKA"/>
                         <outlet property="buttonViewConstraint" destination="G7j-zj-Wil" id="7Kv-8f-C6f"/>
-                        <outlet property="tableView" destination="xan-BO-FNJ" id="lR6-iu-vdn"/>
-                        <outlet property="titleImage" destination="tbf-NF-3NX" id="CQt-wu-YYi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5Y-X7-K0b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -454,7 +454,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lDC-Wm-Glc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="935.20000000000005" y="-310.79460269865069"/>
+            <point key="canvasLocation" x="870" y="105"/>
         </scene>
         <!--Message Order View Controller-->
         <scene sceneID="idJ-e7-1FH">
@@ -469,7 +469,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKI-P7-bkO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="935.20000000000005" y="288.30584707646182"/>
+            <point key="canvasLocation" x="870" y="699"/>
         </scene>
         <!--Message Order View Controller-->
         <scene sceneID="GIA-tC-mwq">
@@ -484,7 +484,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YfZ-ks-Jrd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="935" y="892"/>
+            <point key="canvasLocation" x="164" y="699"/>
         </scene>
         <!--Base Navigation View Controller-->
         <scene sceneID="UxS-h1-hgg">

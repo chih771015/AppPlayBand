@@ -13,6 +13,7 @@ class EditTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
 
+    @IBOutlet weak var descriptionLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,30 +25,34 @@ class EditTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func setupEditCell(placeholder: String, text: String?, textFieldDelgate: UITextFieldDelegate) {
-        textField.delegate = textFieldDelgate
-        self.titleLabel.text = placeholder
-        textField.placeholder = placeholder
-        self.textField.text = text
+    func setupEditCell(placeholder: String, text: String? = nil, tag: Int, textFieldDelgate: UITextFieldDelegate, description: String? = nil) {
+        setupTextField(placeholder: placeholder, tag: tag, textFieldDelgate: textFieldDelgate, text: text, description: description)
     }
-    func setupEditPasswordCell(placeholder: String, textFieldDelgate: UITextFieldDelegate, text: String?) {
-        textField.delegate = textFieldDelgate
-        self.titleLabel.text = placeholder
-        textField.placeholder = placeholder
-        self.textField.text = text
+    func setupEditPasswordCell(placeholder: String, tag: Int, textFieldDelgate: UITextFieldDelegate, text: String? = nil, description: String? = nil) {
+         setupTextField(placeholder: placeholder, tag: tag, textFieldDelgate: textFieldDelgate, text: text, description: description)
         textField.isSecureTextEntry = true
     }
-    func setupEditPickerCell(placehoder: String) {
+    func setupEditPickerCell(placeholder: String, tag: Int, textFieldDelgate: UITextFieldDelegate) {
         
+        setupTextField(placeholder: placeholder, tag: tag, textFieldDelgate: textFieldDelgate, text: UsersKey.Status.user.rawValue)
         let pickView = UIPickerView()
         pickView.delegate = self
         pickView.dataSource = self
         textField.inputView = pickView
-        textField.placeholder = placehoder
+    }
+    
+    private func setupTextField(placeholder: String, tag: Int, textFieldDelgate: UITextFieldDelegate, text: String?, description: String? = nil) {
+        textField.delegate = textFieldDelgate
+        textField.placeholder = placeholder
+        titleLabel.text = placeholder
+        self.textField.text = text
+        textField.tag = tag
+        descriptionLabel.text = description
     }
     
     override func prepareForReuse() {
         
+        textField.inputView = nil
         textField.isSecureTextEntry = false
     }
 }
@@ -64,6 +69,7 @@ extension EditTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
         return 2
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
         if row == 0 {
             return UsersKey.Status.user.rawValue
         } else {

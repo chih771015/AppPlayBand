@@ -63,7 +63,7 @@
                                 <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hU-fn-H1D">
-                                        <rect key="frame" x="24" y="0.0" width="327" height="44"/>
+                                        <rect key="frame" x="44" y="0.0" width="287" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <state key="normal" title="前往預定"/>
@@ -78,11 +78,11 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="5hU-fn-H1D" firstAttribute="leading" secondItem="KJR-Ro-mcj" secondAttribute="leading" constant="24" id="7pF-0u-Bap"/>
+                                    <constraint firstItem="5hU-fn-H1D" firstAttribute="leading" secondItem="KJR-Ro-mcj" secondAttribute="leading" constant="44" id="7pF-0u-Bap"/>
                                     <constraint firstItem="5hU-fn-H1D" firstAttribute="top" secondItem="KJR-Ro-mcj" secondAttribute="top" id="Idr-f3-vm4"/>
                                     <constraint firstAttribute="bottom" secondItem="5hU-fn-H1D" secondAttribute="bottom" constant="16" id="XYP-WY-0y7"/>
                                     <constraint firstAttribute="height" constant="60" id="lfm-pQ-dbY"/>
-                                    <constraint firstAttribute="trailing" secondItem="5hU-fn-H1D" secondAttribute="trailing" constant="24" id="rLS-fE-0mZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="5hU-fn-H1D" secondAttribute="trailing" constant="44" id="rLS-fE-0mZ"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a1o-Mj-rv0">
@@ -240,7 +240,7 @@
                                 <rect key="frame" x="0.0" y="605" width="375" height="62"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVG-y5-Zgk">
-                                        <rect key="frame" x="24" y="2" width="327" height="44"/>
+                                        <rect key="frame" x="44" y="2" width="287" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <state key="normal" title="Button"/>
@@ -252,8 +252,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="ROX-Vr-igi"/>
                                     <constraint firstItem="UVG-y5-Zgk" firstAttribute="top" secondItem="jdt-hG-uuh" secondAttribute="top" constant="2" id="YA6-37-nbP"/>
-                                    <constraint firstAttribute="trailing" secondItem="UVG-y5-Zgk" secondAttribute="trailing" constant="24" id="hta-xD-7RS"/>
-                                    <constraint firstItem="UVG-y5-Zgk" firstAttribute="leading" secondItem="jdt-hG-uuh" secondAttribute="leading" constant="24" id="sdw-y6-9Cq"/>
+                                    <constraint firstAttribute="trailing" secondItem="UVG-y5-Zgk" secondAttribute="trailing" constant="44" id="hta-xD-7RS"/>
+                                    <constraint firstItem="UVG-y5-Zgk" firstAttribute="leading" secondItem="jdt-hG-uuh" secondAttribute="leading" constant="44" id="sdw-y6-9Cq"/>
                                     <constraint firstAttribute="bottom" secondItem="UVG-y5-Zgk" secondAttribute="bottom" constant="16" id="svL-eq-ZrV"/>
                                 </constraints>
                             </view>
@@ -292,7 +292,7 @@
                                 <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHS-f7-RkG">
-                                        <rect key="frame" x="16" y="0.0" width="343" height="44"/>
+                                        <rect key="frame" x="44" y="0.0" width="287" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <state key="normal" title="Button"/>
@@ -302,9 +302,9 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="KHS-f7-RkG" secondAttribute="trailing" constant="16" id="1CN-zf-qMw"/>
+                                    <constraint firstAttribute="trailing" secondItem="KHS-f7-RkG" secondAttribute="trailing" constant="44" id="1CN-zf-qMw"/>
                                     <constraint firstItem="KHS-f7-RkG" firstAttribute="top" secondItem="301-jp-uhh" secondAttribute="top" id="C2z-gW-SQ7"/>
-                                    <constraint firstItem="KHS-f7-RkG" firstAttribute="leading" secondItem="301-jp-uhh" secondAttribute="leading" constant="16" id="D4O-dY-nBh"/>
+                                    <constraint firstItem="KHS-f7-RkG" firstAttribute="leading" secondItem="301-jp-uhh" secondAttribute="leading" constant="44" id="D4O-dY-nBh"/>
                                     <constraint firstAttribute="bottom" secondItem="KHS-f7-RkG" secondAttribute="bottom" constant="16" id="IqN-Ps-4Uf"/>
                                     <constraint firstAttribute="height" constant="60" id="uL9-ac-O9h"/>
                                 </constraints>

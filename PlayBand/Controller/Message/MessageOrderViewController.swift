@@ -87,7 +87,17 @@ extension MessageOrderViewController: UITableViewDataSource, UITableViewDelegate
         let day = data.bookingTime.date.day
         let date = "\(year)/\(month)/\(day)"
         let hours = data.bookingTime.hoursCount()
-        let status = data.status
+        var status = data.status
+        switch status {
+        case BookingStatus.confirm.rawValue:
+            status = BookingStatus.confirm.display
+        case BookingStatus.refuse.rawValue:
+            status = BookingStatus.refuse.display
+        case BookingStatus.tobeConfirm.rawValue:
+            status = BookingStatus.tobeConfirm.display
+        default:
+            status = "BUG"
+        }
         let url = data.userInfo.photoURL
         let storeName = data.store
         let storeURL = FirebaseManger.shared.storeDatas.first(where: {$0.name == storeName})?.photourl
@@ -106,8 +116,9 @@ extension MessageOrderViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         guard let nextVC = self.storyboard?.instantiateViewController(
-            withIdentifier: String(describing: MessageOrderDetailViewController.self)) as? MessageOrderDetailViewController else {return}
-        nextVC.setupBookingData(data: bookingData[indexPath.row])
+            withIdentifier: String(
+                describing: MessageOrderDetailViewController.self)) as? MessageOrderDetailViewController else {return}
+        nextVC.setupBookingData(data: bookingData[indexPath.row], status: status)
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     

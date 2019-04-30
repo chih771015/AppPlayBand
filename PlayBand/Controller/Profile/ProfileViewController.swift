@@ -21,12 +21,11 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func presentPhotoVC() {
-
+//        Crashlytics.sharedInstance().crash()
         let nextViewController = PhotoChoiceViewController(
             title: "上傳圖片", message: "請選擇圖片", preferredStyle: .actionSheet)
         nextViewController.presentVC = self
         present(nextViewController, animated: true, completion: nil)
-
     }
 
     @IBOutlet weak var userImage: ProfileUserPictureImageView!
@@ -43,7 +42,7 @@ class ProfileViewController: UIViewController {
             userImage.lv_setImageWithURL(url: url)
         }
     }
-    private let datas: [ProfileContentCategory] = [.uid, .band, .phone, .email, .facebook]
+    private let datas: [ProfileContentCategory] = [.band, .phone, .email, .facebook]
 
     private var gradientLayer: CAGradientLayer?
     
@@ -174,9 +173,9 @@ extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerCo
         if let selectedImage = selectImage {
             
             let resizeImage = selectedImage.resizeImage(targetSize: CGSize(width: 500, height: selectedImage.size.height / selectedImage.size.width * 500))
-            
+        
             FirebaseManger.shared.uploadIamge(uniqueString: uniqueString, image: resizeImage) { [weak self] (result) in
-                
+                PBProgressHUD.dismissLoadingView(animated: true)
                 switch result {
                     
                 case .success(let message):
@@ -193,5 +192,6 @@ extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerCo
         }
         
         picker.dismiss(animated: true, completion: nil)
+        PBProgressHUD.addLoadingView(animated: true)
     }
 }

@@ -70,9 +70,10 @@ class MessageOrderDetailViewController: UIViewController {
     }
     
     private var bookingData: UserBookingData?
+    private var status = UsersKey.Status.user
     
     private let cellDatas: [MessageCategory] = [
-        .storeName, .documentID, .status, .userName, .uid, .userEmail,
+        .storeName, .documentID, .status, .time, .hours, .userName, .uid, .userEmail,
         .userPhone, .userFacebook, .userMessage]
     
     override func viewDidLoad() {
@@ -92,21 +93,22 @@ class MessageOrderDetailViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    func setupBookingData(data: UserBookingData) {
+    func setupBookingData(data: UserBookingData, status: UsersKey.Status) {
         
         self.bookingData = data
+        self.status = status
     }
     
     private func setupButtonView() {
         
         if bookingData?.status == FirebaseBookingKey.Status.tobeConfirm.rawValue,
-            FirebaseManger.shared.userStatus == UsersKey.Status.manger.rawValue {
+            status == UsersKey.Status.manger {
             
             buttonViewHeight.constant = 70
         } else {
             
             buttonViewHeight.constant = 0
-        } 
+        }
     }
 }
 
@@ -132,5 +134,4 @@ extension MessageOrderDetailViewController: UITableViewDelegate, UITableViewData
         
         return cellDatas[indexPath.row].cellForIndexPathInDetail(indexPath, tableView: tableView, data: bookingData)
     }
-
 }

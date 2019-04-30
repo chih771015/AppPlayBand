@@ -46,6 +46,18 @@ enum BookingStatus: String {
     case tobeConfirm
     case confirm
     case refuse
+    
+    var display: String {
+     
+        switch self {
+        case .confirm:
+            return "已確認"
+        case .tobeConfirm:
+            return "待確認"
+        case .refuse:
+            return "拒絕"
+        }
+    }
 }
 
 enum FirebaseBookingKey: String {
