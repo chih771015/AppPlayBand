@@ -44,17 +44,17 @@ extension UIView {
         }
     }
     
-    func addGradientColor() {
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.bounds
-        let startColor = UIColor.playBandColorGreen
-        let endColor = UIColor.playBandColorLightGreen
-        gradientLayer.colors = [startColor?.cgColor, endColor?.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
-        self.layer.addSublayer(gradientLayer)
-    }
+//    func addGradientColor() {
+//        
+//        let gradientLayer = CAGradientLayer()
+//        gradientLayer.frame = self.bounds
+//        let startColor = UIColor.playBandColorGreen
+//        let endColor = UIColor.playBandColorLightGreen
+//        gradientLayer.colors = [startColor?.cgColor, endColor?.cgColor]
+//        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+//        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+//        self.layer.addSublayer(gradientLayer)
+//    }
     
     func addGradientColorLandscape() {
         

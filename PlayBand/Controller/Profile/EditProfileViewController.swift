@@ -101,7 +101,8 @@ class EditProfileViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.lv_registerCellWithNib(identifier: String(describing: EditTableViewCell.self), bundle: nil)
-        tableView.lv_registerCellWithNib(identifier: String(describing: EditSectionHeaderTableViewCell.self), bundle: nil)
+        tableView.lv_registerCellWithNib(
+            identifier: String(describing: EditSectionHeaderTableViewCell.self), bundle: nil)
     }
 }
 

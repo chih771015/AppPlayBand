@@ -10,6 +10,7 @@ import Foundation
 
 enum InputError: Error {
     
+    case unknow
     case storeName
     case storeCity
     case phoneIsEmpty
@@ -27,15 +28,17 @@ enum InputError: Error {
     case roomName(Int)
     case priceIsEmpty(Int)
     case priceIsNotNumber(Int)
+    case imageURLDidNotGet
+    case bookingCreat
     
-    var errorMessage: String {
+    var localizedDescription: String {
         
         switch self {
         case .storeName:
             
             return "輸入名字不能為空"
         case .storeCity:
-
+            
             return "輸入城市不能為空"
             
         case .phoneIsEmpty:
@@ -49,7 +52,7 @@ enum InputError: Error {
             return "你輸入的電話不是數字"
         case .address:
             return "輸入地址不能為空"
-
+            
         case .openTimeIsEmpty:
             
             return "開店時間不能為空"
@@ -76,6 +79,12 @@ enum InputError: Error {
             return "第\(index)個團室價錢是空的"
         case .priceIsNotNumber(let index):
             return "第\(index)個團室價錢不是數字"
+        case .imageURLDidNotGet:
+            return "圖片上傳中有錯誤\n請重新嘗試"
+        case .bookingCreat:
+            return "預定時網路發生問題\n請重新確認您的訂單是否完成"
+        case .unknow:
+            return "未知的錯誤\n趕快找Bug囉"
         }
     }
 }

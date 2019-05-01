@@ -18,12 +18,16 @@ class PasswordChangeViewController: UIViewController {
     @IBAction func changePasswordAction() {
         guard let password = self.password else {
             
-            self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: ProfileEnum.textFieldNoValue.rawValue, completionHanderInDismiss: nil)
+            self.addErrorAlertMessage(
+                title: FirebaseEnum.fail.rawValue,
+                message: ProfileEnum.textFieldNoValue.rawValue, completionHanderInDismiss: nil)
             return
         }
         guard let confirm = self.passwordConfirm else {
             
-            self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: ProfileEnum.textFieldNoValue.rawValue, completionHanderInDismiss: nil)
+            self.addErrorAlertMessage(
+                title: FirebaseEnum.fail.rawValue,
+                message: ProfileEnum.textFieldNoValue.rawValue, completionHanderInDismiss: nil)
             return
         }
         
@@ -44,7 +48,8 @@ class PasswordChangeViewController: UIViewController {
                     
                 case .failure(let error):
                     
-                    self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
+                    self?.addErrorAlertMessage(
+                        title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
                 }
             }
             

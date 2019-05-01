@@ -17,7 +17,7 @@ class SettingViewController: UIViewController {
         }
     }
 
-    private let datas: [SettingContentCategory] = [.passwordChange, .logout , .storeApply]
+    private let datas: [SettingContentCategory] = [ .passwordChange, .logout, .storeApply, .superManger]
 
     override func viewDidLoad() {
         super.viewDidLoad()

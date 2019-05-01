@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseStoreViewController: UIViewController {
+class BaseStoreDetailViewController: UIViewController {
 
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -54,7 +54,7 @@ class BaseStoreViewController: UIViewController {
     }
 }
 
-extension BaseStoreViewController: UITableViewDataSource, UITableViewDelegate {
+extension BaseStoreDetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         

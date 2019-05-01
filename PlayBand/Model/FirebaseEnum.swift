@@ -21,6 +21,8 @@ enum FirebaseEnum: String {
     case uploadSuccess = "檔案上傳成功"
     case mangerConfirm = "預約回覆成功"
     case delete = "Delete"
+    case storeApply = "StoreApply"
+    case storeApplySuccess = "申請資料上傳成功\n我們會盡快回覆您"
 }
 
 enum FirebaseDataError: Error {

@@ -43,7 +43,8 @@ enum StoreApplyContentCategory {
         }
     }
     
-    func cellForIndexPathInEdit(_ indexPath: IndexPath, tableView: UITableView, textFieldDelegate: UITextFieldDelegate) -> UITableViewCell {
+    func cellForIndexPathInEdit(
+        _ indexPath: IndexPath, tableView: UITableView, textFieldDelegate: UITextFieldDelegate) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: EditTableViewCell.self),

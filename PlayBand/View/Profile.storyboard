@@ -555,6 +555,36 @@
             </objects>
             <point key="canvasLocation" x="4943" y="144"/>
         </scene>
+        <!--Super Manger Check Store View Controller-->
+        <scene sceneID="bQu-Fl-ZFu">
+            <objects>
+                <viewController storyboardIdentifier="SuperMangerCheckStoreViewController" id="eQ9-us-UAA" customClass="SuperMangerCheckStoreViewController" customModule="PlayBand" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q0c-gj-Ny9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6qn-ay-COJ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6qn-ay-COJ" firstAttribute="top" secondItem="OcF-vs-0N5" secondAttribute="top" id="Kvq-N3-eRg"/>
+                            <constraint firstItem="OcF-vs-0N5" firstAttribute="trailing" secondItem="6qn-ay-COJ" secondAttribute="trailing" id="mqd-ZU-YtL"/>
+                            <constraint firstItem="OcF-vs-0N5" firstAttribute="bottom" secondItem="6qn-ay-COJ" secondAttribute="bottom" id="nNj-6A-W6T"/>
+                            <constraint firstItem="6qn-ay-COJ" firstAttribute="leading" secondItem="OcF-vs-0N5" secondAttribute="leading" id="rxi-e0-2Cb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OcF-vs-0N5"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="6qn-ay-COJ" id="Lfc-W8-KoM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jax-42-Vte" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4942" y="828"/>
+        </scene>
         <!--Store Review View Controller-->
         <scene sceneID="2oR-Bw-t3e">
             <objects>

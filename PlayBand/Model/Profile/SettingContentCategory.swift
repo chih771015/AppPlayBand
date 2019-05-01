@@ -15,6 +15,7 @@ enum SettingContentCategory: String {
     case passwordChange = "更改密碼"
     case logout = "登出"
     case storeApply = "店家申請"
+    case superManger = "管理店家申請"
 
     var imageTitle: String {
 
@@ -24,6 +25,22 @@ enum SettingContentCategory: String {
         case .notification: return "notification"
         case .passwordChange: return "key"
         case .storeApply: return ""
+        case .superManger:
+            return ""
+        }
+    }
+    
+    var identifier: String {
+        
+        switch self {
+        case .passwordChange:
+            return String(describing: PasswordChangeViewController.self)
+        case .storeApply:
+            return String(describing: StoreMangerViewController.self)
+        case .superManger:
+            return String(describing: SuperMangerCheckStoreViewController.self)
+        default:
+            return ""
         }
     }
 
@@ -37,16 +54,7 @@ enum SettingContentCategory: String {
         case .notification:
 
             cell.setupWithSwitch(title: rawValue, image: imageTitle)
-
-        case .passwordChange:
-
-            cell.setupWithoutSwitch(title: rawValue, image: imageTitle)
-
-        case .logout:
-
-            cell.setupWithoutSwitch(title: rawValue, image: imageTitle)
-        case .storeApply:
-            
+        default :
             cell.setupWithoutSwitch(title: rawValue, image: imageTitle)
         }
         return cell
@@ -56,10 +64,10 @@ enum SettingContentCategory: String {
 
         switch self {
 
-        case .passwordChange:
+        case .passwordChange, .storeApply, .superManger:
             
             let nextVC = UIStoryboard.profile.instantiateViewController(
-                withIdentifier: String(describing: PasswordChangeViewController.self))
+                withIdentifier: identifier)
             viewController.navigationController?.pushViewController(nextVC, animated: true)
 
         case .logout:
@@ -87,12 +95,7 @@ enum SettingContentCategory: String {
                         message: error.localizedDescription,
                         completionHanderInDismiss: nil)
                 }
-                
             })
-        case .storeApply:
-            let nextVC = UIStoryboard.profile.instantiateViewController(
-                withIdentifier: String(describing: StoreMangerViewController.self))
-            viewController.navigationController?.pushViewController(nextVC, animated: true)
         default:
             return
         }

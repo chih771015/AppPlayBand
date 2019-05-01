@@ -33,7 +33,7 @@ class ConfirmViewController: UIViewController {
         
         PBProgressHUD.addLoadingView(animated: true)
         
-        FirebaseManger.shared.bookingTimeEdit(
+        FirebaseManger.shared.bookingTimeCreat(
         storeName: storeName,
         bookingDatas: bookingTimeDatas,
         userMessage: message) { [weak self] (result) in

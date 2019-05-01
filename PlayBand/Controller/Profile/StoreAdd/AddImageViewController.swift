@@ -12,11 +12,17 @@ class AddImageViewController: EditPageViewController {
 
     override func buttonAction() {
         
+        if images.count == 0 {
+            
+            self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: "至少上傳一張圖片", completionHanderInDismiss: nil)
+            return
+        }
+        
         guard let nextVC = self.storyboard?.instantiateViewController(
             withIdentifier: String(describing: StoreReviewViewController.self)) as? StoreReviewViewController else {
             return
         }
-//        self.storeData?.images = imagesURL
+
         nextVC.setupStoreData(storeData: storeData, images: images)
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
@@ -27,7 +33,8 @@ class AddImageViewController: EditPageViewController {
             return
         }
         
-        let nextVC = PhotoChoiceViewController(title: PhotoEnum.title.rawValue, message: PhotoEnum.message.rawValue, preferredStyle: .actionSheet)
+        let nextVC = PhotoChoiceViewController(
+            title: PhotoEnum.title.rawValue, message: PhotoEnum.message.rawValue, preferredStyle: .actionSheet)
         nextVC.presentVC = self
         present(nextVC, animated: true, completion: nil)
     }
@@ -54,7 +61,8 @@ class AddImageViewController: EditPageViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: StoreAddImageTableViewCell.self), for: indexPath) as? StoreAddImageTableViewCell else {
+            withIdentifier: String(
+                describing: StoreAddImageTableViewCell.self), for: indexPath) as? StoreAddImageTableViewCell else {
                 
            return UITableViewCell()
         }
@@ -80,7 +88,6 @@ extension AddImageViewController: StoreAddImageDelegate {
         } else {
             
             images.remove(at: index.row)
-//imagesURL.remove(at: index.row)
             let indexSet = IndexSet(arrayLiteral: index.section)
             tableView.reloadSections(indexSet, with: .automatic)
         }
@@ -89,7 +96,8 @@ extension AddImageViewController: StoreAddImageDelegate {
 
 extension AddImageViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(
+        _ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         var selectImage: UIImage?
 //

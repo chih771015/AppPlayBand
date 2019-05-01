@@ -6,7 +6,7 @@
 //  Copyright © 2019 姜旦旦. All rights reserved.
 //
 
-import Foundation
+import Firebase
 
 extension FirebaseManger {
     
@@ -16,7 +16,7 @@ extension FirebaseManger {
             self.userData = nil
             return
         }
-        dataBase().collection(FirebaseEnum.user.rawValue).document(uid).getDocument { (document, error) in
+        dataBase().collection(FirebaseEnum.user.rawValue).document(uid).getDocument { (document, _) in
             
             if let user = document.flatMap({
                 $0.data().flatMap({ (data) in
@@ -85,5 +85,120 @@ extension FirebaseManger {
         }
     }
     
+    func sendStoreApply(storeData: StoreData, completionHandler: @escaping (Result<String>) -> Void) {
+        
+        var dictionary = storeData.getFirebaseDictionay()
+        dictionary.updateValue(
+            FirebaseBookingKey.Status.tobeConfirm.rawValue, forKey: FirebaseBookingKey.status.rawValue)
+        dictionary.updateValue("等待回覆", forKey: FirebaseBookingKey.storeMessage.rawValue)
+        guard let userData = self.userData else {
+            completionHandler(.failure(InputError.information))
+            return
+        }
+        let userDictionary = DataTransform.userData(userData: userData)
+        dictionary.updateValue(userDictionary, forKey: FirebaseBookingKey.user.rawValue)
+        
+        dataBase().collection(FirebaseEnum.storeApply.rawValue).addDocument(data: dictionary) { (error) in
+            
+            if let error = error {
+                
+                completionHandler(.failure(error))
+            } else {
+                
+                completionHandler(.success(FirebaseEnum.storeApplySuccess.rawValue))
+            }
+        }
+    }
     
+    func changePassword(password: String, completionHandler: @escaping (Result<String>) -> Void) {
+        
+        user().currentUser?.updatePassword(to: password, completion: { (error) in
+            
+            if let error = error {
+                
+                completionHandler(Result.failure(error))
+            } else {
+                
+                completionHandler(Result.success(FirebaseEnum.passwordChange.rawValue))
+            }
+        })
+    }
+    
+    func uploadImagesAndGetURL(images: [UIImage], completionHandler: @escaping (Result<[String]>) -> Void) {
+        var datas: [Data] = []
+        var urls: [String] = []
+        for image in images {
+            
+            guard let data = image.pngData() else {
+                completionHandler(.failure(InputError.imageURLDidNotGet))
+                return
+            }
+            datas.append(data)
+            urls.append(String())
+        }
+        let group = DispatchGroup()
+        
+        for index in 0 ..< datas.count {
+            
+            group.enter()
+            let uuid = NSUUID().uuidString
+            let storageRef = Storage.storage().reference().child("\(uuid).png")
+            storageRef.putData(datas[index], metadata: nil) { (_, _) in
+                
+                storageRef.downloadURL(completion: { (url, _) in
+                    
+                    guard let urlString = url?.absoluteString else {
+                        
+                        group.leave()
+                        return
+                    }
+                    
+                    urls[index] = urlString
+                    group.leave()
+                })
+            }
+        }
+        
+        group.notify(queue: DispatchQueue.main) {
+            
+            if urls.filter({$0.isEmpty}).isEmpty {
+                
+                completionHandler(.success(urls))
+                return
+            } else {
+                completionHandler(.failure(InputError.imageURLDidNotGet))
+            }
+          
+        }
+    }
+    
+    func getStoreApplyDataWithSuperManger(completionHandler: @escaping (Result<[StoreApplyData]>) -> Void) {
+        
+        dataBase().collection(FirebaseEnum.storeApply.rawValue).getDocuments { (querySnapshot, error) in
+            
+            if let error = error {
+                completionHandler(.failure(error))
+                return
+            }
+            guard let documents = querySnapshot?.documents else {
+                
+                completionHandler(.failure(FirebaseDataError.document))
+                return
+            }
+            
+            var datas: [StoreApplyData] = []
+            
+            for document in documents {
+                
+                guard let data = StoreApplyData(dictionary: document.data()) else {
+                    
+                    completionHandler(.failure(FirebaseDataError.decodeFail))
+                    return
+                }
+                
+                datas.append(data)
+            }
+            completionHandler(.success(datas))
+        }
+    }
 }

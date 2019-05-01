@@ -10,7 +10,7 @@ import UIKit
 
 extension UIViewController {
     
-    func addErrorAlertMessage(title: String?, message: String?, completionHanderInDismiss: (() -> Void)?) {
+    func addErrorAlertMessage(title: String?, message: String?, completionHanderInDismiss: (() -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 

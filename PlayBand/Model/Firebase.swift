@@ -151,13 +151,14 @@ class FirebaseManger {
         }
     }
     
-    func bookingTimeEdit(storeName: String, bookingDatas: [BookingTime],
+    func bookingTimeCreat(storeName: String, bookingDatas: [BookingTime],
                          userMessage: String, completionHandler: @escaping (Result<String>) -> Void) {
         
         guard let uid = user().currentUser?.uid else { return }
         guard let user = FirebaseManger.shared.userData else { return }
+        var count = 0
+        var haveError = false
         for bookingData in bookingDatas {
-            
             let document = dataBase()
                 .collection(FirebaseEnum.store.rawValue).document(storeName)
                 .collection(FirebaseEnum.confirm.rawValue).document()
@@ -168,21 +169,27 @@ class FirebaseManger {
             document.setData(
                 dictionary, merge: true,
                 completion: { (error) in
-                            
+                count += 1
                 if let error = error {
+                    haveError = true
                     
-                    if bookingData == bookingDatas.last {
+                    if count == bookingDatas.count {
                         
-                        completionHandler(Result.failure(error))
+                        completionHandler(.failure(error))
                     }
                 } else {
                     
                     self.cloneBookingData(
                         dictionary: dictionary, uid: uid,
                         storeName: storeName, documentID: documentID)
-                    if bookingData == bookingDatas.last {
-                        
-                        completionHandler(Result.success(FirebaseEnum.addBooking.rawValue))
+                    if count == bookingDatas.count {
+                        if haveError {
+                            
+                            completionHandler(.failure(InputError.bookingCreat))
+                        } else {
+                            
+                            completionHandler(.success(FirebaseEnum.addBooking.rawValue))
+                        }
                     }
                 }
             })
@@ -208,14 +215,20 @@ class FirebaseManger {
     
     func getUserBookingData() {
         
-        guard let uid = user().currentUser?.uid else { return }
+        guard let uid = user().currentUser?.uid else {
+            self.userBookingData = []
+            return
+        }
         
         let userBookingDocument = dataBase().collection(FirebaseEnum.user.rawValue)
             .document(uid).collection(FirebaseEnum.booking.rawValue)
         
         userBookingDocument.getDocuments { (querySnapshot, _) in
             
-            guard let documents = querySnapshot else { return }
+            guard let documents = querySnapshot else {
+                self.userBookingData = []
+                return
+            }
             
             if documents.documents.isEmpty {
                 self.userBookingData = []
@@ -233,20 +246,6 @@ class FirebaseManger {
             }
             self.userBookingData = bookingDatas
         }
-    }
-    
-    func changePassword(password: String, completionHandler: @escaping (Result<String>) -> Void) {
-        
-        user().currentUser?.updatePassword(to: password, completion: { (error) in
-            
-            if let error = error {
-                
-                completionHandler(Result.failure(error))
-            } else {
-                
-                completionHandler(Result.success(FirebaseEnum.passwordChange.rawValue))
-            }
-        })
     }
     
     func uploadIamge(uniqueString: String, image: UIImage, completionHandler: @escaping (Result<String>) -> Void) {
@@ -268,7 +267,10 @@ class FirebaseManger {
                         completionHandler(.failure(error))
                         return
                     }
-                    guard let url = url?.absoluteString else {return}
+                    guard let url = url?.absoluteString else {
+                        completionHandler(.failure(InputError.imageURLDidNotGet))
+                        return
+                    }
                     self.uploadUserImageURL(url: url, completionHandler: completionHandler)
                 })
             }
@@ -305,6 +307,7 @@ class FirebaseManger {
                         
                         self.mangerStoreData = []
                     }
+                    self.mangerStoreData = []
                     return
                 }
                 guard let documents = querySnapshot?.documents else {
@@ -329,28 +332,6 @@ class FirebaseManger {
                 }
             }
         }
-        
-//        guard let uid = user().currentUser?.uid else { return }
-//
-//        let userBookingDocument = dataBase().collection(FirebaseEnum.user.rawValue)
-//            .document(uid).collection(FirebaseEnum.store.rawValue)
-//        userBookingDocument.getDocuments { (querySnapshot, _) in
-//
-//            guard let documents = querySnapshot else { return }
-//            if documents.documents.isEmpty {
-//
-//                self.mangerStoreData = []
-//            }
-//            for document in documents.documents {
-//
-//                guard let list = UserListData(dictionary: document.data()) else {
-//                    self.mangerStoreData = []
-//                    return
-//                }
-//                self.getMangerMessage(listID: list.documentID, storeName: list.store, uid: uid)
-//            }
-//
-//        }
     }
     
     private func getMangerMessage(listID: String, storeName: String, uid: String) {

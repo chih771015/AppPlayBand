@@ -56,7 +56,7 @@ class StoreMangerViewController: EditPageViewController {
                 return
             }
             self.addErrorAlertMessage(
-                title: FirebaseEnum.fail.rawValue, message: inputError.errorMessage, completionHanderInDismiss: nil)
+                title: FirebaseEnum.fail.rawValue, message: inputError.localizedDescription, completionHanderInDismiss: nil)
         }
     }
 }

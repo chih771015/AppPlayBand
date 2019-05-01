@@ -28,17 +28,25 @@ class AddRoomViewController: EditPageViewController {
         do {
             try storeData?.addRooms(rooms: dataRooms)
             
-            guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: String(describing: AddImageViewController.self)) as? AddImageViewController else {return}
+            guard let nextVC = self.storyboard?.instantiateViewController(
+                withIdentifier: String(
+                    describing: AddImageViewController.self)) as? AddImageViewController else {return}
             
             nextVC.storeData = storeData
             self.navigationController?.pushViewController(nextVC, animated: true)
         } catch let error {
             guard let inputError = error as? InputError else {
-                self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
+                self.addErrorAlertMessage(
+                    title: FirebaseEnum.fail.rawValue,
+                    message: error.localizedDescription,
+                    completionHanderInDismiss: nil)
                 return
             }
             
-            self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: inputError.errorMessage, completionHanderInDismiss: nil)
+            self.addErrorAlertMessage(
+                title: FirebaseEnum.fail.rawValue,
+                message: inputError.localizedDescription,
+                completionHanderInDismiss: nil)
         }
     }
     
@@ -58,10 +66,12 @@ class AddRoomViewController: EditPageViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return datas[indexPath.row].cellForRoomEdit(indexPath, tableView: tableView, storeAddRoomCellDelegate: self, texts: dataRooms[indexPath.row])
+        return datas[indexPath.row].cellForRoomEdit(
+            indexPath, tableView: tableView, storeAddRoomCellDelegate: self, texts: dataRooms[indexPath.row])
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if datas.count == 1 {
             
             return

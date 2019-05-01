@@ -103,7 +103,7 @@ struct StoreData {
         return close - open
     }
     
-    func getFIrebaseDictionay() -> [String: Any] {
+    func getFirebaseDictionay() -> [String: Any] {
         var imagesArray:[String] = []
         for image in  self.images {
             
@@ -128,7 +128,7 @@ struct StoreData {
             StoreDataKey.photourl.rawValue: self.photourl,
             StoreDataKey.images.rawValue: imagesArray,
             StoreDataKey.rooms.rawValue: roomsArray]
-        
+
         return dictionay
     }
     
