@@ -58,7 +58,6 @@ class StoreAddRoomTableViewCell: UITableViewCell {
         
         firstTextField.text = firstText
         secondTextField.text = secondText
-        
     }
 }
 

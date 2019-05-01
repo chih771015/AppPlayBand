@@ -14,21 +14,26 @@ class AddImageViewController: EditPageViewController {
         
         guard let nextVC = self.storyboard?.instantiateViewController(
             withIdentifier: String(describing: StoreReviewViewController.self)) as? StoreReviewViewController else {
-            print("??")
             return
         }
-        
+//        self.storeData?.images = imagesURL
+        nextVC.setupStoreData(storeData: storeData, images: images)
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     @IBAction func barButtonAction(_ sender: Any) {
         
+        if images.count > 6 {
+            
+            return
+        }
+        
         let nextVC = PhotoChoiceViewController(title: PhotoEnum.title.rawValue, message: PhotoEnum.message.rawValue, preferredStyle: .actionSheet)
         nextVC.presentVC = self
         present(nextVC, animated: true, completion: nil)
-        
     }
     var images: [UIImage] = []
-    
+//    var imagesURL: [String] = []
+    var storeData: StoreData?
     override func viewDidLoad() {
         super.viewDidLoad()
         pageName = "選擇圖片"
@@ -57,6 +62,11 @@ class AddImageViewController: EditPageViewController {
         cell.setupCell(image: images[indexPath.row], storeAddImageDelegate: self, row: indexPath.row)
         return cell
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 extension AddImageViewController: StoreAddImageDelegate {
@@ -70,7 +80,7 @@ extension AddImageViewController: StoreAddImageDelegate {
         } else {
             
             images.remove(at: index.row)
-      //      tableView.deleteRows(at: [index], with: .automatic)
+//imagesURL.remove(at: index.row)
             let indexSet = IndexSet(arrayLiteral: index.section)
             tableView.reloadSections(indexSet, with: .automatic)
         }
@@ -82,6 +92,13 @@ extension AddImageViewController: UINavigationControllerDelegate, UIImagePickerC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         var selectImage: UIImage?
+//
+//        if let pickedImageURL = info[UIImagePickerController.InfoKey.imageURL] as? NSURL {
+//            let url = "\(pickedImageURL)"
+//
+//            self.imagesURL.append(url)
+//            print(pickedImageURL)
+//        }
         
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             
@@ -90,7 +107,8 @@ extension AddImageViewController: UINavigationControllerDelegate, UIImagePickerC
         
         if let selectedImage = selectImage {
             
-            let resizeImage = selectedImage.resizeImage(targetSize: CGSize(width: 500, height: selectedImage.size.height / selectedImage.size.width * 500))
+            let resizeImage = selectedImage.resizeImage(
+                targetSize: CGSize(width: 500, height: selectedImage.size.height / selectedImage.size.width * 500))
             
             self.images.append(resizeImage)
             if images.count == 1 {

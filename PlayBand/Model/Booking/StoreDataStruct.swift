@@ -153,9 +153,15 @@ struct StoreData {
         
         if let phone = dataString[ .storePhone], phone.isEmpty == false {
             
-            if let _ = Int(phone) {
+            if Int(phone) != nil {
                 
-                self.phone = phone
+                if phone.count > 6 {
+                    
+                    self.phone = phone
+                } else {
+                    
+                    throw InputError.phoneIsLessThanSeven
+                }
             } else {
                 
                 throw InputError.phoneIsNotNumber
@@ -229,5 +235,26 @@ struct StoreData {
             
             throw InputError.information
         }
+    }
+    
+    mutating func addRooms(rooms: [Room]) throws {
+        
+        for index in 0 ..< rooms.count {
+            
+            if rooms[index].name.isEmpty {
+            
+                throw InputError.roomName(index + 1)
+            }
+            if rooms[index].price.isEmpty {
+                
+                throw InputError.priceIsEmpty(index + 1)
+            }
+            
+            if Int(rooms[index].price) == nil {
+                
+                throw InputError.priceIsNotNumber(index + 1)
+            }
+        }
+        self.rooms = rooms
     }
 }

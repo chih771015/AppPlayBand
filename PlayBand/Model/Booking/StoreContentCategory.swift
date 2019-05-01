@@ -37,13 +37,21 @@ enum StoreContentCategory: String {
 
     }
 
-    func cellForIndexPath(_ indexPath: IndexPath, tableView: UITableView, data: StoreData?) -> UITableViewCell {
+    func cellForIndexPath(
+        _ indexPath: IndexPath, tableView: UITableView, data: StoreData?,
+        images: [UIImage] = []) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         guard let storeData = data else {return cell}
         guard let desCell = cell as? StoreDescriptionTableViewCell else {
         
             guard let imageCell = cell as? StoreTitleImageTableViewCell else {return cell}
+            if storeData.photourl.isEmpty {
+                
+                imageCell.uiImages = images
+                return imageCell
+            }
+            
             var images = [storeData.photourl]
             for image in storeData.images {
                 images.append(image)
@@ -63,10 +71,10 @@ enum StoreContentCategory: String {
                 
                 if roomCount != 0 {
                     
-                    price += "\n$\(room.price)"
+                    price += "\n\(room.name) ：$\(room.price)"
                 } else {
                     
-                    price += "$\(room.price)"
+                    price += "\(room.name) ：$\(room.price)"
                 }
                 roomCount += 1
             }

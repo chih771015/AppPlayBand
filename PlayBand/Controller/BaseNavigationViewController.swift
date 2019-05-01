@@ -20,6 +20,7 @@ class BaseNavigationViewController: UINavigationController {
         self.navigationBar.tintColor = color
         self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
         self.navigationBar.isTranslucent = true
+        
     }
 
     /*

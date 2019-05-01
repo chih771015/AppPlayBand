@@ -20,4 +20,9 @@ class StoreImageCollectionViewCell: UICollectionViewCell {
         
         storeImage.lv_setImageWithURL(url: url)
     }
+    
+    func setupImageInImage(image: UIImage) {
+        
+        storeImage.image = image
+    }
 }

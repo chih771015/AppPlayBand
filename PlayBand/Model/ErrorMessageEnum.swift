@@ -24,6 +24,9 @@ enum InputError: Error {
     case closeTimeIsNotTwoCount
     case information
     case openTimeThanCloseTime
+    case roomName(Int)
+    case priceIsEmpty(Int)
+    case priceIsNotNumber(Int)
     
     var errorMessage: String {
         
@@ -67,6 +70,12 @@ enum InputError: Error {
             return "店家資訊不能為空"
         case .openTimeThanCloseTime:
             return "關店時間比開店還早或一樣"
+        case .roomName(let index):
+            return "第\(index)個團室名字是空的"
+        case .priceIsEmpty(let index):
+            return "第\(index)個團室價錢是空的"
+        case .priceIsNotNumber(let index):
+            return "第\(index)個團室價錢不是數字"
         }
     }
 }

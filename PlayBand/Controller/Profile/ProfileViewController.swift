@@ -21,7 +21,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func presentPhotoVC() {
-//        Crashlytics.sharedInstance().crash()
+
         let nextViewController = PhotoChoiceViewController(
             title: PhotoEnum.title.rawValue, message: PhotoEnum.message.rawValue, preferredStyle: .actionSheet)
         nextViewController.presentVC = self
@@ -92,23 +92,14 @@ class ProfileViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-//        let color = UIColor.white
-////
-////        self.navigationController?.navigationBar.barTintColor = color
-//        self.navigationController?.navigationBar.tintColor = color
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
-////        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
-
         setupLayer()
     }
     
     private func setupNavigationBar() {
-    
+   
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-//        self.navigationController?.navigationBar.isTranslucent = true
-//        self.navigationController?.view.backgroundColor = UIColor.clear
+
     }
     
     private func setupColorView() {
@@ -172,7 +163,8 @@ extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerCo
         
         if let selectedImage = selectImage {
             
-            let resizeImage = selectedImage.resizeImage(targetSize: CGSize(width: 500, height: selectedImage.size.height / selectedImage.size.width * 500))
+            let resizeImage = selectedImage.resizeImage(
+                targetSize: CGSize(width: 500, height: selectedImage.size.height / selectedImage.size.width * 500))
         
             FirebaseManger.shared.uploadIamge(uniqueString: uniqueString, image: resizeImage) { [weak self] (result) in
                 PBProgressHUD.dismissLoadingView(animated: true)

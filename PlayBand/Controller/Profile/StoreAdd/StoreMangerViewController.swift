@@ -42,16 +42,21 @@ class StoreMangerViewController: EditPageViewController {
                 withIdentifier: String(describing: AddRoomViewController.self)) as? AddRoomViewController else {
                     return
             }
+            
+            nextVC.storeData = storeData
+            
             self.navigationController?.pushViewController(nextVC, animated: true)
             
         } catch let error {
             
             guard let inputError = error as? InputError else {
                 
-                self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
+                self.addErrorAlertMessage(
+                    title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
                 return
             }
-            self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: inputError.errorMessage, completionHanderInDismiss: nil)
+            self.addErrorAlertMessage(
+                title: FirebaseEnum.fail.rawValue, message: inputError.errorMessage, completionHanderInDismiss: nil)
         }
     }
 }

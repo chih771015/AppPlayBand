@@ -32,8 +32,8 @@ class SearchStoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // swiftlint: disable line_length
 
-        // Do any additional setup after loading the view.
         tableView.beginHeaderRefreshing()
     }
     private func getStoreData() {

@@ -10,26 +10,13 @@ import UIKit
 
 class BaseStoreViewController: UIViewController {
 
-    @IBOutlet weak var button: UIButton! {
-        
-        didSet {
-            
-            setupButton()
-        }
-    }
-    @IBOutlet weak var tableView: UITableView! {
-        didSet {
-            
-            setupTableView()
-        }
-    }
-    
+    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     @IBAction func buttonAction() {
         
-   
     }
     
-    private let datas: [StoreContentCategory] = [.images, .name, .phone, .address, .price, .time, .description]
+    let datas: [StoreContentCategory] = [.images, .name, .phone, .address, .price, .time, .description]
     
     var storeData: StoreData? {
         
@@ -42,6 +29,8 @@ class BaseStoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.layoutIfNeeded()
+        setupTableView()
+        setupButton()
     }
     
     private func setupTableView() {

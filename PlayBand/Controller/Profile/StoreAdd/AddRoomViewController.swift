@@ -18,20 +18,33 @@ class AddRoomViewController: EditPageViewController {
         }
         
         datas.append(.room)
-        dataString.append(StoreData.Room())
+        dataRooms.append(StoreData.Room())
         let indexPath = IndexPath(row: (datas.count - 1), section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
     
     override func buttonAction() {
         
-        guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: String(describing: AddImageViewController.self)) as? AddImageViewController else {return}
-        
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        do {
+            try storeData?.addRooms(rooms: dataRooms)
+            
+            guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: String(describing: AddImageViewController.self)) as? AddImageViewController else {return}
+            
+            nextVC.storeData = storeData
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        } catch let error {
+            guard let inputError = error as? InputError else {
+                self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
+                return
+            }
+            
+            self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: inputError.errorMessage, completionHanderInDismiss: nil)
+        }
     }
     
-    var dataString: [StoreData.Room] = [StoreData.Room()]
+    var dataRooms: [StoreData.Room] = [StoreData.Room()]
     
+    var storeData: StoreData?
     override func viewDidLoad() {
         super.viewDidLoad()
         pageName = "增加團室"
@@ -45,7 +58,7 @@ class AddRoomViewController: EditPageViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return datas[indexPath.row].cellForRoomEdit(indexPath, tableView: tableView, storeAddRoomCellDelegate: self, texts: dataString[indexPath.row])
+        return datas[indexPath.row].cellForRoomEdit(indexPath, tableView: tableView, storeAddRoomCellDelegate: self, texts: dataRooms[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -55,10 +68,15 @@ class AddRoomViewController: EditPageViewController {
         }
         if editingStyle == .delete {
             
-            dataString.remove(at: indexPath.row)
+            dataRooms.remove(at: indexPath.row)
             datas.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 
@@ -66,9 +84,9 @@ extension AddRoomViewController: StoreAddRoomCellDelegate {
     
     func textFieldDidEnd(tableViewCell: UITableViewCell, firstTextField: String?, secondTextField: String?) {
         guard let index = tableView.indexPath(for: tableViewCell) else {return}
-        if dataString.count > index.row {
-            dataString[index.row].name = firstTextField ?? ""
-            dataString[index.row].price = firstTextField ?? ""
+        if dataRooms.count > index.row {
+            dataRooms[index.row].name = firstTextField ?? ""
+            dataRooms[index.row].price = secondTextField ?? ""
         } else {
             return
         }

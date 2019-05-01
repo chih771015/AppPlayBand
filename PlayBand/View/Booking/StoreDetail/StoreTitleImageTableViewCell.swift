@@ -18,6 +18,17 @@ class StoreTitleImageTableViewCell: UITableViewCell {
             pageControl.numberOfPages = images.count
         }
     }
+    var uiImages: [UIImage] = [] {
+        
+        didSet {
+            
+            collectionView.reloadData()
+            pageControl.numberOfPages = uiImages.count
+            isURL = false
+        }
+    }
+    
+    private var isURL = true
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView! {
@@ -64,7 +75,11 @@ extension StoreTitleImageTableViewCell: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return images.count
+        if isURL {
+            return images.count
+        } else {
+            return uiImages.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -73,8 +88,11 @@ extension StoreTitleImageTableViewCell: UICollectionViewDelegate, UICollectionVi
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: StoreImageCollectionViewCell.self),
             for: indexPath) as? StoreImageCollectionViewCell else {return UICollectionViewCell()}
-        
-        cell.setupImage(url: images[indexPath.row])
+        if isURL {
+            cell.setupImage(url: images[indexPath.row])
+        } else {
+            cell.setupImageInImage(image: uiImages[indexPath.row])
+        }
         return cell
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

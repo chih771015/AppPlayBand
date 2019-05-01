@@ -24,7 +24,7 @@ class PhotoChoiceViewController: UIAlertController {
         imagePickerController.delegate = presentVC
         guard let nextVC = self.presentVC else {return}
         
-        let imageFromLibAction = UIAlertAction(title: "照片圖庫", style: .default) { [weak self] (_) in
+        let imageFromLibAction = UIAlertAction(title: "照片圖庫", style: .default) { (_) in
             imagePickerController.sourceType = .photoLibrary
             
             switch AVCaptureDevice.authorizationStatus(for: .video) {
