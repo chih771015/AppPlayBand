@@ -113,3 +113,8 @@ enum NotificationCenterName: String {
     case bookingData
     
 }
+
+enum PhotoEnum: String {
+    case title = "上傳圖片"
+    case message = "請選擇圖片"
+}

@@ -25,7 +25,9 @@ class AddRoomViewController: EditPageViewController {
     
     override func buttonAction() {
         
-        print("text")
+        guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: String(describing: AddImageViewController.self)) as? AddImageViewController else {return}
+        
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     var dataString: [StoreData.Room] = [StoreData.Room()]

@@ -28,8 +28,7 @@ enum StoreContentCategory: String {
     var identifier: String {
         
         switch self {
-        case .name : return String(describing: StoreDescriptionTableViewCell.self)
-        case .price, .description, .time: return String(describing: StoreDescriptionTableViewCell.self)
+            
         case .images:
             return String(describing: StoreTitleImageTableViewCell.self)
         default:

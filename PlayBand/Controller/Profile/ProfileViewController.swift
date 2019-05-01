@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController {
     @IBAction func presentPhotoVC() {
 //        Crashlytics.sharedInstance().crash()
         let nextViewController = PhotoChoiceViewController(
-            title: "上傳圖片", message: "請選擇圖片", preferredStyle: .actionSheet)
+            title: PhotoEnum.title.rawValue, message: PhotoEnum.message.rawValue, preferredStyle: .actionSheet)
         nextViewController.presentVC = self
         present(nextViewController, animated: true, completion: nil)
     }

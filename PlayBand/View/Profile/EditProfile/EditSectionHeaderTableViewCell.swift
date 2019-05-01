@@ -10,6 +10,7 @@ import UIKit
 
 class EditSectionHeaderTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,8 +23,9 @@ class EditSectionHeaderTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupCell(title: String) {
+    func setupCell(title: String, description: String = "") {
         
         self.titleLabel.text = title
+        self.descriptionLabel.text = description
     }
 }

@@ -45,6 +45,7 @@ enum ProfileContentCategory: String {
     case room
     case price
     case information
+    case images
     
     var title: String {
         switch self {

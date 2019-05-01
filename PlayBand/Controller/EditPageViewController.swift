@@ -15,7 +15,7 @@ class EditPageViewController: UIViewController {
     }
     
     var pageName = ""
-    
+    var descriptionText = ""
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
@@ -37,7 +37,8 @@ class EditPageViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.lv_registerCellWithNib(identifier: String(describing: EditTableViewCell.self), bundle: nil)
-        tableView.lv_registerCellWithNib(identifier: String(describing: EditSectionHeaderTableViewCell.self), bundle: nil)
+        tableView.lv_registerHeaderWithNib(identifier: String(describing: EditTableHeaderFooterView.self), bundle: nil)
+        
     }
 }
 
@@ -45,12 +46,12 @@ extension EditPageViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        guard let header = tableView.dequeueReusableCell(
+        guard let header = tableView.dequeueReusableHeaderFooterView(
             withIdentifier: String(
-                describing: EditSectionHeaderTableViewCell.self)) as? EditSectionHeaderTableViewCell else {
+                describing: EditTableHeaderFooterView.self)) as? EditTableHeaderFooterView else {
                     return UIView()
         }
-        header.setupCell(title: pageName)
+        header.setupHeader(title: pageName, description: descriptionText)
         return header
     }
     

@@ -10,15 +10,15 @@ import Foundation
 
 struct StoreData {
     
-    let name: String
-    let openTime: String
-    let closeTime: String
-    let phone: String
-    let address: String
-    let photourl: String
-    let information: String
+    var name: String
+    var openTime: String
+    var closeTime: String
+    var phone: String
+    var address: String
+    var photourl: String
+    var information: String
     var rooms: [Room] = []
-    let city: String
+    var city: String
     var images: [String] = []
     
     struct Room {
@@ -36,6 +36,17 @@ struct StoreData {
             self.name = ""
             self.price = ""
         }
+    }
+    
+    init() {
+        self.name = ""
+        self.openTime = ""
+        self.closeTime = ""
+        self.address = ""
+        self.city = ""
+        self.information = ""
+        self.phone = ""
+        self.photourl = ""
     }
     
     init? (dictionary: [String: Any]) {
@@ -90,5 +101,133 @@ struct StoreData {
         guard let close = Int(closeTime) else {return 0}
         guard let open = Int(openTime) else {return 0}
         return close - open
+    }
+    
+    func getFIrebaseDictionay() -> [String: Any] {
+        var imagesArray:[String] = []
+        for image in  self.images {
+            
+            imagesArray.append(image)
+        }
+        var roomsArray: [[String:Any]] = []
+        for room in self.rooms {
+            
+            let roomDictionary = [StoreDataKey.name.rawValue: room.name,
+                                  StoreDataKey.price.rawValue: room.price]
+            roomsArray.append(roomDictionary)
+        }
+        
+        let dictionay: [String: Any] = [
+            StoreDataKey.name.rawValue: self.name,
+            StoreDataKey.opentime.rawValue: self.openTime,
+            StoreDataKey.closetime.rawValue: self.closeTime,
+            StoreDataKey.phone.rawValue: self.phone,
+            StoreDataKey.address.rawValue: self.address,
+            StoreDataKey.information.rawValue: self.information,
+            StoreDataKey.city.rawValue: self.city,
+            StoreDataKey.photourl.rawValue: self.photourl,
+            StoreDataKey.images.rawValue: imagesArray,
+            StoreDataKey.rooms.rawValue: roomsArray]
+        
+        return dictionay
+    }
+    
+    mutating func putDataInEnumDictionay(dataString: [ProfileContentCategory: String]) throws {
+        
+        if let name = dataString[.storeName], name.isEmpty == false {
+            
+            self.name = name
+            
+        } else {
+            
+            throw InputError.storeName
+        }
+        
+        if let city = dataString[ .storeCity], city.isEmpty == false {
+            
+            self.city = city
+        } else {
+            
+            throw InputError.storeCity
+        }
+        
+        if let phone = dataString[ .storePhone], phone.isEmpty == false {
+            
+            if let _ = Int(phone) {
+                
+                self.phone = phone
+            } else {
+                
+                throw InputError.phoneIsNotNumber
+            }
+        } else {
+            
+            throw InputError.phoneIsEmpty
+        }
+        if let address = dataString[ .address], address.isEmpty == false {
+            
+            self.address = address
+            
+        } else {
+            
+            throw InputError.address
+        }
+        
+        var open = 0
+        if let openTime = dataString[ .openTime], openTime.isEmpty == false {
+            
+            if let openNumber = Int(openTime) {
+                
+                if openTime.count == 2 {
+                    
+                    self.openTime = openTime
+                    open = openNumber
+                } else {
+                    
+                    throw InputError.openTimeIsNotTwoCount
+                }
+            } else {
+                
+                throw InputError.openTimeIsNotNumber
+            }
+        } else {
+            
+            throw InputError.openTimeIsEmpty
+        }
+        
+        var close = 0
+        if let closeTime = dataString[ .closeTime], closeTime.isEmpty == false {
+            
+            if let closeNumber = Int(closeTime) {
+                
+                if closeTime.count == 2 {
+                    
+                    self.closeTime = closeTime
+                    close = closeNumber
+                } else {
+                    
+                    throw InputError.closeTimeIsNotTwoCount
+                }
+            } else {
+                
+                throw InputError.closeTimeIsNotNumber
+            }
+        } else {
+            
+            throw InputError.closeTimeIsEmpty
+        }
+        
+        if open >= close {
+            
+            throw InputError.openTimeThanCloseTime
+        }
+        
+        if let information = dataString[ .information], information.isEmpty == false {
+            
+            self.information = information
+        } else {
+            
+            throw InputError.information
+        }
     }
 }

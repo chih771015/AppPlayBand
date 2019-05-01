@@ -56,7 +56,7 @@ class DataTransform {
     class func userData(userData: UserData) -> [String: Any] {
         
         if userData.status != nil {
-            let dictionary = [ UsersKey.name.rawValue: userData.name, UsersKey.band.rawValue: userData.band,
+            let dictionary = [UsersKey.name.rawValue: userData.name, UsersKey.band.rawValue: userData.band,
                 UsersKey.email.rawValue: userData.email, UsersKey.phone.rawValue: userData.phone,
                 UsersKey.facebook.rawValue: userData.facebook,
                 UsersKey.status.rawValue: userData.status]

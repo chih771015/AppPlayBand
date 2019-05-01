@@ -20,23 +20,32 @@
                 <rect key="frame" x="0.0" y="0.0" width="384" height="168.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpv-8U-gun">
-                        <rect key="frame" x="24" y="16" width="336" height="136.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpv-8U-gun">
+                        <rect key="frame" x="24" y="16" width="301" height="136.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                         <color key="textColor" name="endColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1K-Oo-x2H">
+                        <rect key="frame" x="325" y="16" width="35" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                        <color key="textColor" name="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Dpv-8U-gun" secondAttribute="bottom" priority="750" constant="16" id="D4J-up-xha"/>
-                    <constraint firstAttribute="trailing" secondItem="Dpv-8U-gun" secondAttribute="trailing" constant="24" id="DWD-P2-9vq"/>
+                    <constraint firstItem="z1K-Oo-x2H" firstAttribute="leading" secondItem="Dpv-8U-gun" secondAttribute="trailing" id="Js8-Wf-EeW"/>
                     <constraint firstItem="Dpv-8U-gun" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="O8O-1T-mzM"/>
+                    <constraint firstAttribute="trailing" secondItem="z1K-Oo-x2H" secondAttribute="trailing" constant="24" id="O95-sT-kFS"/>
                     <constraint firstItem="Dpv-8U-gun" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="OdD-fX-oOA"/>
+                    <constraint firstItem="z1K-Oo-x2H" firstAttribute="top" secondItem="Dpv-8U-gun" secondAttribute="top" id="qL0-qw-jPG"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="descriptionLabel" destination="z1K-Oo-x2H" id="Aaw-8I-Er6"/>
                 <outlet property="titleLabel" destination="Dpv-8U-gun" id="FYN-HU-cSJ"/>
             </connections>
             <point key="canvasLocation" x="184.05797101449278" y="142.96875"/>
@@ -44,7 +53,10 @@
     </objects>
     <resources>
         <namedColor name="endColor">
-            <color red="0.58039215686274515" green="0.8901960784313725" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.039215686274509803" green="0.83529411764705885" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textColor">
+            <color red="0.30588235294117649" green="0.30588235294117649" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

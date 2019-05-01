@@ -10,12 +10,13 @@ import UIKit
 
 class StoreMangerViewController: EditPageViewController {
     
-    var dataString: [ProfileContentCategory: String] = [.storeName: "", .storeCity: "" ,.storePhone: "", .address: "", .openTime: "", .closeTime: "", .information: ""]
+    var dataString: [ProfileContentCategory: String] = [
+        .storeName: "", .storeCity: "", .storePhone: "", .address: "", .openTime: "", .closeTime: "", .information: ""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         pageName = "申請店家"
-        datas = [.storeName, .storeCity , .storePhone, .address, .openTime, .closeTime, .information]
+        datas = [.storeName, .storeCity, .storePhone, .address, .openTime, .closeTime, .information]
         // Do any additional setup after loading the view.
     }
     
@@ -26,13 +27,31 @@ class StoreMangerViewController: EditPageViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return datas[indexPath.row].cellForIndexPathInStore(indexPath, tableView: tableView, textFieldDelegate: self, text: dataString[datas[indexPath.row]])
+        return datas[indexPath.row].cellForIndexPathInStore(
+            indexPath, tableView: tableView, textFieldDelegate: self, text: dataString[datas[indexPath.row]])
     }
     
     override func buttonAction() {
-        guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: String(describing: AddRoomViewController.self)) as? AddRoomViewController else {
-            return
+        
+        var storeData = StoreData()
+        
+        do {
+            try storeData.putDataInEnumDictionay(dataString: dataString)
+            
+            guard let nextVC = self.storyboard?.instantiateViewController(
+                withIdentifier: String(describing: AddRoomViewController.self)) as? AddRoomViewController else {
+                    return
+            }
+            self.navigationController?.pushViewController(nextVC, animated: true)
+            
+        } catch let error {
+            
+            guard let inputError = error as? InputError else {
+                
+                self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
+                return
+            }
+            self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: inputError.errorMessage, completionHanderInDismiss: nil)
         }
-        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
