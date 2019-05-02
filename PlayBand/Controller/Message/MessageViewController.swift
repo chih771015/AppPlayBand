@@ -114,13 +114,14 @@ class MessageViewController: UIViewController {
     
     private func fetchData() {
         
+        PBProgressHUD.addLoadingView(animated: true)
         switch messageStatus {
         case .normal:
             firebaseManger.getUserBookingData()
         case .store(let storeName):
             
             firebaseManger.getStoreBookingDataWithManger(storeName: storeName) { [weak self] (result) in
-                
+                PBProgressHUD.dismissLoadingView(animated: true)
                 switch result {
                 case .success(let data):
                     self?.userBookingData = data
@@ -130,25 +131,6 @@ class MessageViewController: UIViewController {
             }
         }
     }
-    
-//    private func fetchData() {
-//
-//        PBProgressHUD.addLoadingView(animated: true)
-//
-//        if self.messageStatus == UsersKey.Status.user {
-//
-//            firebaseManger.getUserBookingData()
-//
-//        } else if self.messageStatus == UsersKey.Status.manger {
-//
-//            firebaseManger.getMangerBookingData()
-//
-//        } else {
-//
-//            PBProgressHUD.dismissLoadingView(animated: true)
-//        }
-//
-//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

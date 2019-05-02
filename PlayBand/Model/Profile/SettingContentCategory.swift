@@ -16,6 +16,7 @@ enum SettingContentCategory: String {
     case logout = "登出"
     case storeApply = "店家申請"
     case superManger = "管理店家申請"
+    case editStore = "修改店家資料"
 
     var imageTitle: String {
 
@@ -26,6 +27,8 @@ enum SettingContentCategory: String {
         case .passwordChange: return "key"
         case .storeApply: return ""
         case .superManger:
+            return ""
+        case .editStore:
             return ""
         }
     }
@@ -40,7 +43,7 @@ enum SettingContentCategory: String {
         case .superManger:
             return String(describing: SuperMangerCheckStoreViewController.self)
         default:
-            return ""
+            return String(describing: EditStoreDetailViewController.self)
         }
     }
 
@@ -96,6 +99,33 @@ enum SettingContentCategory: String {
                         completionHanderInDismiss: nil)
                 }
             })
+        case .editStore:
+            
+            let alert = UIAlertController(title: "選擇店家", message: "請選擇要修改資訊的店家", preferredStyle: .actionSheet)
+            
+            for store in FirebaseManger.shared.storeName {
+                
+                let actionManger = UIAlertAction(title: "修改\(store)", style: .default) { [weak viewController] (_) in
+                    
+                    guard let nextVC = UIStoryboard.profile.instantiateViewController(withIdentifier: self.identifier) as? EditStoreDetailViewController else {
+                        return
+                    }
+                    
+                    if let store = FirebaseManger.shared.storeDatas.first(where: {$0.name == store}) {
+                        nextVC.storeData = store
+                        viewController?.navigationController?.pushViewController(nextVC, animated: true)
+                    }
+                    
+                }
+                actionManger.setValue(UIColor.playBandColorEnd, forKey: "titleTextColor")
+                alert.addAction(actionManger)
+            }
+            
+            let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            cancelAction.setValue(UIColor.playBandColorEnd, forKey: "titleTextColor")
+            alert.addAction(cancelAction)
+
+            viewController.present(alert, animated: true, completion: nil)
         default:
             return
         }

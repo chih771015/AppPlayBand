@@ -75,7 +75,6 @@ class SignUpViewController: UIViewController {
                 
                 guard result != nil else {
                     guard let errorConfirm = error else {return}
-                    print(errorConfirm)
                     PBProgressHUD.dismissLoadingView(animated: true)
                     self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: errorConfirm.localizedDescription, completionHanderInDismiss: nil)
 
@@ -89,12 +88,13 @@ class SignUpViewController: UIViewController {
                     
                     guard result != nil else {
                         PBProgressHUD.dismissLoadingView(animated: true)
-                        self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error?.localizedDescription, completionHanderInDismiss: nil)
+                        self?.addErrorAlertMessage(
+                            title: FirebaseEnum.fail.rawValue, message: error?.localizedDescription, completionHanderInDismiss: nil)
                         
                         return
                     }
-                        FirebaseManger.shared.editProfileInfo(userData: user, completionHandler: { (error) in
-                            print(error)
+                        FirebaseManger.shared.editProfileInfo(userData: user, completionHandler: { (_) in
+                            
                         })
                     PBProgressHUD.dismissLoadingView(animated: true)
                     self?.addSucessAlertMessage(title: "歡迎進入", message: nil, completionHanderInDismiss: {
@@ -152,7 +152,8 @@ class SignUpViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.lv_registerCellWithNib(identifier: String(describing: EditTableViewCell.self), bundle: nil)
-        tableView.lv_registerCellWithNib(identifier: String(describing: EditSectionHeaderTableViewCell.self), bundle: nil)
+        tableView.lv_registerCellWithNib(
+            identifier: String(describing: EditSectionHeaderTableViewCell.self), bundle: nil)
     }
     
 }

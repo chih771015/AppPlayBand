@@ -259,4 +259,17 @@ extension FirebaseManger {
             completionHandler(.success(datas))
         }
     }
+    
+    func updataStoreData(storeData: StoreData, completionHandler: @escaping (Result<String>) -> Void) {
+        let dictionary = storeData.getFirebaseDictionay()
+        dataBase().collection(FirebaseEnum.store.rawValue).document(storeData.name).updateData(dictionary) { (error) in
+            
+            if let error = error {
+                
+                completionHandler(.failure(error))
+                return
+            }
+            completionHandler(.success("修改資料成功"))
+        }
+    }
 }

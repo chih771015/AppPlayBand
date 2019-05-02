@@ -39,7 +39,6 @@ class AddImageViewController: EditPageViewController {
         present(nextVC, animated: true, completion: nil)
     }
     var images: [UIImage] = []
-//    var imagesURL: [String] = []
     var storeData: StoreData?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +49,6 @@ class AddImageViewController: EditPageViewController {
     override func setupTableView() {
         super.setupTableView()
         tableView.lv_registerCellWithNib(identifier: String(describing: StoreAddImageTableViewCell.self), bundle: nil)
-        tableView.lv_registerHeaderWithNib(identifier: String(describing: EditTableHeaderFooterView.self), bundle: nil)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,11 +67,6 @@ class AddImageViewController: EditPageViewController {
         
         cell.setupCell(image: images[indexPath.row], storeAddImageDelegate: self, row: indexPath.row)
         return cell
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
 }
 
@@ -100,14 +93,7 @@ extension AddImageViewController: UINavigationControllerDelegate, UIImagePickerC
         _ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         var selectImage: UIImage?
-//
-//        if let pickedImageURL = info[UIImagePickerController.InfoKey.imageURL] as? NSURL {
-//            let url = "\(pickedImageURL)"
-//
-//            self.imagesURL.append(url)
-//            print(pickedImageURL)
-//        }
-        
+
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             
             selectImage = pickedImage

@@ -56,6 +56,7 @@ class AddRoomViewController: EditPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         pageName = "增加團室"
+        descriptionText = "上限20間"
         datas = [.room]
         // Do any additional setup after loading the view.
     }

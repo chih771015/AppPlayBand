@@ -26,11 +26,12 @@ class SignInViewController: UIViewController {
             
             return
         }
-        
+        PBProgressHUD.addLoadingView(at: view, animated: true)
         firebase.signInAccount(
         email: account, password: password) {[weak self] (result, error) in
+            
             if error != nil {
-                
+                PBProgressHUD.dismissLoadingView(animated: true)
                 self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error?.localizedDescription, completionHanderInDismiss: nil)
 
             } else {
@@ -40,17 +41,7 @@ class SignInViewController: UIViewController {
                     let mainVC = UIStoryboard.main.instantiateInitialViewController()
                     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
                     appDelegate.window?.rootViewController = mainVC
-                    
                 })
-//                let alert = UIAlertController(title: nil, message: "登入成功", preferredStyle: .alert)
-//                self?.present(alert, animated: true) {
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-//                        alert.dismiss(animated: true, completion: nil)
-//                        let mainVC = UIStoryboard.main.instantiateInitialViewController()
-//                        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-//                        appDelegate.window?.rootViewController = mainVC
-//                    })
-//                }
             }
         }
     }

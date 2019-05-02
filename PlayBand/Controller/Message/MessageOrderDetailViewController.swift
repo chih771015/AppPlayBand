@@ -35,7 +35,7 @@ class MessageOrderDetailViewController: UIViewController {
                     
                     self?.addSucessAlertMessage(title: message, message: nil, completionHanderInDismiss: { [weak self] in
                         
-                        self?.dismiss(animated: true, completion: nil)
+                        self?.navigationController?.popToRootViewController(animated: true)
                     })
                     
                 case.failure(let error):
@@ -59,7 +59,7 @@ class MessageOrderDetailViewController: UIViewController {
                 
                 self?.addSucessAlertMessage(title: message, message: nil, completionHanderInDismiss: { [weak self] in
                     
-                    self?.dismiss(animated: true, completion: nil)
+                    self?.navigationController?.popToRootViewController(animated: true)
                 })
 
             case .failure(let error):
