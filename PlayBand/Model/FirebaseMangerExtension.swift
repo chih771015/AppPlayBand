@@ -98,7 +98,10 @@ extension FirebaseManger {
         let userDictionary = DataTransform.userData(userData: userData)
         dictionary.updateValue(userDictionary, forKey: FirebaseBookingKey.user.rawValue)
         
-        dataBase().collection(FirebaseEnum.storeApply.rawValue).addDocument(data: dictionary) { (error) in
+        let document = dataBase().collection(FirebaseEnum.storeApply.rawValue).document()
+        dictionary.updateValue(document.documentID, forKey: FirebaseBookingKey.pathID.rawValue)
+        
+        document.setData(dictionary, merge: true) { error in
             
             if let error = error {
                 
@@ -200,5 +203,24 @@ extension FirebaseManger {
             }
             completionHandler(.success(datas))
         }
+    }
+    
+    func applyStoreInSuperManger(pathID: String, storeData: StoreData, completionHandler: @escaping (Result<String>) -> Void) {
+        
+        dataBase().collection(FirebaseEnum.store.rawValue)
+            .document(storeData.name).setData(storeData.getFirebaseDictionay(), merge: true) { (error) in
+            
+                if let error = error {
+                    completionHandler(.failure(error))
+                    return
+                }
+                self.deleteApplyStore(pathID: pathID, storeName: storeData.name)
+                completionHandler(.success("確認店家申請成功"))
+        }
+    }
+    
+    private func deleteApplyStore(pathID: String, storeName: String) {
+        
+        dataBase().collection(FirebaseEnum.storeApply.rawValue).document(pathID).delete()
     }
 }

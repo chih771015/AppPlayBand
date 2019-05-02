@@ -50,6 +50,7 @@
 		59530B15225C7FE5002F18AB /* ConfirmTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59530B14225C7FE5002F18AB /* ConfirmTableViewHeaderView.xib */; };
 		59530B17225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59530B16225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift */; };
 		59530B19225C80A0002F18AB /* ConfirmTableViewSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59530B18225C80A0002F18AB /* ConfirmTableViewSectionHeaderView.xib */; };
+		5953668E227A9ADD00502B89 /* SuperMangerStoreConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5953668D227A9ADD00502B89 /* SuperMangerStoreConfirmViewController.swift */; };
 		5959C806226DA1C300AA62AD /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5959C805226DA1C300AA62AD /* UIColor+Extension.swift */; };
 		596662082275D703006DE29F /* JGProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662072275D703006DE29F /* JGProgressHUD.swift */; };
 		5966620A2275DEE9006DE29F /* MJRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662092275DEE9006DE29F /* MJRefresh.swift */; };
@@ -171,6 +172,7 @@
 		59530B14225C7FE5002F18AB /* ConfirmTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmTableViewHeaderView.xib; sourceTree = "<group>"; };
 		59530B16225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmTableViewSectionHeaderView.swift; sourceTree = "<group>"; };
 		59530B18225C80A0002F18AB /* ConfirmTableViewSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmTableViewSectionHeaderView.xib; sourceTree = "<group>"; };
+		5953668D227A9ADD00502B89 /* SuperMangerStoreConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperMangerStoreConfirmViewController.swift; sourceTree = "<group>"; };
 		5959C805226DA1C300AA62AD /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		596662072275D703006DE29F /* JGProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUD.swift; sourceTree = "<group>"; };
 		596662092275DEE9006DE29F /* MJRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJRefresh.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				593774A7227A16D6008A05E0 /* SuperMangerCheckStoreViewController.swift */,
+				5953668D227A9ADD00502B89 /* SuperMangerStoreConfirmViewController.swift */,
 			);
 			path = SuperManger;
 			sourceTree = "<group>";
@@ -923,6 +926,7 @@
 				59483D7A2268488A00FD211E /* PasswordChangeViewController.swift in Sources */,
 				59ABB0382259084800AE937A /* StoreDetailViewController.swift in Sources */,
 				59B43E14226ECD4300598538 /* UICollectionVIew+Extension.swift in Sources */,
+				5953668E227A9ADD00502B89 /* SuperMangerStoreConfirmViewController.swift in Sources */,
 				594ED6BB226074BE0054CCC9 /* MessageUserProfileViewController.swift in Sources */,
 				59B43E18226F03A300598538 /* UIButton+Extension.swift in Sources */,
 				594ED6B622605BE80054CCC9 /* MessageConfirmPageTextFieldTableViewCell.swift in Sources */,

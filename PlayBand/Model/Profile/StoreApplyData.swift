@@ -14,6 +14,7 @@ struct StoreApplyData {
     let user: UserData
     let status: String
     let storeMessage: String
+    let pathID: String
     
     init?(dictionary: [String: Any]) {
         
@@ -21,9 +22,11 @@ struct StoreApplyData {
         guard let user = UserData(dictionary: dictionary[FirebaseBookingKey.user.rawValue] as? [String: Any] ?? ["hi": "Yo"]) else { return nil }
         guard let storeMessage = dictionary[FirebaseBookingKey.storeMessage.rawValue] as? String else { return nil }
         guard let status = dictionary[FirebaseBookingKey.status.rawValue] as? String else { return nil }
+        guard let pathID = dictionary[FirebaseBookingKey.pathID.rawValue] as? String else { return nil }
         self.storeData = storeData
         self.user = user
         self.status = status
         self.storeMessage = storeMessage
+        self.pathID = pathID
     }
 }

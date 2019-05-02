@@ -244,7 +244,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWG-0X-fW9">
                                         <rect key="frame" x="44" y="2" width="287" height="44"/>
-                                        <state key="normal" title="下一步"/>
+                                        <state key="normal" title="設定團室"/>
                                         <connections>
                                             <action selector="buttonAction" destination="jIa-FF-xC3" eventType="touchUpInside" id="b95-F4-6Wd"/>
                                         </connections>
@@ -450,7 +450,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzV-QR-dWH">
                                         <rect key="frame" x="44" y="2" width="287" height="44"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="設定圖片"/>
                                         <connections>
                                             <action selector="buttonAction" destination="ntZ-Lh-FzN" eventType="touchUpInside" id="Obb-n3-h8M"/>
                                         </connections>
@@ -511,7 +511,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emt-5w-uPb">
                                         <rect key="frame" x="44" y="2" width="287" height="44"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="預覽畫面"/>
                                         <connections>
                                             <action selector="buttonAction" destination="ylm-hz-VeU" eventType="touchUpInside" id="t5L-6T-FvL"/>
                                         </connections>
@@ -585,6 +585,90 @@
             </objects>
             <point key="canvasLocation" x="4942" y="828"/>
         </scene>
+        <!--Super Manger Store Confirm View Controller-->
+        <scene sceneID="AnK-s4-FIi">
+            <objects>
+                <viewController storyboardIdentifier="SuperMangerStoreConfirmViewController" id="3a2-0o-i9K" customClass="SuperMangerStoreConfirmViewController" customModule="PlayBand" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hho-Wm-cns">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qbe-Md-qap">
+                                <rect key="frame" x="0.0" y="20" width="375" height="585"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jha-3K-JuH">
+                                <rect key="frame" x="0.0" y="605" width="375" height="62"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqQ-kD-af4">
+                                        <rect key="frame" x="203.5" y="2" width="127.5" height="44"/>
+                                        <state key="normal" title="確認申請">
+                                            <color key="titleColor" name="textColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lvBorderColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lvBorderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="buttonAction" destination="3a2-0o-i9K" eventType="touchUpInside" id="2z0-GS-i4P"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOY-aU-CDz">
+                                        <rect key="frame" x="44" y="2" width="127.5" height="44"/>
+                                        <state key="normal" title="拒絕要求">
+                                            <color key="titleColor" name="textColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lvBorderColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lvBorderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="refuseButtonAction:" destination="3a2-0o-i9K" eventType="touchUpInside" id="29d-vr-GZs"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="NqQ-kD-af4" secondAttribute="bottom" constant="16" id="5Z5-Hu-7bx"/>
+                                    <constraint firstAttribute="height" constant="62" id="DNL-4x-tVb"/>
+                                    <constraint firstItem="lOY-aU-CDz" firstAttribute="bottom" secondItem="NqQ-kD-af4" secondAttribute="bottom" id="GXL-Cn-Wu6"/>
+                                    <constraint firstItem="lOY-aU-CDz" firstAttribute="width" secondItem="NqQ-kD-af4" secondAttribute="width" id="GiP-sA-1JB"/>
+                                    <constraint firstItem="NqQ-kD-af4" firstAttribute="top" secondItem="Jha-3K-JuH" secondAttribute="top" constant="2" id="JHK-96-IKz"/>
+                                    <constraint firstItem="NqQ-kD-af4" firstAttribute="top" secondItem="lOY-aU-CDz" secondAttribute="top" id="LCm-A3-Qp2"/>
+                                    <constraint firstAttribute="trailing" secondItem="NqQ-kD-af4" secondAttribute="trailing" constant="44" id="Uos-zm-L9s"/>
+                                    <constraint firstItem="lOY-aU-CDz" firstAttribute="leading" secondItem="Jha-3K-JuH" secondAttribute="leading" constant="44" id="a2b-th-XLI"/>
+                                    <constraint firstItem="NqQ-kD-af4" firstAttribute="leading" secondItem="lOY-aU-CDz" secondAttribute="trailing" constant="32" id="bz8-r9-feS"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Jha-3K-JuH" firstAttribute="leading" secondItem="gVm-ah-A6G" secondAttribute="leading" id="0QG-Zg-6fb"/>
+                            <constraint firstItem="qbe-Md-qap" firstAttribute="leading" secondItem="gVm-ah-A6G" secondAttribute="leading" id="Jer-7j-NIB"/>
+                            <constraint firstItem="qbe-Md-qap" firstAttribute="top" secondItem="gVm-ah-A6G" secondAttribute="top" id="K46-wL-teD"/>
+                            <constraint firstItem="gVm-ah-A6G" firstAttribute="trailing" secondItem="qbe-Md-qap" secondAttribute="trailing" id="Mch-kk-Afu"/>
+                            <constraint firstItem="Jha-3K-JuH" firstAttribute="top" secondItem="qbe-Md-qap" secondAttribute="bottom" id="Tbl-ZZ-ISI"/>
+                            <constraint firstItem="gVm-ah-A6G" firstAttribute="bottom" secondItem="Jha-3K-JuH" secondAttribute="bottom" id="ky8-LY-4rH"/>
+                            <constraint firstItem="gVm-ah-A6G" firstAttribute="trailing" secondItem="Jha-3K-JuH" secondAttribute="trailing" id="pQh-2J-JkD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gVm-ah-A6G"/>
+                    </view>
+                    <connections>
+                        <outlet property="refuseButton" destination="lOY-aU-CDz" id="aC9-3q-Bgz"/>
+                        <outlet property="tableView" destination="qbe-Md-qap" id="HSZ-qj-uce"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H45-dj-pRu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5716" y="827"/>
+        </scene>
         <!--Store Review View Controller-->
         <scene sceneID="2oR-Bw-t3e">
             <objects>
@@ -602,7 +686,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzQ-Fu-bha">
                                         <rect key="frame" x="44" y="2" width="287" height="44"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="送出申請"/>
                                         <connections>
                                             <action selector="buttonAction" destination="iSR-WB-AKQ" eventType="touchUpInside" id="0Lw-En-0iC"/>
                                         </connections>
@@ -636,7 +720,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgw-WV-pOa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5785" y="143"/>
+            <point key="canvasLocation" x="5716" y="143"/>
         </scene>
     </scenes>
     <resources>

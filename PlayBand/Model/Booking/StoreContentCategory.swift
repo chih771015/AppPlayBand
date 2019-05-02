@@ -24,7 +24,13 @@ enum StoreContentCategory: String {
     case time = "營業時間"
     
     case images
-
+    
+    case userName = "申請人"
+    
+    case userPhone = "申請人電話"
+    
+    case userEmail = "申請人信箱"
+    
     var identifier: String {
         
         switch self {
@@ -35,6 +41,26 @@ enum StoreContentCategory: String {
             return String(describing: StoreDescriptionTableViewCell.self)
         }
 
+    }
+    
+    func cellForSuperManger(_ indexPath: IndexPath, tableView: UITableView, data: StoreData?, userData: UserData?) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        guard let desCell = cell as? StoreDescriptionTableViewCell else {
+            
+            return cellForIndexPath(indexPath, tableView: tableView, data: data)
+        }
+        switch self {
+        case .userName:
+            desCell.setupCell(title: rawValue, description: userData?.name)
+        case .userPhone:
+            desCell.setupCell(title: rawValue, description: userData?.phone)
+        case .userEmail:
+            desCell.setupCell(title: rawValue, description: userData?.email)
+        default:
+            return cellForIndexPath(indexPath, tableView: tableView, data: data)
+        }
+        return desCell
     }
 
     func cellForIndexPath(
@@ -93,8 +119,11 @@ enum StoreContentCategory: String {
             desCell.setupCell(title: rawValue, description: storeData.phone)
         case .address:
             desCell.setupCell(title: rawValue, description: storeData.address)
+        default:
+            return cell
         }
         return desCell
+    
     }
 
 }

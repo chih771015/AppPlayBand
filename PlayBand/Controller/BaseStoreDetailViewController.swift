@@ -16,7 +16,7 @@ class BaseStoreDetailViewController: UIViewController {
         
     }
     
-    let datas: [StoreContentCategory] = [.images, .name, .phone, .address, .price, .time, .description]
+    var datas: [StoreContentCategory] = [.images, .name, .phone, .address, .price, .time, .description]
     
     var storeData: StoreData? {
         
@@ -49,8 +49,11 @@ class BaseStoreDetailViewController: UIViewController {
     }
     
     private func setupButton() {
-        
-        button.setupButtonModelPlayBand()
+        if button != nil {
+            
+            button.setupButtonModelPlayBand()
+
+        }
     }
 }
 
