@@ -66,11 +66,11 @@ extension FirebaseManger {
             .collection(FirebaseEnum.store.rawValue).getDocuments { (querySnapshot, error) in
             
                 if error != nil {
-                    self.storeName = ["nothing"]
+                    self.storeName = []
                     return
                 }
                 guard let documents = querySnapshot?.documents else {
-                    self.storeName = ["nothing"]
+                    self.storeName = []
                     return
                     
                 }
@@ -100,6 +100,7 @@ extension FirebaseManger {
         
         let document = dataBase().collection(FirebaseEnum.storeApply.rawValue).document()
         dictionary.updateValue(document.documentID, forKey: FirebaseBookingKey.pathID.rawValue)
+        dictionary.updateValue(self.user().currentUser?.uid, forKey: UsersKey.uid.rawValue)
         
         document.setData(dictionary, merge: true) { error in
             
@@ -205,7 +206,7 @@ extension FirebaseManger {
         }
     }
     
-    func applyStoreInSuperManger(pathID: String, storeData: StoreData, completionHandler: @escaping (Result<String>) -> Void) {
+    func applyStoreInSuperManger(userUID: String, pathID: String, storeData: StoreData, completionHandler: @escaping (Result<String>) -> Void) {
         
         dataBase().collection(FirebaseEnum.store.rawValue)
             .document(storeData.name).setData(storeData.getFirebaseDictionay(), merge: true) { (error) in
@@ -214,6 +215,8 @@ extension FirebaseManger {
                     completionHandler(.failure(error))
                     return
                 }
+                self.dataBase().collection(FirebaseEnum.user.rawValue).document(userUID)
+                    .collection(FirebaseEnum.store.rawValue).addDocument(data: [UsersKey.store.rawValue: storeData.name])
                 self.deleteApplyStore(pathID: pathID, storeName: storeData.name)
                 completionHandler(.success("確認店家申請成功"))
         }
@@ -222,5 +225,38 @@ extension FirebaseManger {
     private func deleteApplyStore(pathID: String, storeName: String) {
         
         dataBase().collection(FirebaseEnum.storeApply.rawValue).document(pathID).delete()
+    }
+    
+    func getStoreBookingDataWithManger(storeName: String, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
+        dataBase().collection(FirebaseEnum.store.rawValue).document(storeName).collection(FirebaseEnum.booking.rawValue).getDocuments { (querySnapshot, error) in
+            
+            if let error = error {
+                completionHandler(.failure(error))
+                return
+            }
+            guard let docments = querySnapshot?.documents else {
+                completionHandler(.failure(FirebaseDataError.document))
+                return
+            }
+            
+            if docments.isEmpty {
+                
+                completionHandler(.success([]))
+                return
+            }
+            
+            var datas: [UserBookingData] = []
+            for document in docments {
+                
+                guard let data = UserBookingData(dictionary: document.data()) else {
+                    
+                    completionHandler(.failure(FirebaseDataError.decodeFail))
+                    return
+                }
+                datas.append(data)
+            }
+            
+            completionHandler(.success(datas))
+        }
     }
 }

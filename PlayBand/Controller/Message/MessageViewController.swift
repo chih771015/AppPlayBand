@@ -13,18 +13,25 @@ class MessageViewController: UIViewController {
     @IBAction func barButtonAction(_ sender: Any) {
         
         let alert = UIAlertController(title: "切換模式", message: "請選擇模式", preferredStyle: .actionSheet)
+        
         let actionUser = UIAlertAction(title: "一般用戶模式", style: .default) { [weak self] (_) in
-            self?.messageStatus = .user
+            self?.messageStatus = .normal
         }
-        let actionManger = UIAlertAction(title: "管理者模式", style: .default) { [weak self] (_) in
-            self?.messageStatus = .manger
-        }
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         actionUser.setValue(UIColor.playBandColorEnd, forKey: "titleTextColor")
-        actionManger.setValue(UIColor.playBandColorEnd, forKey: "titleTextColor")
-        cancelAction.setValue(UIColor.playBandColorEnd, forKey: "titleTextColor")
         alert.addAction(actionUser)
-        alert.addAction(actionManger)
+        
+        for store in FirebaseManger.shared.storeName {
+            
+            let actionManger = UIAlertAction(title: "管理\(store)", style: .default) { [weak self] (_) in
+                self?.messageStatus = .store(store)
+            }
+            actionManger.setValue(UIColor.playBandColorEnd, forKey: "titleTextColor")
+            alert.addAction(actionManger)
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        cancelAction.setValue(UIColor.playBandColorEnd, forKey: "titleTextColor")
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
@@ -72,7 +79,7 @@ class MessageViewController: UIViewController {
     private var tobeConfirmVC: MessageOrderViewController?
     private var confirmVC: MessageOrderViewController?
     private var refuseVC: MessageOrderViewController?
-    private var messageStatus = UsersKey.Status.user {
+    private var messageStatus = MessageFetchDataEnum.normal {
         didSet {
             self.userBookingData = []
             self.fetchData()
@@ -107,22 +114,41 @@ class MessageViewController: UIViewController {
     
     private func fetchData() {
         
-        PBProgressHUD.addLoadingView(animated: true)
-        
-        if self.messageStatus == UsersKey.Status.user {
-            
+        switch messageStatus {
+        case .normal:
             firebaseManger.getUserBookingData()
+        case .store(let storeName):
             
-        } else if self.messageStatus == UsersKey.Status.manger {
-            
-            firebaseManger.getMangerBookingData()
-
-        } else {
-            
-            PBProgressHUD.dismissLoadingView(animated: true)
+            firebaseManger.getStoreBookingDataWithManger(storeName: storeName) { [weak self] (result) in
+                
+                switch result {
+                case .success(let data):
+                    self?.userBookingData = data
+                case .failure(let error):
+                    self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription)
+                }
+            }
         }
-     
     }
+    
+//    private func fetchData() {
+//
+//        PBProgressHUD.addLoadingView(animated: true)
+//
+//        if self.messageStatus == UsersKey.Status.user {
+//
+//            firebaseManger.getUserBookingData()
+//
+//        } else if self.messageStatus == UsersKey.Status.manger {
+//
+//            firebaseManger.getMangerBookingData()
+//
+//        } else {
+//
+//            PBProgressHUD.dismissLoadingView(animated: true)
+//        }
+//
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

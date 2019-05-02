@@ -70,7 +70,7 @@ class MessageOrderDetailViewController: UIViewController {
     }
     
     private var bookingData: UserBookingData?
-    private var status = UsersKey.Status.user
+    private var status = MessageFetchDataEnum.normal
     
     private let cellDatas: [MessageCategory] = [
         .storeName, .documentID, .status, .time, .hours, .userName, .uid, .userEmail,
@@ -93,7 +93,7 @@ class MessageOrderDetailViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    func setupBookingData(data: UserBookingData, status: UsersKey.Status) {
+    func setupBookingData(data: UserBookingData, status: MessageFetchDataEnum) {
         
         self.bookingData = data
         self.status = status
@@ -101,12 +101,17 @@ class MessageOrderDetailViewController: UIViewController {
     
     private func setupButtonView() {
         
-        if bookingData?.status == FirebaseBookingKey.Status.tobeConfirm.rawValue,
-            status == UsersKey.Status.manger {
+        switch status {
+        case .store:
             
-            buttonViewHeight.constant = 70
-        } else {
-            
+            if bookingData?.status == FirebaseBookingKey.Status.tobeConfirm.rawValue {
+                
+                buttonViewHeight.constant = 70
+            } else {
+                
+                buttonViewHeight.constant = 0
+            }
+        case .normal:
             buttonViewHeight.constant = 0
         }
     }

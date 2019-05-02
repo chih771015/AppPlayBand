@@ -25,7 +25,7 @@ class SuperMangerStoreConfirmViewController: BaseStoreDetailViewController {
             return
         }
         PBProgressHUD.addLoadingView(animated: true)
-        FirebaseManger.shared.applyStoreInSuperManger(pathID: data.pathID, storeData: data.storeData) { [weak self] (result) in
+        FirebaseManger.shared.applyStoreInSuperManger(userUID: data.userUID, pathID: data.pathID, storeData: data.storeData) { [weak self] (result) in
             PBProgressHUD.dismissLoadingView(animated: true)
             
             switch result {

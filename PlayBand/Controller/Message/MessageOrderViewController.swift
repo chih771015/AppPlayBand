@@ -22,7 +22,7 @@ class MessageOrderViewController: UIViewController {
     }
     
     private var refreshHandler: () -> Void = {}
-    private var status = UsersKey.Status.user
+    private var status = MessageFetchDataEnum.normal
     
     override func viewDidLoad() {
         
@@ -58,7 +58,7 @@ class MessageOrderViewController: UIViewController {
         self.refreshHandler = refreshHandler
     }
     
-    func setupBookingData(data: [UserBookingData], status: UsersKey.Status) {
+    func setupBookingData(data: [UserBookingData], status: MessageFetchDataEnum) {
     
         self.bookingData = data
         self.status = status
@@ -104,10 +104,10 @@ extension MessageOrderViewController: UITableViewDataSource, UITableViewDelegate
         
         switch self.status {
             
-        case .user:
+        case .normal:
 
             cell.setupCell(title: storeName, date: date, hours: hours, status: status, url: storeURL)
-        case .manger:
+        case .store:
             cell.setupCell(title: title, date: date, hours: hours, status: status, url: url)
         }
         return cell
