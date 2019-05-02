@@ -53,10 +53,11 @@
 		5953668E227A9ADD00502B89 /* SuperMangerStoreConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5953668D227A9ADD00502B89 /* SuperMangerStoreConfirmViewController.swift */; };
 		59536690227ACCBD00502B89 /* MessageFetchDataEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5953668F227ACCBD00502B89 /* MessageFetchDataEnum.swift */; };
 		59536693227AE70800502B89 /* EditStoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59536692227AE70800502B89 /* EditStoreDetailViewController.swift */; };
-		59536695227AE84500502B89 /* EditStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59536694227AE84500502B89 /* EditStoreViewController.swift */; };
 		59536697227AEF8C00502B89 /* EditStoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59536696227AEF8C00502B89 /* EditStoreInfoViewController.swift */; };
 		59536699227AF25E00502B89 /* CheckTextFieldText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59536698227AF25E00502B89 /* CheckTextFieldText.swift */; };
 		5959C806226DA1C300AA62AD /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5959C805226DA1C300AA62AD /* UIColor+Extension.swift */; };
+		595F939D227B4CEB007DA364 /* EditStoreRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595F939C227B4CEB007DA364 /* EditStoreRoomViewController.swift */; };
+		595F939F227B52AA007DA364 /* EditStorePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595F939E227B52AA007DA364 /* EditStorePhotoViewController.swift */; };
 		596662082275D703006DE29F /* JGProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662072275D703006DE29F /* JGProgressHUD.swift */; };
 		5966620A2275DEE9006DE29F /* MJRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662092275DEE9006DE29F /* MJRefresh.swift */; };
 		597F044A225EDDD600BAAFEE /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597F0449225EDDD600BAAFEE /* SignIn.storyboard */; };
@@ -99,7 +100,7 @@
 		59B43E14226ECD4300598538 /* UICollectionVIew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B43E13226ECD4300598538 /* UICollectionVIew+Extension.swift */; };
 		59B43E16226EEDF300598538 /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B43E15226EEDF300598538 /* BaseNavigationViewController.swift */; };
 		59B43E18226F03A300598538 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B43E17226F03A300598538 /* UIButton+Extension.swift */; };
-		59BB3D5E2264AA8D00E46BEE /* EditPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB3D5D2264AA8D00E46BEE /* EditPageViewController.swift */; };
+		59BB3D5E2264AA8D00E46BEE /* BaseEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB3D5D2264AA8D00E46BEE /* BaseEditViewController.swift */; };
 		59BB3D602264AAAE00E46BEE /* EditPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59BB3D5F2264AAAE00E46BEE /* EditPage.storyboard */; };
 		59BB3D642264AAE800E46BEE /* EditPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB3D622264AAE800E46BEE /* EditPageTableViewCell.swift */; };
 		59BB3D652264AAE800E46BEE /* EditPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59BB3D632264AAE800E46BEE /* EditPageTableViewCell.xib */; };
@@ -180,10 +181,11 @@
 		5953668D227A9ADD00502B89 /* SuperMangerStoreConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperMangerStoreConfirmViewController.swift; sourceTree = "<group>"; };
 		5953668F227ACCBD00502B89 /* MessageFetchDataEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFetchDataEnum.swift; sourceTree = "<group>"; };
 		59536692227AE70800502B89 /* EditStoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStoreDetailViewController.swift; sourceTree = "<group>"; };
-		59536694227AE84500502B89 /* EditStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStoreViewController.swift; sourceTree = "<group>"; };
 		59536696227AEF8C00502B89 /* EditStoreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStoreInfoViewController.swift; sourceTree = "<group>"; };
 		59536698227AF25E00502B89 /* CheckTextFieldText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTextFieldText.swift; sourceTree = "<group>"; };
 		5959C805226DA1C300AA62AD /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		595F939C227B4CEB007DA364 /* EditStoreRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStoreRoomViewController.swift; sourceTree = "<group>"; };
+		595F939E227B52AA007DA364 /* EditStorePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStorePhotoViewController.swift; sourceTree = "<group>"; };
 		596662072275D703006DE29F /* JGProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUD.swift; sourceTree = "<group>"; };
 		596662092275DEE9006DE29F /* MJRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJRefresh.swift; sourceTree = "<group>"; };
 		597F0449225EDDD600BAAFEE /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
@@ -226,7 +228,7 @@
 		59B43E13226ECD4300598538 /* UICollectionVIew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionVIew+Extension.swift"; sourceTree = "<group>"; };
 		59B43E15226EEDF300598538 /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
 		59B43E17226F03A300598538 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
-		59BB3D5D2264AA8D00E46BEE /* EditPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPageViewController.swift; sourceTree = "<group>"; };
+		59BB3D5D2264AA8D00E46BEE /* BaseEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEditViewController.swift; sourceTree = "<group>"; };
 		59BB3D5F2264AAAE00E46BEE /* EditPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditPage.storyboard; sourceTree = "<group>"; };
 		59BB3D622264AAE800E46BEE /* EditPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPageTableViewCell.swift; sourceTree = "<group>"; };
 		59BB3D632264AAE800E46BEE /* EditPageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditPageTableViewCell.xib; sourceTree = "<group>"; };
@@ -362,8 +364,9 @@
 			isa = PBXGroup;
 			children = (
 				59536692227AE70800502B89 /* EditStoreDetailViewController.swift */,
-				59536694227AE84500502B89 /* EditStoreViewController.swift */,
 				59536696227AEF8C00502B89 /* EditStoreInfoViewController.swift */,
+				595F939C227B4CEB007DA364 /* EditStoreRoomViewController.swift */,
+				595F939E227B52AA007DA364 /* EditStorePhotoViewController.swift */,
 			);
 			path = EditStore;
 			sourceTree = "<group>";
@@ -594,7 +597,7 @@
 				59DFF8522257463D00273724 /* Photo */,
 				59F81F9D22549FBA00C04E32 /* Profile */,
 				59F81F8E2254625C00C04E32 /* PBTabBarController.swift */,
-				59BB3D5D2264AA8D00E46BEE /* EditPageViewController.swift */,
+				59BB3D5D2264AA8D00E46BEE /* BaseEditViewController.swift */,
 				59B43E15226EEDF300598538 /* BaseNavigationViewController.swift */,
 				59EED8312278B8A9006A52C7 /* BaseStoreDetailViewController.swift */,
 				593774A4227A13CE008A05E0 /* BaseStoresViewController.swift */,
@@ -907,7 +910,7 @@
 				593F6E102263C5810014219B /* IQKeyboardManager.swift in Sources */,
 				59207AA5225AF09400B50E7C /* BookingTime.swift in Sources */,
 				5952315C2254AB51008C007F /* ProfileUserPictureImageView.swift in Sources */,
-				59BB3D5E2264AA8D00E46BEE /* EditPageViewController.swift in Sources */,
+				59BB3D5E2264AA8D00E46BEE /* BaseEditViewController.swift in Sources */,
 				59207AA3225AEC2D00B50E7C /* CalendarTableViewCell.swift in Sources */,
 				59FCFD3922620CAE006402E5 /* Firebase.swift in Sources */,
 				59949297225A7FCE00726BF3 /* CalendarViewController.swift in Sources */,
@@ -930,11 +933,11 @@
 				5933CBBE2274774600E0C114 /* UIViewController+Extension.swift in Sources */,
 				592674832270D8A60050E161 /* MessageDetailTableViewCell.swift in Sources */,
 				59DFF8542257465800273724 /* PhotoViewController.swift in Sources */,
+				595F939F227B52AA007DA364 /* EditStorePhotoViewController.swift in Sources */,
 				5907F69B2259E2BD008BB604 /* StoreContentCategory.swift in Sources */,
 				59ABB02C2258A89D00AE937A /* SearchStoreViewController.swift in Sources */,
 				598B8CD52254B9530061F03B /* ProfileInformationTableViewCell.swift in Sources */,
 				592FF2D82272271000872A17 /* MessageImageTableViewCell.swift in Sources */,
-				59536695227AE84500502B89 /* EditStoreViewController.swift in Sources */,
 				59F81F92225462FD00C04E32 /* UIStoryBoard+Extenstion.swift in Sources */,
 				596662082275D703006DE29F /* JGProgressHUD.swift in Sources */,
 				59530B0D225C79EB002F18AB /* ConfirmViewController.swift in Sources */,
@@ -974,6 +977,7 @@
 				59821B3D227867EA00A61B50 /* AddImageViewController.swift in Sources */,
 				59DFF85A22578FFD00273724 /* EditTableViewCell.swift in Sources */,
 				5929502F2269A1EA00FD5DC5 /* FirebaseEnum.swift in Sources */,
+				595F939D227B4CEB007DA364 /* EditStoreRoomViewController.swift in Sources */,
 				59821B2E227822CA00A61B50 /* StoreMangerViewController.swift in Sources */,
 				5980519D225F2D45002036FD /* MessageViewController.swift in Sources */,
 				59821B3222782B3700A61B50 /* StoreApplyContentCategory.swift in Sources */,

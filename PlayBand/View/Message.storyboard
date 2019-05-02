@@ -138,7 +138,7 @@
                         <viewLayoutGuide key="safeArea" id="xaM-M6-iCd"/>
                     </view>
                     <navigationItem key="navigationItem" title="預定資料" id="4yT-67-Y2H">
-                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="Ozf-Ro-OU4">
+                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="Ozf-Ro-OU4">
                             <color key="tintColor" name="endColor"/>
                             <connections>
                                 <action selector="barButtonAction:" destination="rXd-0w-jIr" id="tat-p5-p3x"/>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditPageViewController: UIViewController {
+class BaseEditViewController: UIViewController {
     
     @IBAction func buttonAction() {
         
@@ -42,7 +42,7 @@ class EditPageViewController: UIViewController {
     }
 }
 
-extension EditPageViewController: UITableViewDelegate, UITableViewDataSource {
+extension BaseEditViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -66,7 +66,7 @@ extension EditPageViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension EditPageViewController: UITextFieldDelegate {
+extension BaseEditViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         

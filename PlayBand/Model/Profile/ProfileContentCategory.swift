@@ -98,7 +98,10 @@ enum ProfileContentCategory: String {
         }
     }
     
-    func cellForRoomEdit (_ indexPath: IndexPath,  tableView: UITableView, storeAddRoomCellDelegate: StoreAddRoomCellDelegate, texts: StoreData.Room?) -> UITableViewCell {
+    func cellForRoomEdit (
+        _ indexPath: IndexPath,
+        tableView: UITableView,
+        storeAddRoomCellDelegate: StoreAddRoomCellDelegate, texts: StoreData.Room?) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: StoreAddRoomTableViewCell.self),

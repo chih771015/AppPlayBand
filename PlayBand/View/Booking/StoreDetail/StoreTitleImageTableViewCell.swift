@@ -57,7 +57,8 @@ class StoreTitleImageTableViewCell: UITableViewCell {
             bundle: nil)
         collectionView.delegate = self
         collectionView.dataSource = self
-        guard let collectionViewLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {return}
+        guard let collectionViewLayout = collectionView
+            .collectionViewLayout as? UICollectionViewFlowLayout else {return}
         collectionViewLayout.minimumLineSpacing = 0
         collectionViewLayout.minimumInteritemSpacing = 0
         collectionViewLayout.sectionInset = UIEdgeInsets.zero
@@ -67,8 +68,10 @@ class StoreTitleImageTableViewCell: UITableViewCell {
     
 }
 
-extension StoreTitleImageTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+extension StoreTitleImageTableViewCell: UICollectionViewDelegate,
+UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return self.bounds.size
     }

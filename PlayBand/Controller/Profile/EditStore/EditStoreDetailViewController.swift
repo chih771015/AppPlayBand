@@ -12,7 +12,8 @@ class EditStoreDetailViewController: BaseStoreDetailViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         // Do any additional setup after loading the view.
     }
     
@@ -66,10 +67,31 @@ class EditStoreDetailViewController: BaseStoreDetailViewController {
     
     private func presentEditPhoto() {
         
+        guard let nextVC = UIStoryboard.profile.instantiateViewController(
+            withIdentifier: String(
+                describing: EditStorePhotoViewController.self
+        )) as? EditStorePhotoViewController else {return}
+        nextVC.storeData = self.storeData
+        nextVC.getDataClosure = { [weak self] storeData in
+            
+            self?.storeData = storeData
+            self?.tableView.reloadData()
+        }
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     private func persentEditRooms() {
         
-        
+        guard let nextVC = UIStoryboard.profile.instantiateViewController(
+            withIdentifier: String(
+                describing: EditStoreRoomViewController.self
+        )) as? EditStoreRoomViewController else {return}
+        nextVC.storeData = self.storeData
+        nextVC.getDataClosure = { [weak self] storeData in
+            
+            self?.storeData = storeData
+            self?.tableView.reloadData()
+        }
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }

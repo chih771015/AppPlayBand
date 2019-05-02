@@ -66,7 +66,9 @@ class SignUpViewController: UIViewController {
         
         let account = self.email
         let password = self.password
-        let user = UserData(name: name, phone: phone, band: band, email: email, facebook: facebook, status: UsersKey.Status.user.rawValue)
+        let user = UserData(
+            name: name, phone: phone, band: band, email: email,
+            facebook: facebook, status: UsersKey.Status.user.rawValue)
         PBProgressHUD.addLoadingView(at: view, animated: true)
         FirebaseManger.shared.signUpAccount(
             email: account,
@@ -76,7 +78,10 @@ class SignUpViewController: UIViewController {
                 guard result != nil else {
                     guard let errorConfirm = error else {return}
                     PBProgressHUD.dismissLoadingView(animated: true)
-                    self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: errorConfirm.localizedDescription, completionHanderInDismiss: nil)
+                    self?.addErrorAlertMessage(
+                        title: FirebaseEnum.fail.rawValue,
+                        message: errorConfirm.localizedDescription,
+                        completionHanderInDismiss: nil)
 
                     return
                 }
@@ -89,7 +94,9 @@ class SignUpViewController: UIViewController {
                     guard result != nil else {
                         PBProgressHUD.dismissLoadingView(animated: true)
                         self?.addErrorAlertMessage(
-                            title: FirebaseEnum.fail.rawValue, message: error?.localizedDescription, completionHanderInDismiss: nil)
+                            title: FirebaseEnum.fail.rawValue,
+                            message: error?.localizedDescription,
+                            completionHanderInDismiss: nil)
                         
                         return
                     }

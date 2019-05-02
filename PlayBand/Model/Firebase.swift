@@ -208,7 +208,8 @@ class FirebaseManger {
         
         documentInUser.setData(dictionary, merge: true)
         
-        let documentInStoreBooking = dataBase().collection(FirebaseEnum.store.rawValue).document(storeName).collection(FirebaseEnum.booking.rawValue).document(documentID)
+        let documentInStoreBooking = dataBase().collection(FirebaseEnum.store.rawValue)
+            .document(storeName).collection(FirebaseEnum.booking.rawValue).document(documentID)
         
         documentInStoreBooking.setData(dictionary, merge: true)
     }
@@ -397,7 +398,8 @@ class FirebaseManger {
             } else {
                 
                 completionHandler(.success(FirebaseEnum.mangerConfirm.rawValue))
-                self.dataBase().collection(FirebaseEnum.store.rawValue).document(storeName).collection(FirebaseEnum.booking.rawValue).document(pathID).updateData(dictionary)
+                self.dataBase().collection(FirebaseEnum.store.rawValue).document(storeName)
+                    .collection(FirebaseEnum.booking.rawValue).document(pathID).updateData(dictionary)
             }
         }
     }

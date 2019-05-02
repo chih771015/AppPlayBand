@@ -46,14 +46,15 @@ class EditProfileViewController: UIViewController {
             PBProgressHUD.dismissLoadingView(animated: true)
             if error == nil {
         
-                self?.addSucessAlertMessage(title: PageName.success.rawValue, message: nil, completionHanderInDismiss: { [weak self] in
+                self?.addSucessAlertMessage(
+                    title: PageName.success.rawValue, message: nil, completionHanderInDismiss: { [weak self] in
                     
                     self?.navigationController?.popViewController(animated: true)
                 })
 
             } else {
                 
-                self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error?.localizedDescription, completionHanderInDismiss: nil)
+                self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error?.localizedDescription)
             }
         }
     }
@@ -69,28 +70,28 @@ class EditProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButton()
-        setupNavigationBar()
+   //     setupNavigationBar()
         // Do any additional setup after loading the view.
     }
 
-    private func setupNavigationBar() {
-        
-        guard let color = UIColor.playBandColorEnd else {return}
-        
-        self.navigationController?.navigationBar.tintColor = color
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
-    }
+//    private func setupNavigationBar() {
+//
+//        guard let color = UIColor.playBandColorEnd else {return}
+//
+//        self.navigationController?.navigationBar.tintColor = color
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
+//    }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-    }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        self.navigationController?.navigationBar.tintColor = UIColor.white
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//    }
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        self.navigationController?.navigationBar.tintColor = UIColor.white
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//    }
     
     private func setupButton() {
         view.layoutIfNeeded()

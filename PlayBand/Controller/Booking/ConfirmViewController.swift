@@ -52,7 +52,7 @@ class ConfirmViewController: UIViewController {
                 
             case .failure(let error):
                 
-                self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
+                self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription)
                 
             }
         }
@@ -185,7 +185,8 @@ extension ConfirmViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 bookingTimeDatas[indexPath.section].hour.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
-                guard let header = tableView.headerView(forSection: indexPath.section) as? ConfirmTableViewSectionHeaderView else {return}
+                guard let header = tableView.headerView(
+                    forSection: indexPath.section) as? ConfirmTableViewSectionHeaderView else {return}
                 
                 header.deleteRowSetup(time: bookingTimeDatas[indexPath.section].hoursString())
             

@@ -30,7 +30,7 @@ class CheckTextFieldText {
                     try CheckTextFieldText.phoneCheck(value: value)
                 case .information:
               
-                    try CheckTextFieldText.informationCheck(string: value)
+                    try CheckTextFieldText.informationCheck(value: value)
                 case .openTime:
                     
                     try CheckTextFieldText.openTimeCheck(value: value)
@@ -84,9 +84,9 @@ class CheckTextFieldText {
         }
     }
     
-    class func informationCheck(string: String) throws {
+    class func informationCheck(value: String) throws {
         
-        if string.isEmpty {
+        if value.isEmpty {
             
             throw InputError.information
         }
@@ -133,6 +133,27 @@ class CheckTextFieldText {
             throw InputError.address
         }
     }
+    
+    class func openTimeAndCloseTime(openTime: String, closeTime: String) throws {
+        
+        do {
+            guard let open = Int(openTime) else {
+                try CheckTextFieldText.openTimeCheck(value: openTime)
+                return
+            }
+            
+            guard let close = Int(closeTime) else {
+                try CheckTextFieldText.closeTimeCheck(value: closeTime)
+                return
+            }
+            
+            if open >= close {
+                
+                throw InputError.openTimeThanCloseTime
+            }
+        } catch {
+            
+            throw error
+        }
+    }
 }
-
-

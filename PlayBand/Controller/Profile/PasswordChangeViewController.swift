@@ -49,13 +49,13 @@ class PasswordChangeViewController: UIViewController {
                 case .failure(let error):
                     
                     self?.addErrorAlertMessage(
-                        title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
+                        title: FirebaseEnum.fail.rawValue, message: error.localizedDescription)
                 }
             }
             
         } else {
             
-            self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: ProfileEnum.passwordNotSame.rawValue, completionHanderInDismiss: nil)
+            self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: ProfileEnum.passwordNotSame.rawValue)
             
         }
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StoreMangerViewController: EditPageViewController {
+class StoreMangerViewController: BaseEditViewController {
     
     var dataString: [ProfileContentCategory: String] = [
         .storeName: "", .storeCity: "", .storePhone: "", .address: "", .openTime: "", .closeTime: "", .information: ""]
@@ -52,11 +52,15 @@ class StoreMangerViewController: EditPageViewController {
             guard let inputError = error as? InputError else {
                 
                 self.addErrorAlertMessage(
-                    title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
+                    title: FirebaseEnum.fail.rawValue,
+                    message: error.localizedDescription,
+                    completionHanderInDismiss: nil)
                 return
             }
             self.addErrorAlertMessage(
-                title: FirebaseEnum.fail.rawValue, message: inputError.localizedDescription, completionHanderInDismiss: nil)
+                title: FirebaseEnum.fail.rawValue,
+                message: inputError.localizedDescription,
+                completionHanderInDismiss: nil)
         }
     }
 }

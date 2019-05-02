@@ -28,14 +28,18 @@ class StoreAddImageTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupCell(image: UIImage, storeAddImageDelegate: StoreAddImageDelegate,row: Int) {
+    func setupCell(image: UIImage, storeAddImageDelegate: StoreAddImageDelegate,row: Int, url: String = String()) {
         if row == 0 {
             self.titleLabel.text = "這是主圖片"
         } else {
-            self.titleLabel.text = "這是第\(row + 1)張圖片"
+            self.titleLabel.text = "這是第 \(row + 1) 張圖片"
         }
-        titleImageView.image = image
         self.delegate = storeAddImageDelegate
+        if url.isEmpty {
+            titleImageView.image = image
+        } else {
+          titleImageView.lv_setImageWithURL(url: url)
+        }
     }
 }
 

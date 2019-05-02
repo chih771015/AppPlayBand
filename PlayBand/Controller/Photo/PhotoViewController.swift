@@ -24,86 +24,16 @@ class PhotoChoiceViewController: UIAlertController {
         imagePickerController.delegate = presentVC
         guard let nextVC = self.presentVC else {return}
         
-        let imageFromLibAction = UIAlertAction(title: "照片圖庫", style: .default) { (_) in
+        let imageFromLibAction = UIAlertAction(title: "照片圖庫", style: .default) { [weak self] (_) in
             imagePickerController.sourceType = .photoLibrary
             
-            switch AVCaptureDevice.authorizationStatus(for: .video) {
-                
-            case .notDetermined:
-                AVCaptureDevice.requestAccess(for: .video, completionHandler: { (bool) in
-                    if bool {
-                        
-                        nextVC.present(imagePickerController, animated: true, completion: nil)
-                    }
-                })
-            case .denied, .restricted:
-                
-                let alertController = UIAlertController (title: "相機啟用失敗", message: "相機服務未啟用", preferredStyle: .alert)
-                let settingsAction = UIAlertAction(title: "設定", style: .default) { (_) -> Void in
-                    
-                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                        return
-                    }
-                    
-                    if UIApplication.shared.canOpenURL(settingsUrl) {
-                        UIApplication.shared.open(settingsUrl)
-                    }
-                }
-                alertController.addAction(settingsAction)
-                let cancelAction = UIAlertAction(title: "確認", style: .default, handler: nil)
-                alertController.addAction(cancelAction)
-                
-                nextVC.present(alertController, animated: true, completion: nil)
-                return
-            case .authorized:
-                print("Authorized, proceed")
-                nextVC.present(imagePickerController, animated: true)
-            @unknown default:
-                fatalError()
-            }
-            
+            self?.checkPhotoAndPresent(nextVC: nextVC, imagePickerController: imagePickerController)
         }
         
         let imageFromCameraAction = UIAlertAction(title: "相機", style: .default) { [weak self] (_) in
             
             imagePickerController.sourceType = .camera
-            guard let nextVC = self?.presentVC else {return}
-            
-            switch AVCaptureDevice.authorizationStatus(for: .video) {
-                
-            case .notDetermined:
-                AVCaptureDevice.requestAccess(for: .video, completionHandler: { (bool) in
-                    if bool {
-                        
-                        nextVC.present(imagePickerController, animated: true, completion: nil)
-                    }
-                })
-            case .denied, .restricted:
-                
-                let alertController = UIAlertController (title: "相機啟用失敗", message: "相機服務未啟用", preferredStyle: .alert)
-                let settingsAction = UIAlertAction(title: "設定", style: .default) { (_) -> Void in
-                    
-                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                        return
-                    }
-                    
-                    if UIApplication.shared.canOpenURL(settingsUrl) {
-                        
-                        UIApplication.shared.open(settingsUrl)
-                    }
-                }
-                alertController.addAction(settingsAction)
-                let cancelAction = UIAlertAction(title: "確認", style: .default, handler: nil)
-                alertController.addAction(cancelAction)
-                
-                nextVC.present(alertController, animated: true, completion: nil)
-                return
-            case .authorized:
-                print("Authorized, proceed")
-                nextVC.present(imagePickerController, animated: true)
-            @unknown default:
-                fatalError()
-            }
+            self?.checkPhotoAndPresent(nextVC: nextVC, imagePickerController: imagePickerController)
         }
         
         let cancelAction = UIAlertAction(title: "取消", style: .cancel) {[weak self] (_) in
@@ -113,5 +43,43 @@ class PhotoChoiceViewController: UIAlertController {
         self.addAction(imageFromLibAction)
         self.addAction(imageFromCameraAction)
         self.addAction(cancelAction)
+    }
+    
+    private func checkPhotoAndPresent(nextVC: UIViewController, imagePickerController: UIImagePickerController) {
+        
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+            
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { (bool) in
+                if bool {
+                    
+                    nextVC.present(imagePickerController, animated: true, completion: nil)
+                }
+            })
+        case .denied, .restricted:
+            
+            let alertController = UIAlertController (title: "相機啟用失敗", message: "相機服務未啟用", preferredStyle: .alert)
+            let settingsAction = UIAlertAction(title: "設定", style: .default) { (_) -> Void in
+                
+                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                    return
+                }
+                
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl)
+                }
+            }
+            alertController.addAction(settingsAction)
+            let cancelAction = UIAlertAction(title: "確認", style: .default, handler: nil)
+            alertController.addAction(cancelAction)
+            
+            nextVC.present(alertController, animated: true, completion: nil)
+            return
+        case .authorized:
+            print("Authorized, proceed")
+            nextVC.present(imagePickerController, animated: true)
+        @unknown default:
+            fatalError()
+        }
     }
 }

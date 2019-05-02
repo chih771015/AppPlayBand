@@ -43,7 +43,8 @@ enum StoreContentCategory: String {
 
     }
     
-    func cellForSuperManger(_ indexPath: IndexPath, tableView: UITableView, data: StoreData?, userData: UserData?) -> UITableViewCell {
+    func cellForSuperManger(_ indexPath: IndexPath,
+                            tableView: UITableView, data: StoreData?, userData: UserData?) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         guard let desCell = cell as? StoreDescriptionTableViewCell else {

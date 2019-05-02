@@ -36,7 +36,7 @@ class SuperMangerCheckStoreViewController: BaseStoresViewController {
                 self?.datas = data
             case .failure(let error):
                 self?.addErrorAlertMessage(
-                    title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
+                    title: FirebaseEnum.fail.rawValue, message: error.localizedDescription)
             }
         }
     }
@@ -53,7 +53,10 @@ class SuperMangerCheckStoreViewController: BaseStoresViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SuperMangerStoreConfirmViewController.self)) as? SuperMangerStoreConfirmViewController else {
+        guard let nextVC = self.storyboard?.instantiateViewController(
+            withIdentifier: String(
+                describing: SuperMangerStoreConfirmViewController.self
+        )) as? SuperMangerStoreConfirmViewController else {
             return
         }
         nextVC.applyDatas = datas[indexPath.row]

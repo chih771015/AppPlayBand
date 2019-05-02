@@ -216,7 +216,8 @@ extension FirebaseManger {
                     return
                 }
                 self.dataBase().collection(FirebaseEnum.user.rawValue).document(userUID)
-                    .collection(FirebaseEnum.store.rawValue).addDocument(data: [UsersKey.store.rawValue: storeData.name])
+                    .collection(FirebaseEnum.store.rawValue)
+                    .addDocument(data: [UsersKey.store.rawValue: storeData.name])
                 self.deleteApplyStore(pathID: pathID, storeName: storeData.name)
                 completionHandler(.success("確認店家申請成功"))
         }
@@ -227,8 +228,10 @@ extension FirebaseManger {
         dataBase().collection(FirebaseEnum.storeApply.rawValue).document(pathID).delete()
     }
     
-    func getStoreBookingDataWithManger(storeName: String, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
-        dataBase().collection(FirebaseEnum.store.rawValue).document(storeName).collection(FirebaseEnum.booking.rawValue).getDocuments { (querySnapshot, error) in
+    func getStoreBookingDataWithManger(
+        storeName: String, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
+        dataBase().collection(FirebaseEnum.store.rawValue).document(storeName)
+            .collection(FirebaseEnum.booking.rawValue).getDocuments { (querySnapshot, error) in
             
             if let error = error {
                 completionHandler(.failure(error))

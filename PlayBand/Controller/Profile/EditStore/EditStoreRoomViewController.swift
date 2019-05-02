@@ -1,15 +1,15 @@
 //
-//  AddRoomViewController.swift
+//  EditStoreRoomViewController.swift
 //  PlayBand
 //
-//  Created by 姜旦旦 on 2019/4/30.
+//  Created by 姜旦旦 on 2019/5/3.
 //  Copyright © 2019 姜旦旦. All rights reserved.
 //
 
 import UIKit
 
-class AddRoomViewController: BaseEditViewController {
-    
+class EditStoreRoomViewController: BaseEditViewController {
+
     @IBAction func addRooms(_ sender: Any) {
         
         if datas.count > 20 {
@@ -28,12 +28,31 @@ class AddRoomViewController: BaseEditViewController {
         do {
             try storeData?.addRooms(rooms: dataRooms)
             
-            guard let nextVC = self.storyboard?.instantiateViewController(
-                withIdentifier: String(
-                    describing: AddImageViewController.self)) as? AddImageViewController else {return}
+            guard let storeData = self.storeData else {
+                
+                return
+            }
+            PBProgressHUD.addLoadingView(animated: true)
+            FirebaseManger.shared.updataStoreData(storeData: storeData) { [weak self] (result) in
+                PBProgressHUD.dismissLoadingView(animated: true)
+                switch result {
+                    
+                case .success(let message):
+                    
+                    self?.addSucessAlertMessage(title: message, message: nil,
+                                                completionHanderInDismiss: { [weak self] in
+                                                    if let closure = self?.getDataClosure {
+                                                        closure(storeData)
+                                                    }
+                        self?.navigationController?.popViewController(animated: true)
+                    })
+                    
+                case .failure(let error):
+                    
+                    self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription)
+                }
+            }
             
-            nextVC.storeData = storeData
-            self.navigationController?.pushViewController(nextVC, animated: true)
         } catch let error {
             guard let inputError = error as? InputError else {
                 self.addErrorAlertMessage(
@@ -50,14 +69,25 @@ class AddRoomViewController: BaseEditViewController {
         }
     }
     
-    var dataRooms: [StoreData.Room] = [StoreData.Room()]
+    var getDataClosure: ((StoreData) -> Void)?
+    var dataRooms: [StoreData.Room] = [] {
+        didSet {
+            
+            setupDatas()
+        }
+    }
     
-    var storeData: StoreData?
+    var storeData: StoreData? {
+        
+        didSet {
+            
+            setupRooms()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        pageName = "增加團室"
+        pageName = "修改團室"
         descriptionText = "上限20間"
-        datas = [.room]
         // Do any additional setup after loading the view.
     }
     override func setupTableView() {
@@ -84,14 +114,27 @@ class AddRoomViewController: BaseEditViewController {
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
+
+    private func setupDatas() {
+        
+        var datas: [ProfileContentCategory] = []
+        
+        for _ in dataRooms {
+            
+            datas.append(.room)
+        }
+        self.datas = datas
+        
+    }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+    private func setupRooms() {
+        
+        guard let rooms = storeData?.rooms else {return}
+        self.dataRooms = rooms
     }
 }
 
-extension AddRoomViewController: StoreAddRoomCellDelegate {
+extension EditStoreRoomViewController: StoreAddRoomCellDelegate {
     
     func textFieldDidEnd(tableViewCell: UITableViewCell, firstTextField: String?, secondTextField: String?) {
         guard let index = tableView.indexPath(for: tableViewCell) else {return}

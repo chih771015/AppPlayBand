@@ -27,14 +27,13 @@ class DataTransform {
                               FirebaseBookingKey.status.rawValue: FirebaseBookingKey.Status.tobeConfirm.rawValue,
                               FirebaseBookingKey.store.rawValue: name,
                               FirebaseBookingKey.userMessage.rawValue: userMessage,
-                              FirebaseBookingKey.user.rawValue:
-                                [UsersKey.name.rawValue: user.name,
-                                 UsersKey.band.rawValue: user.band,
-                                 UsersKey.email.rawValue: user.email,
-                                 UsersKey.phone.rawValue: user.phone,
-                                 UsersKey.facebook.rawValue: user.facebook,
-                                 UsersKey.uid.rawValue: uid,
-                                 UsersKey.photoURL.rawValue: user.photoURL]] as [String: Any]
+                              FirebaseBookingKey.user.rawValue: [UsersKey.name.rawValue: user.name,
+                                                                 UsersKey.band.rawValue: user.band,
+                                                                 UsersKey.email.rawValue: user.email,
+                                                                 UsersKey.phone.rawValue: user.phone,
+                                                                 UsersKey.facebook.rawValue: user.facebook,
+                                                                 UsersKey.uid.rawValue: uid,
+                                                                 UsersKey.photoURL.rawValue: user.photoURL]] as [String: Any]
         
         return dictionary
     }
@@ -60,11 +59,12 @@ class DataTransform {
                 UsersKey.email.rawValue: userData.email, UsersKey.phone.rawValue: userData.phone,
                 UsersKey.facebook.rawValue: userData.facebook,
                 UsersKey.status.rawValue: userData.status]
+            
             return dictionary
         } else {
             
-            let dictionary = [ UsersKey.name.rawValue: userData.name, UsersKey.band.rawValue: userData.band,
-                               UsersKey.email.rawValue: userData.email, UsersKey.phone.rawValue: userData.phone,
+            let dictionary = [UsersKey.name.rawValue: userData.name, UsersKey.band.rawValue: userData.band,
+                              UsersKey.email.rawValue: userData.email, UsersKey.phone.rawValue: userData.phone,
                                UsersKey.facebook.rawValue: userData.facebook]
             return dictionary
         }

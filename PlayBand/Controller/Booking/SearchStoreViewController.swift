@@ -75,7 +75,6 @@ class SearchStoreViewController: UIViewController {
         tableView.lv_registerCellWithNib(
             identifier: String(describing: SearchStoreTableViewCell.self),
             bundle: nil)
-        
         tableView.addRefreshHeader { [weak self] in
             
             self?.getStoreData()
@@ -118,5 +117,5 @@ extension SearchStoreViewController: UITableViewDataSource, UITableViewDelegate 
         nextViewController.storeData = self.storeDatas[indexPath.row]
         navigationController?.pushViewController(nextViewController, animated: true)
     }
-    
+
 }

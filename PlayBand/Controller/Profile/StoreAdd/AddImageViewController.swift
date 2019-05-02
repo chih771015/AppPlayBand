@@ -8,13 +8,13 @@
 
 import UIKit
 
-class AddImageViewController: EditPageViewController {
+class AddImageViewController: BaseEditViewController {
 
     override func buttonAction() {
         
         if images.count == 0 {
             
-            self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: "至少上傳一張圖片", completionHanderInDismiss: nil)
+            self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: "至少上傳一張圖片")
             return
         }
         
@@ -90,7 +90,8 @@ extension AddImageViewController: StoreAddImageDelegate {
 extension AddImageViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     func imagePickerController(
-        _ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         var selectImage: UIImage?
 

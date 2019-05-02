@@ -14,9 +14,9 @@ extension CALayer {
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
-        let startColor = UIColor.playBandColorEnd
-        let endColor = UIColor.playBandColorLightGreen
-        gradientLayer.colors = [startColor?.cgColor, endColor?.cgColor]
+        guard let startColor = UIColor.playBandColorEnd else {return gradientLayer}
+        guard let endColor = UIColor.playBandColorLightGreen else {return gradientLayer}
+        gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
         gradientLayer.cornerRadius = cornerRadius

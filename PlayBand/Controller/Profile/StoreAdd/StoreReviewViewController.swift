@@ -46,11 +46,11 @@ class StoreReviewViewController: BaseStoreDetailViewController {
                 PBProgressHUD.dismissLoadingView(animated: true)
                 guard let inputError = error as? InputError else {
                     self?.addErrorAlertMessage(
-                        title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
+                        title: FirebaseEnum.fail.rawValue, message: error.localizedDescription)
                     return
                 }
                 self?.addErrorAlertMessage(
-                    title: FirebaseEnum.fail.rawValue, message: inputError.localizedDescription, completionHanderInDismiss: nil)
+                    title: FirebaseEnum.fail.rawValue, message: inputError.localizedDescription)
             }
             
         }
@@ -71,11 +71,11 @@ class StoreReviewViewController: BaseStoreDetailViewController {
                 
                 guard let inputError = error as? InputError else {
                     self?.addErrorAlertMessage(
-                        title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
+                        title: FirebaseEnum.fail.rawValue, message: error.localizedDescription)
                     return
                 }
                 self?.addErrorAlertMessage(
-                    title: FirebaseEnum.fail.rawValue, message: inputError.localizedDescription, completionHanderInDismiss: nil)
+                    title: FirebaseEnum.fail.rawValue, message: inputError.localizedDescription)
             }
         }
     }

@@ -104,12 +104,12 @@ struct StoreData {
     }
     
     func getFirebaseDictionay() -> [String: Any] {
-        var imagesArray:[String] = []
-        for image in  self.images {
+        var imagesArray: [String] = []
+        for image in self.images {
             
             imagesArray.append(image)
         }
-        var roomsArray: [[String:Any]] = []
+        var roomsArray: [[String: Any]] = []
         for room in self.rooms {
             
             let roomDictionary = [StoreDataKey.name.rawValue: room.name,

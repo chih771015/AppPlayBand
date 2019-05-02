@@ -16,23 +16,28 @@ class SignInViewController: UIViewController {
         
         guard let account = accountTextField.text, accountTextField.text?.count != 0 else {
             
-            self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: "請輸入帳號", completionHanderInDismiss: nil)
+            self.addErrorAlertMessage(
+                title: FirebaseEnum.fail.rawValue, message: "請輸入帳號", completionHanderInDismiss: nil)
             
             return
         }
         guard let password = passwordTextField.text, passwordTextField.text?.count != 0 else {
             
-            self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: "請輸入密碼", completionHanderInDismiss: nil)
+            self.addErrorAlertMessage(
+                title: FirebaseEnum.fail.rawValue, message: "請輸入密碼", completionHanderInDismiss: nil)
             
             return
         }
         PBProgressHUD.addLoadingView(at: view, animated: true)
         firebase.signInAccount(
-        email: account, password: password) {[weak self] (result, error) in
+        email: account, password: password) { [weak self] (_, error) in
             
             if error != nil {
                 PBProgressHUD.dismissLoadingView(animated: true)
-                self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error?.localizedDescription, completionHanderInDismiss: nil)
+                self?.addErrorAlertMessage(
+                    title: FirebaseEnum.fail.rawValue,
+                    message: error?.localizedDescription,
+                    completionHanderInDismiss: nil)
 
             } else {
                 

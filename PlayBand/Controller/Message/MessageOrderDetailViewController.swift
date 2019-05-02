@@ -33,14 +33,18 @@ class MessageOrderDetailViewController: UIViewController {
                     
                 case .success(let message):
                     
-                    self?.addSucessAlertMessage(title: message, message: nil, completionHanderInDismiss: { [weak self] in
+                    self?.addSucessAlertMessage(
+                        title: message, message: nil, completionHanderInDismiss: { [weak self] in
                         
                         self?.navigationController?.popToRootViewController(animated: true)
                     })
                     
                 case.failure(let error):
                     
-                    self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
+                    self?.addErrorAlertMessage(
+                        title: FirebaseEnum.fail.rawValue,
+                        message: error.localizedDescription,
+                        completionHanderInDismiss: nil)
                     
                 }
         }
@@ -64,7 +68,10 @@ class MessageOrderDetailViewController: UIViewController {
 
             case .failure(let error):
                 
-                self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
+                self?.addErrorAlertMessage(
+                    title: FirebaseEnum.fail.rawValue,
+                    message: error.localizedDescription,
+                    completionHanderInDismiss: nil)
             }
         }
     }

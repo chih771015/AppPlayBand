@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditStoreInfoViewController: EditPageViewController {
+class EditStoreInfoViewController: BaseEditViewController {
     
     var storeData: StoreData? {
         
@@ -69,6 +69,7 @@ class EditStoreInfoViewController: EditPageViewController {
             guard let phone = dataString[.storePhone] else {
                 return
             }
+            try CheckTextFieldText.openTimeAndCloseTime(openTime: openTime, closeTime: closeTime)
             
             self.storeData?.openTime = openTime
             self.storeData?.closeTime = closeTime
@@ -81,11 +82,15 @@ class EditStoreInfoViewController: EditPageViewController {
             guard let inputError = error as? InputError else {
                 
                 self.addErrorAlertMessage(
-                    title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
+                    title: FirebaseEnum.fail.rawValue,
+                    message: error.localizedDescription,
+                    completionHanderInDismiss: nil)
                 return
             }
             self.addErrorAlertMessage(
-                title: FirebaseEnum.fail.rawValue, message: inputError.localizedDescription, completionHanderInDismiss: nil)
+                title: FirebaseEnum.fail.rawValue,
+                message: inputError.localizedDescription,
+                completionHanderInDismiss: nil)
         }
     }
     

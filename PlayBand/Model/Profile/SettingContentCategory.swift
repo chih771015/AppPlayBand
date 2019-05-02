@@ -107,7 +107,9 @@ enum SettingContentCategory: String {
                 
                 let actionManger = UIAlertAction(title: "修改\(store)", style: .default) { [weak viewController] (_) in
                     
-                    guard let nextVC = UIStoryboard.profile.instantiateViewController(withIdentifier: self.identifier) as? EditStoreDetailViewController else {
+                    guard let nextVC = UIStoryboard.profile.instantiateViewController(
+                        withIdentifier: self.identifier
+                        ) as? EditStoreDetailViewController else {
                         return
                     }
                     
