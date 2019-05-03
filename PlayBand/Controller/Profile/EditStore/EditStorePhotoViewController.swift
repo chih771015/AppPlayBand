@@ -29,12 +29,9 @@ class EditStorePhotoViewController: BaseEditViewController {
             self.upDataStoreRoom(storeData: storeData)
         } else {
             var images: [UIImage] = []
-            for index in 0 ..< self.images.count {
+            for index in 0 ..< self.images.count where urls[index].isEmpty {
                 
-                if urls[index].isEmpty {
-                    
-                    images.append(self.images[index])
-                }
+                images.append(self.images[index])
             }
             urls = urls.filter({$0.isEmpty == false})
             FirebaseManger.shared.uploadImagesAndGetURL(images: images) { [weak self] (result) in

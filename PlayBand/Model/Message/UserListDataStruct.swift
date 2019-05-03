@@ -40,7 +40,7 @@ struct UserBookingData {
             self.storeMessage = storeMessage
         } else {
             
-            self.storeMessage = ""
+            self.storeMessage = "尚未回應"
         }
         self.bookingTime = bookingTime
         self.status = status

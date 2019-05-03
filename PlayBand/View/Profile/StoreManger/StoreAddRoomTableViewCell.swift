@@ -26,7 +26,9 @@ class StoreAddRoomTableViewCell: UITableViewCell {
     }
     
     @IBAction func textFieldEnd() {
-        delegate?.textFieldDidEnd(tableViewCell: self, firstTextField: firstTextField.text, secondTextField: secondTextField.text)
+        delegate?.textFieldDidEnd(
+            tableViewCell: self, firstTextField: firstTextField.text,
+            secondTextField: secondTextField.text)
     }
     @IBOutlet weak var firstTitleLabel: UILabel!
     @IBOutlet weak var secondTitleLabel: UILabel!

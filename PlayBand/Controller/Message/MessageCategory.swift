@@ -43,6 +43,7 @@ enum MessageCategory: String {
     case storeMessageForStore = "店家回覆"
     case time = "預定日期"
     case hours = "預定時間"
+    case room = "團室"
     
     func cellForIndexPathInDetail(_ indexPath: IndexPath, tableView: UITableView,
         data: UserBookingData?) -> UITableViewCell {
@@ -77,18 +78,17 @@ enum MessageCategory: String {
         case .userMessage:
             cell.setupCell(title: rawValue, description: bookingData.userMessage)
         case .storeMessageForStore:
-            if bookingData.storeMessage != "" {
-                cell.setupCell(title: rawValue, description: bookingData.storeMessage)
-            } else {
-                
-            }
+            cell.setupCell(title: rawValue, description: bookingData.storeMessage)
         case .status:
-       
             cell.setupCell(title: rawValue, description: bookingData.returnStatusString())
         case .time:
             cell.setupCell(title: rawValue, description: bookingData.bookingTime.date.dateString())
         case .hours:
             cell.setupCell(title: rawValue, description: bookingData.bookingTime.hoursStringOnebyOne())
+        case .price:
+            cell.setupCell(title: rawValue, description: bookingData.bookingTime.retureTotalPrice())
+        case .room:
+            cell.setupCell(title: rawValue, description: bookingData.bookingTime.room)
         default:
             cell.setupCell(title: rawValue, description: "錯誤")
         }

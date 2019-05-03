@@ -75,6 +75,11 @@ enum FirebaseBookingKey: String {
     case userMessage
     case storeMessage
     case room
+    case price
+    
+    var description: String {
+        return "沒有回覆"
+    }
     
     enum Store: String {
         

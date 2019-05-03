@@ -61,6 +61,7 @@ class CalendarViewController: UIViewController {
             calendarTableView.reloadData()
         }
     }
+    private var price = String()
     private var firebaseBookingData: [BookingTimeAndRoom] = [] {
         
         didSet {
@@ -147,9 +148,12 @@ class CalendarViewController: UIViewController {
         picker.dataSource = self
         picker.delegate = self
         textField.inputView = picker
-        textField.text = storeData?.rooms[0].name
-        guard let text = textField.text else {return}
-        room = text
+        guard let room = storeData?.rooms[0] else {
+            return
+        }
+        textField.text = room.name
+        self.room = room.name
+        self.price = room.price
     }
 }
 
@@ -236,7 +240,10 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         let hour = indexPath.row + (Int(storeData?.openTime ?? "0") ?? 0)
         let time = BookingDate(year: selectDay.year, month: selectDay.month, day: selectDay.day)
         
-        if firebaseBookingData.filter({$0.date == time}).filter({$0.hour.contains(hour)}).filter({$0.room == self.room}).count != 0 {
+        if firebaseBookingData
+            .filter({$0.date == time})
+            .filter({$0.hour.contains(hour)})
+            .filter({$0.room == self.room}).count != 0 {
             
             cell.fireBaseBookingSetup(hour: hour)
             return cell
@@ -266,8 +273,7 @@ extension CalendarViewController {
         
         guard let sameDateIndex = bookingTimeDatas.firstIndex(
             where: {$0.date == bookingDate && $0.room == self.room}) else {
-            
-            bookingTimeDatas.append(BookingTimeAndRoom(date: bookingDate, hour: [hour], room: self.room))
+                bookingTimeDatas.append(BookingTimeAndRoom(date: bookingDate, hour: [hour], room: room, price: price))
             return
         }
         
@@ -330,8 +336,9 @@ extension CalendarViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        guard let name = storeData?.rooms[row].name else {return}
-        textField.text = name
-        self.room = name
+        guard let room = storeData?.rooms[row] else {return}
+        textField.text = room.name
+        self.room = room.name
+        self.price = room.price
     }
 }

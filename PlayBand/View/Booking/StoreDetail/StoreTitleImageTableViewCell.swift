@@ -71,7 +71,9 @@ class StoreTitleImageTableViewCell: UITableViewCell {
 extension StoreTitleImageTableViewCell: UICollectionViewDelegate,
 UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(
-        _ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return self.bounds.size
     }

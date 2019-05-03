@@ -156,4 +156,14 @@ class CheckTextFieldText {
             throw error
         }
     }
+    
+    class func whiteSpacesCheck(text: String?) throws -> String {
+        
+        if text?.trimmingCharacters(in: .whitespaces).isEmpty ?? true {
+         
+            throw InputError.whitespaces
+        }
+        
+        return text!
+    }
 }

@@ -206,7 +206,9 @@ extension FirebaseManger {
         }
     }
     
-    func applyStoreInSuperManger(userUID: String, pathID: String, storeData: StoreData, completionHandler: @escaping (Result<String>) -> Void) {
+    func applyStoreInSuperManger(
+        userUID: String, pathID: String,
+        storeData: StoreData, completionHandler: @escaping (Result<String>) -> Void) {
         
         dataBase().collection(FirebaseEnum.store.rawValue)
             .document(storeData.name).setData(storeData.getFirebaseDictionay(), merge: true) { (error) in

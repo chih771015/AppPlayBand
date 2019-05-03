@@ -24,7 +24,8 @@ class MessageTableViewCell: UITableViewCell {
             titleView.layer.shadowOffset = CGSize(width: 5, height: 3.5)
             titleView.layer.shadowOpacity = 0.2
             titleView.layer.shadowRadius = 5
-            titleView.layer.shadowColor = UIColor(red: 44.0/255.0, green: 62.0/255.0, blue: 80.0/255.0, alpha: 0.7).cgColor
+            titleView.layer.shadowColor = UIColor(
+                red: 44.0/255.0, green: 62.0/255.0, blue: 80.0/255.0, alpha: 0.7).cgColor
         }
     }
     
@@ -36,7 +37,8 @@ class MessageTableViewCell: UITableViewCell {
             descriptionView.layer.shadowOffset = CGSize(width: 2, height: 3.5)
             descriptionView.layer.shadowOpacity = 0.2
             descriptionView.layer.shadowRadius = 5
-            descriptionView.layer.shadowColor = UIColor(red: 44.0/255.0, green: 62.0/255.0, blue: 80.0/255.0, alpha: 0.7).cgColor
+            descriptionView.layer.shadowColor = UIColor(
+                red: 44.0/255.0, green: 62.0/255.0, blue: 80.0/255.0, alpha: 0.7).cgColor
         }
     }
     

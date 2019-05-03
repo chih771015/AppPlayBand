@@ -111,7 +111,6 @@ class MessageViewController: UIViewController {
         }
     }
     
-    
     private func fetchData() {
         
         PBProgressHUD.addLoadingView(animated: true)

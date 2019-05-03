@@ -30,6 +30,7 @@ enum InputError: Error {
     case priceIsNotNumber(Int)
     case imageURLDidNotGet
     case bookingCreat
+    case whitespaces
     
     var localizedDescription: String {
         
@@ -85,6 +86,8 @@ enum InputError: Error {
             return "預定時網路發生問題\n請重新確認您的訂單是否完成"
         case .unknow:
             return "未知的錯誤\n趕快找Bug囉"
+        case .whitespaces:
+            return "請不要只輸入空格"
         }
     }
 }

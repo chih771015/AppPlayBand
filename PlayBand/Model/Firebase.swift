@@ -109,9 +109,11 @@ class FirebaseManger {
     }
     
     func editProfileInfo(userData: UserData, completionHandler: @escaping (Error?) -> Void) {
-        
-        guard let uid = user().currentUser?.uid else {return}
-        
+        guard let uid = user().currentUser?.uid else {
+            
+            completionHandler(AccountError.noLogin)
+            return
+        }
         let dictionary = DataTransform.userData(userData: userData)
         dataBase().collection(FirebaseEnum.user.rawValue).document(uid).setData(dictionary, merge: true) { error in
             if error == nil {
@@ -287,7 +289,11 @@ class FirebaseManger {
     }
     
     private func uploadUserImageURL(url: String, completionHandler: @escaping ((Result<String>) -> Void)) {
-        guard let uid = user().currentUser?.uid else {return}
+        guard let uid = user().currentUser?.uid else {
+            
+            completionHandler(.failure(AccountError.noLogin))
+            return
+        }
         dataBase().collection(FirebaseEnum.user.rawValue).document(uid)
             .setData([UsersKey.photoURL.rawValue: url], merge: true) { (error) in
             
@@ -366,7 +372,7 @@ class FirebaseManger {
     }
     
     func updataBookingConfirm(storeName: String, pathID: String, userUID: String,
-                              completionHandler: @escaping (Result<String>) -> Void) {
+                              storeMessage: String = FirebaseBookingKey.storeMessage.description, completionHandler: @escaping (Result<String>) -> Void) {
         
         dataBase().collection(FirebaseEnum.store.rawValue).document(storeName)
             .collection(FirebaseEnum.confirm.rawValue).document(pathID)
@@ -378,7 +384,7 @@ class FirebaseManger {
                     
                    self.updataBookingColloection(
                     storeName: storeName, pathID: pathID, userUID: userUID,
-                    status: .confirm, completionHandler: completionHandler)
+                    status: .confirm, storeMessage: storeMessage,completionHandler: completionHandler)
                 }
         }
     }
@@ -386,6 +392,7 @@ class FirebaseManger {
     private func updataBookingColloection(storeName: String, pathID: String,
                                           userUID: String,
                                           status: FirebaseBookingKey.Status,
+                                          storeMessage: String,
                                           completionHandler: @escaping (Result<String>) -> Void) {
         
         var dictionary: [String: Any] = [:]
@@ -397,6 +404,8 @@ class FirebaseManger {
         case .tobeConfirm:
             dictionary = [FirebaseBookingKey.status.rawValue: FirebaseBookingKey.Status.tobeConfirm.rawValue]
         }
+        dictionary.updateValue(storeMessage, forKey: FirebaseBookingKey.storeMessage.rawValue)
+        
         dataBase().collection(FirebaseEnum.user.rawValue).document(userUID)
             .collection(FirebaseEnum.booking.rawValue).document(pathID).updateData(dictionary) { (error) in
             
@@ -413,7 +422,7 @@ class FirebaseManger {
     }
     
     func refuseBooking(pathID: String, storeName: String,
-                       userUID: String, completionHandler: @escaping (Result<String>) -> Void) {
+                       userUID: String, storeMessage: String, completionHandler: @escaping (Result<String>) -> Void) {
         dataBase().collection(FirebaseEnum.store.rawValue).document(storeName)
             .collection(FirebaseEnum.confirm.rawValue).document(pathID).delete { (error) in
                 
@@ -424,7 +433,7 @@ class FirebaseManger {
                 } else {
                     self.updataBookingColloection(
                         storeName: storeName, pathID: pathID, userUID: userUID,
-                        status: .refuse, completionHandler: completionHandler)
+                        status: .refuse, storeMessage: storeMessage, completionHandler: completionHandler)
                 }
         }
     }

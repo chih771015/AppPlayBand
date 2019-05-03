@@ -39,7 +39,6 @@ class PhotoChoiceViewController: UIAlertController {
         }
         imageFromCameraAction.setValue(UIColor.playBandColorEnd, forKey: "titleTextColor")
 
-        
         let cancelAction = UIAlertAction(title: "取消", style: .cancel) {[weak self] (_) in
             
             self?.dismiss(animated: true, completion: nil)

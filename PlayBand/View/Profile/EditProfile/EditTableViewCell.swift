@@ -25,23 +25,31 @@ class EditTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func setupEditCell(placeholder: String, text: String? = nil, tag: Int, textFieldDelgate: UITextFieldDelegate, description: String? = nil) {
-        setupTextField(placeholder: placeholder, tag: tag, textFieldDelgate: textFieldDelgate, text: text, description: description)
+    func setupEditCell(
+        placeholder: String, text: String? = nil, tag: Int,
+        textFieldDelgate: UITextFieldDelegate, description: String? = nil) {
+        setupTextField(placeholder: placeholder, tag: tag,
+                       textFieldDelgate: textFieldDelgate, text: text, description: description)
     }
-    func setupEditPasswordCell(placeholder: String, tag: Int, textFieldDelgate: UITextFieldDelegate, text: String? = nil, description: String? = nil) {
+    func setupEditPasswordCell(
+        placeholder: String, tag: Int, textFieldDelgate: UITextFieldDelegate,
+        text: String? = nil, description: String? = nil) {
          setupTextField(placeholder: placeholder, tag: tag, textFieldDelgate: textFieldDelgate, text: text, description: description)
         textField.isSecureTextEntry = true
     }
     func setupEditPickerCell(placeholder: String, tag: Int, textFieldDelgate: UITextFieldDelegate) {
         
-        setupTextField(placeholder: placeholder, tag: tag, textFieldDelgate: textFieldDelgate, text: UsersKey.Status.user.rawValue)
+        setupTextField(
+            placeholder: placeholder, tag: tag, textFieldDelgate: textFieldDelgate, text: UsersKey.Status.user.rawValue)
         let pickView = UIPickerView()
         pickView.delegate = self
         pickView.dataSource = self
         textField.inputView = pickView
     }
     
-    private func setupTextField(placeholder: String, tag: Int, textFieldDelgate: UITextFieldDelegate, text: String?, description: String? = nil) {
+    private func setupTextField(
+        placeholder: String, tag: Int, textFieldDelgate: UITextFieldDelegate,
+        text: String?, description: String? = nil) {
         textField.delegate = textFieldDelgate
         textField.placeholder = placeholder
         titleLabel.text = placeholder

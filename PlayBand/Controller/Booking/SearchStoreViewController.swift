@@ -36,7 +36,9 @@ class SearchStoreViewController: UIViewController {
 
         tableView.beginHeaderRefreshing()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(notificationData(notifcation:)), name: NSNotification.storeDatas, object: nil)
+        NotificationCenter.default
+            .addObserver(
+            self, selector: #selector(notificationData(notifcation:)), name: NSNotification.storeDatas, object: nil)
     }
     
     deinit {

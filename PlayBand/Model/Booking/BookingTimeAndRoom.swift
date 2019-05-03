@@ -31,6 +31,7 @@ struct BookingTimeAndRoom: Equatable, Comparable {
         }
     }
     var room: String
+    var price: String
     
     init? (dictionary: [String: Any]) {
         
@@ -44,16 +45,24 @@ struct BookingTimeAndRoom: Equatable, Comparable {
             self.room = room
         } else {
             
-            self.room = ""
+            self.room = "之前還沒選"
+        }
+        if let price = dictionary[FirebaseBookingKey.price.rawValue] as? String {
+            
+            self.price = price
+        } else {
+            
+            self.price = "0"
         }
         self.date = BookingDate(year: year, month: month, day: day)
         self.hour = hours
     }
-    init(date: BookingDate, hour: [Int], room: String) {
+    init(date: BookingDate, hour: [Int], room: String, price: String) {
         
         self.date = date
         self.hour = hour
         self.room = room
+        self.price = price
     }
     
     func hoursCount() -> Int {
@@ -80,6 +89,14 @@ struct BookingTimeAndRoom: Equatable, Comparable {
         }
         return text
     }
+    
+    func retureTotalPrice() -> String {
+        
+        guard let intPrice = Int(price) else {return "舊資料"}
+        let price = String(intPrice * hoursCount())
+        return price
+    }
+
 }
 
 struct BookingDate: Equatable {

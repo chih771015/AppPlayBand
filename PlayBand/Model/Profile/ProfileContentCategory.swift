@@ -110,12 +110,17 @@ enum ProfileContentCategory: String {
         return cell
     }
     
-    func cellForIndexPathInStore(_ indexPath: IndexPath, tableView: UITableView, textFieldDelegate: UITextFieldDelegate, text: String?) -> UITableViewCell {
+    func cellForIndexPathInStore(_ indexPath: IndexPath,
+                                 tableView: UITableView,
+                                 textFieldDelegate: UITextFieldDelegate,
+                                 text: String?) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: EditTableViewCell.self),
             for: indexPath) as? EditTableViewCell else { return UITableViewCell()}
-        cell.setupEditCell(placeholder: title, text: text, tag: indexPath.row, textFieldDelgate: textFieldDelegate, description: description)
+        cell.setupEditCell(
+            placeholder: title, text: text,
+            tag: indexPath.row, textFieldDelgate: textFieldDelegate, description: description)
         return cell
     }
     
@@ -164,7 +169,9 @@ enum ProfileContentCategory: String {
 
     }
 
-    func cellForIndexPathInEdit(_ indexPath: IndexPath, tableView: UITableView, textFieldDelegate: UITextFieldDelegate) -> UITableViewCell {
+    func cellForIndexPathInEdit(
+        _ indexPath: IndexPath, tableView: UITableView,
+        textFieldDelegate: UITextFieldDelegate) -> UITableViewCell {
 
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: EditTableViewCell.self),
@@ -176,26 +183,33 @@ enum ProfileContentCategory: String {
         
         case .account:
             
-            cell.setupEditCell(placeholder: rawValue, text: "", tag: indexPath.row, textFieldDelgate: textFieldDelegate)
+            cell.setupEditCell(
+                placeholder: rawValue, text: "", tag: indexPath.row, textFieldDelgate: textFieldDelegate)
         case .name:
 
-            cell.setupEditCell(placeholder: rawValue, text: userData?.name, tag: indexPath.row, textFieldDelgate: textFieldDelegate)
+            cell.setupEditCell(
+                placeholder: rawValue, text: userData?.name, tag: indexPath.row, textFieldDelgate: textFieldDelegate)
 
         case .email:
 
-            cell.setupEditCell(placeholder: rawValue, text: userData?.email, tag: indexPath.row, textFieldDelgate: textFieldDelegate)
+            cell.setupEditCell(
+                placeholder: rawValue, text: userData?.email, tag: indexPath.row, textFieldDelgate: textFieldDelegate)
 
         case .band:
 
-            cell.setupEditCell(placeholder: rawValue, text: userData?.band, tag: indexPath.row, textFieldDelgate: textFieldDelegate)
+            cell.setupEditCell(
+                placeholder: rawValue, text: userData?.band, tag: indexPath.row, textFieldDelgate: textFieldDelegate)
 
         case .phone:
 
-            cell.setupEditCell(placeholder: rawValue, text: userData?.phone, tag: indexPath.row, textFieldDelgate: textFieldDelegate)
+            cell.setupEditCell(
+                placeholder: rawValue, text: userData?.phone, tag: indexPath.row, textFieldDelgate: textFieldDelegate)
 
         case .facebook:
 
-            cell.setupEditCell(placeholder: rawValue, text: userData?.facebook, tag: indexPath.row, textFieldDelgate: textFieldDelegate)
+            cell.setupEditCell(
+                placeholder: rawValue, text: userData?.facebook,
+                tag: indexPath.row, textFieldDelgate: textFieldDelegate)
             
         case .userStatus:
             
@@ -203,19 +217,25 @@ enum ProfileContentCategory: String {
             
         case .password:
             
-            cell.setupEditPasswordCell(placeholder: rawValue, tag: indexPath.row, textFieldDelgate: textFieldDelegate, text: nil)
+            cell.setupEditPasswordCell(
+                placeholder: rawValue, tag: indexPath.row, textFieldDelgate: textFieldDelegate, text: nil)
         case .passwordConfirm:
             
-            cell.setupEditPasswordCell(placeholder: rawValue, tag: indexPath.row, textFieldDelgate: textFieldDelegate, text: nil)
+            cell.setupEditPasswordCell(
+                placeholder: rawValue, tag: indexPath.row, textFieldDelgate: textFieldDelegate, text: nil)
         default:
-            cell.setupEditCell(placeholder: rawValue, text: "??", tag: indexPath.row, textFieldDelgate: textFieldDelegate)
+            cell.setupEditCell(
+                placeholder: rawValue, text: "??", tag: indexPath.row, textFieldDelgate: textFieldDelegate)
         }
 
         return cell
 
     }
     
-    func cellForIndexPathInSignUp(_ indexPath: IndexPath, tableView: UITableView, textFieldDelegate: UITextFieldDelegate, text: String?) -> UITableViewCell {
+    func cellForIndexPathInSignUp(
+        _ indexPath: IndexPath,
+        tableView: UITableView,
+        textFieldDelegate: UITextFieldDelegate, text: String?) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: EditTableViewCell.self),
@@ -228,7 +248,8 @@ enum ProfileContentCategory: String {
             cell.setupEditCell(placeholder: rawValue, text: "", tag: indexPath.row, textFieldDelgate: textFieldDelegate)
         case .name:
             
-            cell.setupEditCell(placeholder: rawValue, text: text, tag: indexPath.row, textFieldDelgate: textFieldDelegate)
+            cell.setupEditCell(
+                placeholder: rawValue, text: text, tag: indexPath.row, textFieldDelgate: textFieldDelegate)
             
         case .email:
             
@@ -236,28 +257,35 @@ enum ProfileContentCategory: String {
             
         case .band:
             
-            cell.setupEditCell(placeholder: rawValue, text: text, tag: indexPath.row, textFieldDelgate: textFieldDelegate)
+            cell.setupEditCell(
+                placeholder: rawValue, text: text, tag: indexPath.row, textFieldDelgate: textFieldDelegate)
             
         case .phone:
             
-            cell.setupEditCell(placeholder: rawValue, text: text, tag: indexPath.row, textFieldDelgate: textFieldDelegate)
+            cell.setupEditCell(
+                placeholder: rawValue, text: text, tag: indexPath.row, textFieldDelgate: textFieldDelegate)
             
         case .facebook:
             
-            cell.setupEditCell(placeholder: rawValue, text: text, tag: indexPath.row, textFieldDelgate: textFieldDelegate)
+            cell.setupEditCell(
+                placeholder: rawValue, text: text, tag: indexPath.row, textFieldDelgate: textFieldDelegate)
             
         case .userStatus:
             
-            cell.setupEditPickerCell(placeholder: rawValue, tag: indexPath.row, textFieldDelgate: textFieldDelegate)
+            cell.setupEditPickerCell(
+                placeholder: rawValue, tag: indexPath.row, textFieldDelgate: textFieldDelegate)
             
         case .password:
             
-            cell.setupEditPasswordCell(placeholder: rawValue, tag: indexPath.row, textFieldDelgate: textFieldDelegate, text: text)
+            cell.setupEditPasswordCell(
+                placeholder: rawValue, tag: indexPath.row, textFieldDelgate: textFieldDelegate, text: text)
         case .passwordConfirm:
             
-            cell.setupEditPasswordCell(placeholder: rawValue, tag: indexPath.row, textFieldDelgate: textFieldDelegate, text: text)
+            cell.setupEditPasswordCell(
+                placeholder: rawValue, tag: indexPath.row, textFieldDelgate: textFieldDelegate, text: text)
         default:
-            cell.setupEditCell(placeholder: rawValue, text: "??", tag: indexPath.row, textFieldDelgate: textFieldDelegate)
+            cell.setupEditCell(
+                placeholder: rawValue, text: "??", tag: indexPath.row, textFieldDelgate: textFieldDelegate)
         }
         
         return cell

@@ -28,13 +28,16 @@ class DataTransform {
                               FirebaseBookingKey.store.rawValue: name,
                               FirebaseBookingKey.room.rawValue: bookingData.room,
                               FirebaseBookingKey.userMessage.rawValue: userMessage,
-                              FirebaseBookingKey.user.rawValue: [UsersKey.name.rawValue: user.name,
-                                                                 UsersKey.band.rawValue: user.band,
-                                                                 UsersKey.email.rawValue: user.email,
-                                                                 UsersKey.phone.rawValue: user.phone,
-                                                                 UsersKey.facebook.rawValue: user.facebook,
-                                                                 UsersKey.uid.rawValue: uid,
-                                                                 UsersKey.photoURL.rawValue: user.photoURL]] as [String: Any]
+                              FirebaseBookingKey.price.rawValue: bookingData.price,
+                              FirebaseBookingKey.storeMessage.rawValue: "尚未回復",
+                              FirebaseBookingKey.user.rawValue:
+                                [UsersKey.name.rawValue: user.name,
+                                 UsersKey.band.rawValue: user.band,
+                                 UsersKey.email.rawValue: user.email,
+                                 UsersKey.phone.rawValue: user.phone,
+                                 UsersKey.facebook.rawValue: user.facebook,
+                                 UsersKey.uid.rawValue: uid,
+                                 UsersKey.photoURL.rawValue: user.photoURL]] as [String: Any]
         
         return dictionary
     }

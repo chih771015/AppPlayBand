@@ -180,7 +180,8 @@ extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerCo
                 
                 case .failure(let error):
                     
-                    self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription, completionHanderInDismiss: nil)
+                    self?.addErrorAlertMessage(
+                        title: FirebaseEnum.fail.rawValue, message: error.localizedDescription)
                 }
             }
         }
