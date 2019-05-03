@@ -17,13 +17,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時間" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSS-Zz-SZE">
-                    <rect key="frame" x="44" y="37.5" width="287" height="141.5"/>
+                    <rect key="frame" x="44" y="37.5" width="27" height="141.5"/>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                     <color key="textColor" name="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="日期" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNM-gv-VTY">
-                    <rect key="frame" x="44" y="8" width="287" height="19.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="日期" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNM-gv-VTY">
+                    <rect key="frame" x="44" y="8" width="229.5" height="19.5"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                     <color key="textColor" name="textColor"/>
                     <nil key="highlightedColor"/>
@@ -36,31 +36,31 @@
                         <constraint firstAttribute="height" constant="1" id="gyW-bq-tKP"/>
                     </constraints>
                 </view>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diz-2A-Let">
-                    <rect key="frame" x="291" y="8" width="40" height="20"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="團室名字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diz-2A-Let">
+                    <rect key="frame" x="273.5" y="9.5" width="57.5" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" name="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="GNM-gv-VTY" secondAttribute="trailing" constant="44" id="0Vc-0l-aB6"/>
-                <constraint firstItem="BSS-Zz-SZE" firstAttribute="trailing" secondItem="GNM-gv-VTY" secondAttribute="trailing" id="A2w-aR-qFA"/>
-                <constraint firstItem="GNM-gv-VTY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="44" id="McV-Hg-iXY"/>
+                <constraint firstItem="WtW-CO-9ed" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="44" id="HAg-yg-9gT"/>
+                <constraint firstAttribute="trailing" secondItem="WtW-CO-9ed" secondAttribute="trailing" constant="44" id="NfX-L3-Hd5"/>
+                <constraint firstItem="diz-2A-Let" firstAttribute="trailing" secondItem="WtW-CO-9ed" secondAttribute="trailing" id="Nlr-dV-Sau"/>
                 <constraint firstItem="diz-2A-Let" firstAttribute="centerY" secondItem="GNM-gv-VTY" secondAttribute="centerY" id="PGC-bm-asL"/>
+                <constraint firstItem="diz-2A-Let" firstAttribute="leading" secondItem="GNM-gv-VTY" secondAttribute="trailing" id="Tw6-0k-IBb"/>
                 <constraint firstItem="GNM-gv-VTY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Wug-OK-08p"/>
                 <constraint firstItem="WtW-CO-9ed" firstAttribute="top" secondItem="BSS-Zz-SZE" secondAttribute="bottom" priority="750" constant="10" id="eyi-rm-0pS"/>
                 <constraint firstItem="BSS-Zz-SZE" firstAttribute="leading" secondItem="GNM-gv-VTY" secondAttribute="leading" id="gXa-Wh-dpc"/>
-                <constraint firstItem="WtW-CO-9ed" firstAttribute="trailing" secondItem="GNM-gv-VTY" secondAttribute="trailing" id="mTq-ti-ctW"/>
                 <constraint firstItem="BSS-Zz-SZE" firstAttribute="top" secondItem="GNM-gv-VTY" secondAttribute="bottom" constant="10" id="pFi-dm-NDB"/>
                 <constraint firstAttribute="bottom" secondItem="WtW-CO-9ed" secondAttribute="bottom" constant="10" id="tvz-gG-3Eh"/>
-                <constraint firstItem="diz-2A-Let" firstAttribute="trailing" secondItem="GNM-gv-VTY" secondAttribute="trailing" id="z4M-Z3-AlR"/>
                 <constraint firstItem="WtW-CO-9ed" firstAttribute="leading" secondItem="GNM-gv-VTY" secondAttribute="leading" id="zjE-QD-O5i"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="dateLabel" destination="GNM-gv-VTY" id="a6j-Fn-qM6"/>
+                <outlet property="roomNameLabel" destination="diz-2A-Let" id="mQK-Vm-pgS"/>
                 <outlet property="timeLabel" destination="BSS-Zz-SZE" id="kol-OX-OqK"/>
             </connections>
         </view>

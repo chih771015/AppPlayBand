@@ -236,6 +236,12 @@
                                     <outlet property="delegate" destination="hM9-3v-Qek" id="SQb-oP-YZC"/>
                                 </connections>
                             </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q4w-Go-tJV">
+                                <rect key="frame" x="0.0" y="20" width="375" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jdt-hG-uuh">
                                 <rect key="frame" x="0.0" y="605" width="375" height="62"/>
                                 <subviews>
@@ -261,8 +267,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jdt-hG-uuh" firstAttribute="leading" secondItem="xXF-PV-vm0" secondAttribute="leading" id="K4T-ba-axv"/>
+                            <constraint firstItem="q4w-Go-tJV" firstAttribute="leading" secondItem="xXF-PV-vm0" secondAttribute="leading" id="MB1-Bs-Vbn"/>
                             <constraint firstItem="jdt-hG-uuh" firstAttribute="trailing" secondItem="xXF-PV-vm0" secondAttribute="trailing" id="UcE-ID-Vzt"/>
                             <constraint firstItem="eyu-ma-1qC" firstAttribute="leading" secondItem="kgu-Za-dUq" secondAttribute="leading" id="Xwn-kQ-xsZ"/>
+                            <constraint firstItem="q4w-Go-tJV" firstAttribute="top" secondItem="xXF-PV-vm0" secondAttribute="top" id="bH7-Yl-owi"/>
+                            <constraint firstItem="xXF-PV-vm0" firstAttribute="trailing" secondItem="q4w-Go-tJV" secondAttribute="trailing" id="bNt-GO-UP7"/>
                             <constraint firstItem="jdt-hG-uuh" firstAttribute="top" secondItem="eyu-ma-1qC" secondAttribute="bottom" id="cLI-q7-wIs"/>
                             <constraint firstItem="Ze3-Ds-3Pc" firstAttribute="top" secondItem="jdt-hG-uuh" secondAttribute="bottom" id="hNF-qC-Pux"/>
                             <constraint firstItem="eyu-ma-1qC" firstAttribute="top" secondItem="xXF-PV-vm0" secondAttribute="top" id="sPH-wa-u7R"/>
@@ -270,10 +279,28 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xXF-PV-vm0"/>
                     </view>
-                    <navigationItem key="navigationItem" title="店家時間" id="0fb-Kc-94X"/>
+                    <navigationItem key="navigationItem" title="店家時間" id="0fb-Kc-94X">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="9Jo-rs-2lh">
+                            <view key="customView" contentMode="scaleToFill" id="fGM-B4-jbq">
+                                <rect key="frame" x="224.5" y="5.5" width="92" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iDR-oU-zki">
+                                        <rect key="frame" x="-2.5" y="1.5" width="97" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="button" destination="UVG-y5-Zgk" id="uAM-7q-JJO"/>
                         <outlet property="calendarTableView" destination="eyu-ma-1qC" id="5bE-bt-VVM"/>
+                        <outlet property="textField" destination="iDR-oU-zki" id="6Qi-GX-D1c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qti-66-KTO" userLabel="First Responder" sceneMemberID="firstResponder"/>

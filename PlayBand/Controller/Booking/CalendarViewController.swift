@@ -21,14 +21,15 @@ class CalendarViewController: UIViewController {
             switch self {
             case .buttonIsEnabled(let count):
                 
-                return "現有預定\(count)小時"
+                return "現有預定 \(count) 小時"
             case .buttonIsNotEnabled:
                 
                 return "尚未預訂"
             }
         }
     }
-    
+
+    @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var button: UIButton! {
         
         didSet {
@@ -46,7 +47,7 @@ class CalendarViewController: UIViewController {
         return color
     }
     var selectDay: JKDay = JKDay(date: Date())
-    var bookingTimeDatas: [BookingTime] = [] {
+    var bookingTimeDatas: [BookingTimeAndRoom] = [] {
         didSet {
          
             self.bookingTimeDatas.sort(by: <)
@@ -54,8 +55,13 @@ class CalendarViewController: UIViewController {
             calendarTableView.reloadData()
         }
     }
-    
-    private var firebaseBookingData: [BookingTime] = [] {
+    private var room = String() {
+        didSet {
+            
+            calendarTableView.reloadData()
+        }
+    }
+    private var firebaseBookingData: [BookingTimeAndRoom] = [] {
         
         didSet {
          
@@ -78,6 +84,7 @@ class CalendarViewController: UIViewController {
         calendarTableView.rowHeight = 60
         button.setupButtonModelPlayBand()
         calendarTableView.isHidden = true
+        setupPickerView()
     }
 
     private func getFirebaseBookingData() {
@@ -132,6 +139,17 @@ class CalendarViewController: UIViewController {
             }
             button.setTitle(ButtonText.buttonIsEnabled(hourCount).returnString(), for: .normal)
         }
+    }
+    
+    private func setupPickerView() {
+        
+        let picker = UIPickerView()
+        picker.dataSource = self
+        picker.delegate = self
+        textField.inputView = picker
+        textField.text = storeData?.rooms[0].name
+        guard let text = textField.text else {return}
+        room = text
     }
 }
 
@@ -210,6 +228,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: CalendarTableViewCell.self),
             for: indexPath) as? CalendarTableViewCell else {return UITableViewCell()}
@@ -217,14 +236,14 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         let hour = indexPath.row + (Int(storeData?.openTime ?? "0") ?? 0)
         let time = BookingDate(year: selectDay.year, month: selectDay.month, day: selectDay.day)
         
-        if firebaseBookingData.filter({$0.date == time}).filter({$0.hour.contains(hour)}).count != 0 {
+        if firebaseBookingData.filter({$0.date == time}).filter({$0.hour.contains(hour)}).filter({$0.room == self.room}).count != 0 {
             
             cell.fireBaseBookingSetup(hour: hour)
             return cell
         }
         cell.bookingButton.addTarget(self, action: #selector(addBooking(sender:)), for: .touchUpInside)
         
-        if bookingTimeDatas.filter({$0.date == time}).filter({$0.hour.contains(hour)}).count != 0 {
+        if bookingTimeDatas.filter({$0.date == time}).filter({$0.hour.contains(hour)}).filter({$0.room == self.room}).count != 0 {
 
             cell.userBookingSetup(hour: hour)
             return cell
@@ -245,27 +264,74 @@ extension CalendarViewController {
             day: selectDay.day)
         let hour = sender.tag
         
-        if let sameDate = bookingTimeDatas.first(where: {$0.date == bookingDate}) {
+        guard let sameDateIndex = bookingTimeDatas.firstIndex(
+            where: {$0.date == bookingDate && $0.room == self.room}) else {
             
-            guard let index = bookingTimeDatas.index(of: sameDate) else {return}
+            bookingTimeDatas.append(BookingTimeAndRoom(date: bookingDate, hour: [hour], room: self.room))
+            return
+        }
+        
+        guard let hourIndex = bookingTimeDatas[sameDateIndex].hour.firstIndex(where: {$0 == hour}) else {
             
-            if sameDate.hour.contains(hour) {
-                
-                guard let indexHour = bookingTimeDatas[index].hour.index(of: hour) else {return}
-                bookingTimeDatas[index].hour.remove(at: indexHour)
-                
-                if bookingTimeDatas[index].hour.count == 0 {
-                    
-                    bookingTimeDatas.remove(at: index)
-                }
-            } else {
-                
-                bookingTimeDatas[index].hour.append(hour)
-            }
+            bookingTimeDatas[sameDateIndex].hour.append(hour)
+            return
+        }
+        
+        if bookingTimeDatas[sameDateIndex].hour.count == 1 {
             
+            bookingTimeDatas.remove(at: sameDateIndex)
         } else {
             
-            bookingTimeDatas.append(BookingTime(date: bookingDate, hour: [hour]))
+            bookingTimeDatas[sameDateIndex].hour.remove(at: hourIndex)
         }
+//        if let sameDate = bookingTimeDatas.first(where: {$0.date == bookingDate && $0.room == self.room}) {
+//
+//            guard let index = bookingTimeDatas.firstIndex(of: sameDate) else {return}
+//
+//            if sameDate.hour.contains(hour) {
+//
+//                guard let indexHour = bookingTimeDatas[index].hour.firstIndex(of: hour) else {return}
+//                bookingTimeDatas[index].hour.remove(at: indexHour)
+//
+//                if bookingTimeDatas[index].hour.count == 0 {
+//
+//                    bookingTimeDatas.remove(at: index)
+//                }
+//            } else {
+//
+//                bookingTimeDatas[index].hour.append(hour)
+//            }
+//
+//        } else {
+//
+//            bookingTimeDatas.append(BookingTimeAndRoom(date: bookingDate, hour: [hour], room: self.room))
+//        }
+    }
+}
+
+extension CalendarViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        guard let rooms = storeData?.rooms else {return 0}
+        
+        return rooms.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        guard let name = storeData?.rooms[row].name else {return String()}
+        return name
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        guard let name = storeData?.rooms[row].name else {return}
+        textField.text = name
+        self.room = name
     }
 }

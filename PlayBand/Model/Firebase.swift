@@ -90,6 +90,7 @@ class FirebaseManger {
         self.userBookingData = []
         self.mangerStoreData = []
         self.userStatus = String()
+        self.storeName = []
     }
     
     func listenAccount(completionHandler: @escaping ListeningResult) {
@@ -121,7 +122,7 @@ class FirebaseManger {
         }
     }
     
-    func getStoreBookingInfo(name: String, completionHandler: @escaping (Result<[BookingTime]>) -> Void) {
+    func getStoreBookingInfo(name: String, completionHandler: @escaping (Result<[BookingTimeAndRoom]>) -> Void) {
         
         dataBase().collection(FirebaseEnum.store.rawValue).document(name)
         .collection(FirebaseEnum.confirm.rawValue).getDocuments { (querySnapshot, error) in
@@ -134,11 +135,11 @@ class FirebaseManger {
                 completionHandler(.failure(error))
             } else {
                 
-                var booingTimes: [BookingTime] = []
+                var booingTimes: [BookingTimeAndRoom] = []
                 
                 for document in documents {
                     
-                    guard let bookingTime = BookingTime(dictionary: document.data()) else {
+                    guard let bookingTime = BookingTimeAndRoom(dictionary: document.data()) else {
                         
                         completionHandler(.failure(FirebaseDataError.decodeFail))
                         return
@@ -151,11 +152,18 @@ class FirebaseManger {
         }
     }
     
-    func bookingTimeCreat(storeName: String, bookingDatas: [BookingTime],
+    func bookingTimeCreat(storeName: String, bookingDatas: [BookingTimeAndRoom],
                          userMessage: String, completionHandler: @escaping (Result<String>) -> Void) {
-        
-        guard let uid = user().currentUser?.uid else { return }
-        guard let user = FirebaseManger.shared.userData else { return }
+
+        guard let uid = user().currentUser?.uid else {
+            
+            completionHandler(.failure(AccountError.noLogin))
+            return
+        }
+        guard let user = FirebaseManger.shared.userData else {
+            
+            return
+        }
         var count = 0
         var haveError = false
         for bookingData in bookingDatas {

@@ -70,29 +70,8 @@ class EditProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButton()
-   //     setupNavigationBar()
         // Do any additional setup after loading the view.
     }
-
-//    private func setupNavigationBar() {
-//
-//        guard let color = UIColor.playBandColorEnd else {return}
-//
-//        self.navigationController?.navigationBar.tintColor = color
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
-//    }
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        self.navigationController?.navigationBar.tintColor = UIColor.white
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-//    }
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(animated)
-//        self.navigationController?.navigationBar.tintColor = UIColor.white
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-//    }
-    
     private func setupButton() {
         view.layoutIfNeeded()
         button.setupButtonModelPlayBand()

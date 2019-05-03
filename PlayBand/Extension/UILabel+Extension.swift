@@ -49,4 +49,9 @@ extension UILabel {
             attributedText = attributedString
         }
     }
+    
+    func setupTextInPB(value: String?) {
+        text = value
+        setTextSpacingBy(value: 1)
+    }
 }

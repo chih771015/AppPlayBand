@@ -74,6 +74,7 @@ enum FirebaseBookingKey: String {
     case store
     case userMessage
     case storeMessage
+    case room
     
     enum Store: String {
         

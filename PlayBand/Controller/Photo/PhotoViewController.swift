@@ -30,16 +30,22 @@ class PhotoChoiceViewController: UIAlertController {
             self?.checkPhotoAndPresent(nextVC: nextVC, imagePickerController: imagePickerController)
         }
         
+        imageFromLibAction.setValue(UIColor.playBandColorEnd, forKey: "titleTextColor")
+
         let imageFromCameraAction = UIAlertAction(title: "相機", style: .default) { [weak self] (_) in
             
             imagePickerController.sourceType = .camera
             self?.checkPhotoAndPresent(nextVC: nextVC, imagePickerController: imagePickerController)
         }
+        imageFromCameraAction.setValue(UIColor.playBandColorEnd, forKey: "titleTextColor")
+
         
         let cancelAction = UIAlertAction(title: "取消", style: .cancel) {[weak self] (_) in
             
             self?.dismiss(animated: true, completion: nil)
         }
+        
+        cancelAction.setValue(UIColor.playBandColorEnd, forKey: "titleTextColor")
         self.addAction(imageFromLibAction)
         self.addAction(imageFromCameraAction)
         self.addAction(cancelAction)

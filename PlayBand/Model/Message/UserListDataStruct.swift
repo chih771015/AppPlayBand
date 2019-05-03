@@ -10,7 +10,7 @@ import Foundation
 
 struct UserBookingData {
     
-    let bookingTime : BookingTime
+    let bookingTime : BookingTimeAndRoom
     let status: String
     let pathID: String
     let userInfo: UserData
@@ -21,7 +21,7 @@ struct UserBookingData {
     
     init? (dictionary: [String: Any]) {
         
-        guard let bookingTime = BookingTime(dictionary: dictionary) else {return nil}
+        guard let bookingTime = BookingTimeAndRoom(dictionary: dictionary) else {return nil}
         guard let userInfo = dictionary[FirebaseBookingKey.user.rawValue] as? [String: Any] else { return nil }
         guard let pathID = dictionary[FirebaseBookingKey.pathID.rawValue] as? String else {return nil}
         guard let userUID = userInfo[UsersKey.uid.rawValue] as? String else {return nil}

@@ -65,8 +65,8 @@ class ConfirmViewController: UIViewController {
             setupTableView()
         }
     }
-    var bookingDatasChange: (([BookingTime]) -> Void)?
-    var bookingTimeDatas: [BookingTime] = [] {
+    var bookingDatasChange: (([BookingTimeAndRoom]) -> Void)?
+    var bookingTimeDatas: [BookingTimeAndRoom] = [] {
         
         didSet {
             
@@ -130,7 +130,7 @@ class ConfirmViewController: UIViewController {
             
             hour += bookingData.hoursCount()
         }
-        let text = "總共\(hour)小時"
+        let text = "總共 \(hour) 小時"
         countHourLabel.text = text
     }
 }
@@ -144,7 +144,8 @@ extension ConfirmViewController: UITableViewDelegate, UITableViewDataSource {
                 describing: ConfirmTableViewSectionHeaderView.self)
             ) as? ConfirmTableViewSectionHeaderView else { return UIView()}
         sectionHeader.setupCell(date: bookingTimeDatas[section].date.dateString(),
-                                time: bookingTimeDatas[section].hoursString())
+                                time: bookingTimeDatas[section].hoursString(),
+                                room: bookingTimeDatas[section].room)
         return sectionHeader
     }
 

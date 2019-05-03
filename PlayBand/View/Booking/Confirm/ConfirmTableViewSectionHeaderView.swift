@@ -12,16 +12,18 @@ class ConfirmTableViewSectionHeaderView: UITableViewHeaderFooterView {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var roomNameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func setupCell(date: String, time: String) {
+    func setupCell(date: String, time: String, room: String) {
         
         self.dateLabel.text = date
         self.timeLabel.text = time
+        self.roomNameLabel.text = room
     }
     func deleteRowSetup(time: String) {
         

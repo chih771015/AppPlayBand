@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct BookingTime: Equatable, Comparable {
+struct BookingTimeAndRoom: Equatable, Comparable {
     
-    static func < (lhs: BookingTime, rhs: BookingTime) -> Bool {
+    static func < (lhs: BookingTimeAndRoom, rhs: BookingTimeAndRoom) -> Bool {
         
         return lhs.date.year == rhs.date.year
                 ? lhs.date.month == rhs.date.month
@@ -18,7 +18,7 @@ struct BookingTime: Equatable, Comparable {
                     : lhs.date.month < rhs.date.month
                 : lhs.date.year < rhs.date.year
     }
-    static func == (lhs: BookingTime, rhs: BookingTime) -> Bool {
+    static func == (lhs: BookingTimeAndRoom, rhs: BookingTimeAndRoom) -> Bool {
         return lhs.hour == rhs.hour && lhs.date == rhs.date
     }
 
@@ -30,6 +30,7 @@ struct BookingTime: Equatable, Comparable {
             self.hour.sort(by: <)
         }
     }
+    var room: String
     
     init? (dictionary: [String: Any]) {
         
@@ -37,13 +38,22 @@ struct BookingTime: Equatable, Comparable {
         guard let year = dictionary[FirebaseBookingKey.year.rawValue] as? Int else {return nil}
         guard let month = dictionary[FirebaseBookingKey.month.rawValue] as? Int else {return nil}
         guard let hours = dictionary[FirebaseBookingKey.hours.rawValue] as? [Int] else {return nil}
+        
+        if let room = dictionary[FirebaseBookingKey.room.rawValue] as? String {
+            
+            self.room = room
+        } else {
+            
+            self.room = ""
+        }
         self.date = BookingDate(year: year, month: month, day: day)
         self.hour = hours
     }
-    init(date: BookingDate, hour: [Int]) {
+    init(date: BookingDate, hour: [Int], room: String) {
         
         self.date = date
         self.hour = hour
+        self.room = room
     }
     
     func hoursCount() -> Int {
@@ -53,7 +63,7 @@ struct BookingTime: Equatable, Comparable {
     
     func hoursString() -> String {
         
-        return "總共\(hoursCount())小時"
+        return "總共 \(hoursCount() )小時"
     }
     func hoursStringOnebyOne() -> String {
         var text = ""
@@ -84,6 +94,6 @@ struct BookingDate: Equatable {
     
     func dateString() -> String {
         
-        return "\(year)年\(month)月\(day)日"
+        return "\(year) 年 \(month) 月 \(day) 日"
     }
 }

@@ -12,7 +12,7 @@ class DataTransform {
     
     class func getUserBookingDictionary(
         
-        bookingData: BookingTime,
+        bookingData: BookingTimeAndRoom,
         documentID: String,
         uid: String,
         user: UserData,
@@ -26,6 +26,7 @@ class DataTransform {
                               FirebaseBookingKey.pathID.rawValue: documentID,
                               FirebaseBookingKey.status.rawValue: FirebaseBookingKey.Status.tobeConfirm.rawValue,
                               FirebaseBookingKey.store.rawValue: name,
+                              FirebaseBookingKey.room.rawValue: bookingData.room,
                               FirebaseBookingKey.userMessage.rawValue: userMessage,
                               FirebaseBookingKey.user.rawValue: [UsersKey.name.rawValue: user.name,
                                                                  UsersKey.band.rawValue: user.band,
@@ -37,21 +38,7 @@ class DataTransform {
         
         return dictionary
     }
-    
-    class func dataToDate(bookingTime: BookingTime?) -> String {
-        guard let time = bookingTime else {return ""}
-        let year = time.date.year
-        let month = time.date.month
-        let day = time.date.day
-        var hoursTitle = ""
-        for hour in time.hour {
-            
-            hoursTitle += "\(hour):00  "
-        }
-        let title = "\(year)-\(month)-\(day)\n\(hoursTitle)"
-        return title
-    }
-    
+
     class func userData(userData: UserData) -> [String: Any] {
         
         if userData.status != nil {

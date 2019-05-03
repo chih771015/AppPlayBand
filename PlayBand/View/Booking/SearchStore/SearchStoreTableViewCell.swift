@@ -32,7 +32,7 @@ class SearchStoreTableViewCell: UITableViewCell {
         self.titleImageView.lv_setImageWithURL(url: imageURL)
         self.cityLabel.text = city
         self.cityLabel.setTextSpacingBy(value: 1.5)
-        let priceTitle = "每小時" + price
+        let priceTitle = "每小時 " + price
         self.priceLabel.text = priceTitle
         self.priceLabel.setTextSpacingBy(value: 1.5)
 
