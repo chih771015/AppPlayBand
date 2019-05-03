@@ -29,14 +29,14 @@ class EditStorePhotoViewController: BaseEditViewController {
             self.upDataStoreRoom(storeData: storeData)
         } else {
             var images: [UIImage] = []
-            for index in 0 ..< images.count {
+            for index in 0 ..< self.images.count {
                 
                 if urls[index].isEmpty {
                     
                     images.append(self.images[index])
                 }
             }
-            
+            urls = urls.filter({$0.isEmpty == false})
             FirebaseManger.shared.uploadImagesAndGetURL(images: images) { [weak self] (result) in
                 switch result {
                     
@@ -142,6 +142,8 @@ class EditStorePhotoViewController: BaseEditViewController {
                             
                             closure(storeData)
                         }
+                        
+                    FirebaseManger.shared.replaceStoreData(storeData: storeData)
                     self?.navigationController?.popViewController(animated: true)
                 })
             case .failure(let error):

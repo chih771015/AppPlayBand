@@ -17,7 +17,6 @@ class EditStoreRoomViewController: BaseEditViewController {
             return
         }
         
-        datas.append(.room)
         dataRooms.append(StoreData.Room())
         let indexPath = IndexPath(row: (datas.count - 1), section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
@@ -39,13 +38,16 @@ class EditStoreRoomViewController: BaseEditViewController {
                     
                 case .success(let message):
                     
-                    self?.addSucessAlertMessage(title: message, message: nil,
-                                                completionHanderInDismiss: { [weak self] in
-                                                    if let closure = self?.getDataClosure {
-                                                        closure(storeData)
-                                                    }
-                        self?.navigationController?.popViewController(animated: true)
-                    })
+                    self?.addSucessAlertMessage(
+                        title: message, message: nil,
+                        completionHanderInDismiss: { [weak self] in
+                            
+                            if let closure = self?.getDataClosure {
+                                closure(storeData)
+                            }
+                            FirebaseManger.shared.replaceStoreData(storeData: storeData)
+                            self?.navigationController?.popViewController(animated: true)
+                        })
                     
                 case .failure(let error):
                     
@@ -110,7 +112,7 @@ class EditStoreRoomViewController: BaseEditViewController {
         if editingStyle == .delete {
             
             dataRooms.remove(at: indexPath.row)
-            datas.remove(at: indexPath.row)
+
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }

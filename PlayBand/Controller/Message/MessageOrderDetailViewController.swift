@@ -88,6 +88,11 @@ class MessageOrderDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         setupButtonView()
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationData(notifcation:)), name: NSNotification.storeDatas, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func setupTableView() {
@@ -120,6 +125,14 @@ class MessageOrderDetailViewController: UIViewController {
             }
         case .normal:
             buttonViewHeight.constant = 0
+        }
+    }
+    
+    @objc func notificationData(notifcation: NSNotification) {
+        
+        if notifcation.name == NSNotification.storeDatas {
+            
+            tableView.reloadData()
         }
     }
 }

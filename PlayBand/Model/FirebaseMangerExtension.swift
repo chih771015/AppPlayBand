@@ -275,4 +275,12 @@ extension FirebaseManger {
             completionHandler(.success("修改資料成功"))
         }
     }
+    
+    func replaceStoreData(storeData: StoreData) {
+        
+        guard let index = self.storeDatas.firstIndex(where: {$0.name == storeData.name}) else {return}
+        self.storeDatas[index] = storeData
+        
+        NotificationCenter.default.post(name: NSNotification.storeDatas, object: nil)
+    }
 }

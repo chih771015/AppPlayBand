@@ -113,6 +113,7 @@ class EditStoreInfoViewController: BaseEditViewController {
                         
                         toStore(storeData)
                     }
+                    FirebaseManger.shared.replaceStoreData(storeData: storeData)
                     self?.navigationController?.popViewController(animated: true)
                 })
             }

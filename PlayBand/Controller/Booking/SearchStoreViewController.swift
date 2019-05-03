@@ -35,7 +35,14 @@ class SearchStoreViewController: UIViewController {
         // swiftlint: disable line_length
 
         tableView.beginHeaderRefreshing()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationData(notifcation:)), name: NSNotification.storeDatas, object: nil)
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     private func getStoreData() {
         
         self.storeDatas = []
@@ -78,6 +85,14 @@ class SearchStoreViewController: UIViewController {
         tableView.addRefreshHeader { [weak self] in
             
             self?.getStoreData()
+        }
+    }
+    
+    @objc func notificationData(notifcation: NSNotification) {
+        
+        if notifcation.name == NSNotification.storeDatas {
+            
+            self.storeDatas = FirebaseManger.shared.storeDatas
         }
     }
 }

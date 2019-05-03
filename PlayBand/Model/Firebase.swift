@@ -29,7 +29,7 @@ class FirebaseManger {
             }
             
             NotificationCenter.default.post(
-                name: NSNotification.Name(rawValue: NotificationCenterName.userData.rawValue),
+                name: NSNotification.userData,
                 object: self.userData)
         }
     }
@@ -59,7 +59,7 @@ class FirebaseManger {
     private func postBookingData(data: [UserBookingData]) {
         
         NotificationCenter.default.post(
-            name: NSNotification.Name(rawValue: NotificationCenterName.bookingData.rawValue),
+            name: NSNotification.bookingData,
             object: data)
     }
     

@@ -94,12 +94,11 @@ class MessageViewController: UIViewController {
         setupData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(animated)
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
-    
     private func setupData() {
+        NotificationCenter.default.addObserver(self, selector: #selector(getBookingData(notification:)), name: NSNotification.storeDatas, object: nil)
         
         NotificationCenter.default.addObserver(
             self, selector: #selector(getBookingData(notification:)),
@@ -111,6 +110,7 @@ class MessageViewController: UIViewController {
             self.navigationItem.rightBarButtonItems = []
         }
     }
+    
     
     private func fetchData() {
         
@@ -177,7 +177,10 @@ class MessageViewController: UIViewController {
             guard let bookingDatas = notification.object as? [UserBookingData] else {return}
             self.userBookingData = bookingDatas
         }
-        
+        if notification.name == NSNotification.storeDatas {
+            
+            fetchData()
+        }
     }
 }
 
