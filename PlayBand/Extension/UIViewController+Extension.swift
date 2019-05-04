@@ -10,7 +10,9 @@ import UIKit
 
 extension UIViewController {
     
-    func addErrorAlertMessage(title: String?  = FirebaseEnum.fail.rawValue, message: String?, completionHanderInDismiss: (() -> Void)? = nil) {
+    func addErrorAlertMessage(
+        title: String?  = FirebaseEnum.fail.rawValue, message: String?,
+        completionHanderInDismiss: (() -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
@@ -24,7 +26,9 @@ extension UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func addErrorTypeAlertMessage(title: String? = FirebaseEnum.fail.rawValue, error: Error?, completionHanderInDismiss: (() -> Void)? = nil) {
+    func addErrorTypeAlertMessage(
+        title: String? = FirebaseEnum.fail.rawValue,
+        error: Error?, completionHanderInDismiss: (() -> Void)? = nil) {
         
         let alertAction = UIAlertAction(title: "OK", style: .default) { _ in
             
@@ -48,7 +52,6 @@ extension UIViewController {
         }
     }
 
-    
     func addSucessAlertMessage(title: String?, message: String?, completionHanderInDismiss: (() -> Void)?) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -62,8 +65,6 @@ extension UIViewController {
             })
         }
     }
-    
-    
     
     func addTextFieldAlert(
         title: String? = nil, message: String? = nil, actionTitle: String? = nil, cancelTitle: String? = nil,
@@ -112,5 +113,12 @@ extension UIViewController {
         alert.addAction(cancel)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    static func returnLoginPage() {
+        
+        guard let appdelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let loginVC = UIStoryboard.signIn.instantiateInitialViewController()
+        appdelegate.window?.rootViewController = loginVC
     }
 }

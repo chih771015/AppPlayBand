@@ -24,6 +24,7 @@ enum FirebaseEnum: String {
     case storeApply = "StoreApply"
     case storeApplySuccess = "申請資料上傳成功\n我們會盡快回覆您"
     case blackList = "加入黑名單成功"
+    case blackListRemove = "移除黑名單成功"
 }
 
 enum FirebaseDataError: Error {
@@ -129,4 +130,10 @@ enum NotificationCenterName: String {
 enum PhotoEnum: String {
     case title = "上傳圖片"
     case message = "請選擇圖片"
+}
+
+enum BlackList: String {
+    
+    case user = "用戶黑名單"
+    case store = "店家黑名單"
 }

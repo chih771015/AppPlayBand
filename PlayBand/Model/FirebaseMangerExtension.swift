@@ -333,26 +333,77 @@ extension FirebaseManger {
                                     
                                     completionHandler(.success(FirebaseEnum.blackList.rawValue))
                                 }
-                                
                 })
-                
             }
-        
         }
     }
-//    func userLister() {
-//
-//        guard let uid = user().currentUser?.uid else { return }
-//        dataBase().collection(FirebaseEnum.user.rawValue)
-//            .document(uid).addSnapshotListener(
-//            includeMetadataChanges: true
-//            ) { (documentSnapshot, _) in
-//
-//                guard let userData = documentSnapshot?.data() else {return}
-//
-//
-//            
-//        }
-//
-//    }
+    
+    func removeBlackList(listStyle: BlackList, name: String, completionHandler: @escaping (Result<String>) -> Void) {
+        
+        switch listStyle {
+        case .store:
+            removeStoreBlackList(name: name, completionHandler: completionHandler)
+        case .user:
+            removeUserBlackList(name: name, completionHandler: completionHandler)
+        }
+    }
+    
+    private func removeStoreBlackList(name: String, completionHandler: @escaping (Result<String>) -> Void) {
+        
+        guard let uid = user().currentUser?.uid else {
+            
+            completionHandler(.failure(AccountError.noLogin))
+            return
+        }
+        dataBase().collection(FirebaseEnum.user.rawValue).document(uid).updateData([UsersKey.storeBlackList.rawValue: FieldValue.arrayRemove([name])]) { (error) in
+            
+            if let error = error {
+                
+                completionHandler(.failure(error))
+            } else {
+                
+                completionHandler(.success(FirebaseEnum.blackListRemove.rawValue))
+            }
+        }
+    }
+    
+    private func removeUserBlackList(name: String, completionHandler: @escaping (Result<String>) -> Void) {
+        
+        guard let uid = user().currentUser?.uid else {
+            
+            completionHandler(.failure(AccountError.noLogin))
+            return
+        }
+
+        guard let userUID = userData?.userBlackLists.first(where: {$0.name == name})?.uid else {
+            
+            completionHandler(.failure(AccountError.noLogin))
+            return
+        }
+        
+        let dictionary = [UsersKey.name.rawValue: name, UsersKey.uid.rawValue: userUID]
+        dataBase().collection(userCollection).document(uid).updateData([UsersKey.userBlackList.rawValue: FieldValue.arrayRemove([dictionary])]) { (error) in
+            
+            if let error = error {
+                completionHandler(.failure(error))
+                
+            } else {
+                
+                self.removeStoreReject(userUID: userUID, completionHandler: completionHandler)
+            }
+        }
+        
+    }
+    private func removeStoreReject(userUID: String, completionHandler: @escaping (Result<String>) -> Void){
+        dataBase().collection(userCollection).document(userUID).updateData([UsersKey.storeRejectUser.rawValue: FieldValue.arrayRemove(storeName)]){ error in
+            
+            if let error = error {
+                
+                completionHandler(.failure(error))
+            } else {
+                
+                completionHandler(.success(FirebaseEnum.blackListRemove.rawValue))
+            }
+        }
+    }
 }

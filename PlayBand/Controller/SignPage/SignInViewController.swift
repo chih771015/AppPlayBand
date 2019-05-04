@@ -31,9 +31,8 @@ class SignInViewController: UIViewController {
         PBProgressHUD.addLoadingView(at: view, animated: true)
         firebase.signInAccount(
         email: account, password: password) { [weak self] (_, error) in
-            
-            if error != nil {
                 PBProgressHUD.dismissLoadingView(animated: true)
+            if error != nil {
                 self?.addErrorAlertMessage(
                     title: FirebaseEnum.fail.rawValue,
                     message: error?.localizedDescription,

@@ -11,6 +11,7 @@
 		5907F6972259DE3C008BB604 /* StoreDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907F6952259DE3C008BB604 /* StoreDescriptionTableViewCell.swift */; };
 		5907F6982259DE3C008BB604 /* StoreDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5907F6962259DE3C008BB604 /* StoreDescriptionTableViewCell.xib */; };
 		5907F69B2259E2BD008BB604 /* StoreContentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */; };
+		591E36C1227D9A91008F483E /* BlackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E36C0227D9A91008F483E /* BlackListViewController.swift */; };
 		59207AA3225AEC2D00B50E7C /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59207AA2225AEC2D00B50E7C /* CalendarTableViewCell.swift */; };
 		59207AA5225AF09400B50E7C /* BookingTimeAndRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59207AA4225AF09400B50E7C /* BookingTimeAndRoom.swift */; };
 		5925E44522793F8200EB7C19 /* ErrorMessageEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925E44422793F8200EB7C19 /* ErrorMessageEnum.swift */; };
@@ -140,6 +141,7 @@
 		5907F6952259DE3C008BB604 /* StoreDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		5907F6962259DE3C008BB604 /* StoreDescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreDescriptionTableViewCell.xib; sourceTree = "<group>"; };
 		5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreContentCategory.swift; sourceTree = "<group>"; };
+		591E36C0227D9A91008F483E /* BlackListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackListViewController.swift; sourceTree = "<group>"; };
 		59207AA2225AEC2D00B50E7C /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		59207AA4225AF09400B50E7C /* BookingTimeAndRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTimeAndRoom.swift; sourceTree = "<group>"; };
 		5925E44422793F8200EB7C19 /* ErrorMessageEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageEnum.swift; sourceTree = "<group>"; };
@@ -643,6 +645,7 @@
 				59483D792268488A00FD211E /* PasswordChangeViewController.swift */,
 				59ABB028225878C700AE937A /* SettingContentCategory.swift */,
 				59821B3122782B3700A61B50 /* StoreApplyContentCategory.swift */,
+				591E36C0227D9A91008F483E /* BlackListViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -924,6 +927,7 @@
 				59BB3D5E2264AA8D00E46BEE /* BaseEditViewController.swift in Sources */,
 				59207AA3225AEC2D00B50E7C /* CalendarTableViewCell.swift in Sources */,
 				59FCFD3922620CAE006402E5 /* Firebase.swift in Sources */,
+				591E36C1227D9A91008F483E /* BlackListViewController.swift in Sources */,
 				59949297225A7FCE00726BF3 /* CalendarViewController.swift in Sources */,
 				59821B352278402900A61B50 /* AddRoomViewController.swift in Sources */,
 				5925E44522793F8200EB7C19 /* ErrorMessageEnum.swift in Sources */,

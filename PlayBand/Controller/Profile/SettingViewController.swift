@@ -17,7 +17,15 @@ class SettingViewController: UIViewController {
         }
     }
 
-    private let datas: [SettingContentCategory] = [ .passwordChange, .logout, .storeApply, .superManger, .editStore]
+    private var datas: [SettingContentCategory] {
+        if let manger = FirebaseManger.shared.user().currentUser?.uid, manger == "cfvX7nocBBasff3souxrkSndcCw2" {
+            
+            return [ .passwordChange, .logout, .storeApply, .superManger, .editStore, .userBlackList, .storeBlackList]
+        }
+        
+        return [ .passwordChange, .logout, .storeApply, .editStore, .userBlackList, .storeBlackList]
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -39,6 +39,7 @@ class SearchStoreViewController: UIViewController {
         NotificationCenter.default
             .addObserver(
             self, selector: #selector(notificationData(notifcation:)), name: NSNotification.storeDatas, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationData(notifcation:)), name: NSNotification.userData, object: nil)
     }
     
     deinit {
@@ -65,7 +66,13 @@ class SearchStoreViewController: UIViewController {
                         
                     case .success(let data):
                         
-                        self?.storeDatas = data
+                        guard let filterData = self?.setupFilterStoreData(storeData: data) else {
+                            
+                            self?.storeDatas = data
+                            return
+                        }
+                        
+                        self?.storeDatas = filterData
                         
                     case .failure(let error):
                         
@@ -94,8 +101,24 @@ class SearchStoreViewController: UIViewController {
         
         if notifcation.name == NSNotification.storeDatas {
             
-            self.storeDatas = FirebaseManger.shared.storeDatas
+            let filterData = setupFilterStoreData(storeData: FirebaseManger.shared.storeDatas)
+            self.storeDatas = filterData
         }
+        if notifcation.name == NSNotification.userData {
+            
+            self.storeDatas = setupFilterStoreData(storeData: FirebaseManger.shared.storeDatas)
+        }
+    }
+    
+    private func setupFilterStoreData(storeData: [StoreData]) -> [StoreData] {
+   
+        if let name = FirebaseManger.shared.userData?.storeBlackList {
+            
+            
+            return storeData.filter({!name.contains($0.name)})
+        }
+        
+        return storeData
     }
 }
 

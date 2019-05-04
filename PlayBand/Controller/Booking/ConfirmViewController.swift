@@ -20,6 +20,14 @@ class ConfirmViewController: UIViewController {
     @IBOutlet weak var button: UIButton!
     @IBAction func bookingAction() {
         
+        guard FirebaseManger.shared.user().currentUser != nil else {
+            
+            self.addAlert(title: "沒有登入", message: "要去登入頁面嗎", actionTitle: "去登入", cancelTitle: "取消") { (_) in
+                UIViewController.returnLoginPage()
+            }
+            return
+        }
+        
         guard let storeName = storeData?.name else { return }
         var message = String()
         if messageTextField.text?.isEmpty == true ||
@@ -29,6 +37,15 @@ class ConfirmViewController: UIViewController {
         } else {
             
             message = messageTextField.text ?? Text.message.rawValue
+        }
+        
+        if FirebaseManger.shared.userData?.storeRejectUser.contains(storeName) ?? false {
+        
+            self.addErrorAlertMessage(title: "警告", message: "你已被加入拒絕名單內\n請自行聯絡店家查詢原因") { [weak self] in
+                
+                self?.navigationController?.popToRootViewController(animated: true)
+            }
+            return
         }
         
         PBProgressHUD.addLoadingView(animated: true)

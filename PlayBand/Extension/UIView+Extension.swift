@@ -43,7 +43,6 @@ extension UIView {
             layer.cornerRadius = newValue
         }
     }
-    
 //    func addGradientColor() {
 //        
 //        let gradientLayer = CAGradientLayer()
@@ -77,5 +76,23 @@ extension UIView {
         objectView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         objectView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         objectView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+    }
+    
+    static func noDataView() -> UIView {
+        
+        let view = UIView()
+        
+        let label = UILabel()
+        label.text = "目前沒有資料"
+        if let color = UIColor.textColor {
+            label.textColor = color
+        }
+        view.addSubview(label)
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.topAnchor.constraint(equalTo: view.topAnchor, constant: 70).isActive = true
+        label.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 70).isActive = true
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        return view
     }
 }

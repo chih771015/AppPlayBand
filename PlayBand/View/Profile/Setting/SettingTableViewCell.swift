@@ -46,4 +46,9 @@ class SettingTableViewCell: UITableViewCell {
         backImage.isHidden =  false
         switchObject.isHidden = true
     }
+    
+    func setupWithBlackList(title: String, image: String) {
+        setupWithoutSwitch(title: title, image: image)
+        backImage.isHidden = true
+    }
 }

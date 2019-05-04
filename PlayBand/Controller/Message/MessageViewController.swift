@@ -14,16 +14,18 @@ class MessageViewController: UIViewController {
         
         let alert = UIAlertController(title: "切換模式", message: "請選擇模式", preferredStyle: .actionSheet)
         
-        let actionUser = UIAlertAction(title: "一般用戶模式", style: .default) { [weak self] (_) in
+        let actionUser = UIAlertAction(title: "用戶訂單模式", style: .default) { [weak self] (_) in
             self?.messageStatus = .normal
+            self?.navigationItem.title = "用戶訂單模式"
         }
         actionUser.setValue(UIColor.playBandColorEnd, forKey: "titleTextColor")
         alert.addAction(actionUser)
         
         for store in FirebaseManger.shared.storeName {
-            
-            let actionManger = UIAlertAction(title: "管理\(store)", style: .default) { [weak self] (_) in
+            let title = "管理\(store)"
+            let actionManger = UIAlertAction(title: title, style: .default) { [weak self] (_) in
                 self?.messageStatus = .store(store)
+                self?.navigationItem.title = title
             }
             actionManger.setValue(UIColor.playBandColorEnd, forKey: "titleTextColor")
             alert.addAction(actionManger)
@@ -98,12 +100,15 @@ class MessageViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     private func setupData() {
+        
         NotificationCenter.default.addObserver(self, selector: #selector(getBookingData(notification:)), name: NSNotification.storeDatas, object: nil)
         
         NotificationCenter.default.addObserver(
             self, selector: #selector(getBookingData(notification:)),
-            name: NSNotification.Name(NotificationCenterName.bookingData.rawValue),
+            name: NSNotification.bookingData,
             object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getBookingData(notification:)), name: NSNotification.userData, object: nil)
+        
         fetchData()
         if firebaseManger.userStatus == UsersKey.Status.user.rawValue {
             
@@ -130,6 +135,7 @@ class MessageViewController: UIViewController {
             }
         }
     }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -164,9 +170,19 @@ class MessageViewController: UIViewController {
     }
     
     private func filterData(status: FirebaseBookingKey.Status) -> [UserBookingData] {
+        
         let datas = userBookingData.filter({$0.status == status.rawValue})
         
-        return datas
+        guard let userData = FirebaseManger.shared.userData else {
+            
+            return datas
+        }
+        let userBookingDataFilterStore = datas.filter({!userData.storeBlackList.contains($0.store)})
+        let usersUID = userData.userBlackLists.map({$0.uid})
+        let userBookingDataFilterUser = userBookingDataFilterStore.filter({!usersUID.contains($0.userUID)})
+        
+        return userBookingDataFilterUser
+        
     }
     
     @objc func getBookingData(notification: NSNotification) {
@@ -179,6 +195,10 @@ class MessageViewController: UIViewController {
         if notification.name == NSNotification.storeDatas {
             
             fetchData()
+        }
+        if notification.name == NSNotification.userData {
+            
+            setupChildDatas()
         }
     }
 }

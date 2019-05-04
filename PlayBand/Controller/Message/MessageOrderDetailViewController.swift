@@ -20,7 +20,6 @@ class MessageOrderDetailViewController: UIViewController {
     }
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var refuseButton: UIButton!
-    
 
     @IBAction func addBlackListAction(_ sender: Any) {
         
@@ -141,11 +140,22 @@ class MessageOrderDetailViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    private func setupNavigationItem() {
+        
+        switch status {
+        case .normal:
+            
+            self.navigationItem.rightBarButtonItems?.removeAll()
+        default:
+            return
+        }
+    }
     
     func setupBookingData(data: UserBookingData, status: MessageFetchDataEnum) {
         
         self.bookingData = data
         self.status = status
+        setupNavigationItem()
     }
     
     private func setupButtonView() {

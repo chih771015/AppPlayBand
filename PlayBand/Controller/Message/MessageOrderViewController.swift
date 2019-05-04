@@ -72,6 +72,29 @@ extension MessageOrderViewController: UITableViewDataSource, UITableViewDelegate
         return bookingData.count
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        if bookingData.count == 0 {
+            
+            return UIView.noDataView()
+        } else {
+            
+            return nil
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        if bookingData.count == 0 {
+            
+            return UITableView.automaticDimension
+            
+        } else {
+            
+            return 0.1
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(

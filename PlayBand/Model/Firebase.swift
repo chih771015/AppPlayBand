@@ -16,6 +16,9 @@ class FirebaseManger {
     static let shared = FirebaseManger()
     let user = { Auth.auth() }
     let dataBase = { Firestore.firestore() }
+    let userCollection = FirebaseEnum.user.rawValue
+    var listener: ListenerRegistration?
+    
     var userData: UserData? {
         didSet {
             
@@ -76,9 +79,23 @@ class FirebaseManger {
     func configure() {
         
         FirebaseApp.configure()
-        FirebaseManger.shared.listenAccount { (_, _) in
-            if self.userData == nil {
-                self.getUserInfo()
+        FirebaseManger.shared.listenAccount { (_, user) in
+            
+            if let user = user {
+                
+               self.listener = self.dataBase().collection(self.userCollection).document(user
+                .uid).addSnapshotListener(includeMetadataChanges: true, listener: { (querySnapshot, error) in
+                    
+                    guard let dictionary = querySnapshot?.data() else {
+                        return
+                    }
+                    
+                    let userData = UserData(dictionary: dictionary)
+                    self.userData = userData
+                })
+            } else {
+                
+                self.listener?.remove()
             }
         }
     }
@@ -123,7 +140,6 @@ class FirebaseManger {
             completionHandler(error)
         }
     }
-    
     func getStoreBookingInfo(name: String, completionHandler: @escaping (Result<[BookingTimeAndRoom]>) -> Void) {
         
         dataBase().collection(FirebaseEnum.store.rawValue).document(name)
@@ -153,7 +169,6 @@ class FirebaseManger {
             }
         }
     }
-    
     func bookingTimeCreat(storeName: String, bookingDatas: [BookingTimeAndRoom],
                          userMessage: String, completionHandler: @escaping (Result<String>) -> Void) {
 
@@ -205,7 +220,6 @@ class FirebaseManger {
             })
         }
     }
-    
     private func cloneBookingData(dictionary: [String: Any], uid: String, storeName: String, documentID: String) {
         
         let documemntInBooking = dataBase().collection(FirebaseEnum.booking.rawValue)
@@ -230,7 +244,6 @@ class FirebaseManger {
             self.userBookingData = []
             return
         }
-        
         let userBookingDocument = dataBase().collection(FirebaseEnum.user.rawValue)
             .document(uid).collection(FirebaseEnum.booking.rawValue)
         
@@ -258,19 +271,16 @@ class FirebaseManger {
             self.userBookingData = bookingDatas
         }
     }
-    
     func uploadIamge(uniqueString: String, image: UIImage, completionHandler: @escaping (Result<String>) -> Void) {
         
         let storageRef = Storage.storage().reference().child("\(uniqueString).png")
         if let uploadData = UIImage.pngData(image)() {
             storageRef.putData(uploadData, metadata: nil) { (_, error) in
-                
                 if let error = error {
                     
                     completionHandler(.failure(error))
                     return
                 }
-                
                 storageRef.downloadURL(completion: { (url, error) in
                     
                     if let error = error {
@@ -290,7 +300,6 @@ class FirebaseManger {
     
     private func uploadUserImageURL(url: String, completionHandler: @escaping ((Result<String>) -> Void)) {
         guard let uid = user().currentUser?.uid else {
-            
             completionHandler(.failure(AccountError.noLogin))
             return
         }
@@ -298,11 +307,9 @@ class FirebaseManger {
             .setData([UsersKey.photoURL.rawValue: url], merge: true) { (error) in
             
             if let error = error {
-                
                 completionHandler(.failure(error))
                 return
             }
-            
             completionHandler(.success(FirebaseEnum.uploadSuccess.rawValue))
         }
     }
@@ -311,7 +318,6 @@ class FirebaseManger {
         
         self.mangerStoreData = []
         for store in self.storeName {
-            
             let mangerBookingDocument = dataBase().collection(FirebaseEnum.store.rawValue).document(store)
                 .collection(FirebaseEnum.booking.rawValue)
             mangerBookingDocument.getDocuments { (querySnapshot, error) in
@@ -326,13 +332,11 @@ class FirebaseManger {
                     return
                 }
                 guard let documents = querySnapshot?.documents else {
-                    
                     self.mangerStoreData = []
                     return
                 }
                 
                 if documents.isEmpty {
-                    
                     self.mangerStoreData = []
                     return
                 }
@@ -342,7 +346,6 @@ class FirebaseManger {
                         self.mangerStoreData = []
                         return
                     }
-                    
                     self.mangerStoreData.append(data)
                 }
             }

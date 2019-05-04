@@ -17,6 +17,8 @@ enum SettingContentCategory: String {
     case storeApply = "店家申請"
     case superManger = "管理店家申請"
     case editStore = "修改店家資料"
+    case storeBlackList = "管理店家黑名單"
+    case userBlackList = "管理使用者黑名單"
 
     var imageTitle: String {
 
@@ -29,6 +31,10 @@ enum SettingContentCategory: String {
         case .superManger:
             return ""
         case .editStore:
+            return ""
+        case .storeBlackList:
+            return ""
+        case .userBlackList:
             return ""
         }
     }
@@ -64,7 +70,12 @@ enum SettingContentCategory: String {
     }
 
     func setCellForIndexPath(viewController: UIViewController) {
-
+        
+        guard let userData = FirebaseManger.shared.userData else {
+            
+            viewController.addErrorAlertMessage(message: "你沒有資料")
+            return
+        }
         switch self {
 
         case .passwordChange, .storeApply, .superManger:
@@ -101,6 +112,12 @@ enum SettingContentCategory: String {
             })
         case .editStore:
             
+            if FirebaseManger.shared.storeName.count == 0 {
+                
+                viewController.addErrorAlertMessage(message: "沒有店家可以修改")
+                return
+            }
+            
             let alert = UIAlertController(title: "選擇店家", message: "請選擇要修改資訊的店家", preferredStyle: .actionSheet)
             
             for store in FirebaseManger.shared.storeName {
@@ -128,9 +145,26 @@ enum SettingContentCategory: String {
             alert.addAction(cancelAction)
 
             viewController.present(alert, animated: true, completion: nil)
+            
+        case .storeBlackList:
+            
+            guard let nextVC = UIStoryboard.profile.instantiateViewController(
+                withIdentifier: String(describing: BlackListViewController.self)
+                ) as? BlackListViewController else {
+                return
+            }
+            nextVC.setupController(listStyle: .store, name: userData.storeBlackList)
+            viewController.navigationController?.pushViewController(nextVC, animated: true)
+        case .userBlackList:
+            guard let nextVC = UIStoryboard.profile.instantiateViewController(
+                withIdentifier: String(describing: BlackListViewController.self)
+                ) as? BlackListViewController else {
+                return
+            }
+            nextVC.setupController(listStyle: .user, name: userData.userBlackLists.compactMap({$0.name}))
+            viewController.navigationController?.pushViewController(nextVC, animated: true)
         default:
             return
         }
-
     }
 }

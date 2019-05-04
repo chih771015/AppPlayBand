@@ -54,6 +54,10 @@ class ProfileViewController: UIViewController {
         setupColorView()
         setupUserData()
     }
+    deinit {
+        
+        NotificationCenter.default.removeObserver(self)
+    }
     
     private func setupUserData() {
         
@@ -79,15 +83,6 @@ class ProfileViewController: UIViewController {
             
             PBProgressHUD.dismissLoadingView(animated: true)
         }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-       
-        guard let color = UIColor.playBandColorEnd else {return}
-        
-        self.navigationController?.navigationBar.tintColor = color
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
     }
     
     override func viewDidAppear(_ animated: Bool) {

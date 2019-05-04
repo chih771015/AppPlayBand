@@ -46,7 +46,14 @@ class StoreDetailViewController: UIViewController {
         super.viewDidLoad()
         self.view.layoutIfNeeded()
         setupButton()
-    
+        setupBarButton()
+    }
+    private func setupBarButton() {
+        
+        if FirebaseManger.shared.user().currentUser == nil {
+            
+            navigationItem.rightBarButtonItems?.removeAll()
+        }
     }
 
     private func setupTableView() {
