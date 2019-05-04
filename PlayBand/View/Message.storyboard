@@ -239,7 +239,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="t6j-Hi-x27"/>
                     </view>
-                    <navigationItem key="navigationItem" title="預定詳細" id="6dj-Pk-a6b"/>
+                    <navigationItem key="navigationItem" title="預定詳細" id="6dj-Pk-a6b">
+                        <barButtonItem key="rightBarButtonItem" title="加入黑名單" id="ouN-ve-G41">
+                            <color key="tintColor" name="endColor"/>
+                            <connections>
+                                <action selector="addBlackListAction:" destination="X4g-wP-19I" id="oSL-NJ-cMY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="buttonView" destination="Qp0-iu-SQJ" id="fzd-Ch-iBc"/>
                         <outlet property="buttonViewHeight" destination="aiv-tQ-H7c" id="Oal-75-Axn"/>
@@ -250,7 +257,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ley-gX-rQF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1550" y="74"/>
+            <point key="canvasLocation" x="1682" y="93"/>
         </scene>
         <!--Message Store Check View Controller-->
         <scene sceneID="hh9-e9-rLH">

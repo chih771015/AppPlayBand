@@ -21,6 +21,17 @@ class MessageOrderDetailViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var refuseButton: UIButton!
     
+
+    @IBAction func addBlackListAction(_ sender: Any) {
+        
+        self.addAlert(
+            title: "你確定要將此使用者加入黑名單嗎?", message: "黑名單可以在設定頁面取消",
+            actionTitle: "確認", cancelTitle: "取消", cancelHandler: nil) { [weak self] (_) in
+                
+                self?.addStoreBlackList()
+        }
+    }
+    
     @IBAction func confirmAction() {
         
         guard let bookingData = self.bookingData else { return }
@@ -115,9 +126,6 @@ class MessageOrderDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         setupButtonView()
-        NotificationCenter.default
-            .addObserver(
-                self, selector: #selector(notificationData(notifcation:)), name: NSNotification.storeDatas, object: nil)
     }
     
     deinit {
@@ -157,11 +165,29 @@ class MessageOrderDetailViewController: UIViewController {
         }
     }
     
-    @objc func notificationData(notifcation: NSNotification) {
+    private func addStoreBlackList() {
         
-        if notifcation.name == NSNotification.storeDatas {
-            
-            tableView.reloadData()
+        guard let bookingData = self.bookingData else {
+            return
+        }
+        PBProgressHUD.addLoadingView()
+        FirebaseManger.shared.storeAddUserBlackList(
+        userUid: bookingData.userUID, userName: bookingData.userInfo.name,
+        storeNames: FirebaseManger.shared.storeName) { [weak self] (result) in
+            PBProgressHUD.dismissLoadingView()
+            switch result {
+                
+            case .success(let message):
+                
+                self?.addSucessAlertMessage(
+                    title: message, message: nil, completionHanderInDismiss: { [weak self] in
+                    
+                        self?.navigationController?.popViewController(animated: true)
+                })
+            case .failure(let error):
+                
+                self?.addErrorTypeAlertMessage(error: error)
+            }
         }
     }
 }

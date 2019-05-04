@@ -68,7 +68,6 @@ extension UIViewController {
     func addTextFieldAlert(
         title: String? = nil, message: String? = nil, actionTitle: String? = nil, cancelTitle: String? = nil,
         placeHolder: String? = nil, keyboardType: UIKeyboardType = UIKeyboardType.default,
-        
         cancelHandler: ((UIAlertAction) -> Void)? = nil, actionHandler: ((_ text: String?) -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -91,6 +90,23 @@ extension UIViewController {
         action.setupActionColor()
         
         let cancel = UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelHandler)
+        cancel.setupActionColor()
+        alert.addAction(action)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func addAlert(
+        title: String? = nil, message: String? = nil, actionTitle: String? = nil, cancelTitle: String? = nil,
+        cancelHandler: ((UIAlertAction) -> Void)? = nil, actionHandler: ((UIAlertAction) -> Void)? = nil) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: actionTitle, style: .default, handler: actionHandler)
+        
+        let cancel = UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelHandler)
+        action.setupActionColor()
         cancel.setupActionColor()
         alert.addAction(action)
         alert.addAction(cancel)

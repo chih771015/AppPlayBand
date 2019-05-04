@@ -285,4 +285,74 @@ extension FirebaseManger {
         
         NotificationCenter.default.post(name: NSNotification.storeDatas, object: nil)
     }
+    
+    func userAddStoreBlackList(storeName: String, completionHandler: @escaping (Result<String>) -> Void) {
+        guard let uid = user().currentUser?.uid else {
+            
+            completionHandler(.failure(AccountError.noLogin))
+            return
+        }
+        dataBase().collection(FirebaseEnum.user.rawValue).document(uid).updateData([UsersKey.storeBlackList.rawValue: FieldValue.arrayUnion([storeName])]) { (error) in
+            
+            if let error = error {
+                
+                completionHandler(.failure(error))
+            } else {
+                
+                completionHandler(.success(FirebaseEnum.blackList.rawValue))
+            }
+        }
+    }
+    
+    func storeAddUserBlackList(userUid: String, userName: String, storeNames: [String], completionHandler: @escaping (Result<String>) -> Void) {
+        
+        guard let uid = user().currentUser?.uid else {
+            
+            completionHandler(.failure(AccountError.noLogin))
+            return
+        }
+
+        dataBase().collection(FirebaseEnum.user.rawValue).document(userUid)
+            .updateData([UsersKey.storeRejectUser.rawValue: FieldValue.arrayUnion(storeNames)]) { (error) in
+            
+            if let error = error {
+                completionHandler(.failure(error))
+                
+            } else {
+                
+                let dictionary = [UsersKey.uid.rawValue: userUid, UsersKey.name.rawValue: userName]
+                self.dataBase().collection(FirebaseEnum.user.rawValue)
+                    .document(uid).updateData([
+                        UsersKey.userBlackList.rawValue:
+                            FieldValue.arrayUnion([dictionary])], completion: { (error) in
+                            
+                                if let error = error {
+                                    
+                                    completionHandler(.failure(error))
+                                } else {
+                                    
+                                    completionHandler(.success(FirebaseEnum.blackList.rawValue))
+                                }
+                                
+                })
+                
+            }
+        
+        }
+    }
+//    func userLister() {
+//
+//        guard let uid = user().currentUser?.uid else { return }
+//        dataBase().collection(FirebaseEnum.user.rawValue)
+//            .document(uid).addSnapshotListener(
+//            includeMetadataChanges: true
+//            ) { (documentSnapshot, _) in
+//
+//                guard let userData = documentSnapshot?.data() else {return}
+//
+//
+//            
+//        }
+//
+//    }
 }

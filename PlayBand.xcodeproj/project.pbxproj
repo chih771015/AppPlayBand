@@ -412,6 +412,7 @@
 		59821B3322783FDF00A61B50 /* StoreAdd */ = {
 			isa = PBXGroup;
 			children = (
+				598B8CDA2254C4610061F03B /* ProfileContentCategory.swift */,
 				59821B2D227822CA00A61B50 /* StoreMangerViewController.swift */,
 				59821B342278402900A61B50 /* AddRoomViewController.swift */,
 				59821B3C227867EA00A61B50 /* AddImageViewController.swift */,
@@ -472,8 +473,6 @@
 		59ABB027225878A700AE937A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				598B8CDA2254C4610061F03B /* ProfileContentCategory.swift */,
-				59ABB028225878C700AE937A /* SettingContentCategory.swift */,
 				594CAA89226395F5009A0921 /* UserDataStruct.swift */,
 				59483D7B22684F3C00FD211E /* ProfileEnum.swift */,
 				593774A9227A1846008A05E0 /* StoreApplyData.swift */,
@@ -642,6 +641,7 @@
 				59DFF85522578DAB00273724 /* EditProfileViewController.swift */,
 				59ABB025225877C400AE937A /* SettingViewController.swift */,
 				59483D792268488A00FD211E /* PasswordChangeViewController.swift */,
+				59ABB028225878C700AE937A /* SettingContentCategory.swift */,
 				59821B3122782B3700A61B50 /* StoreApplyContentCategory.swift */,
 			);
 			path = Profile;

@@ -22,6 +22,15 @@ class StoreDetailViewController: UIViewController {
         
 //        self.navigationController?.popViewController(animated: true)
     }
+    @IBAction func addBlackListAction(_ sender: Any) {
+        
+        self.addAlert(
+        title: "你確定要將此店家加入黑名單嗎?", message: "黑名單可以在設定頁面取消",
+        actionTitle: "確認", cancelTitle: "取消", cancelHandler: nil) { [weak self] (_) in
+            
+            self?.addBlackList()
+        }
+    }
     
     private let datas: [StoreContentCategory] = [.images, .name, .phone, .address, .price, .time, .description]
     
@@ -76,5 +85,29 @@ extension StoreDetailViewController: UITableViewDataSource, UITableViewDelegate 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let nextVC = segue.destination as? CalendarViewController else {return}
         nextVC.storeData = self.storeData
+    }
+    
+    private func addBlackList() {
+        guard let storeName = storeData?.name else {return}
+        
+        PBProgressHUD.addLoadingView()
+        FirebaseManger.shared.userAddStoreBlackList(storeName: storeName) { [weak self] (result) in
+            
+            PBProgressHUD.dismissLoadingView()
+            switch result {
+                
+            case .success(let message):
+                
+                self?.addSucessAlertMessage(
+                    title: message, message: nil, completionHanderInDismiss: { [weak self] in
+                        
+                        self?.navigationController?.popViewController(animated: true)
+                })
+                
+            case .failure(let error):
+                
+                self?.addErrorTypeAlertMessage(error: error)
+            }
+        }
     }
 }

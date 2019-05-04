@@ -23,6 +23,7 @@ enum FirebaseEnum: String {
     case delete = "Delete"
     case storeApply = "StoreApply"
     case storeApplySuccess = "申請資料上傳成功\n我們會盡快回覆您"
+    case blackList = "加入黑名單成功"
 }
 
 enum FirebaseDataError: Error {
@@ -107,6 +108,9 @@ enum UsersKey: String {
     case store
     case photoURL
     case status
+    case storeBlackList
+    case userBlackList
+    case storeRejectUser
     
     enum Status: String {
         
