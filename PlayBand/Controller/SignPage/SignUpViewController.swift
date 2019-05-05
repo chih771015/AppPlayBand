@@ -24,37 +24,37 @@ class SignUpViewController: UIViewController {
     
     private func errorAlert(message: String?) {
         
-        self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: message, completionHanderInDismiss: nil)
+        self.addErrorAlertMessage(message: message)
     }
     
     @IBAction func signUpAction() {
         
-        if email.isEmpty {
+        if email.trimmingCharacters(in: .whitespaces).isEmpty {
             
             errorAlert(message: SignUpError.account.rawValue)
             return
         }
-        if password.isEmpty {
+        if password.trimmingCharacters(in: .whitespaces).isEmpty {
             
             errorAlert(message: SignUpError.password.rawValue)
             return
         }
-        if name.isEmpty {
+        if name.trimmingCharacters(in: .whitespaces).isEmpty {
             
             errorAlert(message: SignUpError.name.rawValue)
             return
         }
-        if phone.isEmpty {
+        if phone.trimmingCharacters(in: .whitespaces).isEmpty {
             
             errorAlert(message: SignUpError.phone.rawValue)
             return
         }
-        if band.isEmpty {
+        if band.trimmingCharacters(in: .whitespaces).isEmpty {
             
             errorAlert(message: SignUpError.band.rawValue)
             return
         }
-        if facebook.isEmpty {
+        if facebook.trimmingCharacters(in: .whitespaces).isEmpty {
             
             errorAlert(message: SignUpError.facebook.rawValue)
             return
@@ -69,50 +69,50 @@ class SignUpViewController: UIViewController {
         let user = UserData(
             name: name, phone: phone, band: band, email: email,
             facebook: facebook, status: UsersKey.Status.user.rawValue)
+        
         PBProgressHUD.addLoadingView(at: view, animated: true)
+        
         FirebaseManger.shared.signUpAccount(
             email: account,
             password: password,
             completionHandler: { [weak self] result, error in
                 
                 guard result != nil else {
-                    guard let errorConfirm = error else {return}
-                    PBProgressHUD.dismissLoadingView(animated: true)
-                    self?.addErrorAlertMessage(
-                        title: FirebaseEnum.fail.rawValue,
-                        message: errorConfirm.localizedDescription,
-                        completionHanderInDismiss: nil)
-
-                    return
-                }
-                
-                FirebaseManger.shared.signInAccount(
-                    email: account,
-                    password: password,
-                    completionHandler: { [weak self] (result, error) in
-                    
-                    guard result != nil else {
-                        PBProgressHUD.dismissLoadingView(animated: true)
-                        self?.addErrorAlertMessage(
-                            title: FirebaseEnum.fail.rawValue,
-                            message: error?.localizedDescription,
-                            completionHanderInDismiss: nil)
+                    guard error != nil else {
                         
                         return
                     }
-                        FirebaseManger.shared.editProfileInfo(userData: user, completionHandler: { (_) in
-                            
-                        })
                     PBProgressHUD.dismissLoadingView(animated: true)
-                    self?.addSucessAlertMessage(title: "歡迎進入", message: nil, completionHanderInDismiss: {
+                    self?.addErrorTypeAlertMessage(error: error)
+                    return
+                }
+                
+                self?.signIn(account: account, password: password, userData: user)
+        })
+    }
+    
+    private func signIn(account: String, password: String, userData: UserData) {
+        
+        FirebaseManger.shared.signInAccount(
+            email: account,
+            password: password,
+            completionHandler: { [weak self] (result, error) in
+                
+                guard result != nil else {
+                    PBProgressHUD.dismissLoadingView(animated: true)
+                    self?.addErrorTypeAlertMessage(error: error)
+                    return
+                }
+                FirebaseManger.shared.editProfileInfo(userData: userData)
+                
+                PBProgressHUD.dismissLoadingView(animated: true)
+                self?.addSucessAlertMessage(title: "歡迎進入", message: nil, completionHanderInDismiss: {
                     
-                        guard let rootVC = UIStoryboard.main.instantiateInitialViewController() else {return}
-                        guard let appdelgate = UIApplication.shared.delegate as? AppDelegate else {return}
-                        appdelgate.window?.rootViewController = rootVC
-                        self?.presentedViewController?.dismiss(animated: false, completion: nil)
-                        self?.dismiss(animated: false, completion: nil)
-                        
-                    })
+                    guard let rootVC = UIStoryboard.main.instantiateInitialViewController() else {return}
+                    guard let appdelgate = UIApplication.shared.delegate as? AppDelegate else {return}
+                    appdelgate.window?.rootViewController = rootVC
+                    self?.presentedViewController?.dismiss(animated: false, completion: nil)
+                    self?.dismiss(animated: false, completion: nil)
                 })
         })
     }

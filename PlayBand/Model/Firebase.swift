@@ -125,7 +125,7 @@ class FirebaseManger {
         }
     }
     
-    func editProfileInfo(userData: UserData, completionHandler: @escaping (Error?) -> Void) {
+    func editProfileInfo(userData: UserData, completionHandler: @escaping (Error?) -> Void = {_ in }) {
         guard let uid = user().currentUser?.uid else {
             
             completionHandler(AccountError.noLogin)

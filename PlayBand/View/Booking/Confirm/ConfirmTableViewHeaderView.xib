@@ -29,7 +29,7 @@
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="LineInStudio" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqy-UJ-Hoa">
                     <rect key="frame" x="44" y="189" width="291" height="43"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                     <color key="textColor" name="endColor"/>
                     <nil key="highlightedColor"/>
                 </label>

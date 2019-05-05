@@ -41,9 +41,6 @@ class BaseStoreDetailViewController: UIViewController {
             identifier: String(describing: StoreDescriptionTableViewCell.self),
             bundle: nil)
         tableView.lv_registerCellWithNib(
-            identifier: String(describing: StoreInformationTableViewCell.self),
-            bundle: nil)
-        tableView.lv_registerCellWithNib(
             identifier: String(describing: StoreTitleImageTableViewCell.self),
             bundle: nil)
     }

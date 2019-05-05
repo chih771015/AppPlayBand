@@ -10,17 +10,10 @@ import UIKit
 
 class MessageOrderTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var rightImage: UIImageView! {
-        didSet {
-            
-            rightImage.tintColor = .white
-        }
-    }
-    @IBOutlet weak var colorView: UIView! {
-        didSet {
-            colorView.addShadow()
-        }
-    }
+    @IBOutlet weak var rightImage: UIImageView!
+    
+    @IBOutlet weak var colorView: UIView!
+    
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var dateLabel: UILabel!
@@ -48,12 +41,14 @@ class MessageOrderTableViewCell: UITableViewCell {
         self.dateLabel.setupTextInPB(text: date)
         self.hoursLabel.setupTextInPB(text: "總計 \(hours) 小時")
         self.statusLabel.setupTextInPB(text: status)
+        self.statusLabel.textAlignment = .left
+        
         if let url = url {
             self.titleImage.lv_setImageWithURL(url: url)
         } else {
             self.titleImage.image = UIImage.asset(.user)
         }
-        setupLayer()
+     //   setupLayer()
     }
     private func setupLayer() {
   

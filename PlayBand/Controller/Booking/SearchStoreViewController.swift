@@ -76,8 +76,7 @@ class SearchStoreViewController: UIViewController {
                         
                     case .failure(let error):
                         
-                        self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue,
-                                                   message: error.localizedDescription, completionHanderInDismiss: nil)
+                        self?.addErrorTypeAlertMessage(error: error)
                     }
                 }
             }
@@ -114,7 +113,6 @@ class SearchStoreViewController: UIViewController {
    
         if let name = FirebaseManger.shared.userData?.storeBlackList {
             
-            
             return storeData.filter({!name.contains($0.name)})
         }
         
@@ -138,14 +136,9 @@ extension SearchStoreViewController: UITableViewDataSource, UITableViewDelegate 
                 return UITableViewCell()
                 
         }
-        var price = ""
         let storeData = storeDatas[indexPath.row]
-        for room in storeData.rooms {
-            
-            price += "$\(room.price)   "
-        }
         cell.setupCell(title: storeData.name, imageURL: storeData.photourl,
-                       city: storeData.city, price: price)
+                       city: storeData.city, price: storeData.returnStorePriceLowToHigh())
         return cell
     }
 

@@ -90,23 +90,8 @@ enum StoreContentCategory: String {
         case .images:
             return desCell
         case .price:
-            
-            var price = ""
-            
-            var roomCount = 0
-            for room in storeData.rooms {
-                
-                if roomCount != 0 {
-                    
-                    price += "\n\(room.name) ：$\(room.price)"
-                } else {
-                    
-                    price += "\(room.name) ：$\(room.price)"
-                }
-                roomCount += 1
-            }
-            desCell.setupCell(title: rawValue, description: price)
-            
+        
+            desCell.setupCell(title: rawValue, description: storeData.returnRoomAndPrices())
         case .time:
             
             desCell.setupCell(title: rawValue, description: "\(storeData.openTime):00 - \(storeData.closeTime):00")

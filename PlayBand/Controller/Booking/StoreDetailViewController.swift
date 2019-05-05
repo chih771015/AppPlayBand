@@ -25,7 +25,7 @@ class StoreDetailViewController: UIViewController {
     @IBAction func addBlackListAction(_ sender: Any) {
         
         self.addAlert(
-        title: "你確定要將此店家加入黑名單嗎?", message: "黑名單可以在設定頁面取消",
+        title: "你要將此店家加入黑名單嗎?", message: "黑名單可以在設定頁面取消",
         actionTitle: "確認", cancelTitle: "取消", cancelHandler: nil) { [weak self] (_) in
             
             self?.addBlackList()
@@ -62,9 +62,6 @@ class StoreDetailViewController: UIViewController {
         tableView.dataSource = self
         tableView.lv_registerCellWithNib(
             identifier: String(describing: StoreDescriptionTableViewCell.self),
-            bundle: nil)
-        tableView.lv_registerCellWithNib(
-            identifier: String(describing: StoreInformationTableViewCell.self),
             bundle: nil)
         tableView.lv_registerCellWithNib(
             identifier: String(describing: StoreTitleImageTableViewCell.self),

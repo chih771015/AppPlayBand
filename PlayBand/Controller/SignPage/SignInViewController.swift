@@ -14,17 +14,15 @@ class SignInViewController: UIViewController {
     
     @IBAction func signInAction() {
         
-        guard let account = accountTextField.text, accountTextField.text?.count != 0 else {
+        guard let account = accountTextField.text, account.trimmingCharacters(in: .whitespaces).isEmpty == false else {
             
-            self.addErrorAlertMessage(
-                title: FirebaseEnum.fail.rawValue, message: "請輸入帳號", completionHanderInDismiss: nil)
+            self.addErrorAlertMessage(message: "請輸入帳號")
             
             return
         }
-        guard let password = passwordTextField.text, passwordTextField.text?.count != 0 else {
+        guard let password = passwordTextField.text, password.trimmingCharacters(in: .whitespaces).isEmpty == false else {
             
-            self.addErrorAlertMessage(
-                title: FirebaseEnum.fail.rawValue, message: "請輸入密碼", completionHanderInDismiss: nil)
+            self.addErrorAlertMessage(message: "請輸入密碼")
             
             return
         }
@@ -33,11 +31,8 @@ class SignInViewController: UIViewController {
         email: account, password: password) { [weak self] (_, error) in
                 PBProgressHUD.dismissLoadingView(animated: true)
             if error != nil {
-                self?.addErrorAlertMessage(
-                    title: FirebaseEnum.fail.rawValue,
-                    message: error?.localizedDescription,
-                    completionHanderInDismiss: nil)
-
+                
+                self?.addErrorTypeAlertMessage(error: error)
             } else {
                 
                 self?.addSucessAlertMessage(title: nil, message: "登入成功", completionHanderInDismiss: {

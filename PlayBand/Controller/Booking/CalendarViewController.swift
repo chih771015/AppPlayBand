@@ -105,9 +105,7 @@ class CalendarViewController: UIViewController {
                 self?.firebaseBookingData = data
                 
             case .failure(let error):
-                
-                self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue,
-                                           message: error.localizedDescription, completionHanderInDismiss: nil)
+                self?.addErrorTypeAlertMessage(error: error)
             }
         }
     }
@@ -151,6 +149,7 @@ class CalendarViewController: UIViewController {
         guard let room = storeData?.rooms[0] else {
             return
         }
+        setupItemTitle(name: room.name)
         textField.text = room.name
         self.room = room.name
         self.price = room.price
@@ -259,6 +258,11 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         cell.setupCell(hour: hour)
         return cell
     }
+    
+    private func setupItemTitle(name: String) {
+        
+        self.navigationItem.title = name + "時間"
+    }
 }
 
 extension CalendarViewController {
@@ -290,28 +294,6 @@ extension CalendarViewController {
             
             bookingTimeDatas[sameDateIndex].hour.remove(at: hourIndex)
         }
-//        if let sameDate = bookingTimeDatas.first(where: {$0.date == bookingDate && $0.room == self.room}) {
-//
-//            guard let index = bookingTimeDatas.firstIndex(of: sameDate) else {return}
-//
-//            if sameDate.hour.contains(hour) {
-//
-//                guard let indexHour = bookingTimeDatas[index].hour.firstIndex(of: hour) else {return}
-//                bookingTimeDatas[index].hour.remove(at: indexHour)
-//
-//                if bookingTimeDatas[index].hour.count == 0 {
-//
-//                    bookingTimeDatas.remove(at: index)
-//                }
-//            } else {
-//
-//                bookingTimeDatas[index].hour.append(hour)
-//            }
-//
-//        } else {
-//
-//            bookingTimeDatas.append(BookingTimeAndRoom(date: bookingDate, hour: [hour], room: self.room))
-//        }
     }
 }
 
@@ -338,6 +320,7 @@ extension CalendarViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         
         guard let room = storeData?.rooms[row] else {return}
         textField.text = room.name
+        setupItemTitle(name: room.name)
         self.room = room.name
         self.price = room.price
     }

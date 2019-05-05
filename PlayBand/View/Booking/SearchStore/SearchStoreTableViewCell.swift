@@ -30,8 +30,7 @@ class SearchStoreTableViewCell: UITableViewCell {
         self.titleLabel.setupTextInPB(text: title)
         self.titleImageView.lv_setImageWithURL(url: imageURL)
         self.cityLabel.setupTextInPB(text: city)
-        let priceTitle = "每小時 " + price
-        self.priceLabel.setupTextInPB(text: priceTitle)
+        self.priceLabel.setupTextInPB(text: price)
 
     }
 }

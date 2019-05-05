@@ -257,4 +257,29 @@ struct StoreData {
         }
         self.rooms = rooms
     }
+    
+    func returnStorePriceLowToHigh() -> String {
+        
+        let priceInt = rooms.compactMap({Int($0.price)}).sorted(by: <)
+        
+        if priceInt.count == 0 {
+            
+            return "錯誤"
+        }
+        if priceInt.count == 1 {
+            
+            return "每小時 $\(priceInt[0])"
+        } else {
+            let last = priceInt.count - 1
+            
+            return "每小時 $\(priceInt[0]) - $\(priceInt[last])"
+        }
+    }
+    
+    func returnRoomAndPrices() -> String {
+        let roomString = rooms.compactMap({$0.name + " : $" + $0.price})
+        let priceString = roomString.joined(separator: "\n")
+        
+        return priceString
+    }
 }

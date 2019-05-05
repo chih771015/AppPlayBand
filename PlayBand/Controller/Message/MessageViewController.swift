@@ -12,6 +12,11 @@ class MessageViewController: UIViewController {
     
     @IBAction func barButtonAction(_ sender: Any) {
         
+        if FirebaseManger.shared.storeName.isEmpty {
+            self.addErrorAlertMessage(message: "你沒有店家可以管理")
+            return
+        }
+        
         let alert = UIAlertController(title: "切換模式", message: "請選擇模式", preferredStyle: .actionSheet)
         
         let actionUser = UIAlertAction(title: "用戶訂單模式", style: .default) { [weak self] (_) in
@@ -27,7 +32,7 @@ class MessageViewController: UIViewController {
                 self?.messageStatus = .store(store)
                 self?.navigationItem.title = title
             }
-            actionManger.setValue(UIColor.playBandColorEnd, forKey: "titleTextColor")
+            actionManger.setupActionColor()
             alert.addAction(actionManger)
             
         }
@@ -101,19 +106,16 @@ class MessageViewController: UIViewController {
     }
     private func setupData() {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(getBookingData(notification:)), name: NSNotification.storeDatas, object: nil)
-        
-        NotificationCenter.default.addObserver(
-            self, selector: #selector(getBookingData(notification:)),
-            name: NSNotification.bookingData,
-            object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(getBookingData(notification:)), name: NSNotification.userData, object: nil)
-        
+        setupNotifaication(nsNotifcationName: NSNotification.storeDatas)
+        setupNotifaication(nsNotifcationName: NSNotification.bookingData)
+        setupNotifaication(nsNotifcationName: NSNotification.userData)
+
         fetchData()
-        if firebaseManger.userStatus == UsersKey.Status.user.rawValue {
-            
-            self.navigationItem.rightBarButtonItems = []
-        }
+    }
+    
+    private func setupNotifaication(nsNotifcationName: NSNotification.Name) {
+        NotificationCenter.default.addObserver(self, selector: #selector(getBookingData(notification:)), name: nsNotifcationName, object: nil)
+        
     }
     
     private func fetchData() {
@@ -130,13 +132,12 @@ class MessageViewController: UIViewController {
                 case .success(let data):
                     self?.userBookingData = data
                 case .failure(let error):
-                    self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription)
+                    self?.addErrorTypeAlertMessage(error: error)
                 }
             }
         }
     }
 
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         guard let childVC = segue.destination as? MessageOrderViewController else { return }
