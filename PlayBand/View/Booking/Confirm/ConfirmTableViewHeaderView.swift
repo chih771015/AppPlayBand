@@ -24,6 +24,6 @@ class ConfirmTableViewHeaderView: UITableViewHeaderFooterView {
     func setupHeadView(storePhoto: String, storeName: String) {
         
         self.titleImage.lv_setImageWithURL(url: storePhoto)
-        self.titleLabel.text = storeName
+        self.titleLabel.setupTextInPB(text: storeName)
     }
 }

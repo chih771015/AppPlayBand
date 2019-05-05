@@ -118,6 +118,7 @@
             <connections>
                 <outlet property="dataLabel" destination="hOB-Vt-8pe" id="mVX-FC-vBr"/>
                 <outlet property="modelView" destination="sIK-zy-668" id="wbe-LJ-0oa"/>
+                <outlet property="titleImageView" destination="H7V-r5-oNY" id="zS9-kV-pLk"/>
                 <outlet property="titleLabel" destination="cju-9c-WLK" id="wdj-XZ-Mv3"/>
             </connections>
             <point key="canvasLocation" x="189.59999999999999" y="126.83658170914543"/>

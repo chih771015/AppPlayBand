@@ -72,7 +72,7 @@ struct BookingTimeAndRoom: Equatable, Comparable {
     
     func hoursString() -> String {
         
-        return "總共 \(hoursCount() )小時"
+        return "總共 \(hoursCount()) 小時"
     }
     func hoursStringOnebyOne() -> String {
         var text = ""

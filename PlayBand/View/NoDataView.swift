@@ -31,5 +31,4 @@ class NoDataView: UIView {
         titleLabel.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: 80).isActive = true
         
     }
-
 }

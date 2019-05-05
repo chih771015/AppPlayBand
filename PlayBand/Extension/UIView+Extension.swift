@@ -83,7 +83,8 @@ extension UIView {
         let view = UIView()
         
         let label = UILabel()
-        label.text = "目前沒有資料"
+        
+        label.setupTextInPB(text: "目前沒有資料")
         if let color = UIColor.textColor {
             label.textColor = color
         }

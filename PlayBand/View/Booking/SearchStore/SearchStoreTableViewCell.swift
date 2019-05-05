@@ -27,14 +27,11 @@ class SearchStoreTableViewCell: UITableViewCell {
     
     func setupCell(title: String, imageURL: String, city: String, price: String) {
         
-        self.titleLabel.text = title
-        self.titleLabel.setTextSpacingBy(value: 1.5)
+        self.titleLabel.setupTextInPB(text: title)
         self.titleImageView.lv_setImageWithURL(url: imageURL)
-        self.cityLabel.text = city
-        self.cityLabel.setTextSpacingBy(value: 1.5)
+        self.cityLabel.setupTextInPB(text: city)
         let priceTitle = "每小時 " + price
-        self.priceLabel.text = priceTitle
-        self.priceLabel.setTextSpacingBy(value: 1.5)
+        self.priceLabel.setupTextInPB(text: priceTitle)
 
     }
 }

@@ -108,7 +108,7 @@ extension MessageOrderViewController: UITableViewDataSource, UITableViewDelegate
         let year = data.bookingTime.date.year
         let month = data.bookingTime.date.month
         let day = data.bookingTime.date.day
-        let date = "\(year)/\(month)/\(day)"
+        let date = "\(year) 年 \(month) 月 \(day) 日"
         let hours = data.bookingTime.hoursCount()
         var status = data.status
         switch status {

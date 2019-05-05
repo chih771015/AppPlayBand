@@ -14,6 +14,7 @@ class ProfileInformationTableViewCell: UITableViewCell {
     @IBOutlet weak var dataLabel: UILabel!
     @IBOutlet weak var modelView: UIView!
     
+    @IBOutlet weak var titleImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,12 +26,11 @@ class ProfileInformationTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func settingProfilePage(title: String, data: String) {
+    func settingProfilePage(title: String, data: String, image: UIImage? = nil) {
 
-        self.titleLabel.text = title
-//        self.titleLabel.setTextSpacingBy(value: 1.5)
-        self.dataLabel.text = data
-//        self.dataLabel.setTextSpacingBy(value: 1.5)
+        self.titleLabel.setupTextInPB(text: title)
+        self.dataLabel.setupTextInPB(text: data)
+        self.titleImageView?.image = image
+        //        self.dataLabel.setTextSpacingBy(value: 1.5)
     }
-
 }

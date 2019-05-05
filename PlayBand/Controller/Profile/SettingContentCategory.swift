@@ -27,15 +27,15 @@ enum SettingContentCategory: String {
         case .logout: return "logout"
         case .notification: return "notification"
         case .passwordChange: return "key"
-        case .storeApply: return ""
+        case .storeApply: return "shop"
         case .superManger:
             return ""
         case .editStore:
-            return ""
+            return "resume"
         case .storeBlackList:
-            return ""
+            return "edit"
         case .userBlackList:
-            return ""
+            return "edit"
         }
     }
     

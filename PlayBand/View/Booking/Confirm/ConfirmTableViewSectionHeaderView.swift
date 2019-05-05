@@ -21,12 +21,12 @@ class ConfirmTableViewSectionHeaderView: UITableViewHeaderFooterView {
     
     func setupCell(date: String, time: String, room: String) {
         
-        self.dateLabel.text = date
-        self.timeLabel.text = time
-        self.roomNameLabel.text = room
+        self.dateLabel.setupTextInPB(text: date)
+        self.timeLabel.setupTextInPB(text: time)
+        self.roomNameLabel.setupTextInPB(text: room)
     }
     func deleteRowSetup(time: String) {
         
-        self.timeLabel.text = time
+        self.timeLabel.setupTextInPB(text: time)
     }
 }

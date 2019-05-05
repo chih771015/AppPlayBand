@@ -27,10 +27,8 @@ class StoreDescriptionTableViewCell: UITableViewCell {
 
     func setupCell(title: String?, description: String?) {
 
-        titleLabel.text = title
-        titleLabel.setTextSpacingBy(value: 1.5)
-        descriptionLabel.text = description
-        descriptionLabel.setTextSpacingBy(value: 1.5)
+        titleLabel.setupTextInPB(text: title)
+        descriptionLabel.setupTextInPB(text: description)
     }
 
 }

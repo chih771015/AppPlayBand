@@ -68,7 +68,10 @@ extension BlackListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingTableViewCell.self), for: indexPath) as? SettingTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: SettingTableViewCell.self),
+            for: indexPath
+            ) as? SettingTableViewCell else {
             
             return UITableViewCell()
         }
@@ -78,6 +81,7 @@ extension BlackListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         if editingStyle == .delete {
             
             self.addAlert(title: "確定要將 \(names[indexPath.row]) 移除黑名單嗎", actionTitle: "確定", cancelTitle: "取消") { [weak self] (_) in
@@ -89,9 +93,9 @@ extension BlackListViewController: UITableViewDelegate, UITableViewDataSource {
     private func removeBlackList(indexPath: IndexPath) {
         
         let name = names[indexPath.row]
-        
+        PBProgressHUD.addLoadingView()
         FirebaseManger.shared.removeBlackList(listStyle: listStyle, name: name) { [weak self] (result) in
-            
+            PBProgressHUD.dismissLoadingView()
             switch result {
             
             case .success(let message):

@@ -16,6 +16,12 @@ enum ImageAsset: String {
     case user
     case add
     case substract
+    case edit
+    case facebook
+    case loading
+    case phonecall
+    case resume
+    case shop
 }
 
 extension UIImage {

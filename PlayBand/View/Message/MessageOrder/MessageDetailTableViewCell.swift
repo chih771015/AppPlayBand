@@ -31,8 +31,8 @@ class MessageDetailTableViewCell: UITableViewCell {
     }
     func setupCell(title: String, description: String) {
         
-        self.titleLabel.text = title
-        self.descriptionLabel.text = description
+        titleLabel.setupTextInPB(text: title)
+        descriptionLabel.setupTextInPB(text: description)
     }
     
     func setupCellHavePhoto(title: String, description: String, imageURL: String?) {

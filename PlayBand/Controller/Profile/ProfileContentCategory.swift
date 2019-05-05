@@ -98,6 +98,25 @@ enum ProfileContentCategory: String {
         }
     }
     
+    var image: UIImage? {
+        
+        switch self {
+        case .phone:
+            return UIImage.asset(.phonecall)
+        case .name:
+            return UIImage.asset(.user)
+        case .email:
+            return UIImage.asset(.mail)
+        case .facebook:
+            return UIImage.asset(.facebook)
+        case .band:
+            return UIImage.asset(.user)
+        default:
+            
+            return UIImage()
+        }
+    }
+    
     func cellForRoomEdit (
         _ indexPath: IndexPath,
         tableView: UITableView,
@@ -141,26 +160,24 @@ enum ProfileContentCategory: String {
 
         case .name:
 
-            cell.settingProfilePage(title: rawValue, data: user.name)
+            cell.settingProfilePage(title: rawValue, data: user.name, image: image)
 
         case .email:
 
-            cell.settingProfilePage(title: rawValue, data: user.email)
+            cell.settingProfilePage(title: rawValue, data: user.email, image: image)
 
         case .band:
 
-            cell.settingProfilePage(title: rawValue, data: user.band)
+            cell.settingProfilePage(title: rawValue, data: user.band, image: image)
 
         case .phone:
 
-            cell.settingProfilePage(title: rawValue, data: user.phone)
+            cell.settingProfilePage(title: rawValue, data: user.phone, image: image)
 
         case .facebook:
 
-            cell.settingProfilePage(title: rawValue, data: user.facebook)
-        case .uid:
-            guard let uid = FirebaseManger.shared.user().currentUser?.uid else {return cell}
-            cell.settingProfilePage(title: rawValue, data: uid)
+            cell.settingProfilePage(title: rawValue, data: user.facebook, image: image)
+
         default:
             cell.settingProfilePage(title: rawValue, data: "")
         }

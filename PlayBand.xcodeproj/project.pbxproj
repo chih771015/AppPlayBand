@@ -414,7 +414,6 @@
 		59821B3322783FDF00A61B50 /* StoreAdd */ = {
 			isa = PBXGroup;
 			children = (
-				598B8CDA2254C4610061F03B /* ProfileContentCategory.swift */,
 				59821B2D227822CA00A61B50 /* StoreMangerViewController.swift */,
 				59821B342278402900A61B50 /* AddRoomViewController.swift */,
 				59821B3C227867EA00A61B50 /* AddImageViewController.swift */,
@@ -640,6 +639,7 @@
 				593774A6227A1698008A05E0 /* SuperManger */,
 				59821B3322783FDF00A61B50 /* StoreAdd */,
 				59F81F9E22549FCD00C04E32 /* ProfileViewController.swift */,
+				598B8CDA2254C4610061F03B /* ProfileContentCategory.swift */,
 				59DFF85522578DAB00273724 /* EditProfileViewController.swift */,
 				59ABB025225877C400AE937A /* SettingViewController.swift */,
 				59483D792268488A00FD211E /* PasswordChangeViewController.swift */,

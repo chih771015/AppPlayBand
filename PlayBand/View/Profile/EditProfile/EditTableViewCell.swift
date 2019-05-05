@@ -52,10 +52,10 @@ class EditTableViewCell: UITableViewCell {
         text: String?, description: String? = nil) {
         textField.delegate = textFieldDelgate
         textField.placeholder = placeholder
-        titleLabel.text = placeholder
+        titleLabel.setupTextInPB(text: placeholder)
         self.textField.text = text
         textField.tag = tag
-        descriptionLabel.text = description
+        descriptionLabel.setupTextInPB(text: description)
     }
     
     override func prepareForReuse() {

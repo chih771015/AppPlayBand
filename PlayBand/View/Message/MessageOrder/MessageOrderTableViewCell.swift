@@ -44,10 +44,10 @@ class MessageOrderTableViewCell: UITableViewCell {
     
     func setupCell(title: String, date: String, hours: Int, status: String, url: String?) {
         
-        self.titleLabel.text = title
-        self.dateLabel.text = date
-        self.hoursLabel.text = "總計\(hours)小時"
-        self.statusLabel.text = status
+        self.titleLabel.setupTextInPB(text: title)
+        self.dateLabel.setupTextInPB(text: date)
+        self.hoursLabel.setupTextInPB(text: "總計 \(hours) 小時")
+        self.statusLabel.setupTextInPB(text: status)
         if let url = url {
             self.titleImage.lv_setImageWithURL(url: url)
         } else {

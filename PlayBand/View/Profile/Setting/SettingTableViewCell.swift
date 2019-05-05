@@ -32,8 +32,7 @@ class SettingTableViewCell: UITableViewCell {
     func setupWithSwitch(title: String, image: String) {
 
         titleImage.image = UIImage(named: image)
-        titleLabel.text = title
-        titleLabel.setTextSpacingBy(value: 1.5)
+        titleLabel.setupTextInPB(text: title)
         switchObject.isHidden = false
         backImage.isHidden =  true
     }
@@ -41,8 +40,7 @@ class SettingTableViewCell: UITableViewCell {
     func setupWithoutSwitch(title: String, image: String) {
 
         titleImage.image = UIImage(named: image)
-        titleLabel.text = title
-        titleLabel.setTextSpacingBy(value: 1.5)
+        titleLabel.setupTextInPB(text: title)
         backImage.isHidden =  false
         switchObject.isHidden = true
     }

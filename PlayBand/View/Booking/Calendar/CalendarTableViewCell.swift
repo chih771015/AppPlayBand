@@ -25,7 +25,6 @@ class CalendarTableViewCell: UITableViewCell {
 
     @IBAction func bookingAction() {
 
- //       bookingView.backgroundColor = .green
     }
 
     @IBOutlet weak var bookingButton: UIButton!
@@ -44,7 +43,6 @@ class CalendarTableViewCell: UITableViewCell {
     func setupCell(hour: Int) {
 
         setupText(hour: hour)
- //       bookingView.backgroundColor = .white
         bookingButton.isHidden = false
         bookingView.isHidden = true
         bookingView.backgroundColor = UIColor.white
@@ -71,7 +69,8 @@ class CalendarTableViewCell: UITableViewCell {
     }
     private func setupText(hour: Int) {
         
-        self.timeLabel.text = String(hour) + ":00"
+        self.timeLabel.setupTextInPB(text: String(hour) + ":00")
+        self.timeLabel.textAlignment = .center
         bookingButton.tag = hour
     }
 }

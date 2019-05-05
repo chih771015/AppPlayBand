@@ -38,7 +38,8 @@ class ConfirmTableViewCell: UITableViewCell {
         self.layoutIfNeeded()
         
         caGradientLayer?.removeFromSuperlayer()
-        self.titleLabel.text = text
+        self.titleLabel.setupTextInPB(text: text)
+        titleLabel.textAlignment = .center
         let layer = CALayer.getPBGradientLayer(bounds: colorView.bounds, cornerRadius: 19)
         colorView.layer.addSublayer(layer)
         caGradientLayer = layer

@@ -30,15 +30,15 @@ class MessageConfirmPageTableViewCell: UITableViewCell {
     func setupCellDefault(title: String?, description: String?) {
         
         button.isHidden = true
-        titleLabel.text = title
-        descriptionLabel.text = description
+        titleLabel.setupTextInPB(text: title)
+        descriptionLabel.setupTextInPB(text: description)
     }
     
     func setupCellFirst(title: String?, description: String?, messageConfirmDelgate: MessageConfirmCellDelgate) {
         
         button.isHidden = false
-        titleLabel.text = title
-        descriptionLabel.text = description
+        titleLabel.setupTextInPB(text: title)
+        descriptionLabel.setupTextInPB(text: description)
         delgate = messageConfirmDelgate
     }
     
