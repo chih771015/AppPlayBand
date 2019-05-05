@@ -177,7 +177,7 @@
                                 <rect key="frame" x="0.0" y="605" width="375" height="62"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhT-mV-ouN">
-                                        <rect key="frame" x="24" y="0.0" width="327" height="46"/>
+                                        <rect key="frame" x="44" y="0.0" width="287" height="46"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <state key="normal" title="送出修改">
@@ -200,8 +200,8 @@
                                 <constraints>
                                     <constraint firstItem="dhT-mV-ouN" firstAttribute="top" secondItem="0Rj-KM-clO" secondAttribute="top" id="Nlj-pJ-eYI"/>
                                     <constraint firstAttribute="height" constant="62" id="cDl-sJ-xnh"/>
-                                    <constraint firstAttribute="trailing" secondItem="dhT-mV-ouN" secondAttribute="trailing" constant="24" id="sbb-XT-FYM"/>
-                                    <constraint firstItem="dhT-mV-ouN" firstAttribute="leading" secondItem="0Rj-KM-clO" secondAttribute="leading" constant="24" id="w2M-5O-REn"/>
+                                    <constraint firstAttribute="trailing" secondItem="dhT-mV-ouN" secondAttribute="trailing" constant="44" id="sbb-XT-FYM"/>
+                                    <constraint firstItem="dhT-mV-ouN" firstAttribute="leading" secondItem="0Rj-KM-clO" secondAttribute="leading" constant="44" id="w2M-5O-REn"/>
                                     <constraint firstAttribute="bottom" secondItem="dhT-mV-ouN" secondAttribute="bottom" constant="16" id="xm3-O8-Gc5"/>
                                 </constraints>
                             </view>

@@ -15,7 +15,7 @@
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ConfirmTableViewHeaderView" customModule="PlayBand" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
-            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWO-Q0-Wvh">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
@@ -36,7 +36,7 @@
             </subviews>
             <color key="backgroundColor" white="0.97056934930000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="FWO-Q0-Wvh" secondAttribute="bottom" id="7oA-wL-XLJ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="FWO-Q0-Wvh" secondAttribute="bottom" id="7oA-wL-XLJ"/>
                 <constraint firstItem="gIe-PE-ZGQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="BQH-9T-7hU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FWO-Q0-Wvh" secondAttribute="trailing" id="CwD-MQ-4yq"/>
                 <constraint firstItem="gqy-UJ-Hoa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="56" id="DNY-Ah-Tch"/>

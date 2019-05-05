@@ -36,14 +36,12 @@ extension UITableView {
         headerView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         headerView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
     }
-
-    // 2.
     func shouldUpdateHeaderViewFrame() -> Bool {
         guard let headerView = self.tableHeaderView else { return false }
         let oldSize = headerView.bounds.size
-        // Update the size
         headerView.layoutIfNeeded()
         let newSize = headerView.bounds.size
         return oldSize != newSize
     }
+    
 }

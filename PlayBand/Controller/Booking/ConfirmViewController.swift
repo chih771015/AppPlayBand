@@ -22,7 +22,7 @@ class ConfirmViewController: UIViewController {
         
         guard FirebaseManger.shared.user().currentUser != nil else {
             
-            self.addAlert(title: "沒有登入", message: "要去登入頁面嗎", actionTitle: "去登入", cancelTitle: "取消") { (_) in
+            self.addAlert(title: "尚未登入無法使用", message: "要去登入頁面嗎", actionTitle: "去登入", cancelTitle: "取消") { (_) in
                 UIViewController.returnLoginPage()
             }
             return
@@ -104,7 +104,7 @@ class ConfirmViewController: UIViewController {
         // Do any additional setup after loading the view.
         setupButton()
     }
-
+    
     private func setupTableView() {
 
         tableView.delegate = self
@@ -129,6 +129,7 @@ class ConfirmViewController: UIViewController {
         
         tableView.layoutIfNeeded()
         tableView.tableHeaderView = headerView
+        tableView.tableHeaderView?.frame.size.height = self.view.frame.width / 375 * 240
         guard let data = storeData else { return }
         headerView.setupHeadView(storePhoto: data.photourl, storeName: data.name)
     }

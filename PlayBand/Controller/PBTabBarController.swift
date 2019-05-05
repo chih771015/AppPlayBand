@@ -92,9 +92,14 @@ class PBTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         
+        if viewController == self.viewControllers?[0] {
+            
+            return true
+        }
+        
         guard FirebaseManger.shared.user().currentUser != nil else {
             
-            self.addAlert(title: "尚未登入", message: "要去登入頁面登入嗎", actionTitle: "去登入", cancelTitle: "取消") { (_) in
+            self.addAlert(title: "尚未登入無法使用", message: "要去登入頁面登入嗎", actionTitle: "去登入", cancelTitle: "取消") { (_) in
                 UIViewController.returnLoginPage()
             }
             
