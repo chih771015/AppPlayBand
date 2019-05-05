@@ -25,7 +25,7 @@ class BlackListViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.lv_registerCellWithNib(identifier: String(describing: SettingTableViewCell.self), bundle: nil)
+        tableView.lv_registerCellWithNib(identifier: String(describing: BlackListTableViewCell.self), bundle: nil)
     }
 
     func setupController(listStyle: BlackList, name: [String]) {
@@ -69,13 +69,18 @@ extension BlackListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: SettingTableViewCell.self),
+            withIdentifier: String(describing: BlackListTableViewCell.self),
             for: indexPath
-            ) as? SettingTableViewCell else {
+            ) as? BlackListTableViewCell else {
             
             return UITableViewCell()
         }
-        cell.setupWithBlackList(title: names[indexPath.row], image: "")
+        
+        cell.setupCell(
+            title: names[indexPath.row],
+            image: listStyle.image, target: self,
+            action: #selector(celltargetAction),
+            tag: indexPath.row)
         
         return cell
     }
@@ -85,14 +90,14 @@ extension BlackListViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             
             self.addAlert(title: "確定要將 \(names[indexPath.row]) 移除黑名單嗎", actionTitle: "確定", cancelTitle: "取消") { [weak self] (_) in
-                self?.removeBlackList(indexPath: indexPath)
+                self?.removeBlackList(index: indexPath.row)
             }
         }
     }
     
-    private func removeBlackList(indexPath: IndexPath) {
+    private func removeBlackList(index: Int) {
         
-        let name = names[indexPath.row]
+        let name = names[index]
         PBProgressHUD.addLoadingView()
         FirebaseManger.shared.removeBlackList(listStyle: listStyle, name: name) { [weak self] (result) in
             PBProgressHUD.dismissLoadingView()
@@ -102,7 +107,7 @@ extension BlackListViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 self?.addSucessAlertMessage(title: message, message: nil, completionHanderInDismiss: {
                     
-                    self?.removeCell(indexPath: indexPath)
+                    self?.removeCell(indexPath: IndexPath(row: index, section: 0))
                 })
             case .failure(let error):
                 
@@ -117,6 +122,13 @@ extension BlackListViewController: UITableViewDelegate, UITableViewDataSource {
         self.tableView.deleteRows(at: [indexPath], with: .automatic)
         if names.count == 0 {
             tableView.reloadData()
+        }
+    }
+    
+    @objc func celltargetAction(button: UIButton) {
+        
+        self.addAlert(title: "確定要將 \(names[button.tag]) 移除黑名單嗎", actionTitle: "確定", cancelTitle: "取消") { [weak self] (_) in
+            self?.removeBlackList(index: button.tag)
         }
     }
 }

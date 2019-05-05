@@ -6,7 +6,7 @@
 //  Copyright © 2019 姜旦旦. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum FirebaseEnum: String {
     
@@ -136,4 +136,15 @@ enum BlackList: String {
     
     case user = "用戶黑名單"
     case store = "店家黑名單"
+    
+    var image: UIImage? {
+        
+        switch self {
+        case .user:
+            return UIImage.asset(.user)
+        case .store:
+            
+            return UIImage.asset(.shop)
+        }
+    }
 }
