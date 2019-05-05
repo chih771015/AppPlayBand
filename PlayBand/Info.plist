@@ -15,17 +15,17 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.01</string>
+	<string>1.02</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>取用相機</string>
+	<string>取用相機且上傳圖片</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>存入相片</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>取用相片</string>
+	<string>取用相片上傳上傳圖片</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
