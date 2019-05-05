@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04EE224A9427F6AF53FCEB53 /* Pods_PlayBand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB1175214C85AD46AEC4EF17 /* Pods_PlayBand.framework */; };
+		59009147227F6C3F006CDC88 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59009146227F6C3F006CDC88 /* PrivacyViewController.swift */; };
 		5907F6972259DE3C008BB604 /* StoreDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907F6952259DE3C008BB604 /* StoreDescriptionTableViewCell.swift */; };
 		5907F6982259DE3C008BB604 /* StoreDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5907F6962259DE3C008BB604 /* StoreDescriptionTableViewCell.xib */; };
 		5907F69B2259E2BD008BB604 /* StoreContentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */; };
@@ -132,6 +133,7 @@
 
 /* Begin PBXFileReference section */
 		4DC66BA7995D6F264BD1A145 /* Pods-PlayBand.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayBand.release.xcconfig"; path = "Target Support Files/Pods-PlayBand/Pods-PlayBand.release.xcconfig"; sourceTree = "<group>"; };
+		59009146227F6C3F006CDC88 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		5907F6952259DE3C008BB604 /* StoreDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		5907F6962259DE3C008BB604 /* StoreDescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreDescriptionTableViewCell.xib; sourceTree = "<group>"; };
 		5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreContentCategory.swift; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 			children = (
 				597F044C225EE79D00BAAFEE /* SignInViewController.swift */,
 				597F044E225F210F00BAAFEE /* SignUpViewController.swift */,
+				59009146227F6C3F006CDC88 /* PrivacyViewController.swift */,
 			);
 			path = SignPage;
 			sourceTree = "<group>";
@@ -972,6 +975,7 @@
 				592950332269C4A600FD5DC5 /* MessageCategory.swift in Sources */,
 				59852EAE226F630E00D1D7EE /* CALayer+Extension.swift in Sources */,
 				59A08E972267931B00F405B5 /* UserListDataStruct.swift in Sources */,
+				59009147227F6C3F006CDC88 /* PrivacyViewController.swift in Sources */,
 				59821B3A2278418F00A61B50 /* StoreAddRoomTableViewCell.swift in Sources */,
 				594CAA8A226395F5009A0921 /* UserDataStruct.swift in Sources */,
 				59821B3D227867EA00A61B50 /* AddImageViewController.swift in Sources */,

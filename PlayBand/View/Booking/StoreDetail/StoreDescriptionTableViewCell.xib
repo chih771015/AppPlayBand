@@ -58,7 +58,7 @@
                 <outlet property="descriptionLabel" destination="bdw-sW-AZf" id="pEI-Zk-ZjW"/>
                 <outlet property="titleLabel" destination="NE5-t6-RnM" id="5Td-hC-Src"/>
             </connections>
-            <point key="canvasLocation" x="91" y="55"/>
+            <point key="canvasLocation" x="90.579710144927546" y="54.575892857142854"/>
         </tableViewCell>
     </objects>
     <resources>
