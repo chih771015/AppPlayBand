@@ -52,10 +52,7 @@ class FirebaseManger {
     var userStatus: String = String() {
         didSet {
             
-            if userStatus == UsersKey.Status.manger.rawValue {
-                
                 getMangerStoreName()
-            }
         }
     }
     private init () {}
