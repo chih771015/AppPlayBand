@@ -18,19 +18,25 @@ class PasswordChangeViewController: UIViewController {
     @IBAction func changePasswordAction() {
         guard let password = self.password else {
             
-            self.addErrorAlertMessage(
-                title: FirebaseEnum.fail.rawValue,
-                message: ProfileEnum.textFieldNoValue.rawValue, completionHanderInDismiss: nil)
+            self.addErrorAlertMessage(message: ProfileEnum.textFieldNoValue.rawValue)
             return
         }
         guard let confirm = self.passwordConfirm else {
             
-            self.addErrorAlertMessage(
-                title: FirebaseEnum.fail.rawValue,
-                message: ProfileEnum.textFieldNoValue.rawValue, completionHanderInDismiss: nil)
+            self.addErrorAlertMessage(message: ProfileEnum.textFieldNoValue.rawValue)
             return
         }
         
+        if password.trimmingCharacters(in: .whitespaces).isEmpty {
+            
+            self.addErrorAlertMessage(message: ProfileEnum.textFieldNoValue.rawValue)
+            return
+        }
+        if confirm.trimmingCharacters(in: .whitespaces).isEmpty {
+            
+            self.addErrorAlertMessage(message: ProfileEnum.textFieldNoValue.rawValue)
+            return
+        }
         if password == confirm {
             PBProgressHUD.addLoadingView(animated: true)
             
@@ -48,14 +54,13 @@ class PasswordChangeViewController: UIViewController {
                     
                 case .failure(let error):
                     
-                    self?.addErrorAlertMessage(
-                        title: FirebaseEnum.fail.rawValue, message: error.localizedDescription)
+                    self?.addErrorTypeAlertMessage(error: error)
                 }
             }
             
         } else {
             
-            self.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: ProfileEnum.passwordNotSame.rawValue)
+            self.addErrorAlertMessage(message: ProfileEnum.passwordNotSame.rawValue)
             
         }
     }
@@ -91,8 +96,7 @@ class PasswordChangeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.lv_registerCellWithNib(identifier: String(describing: EditTableViewCell.self), bundle: nil)
-        tableView.lv_registerCellWithNib(
-            identifier: String(describing: EditSectionHeaderTableViewCell.self), bundle: nil)
+        tableView.lv_registerHeaderWithNib(identifier: String(describing: EditTableHeaderFooterView.self), bundle: nil)
     }
 
 }
@@ -100,12 +104,12 @@ class PasswordChangeViewController: UIViewController {
 extension PasswordChangeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: EditSectionHeaderTableViewCell.self)
-            ) as? EditSectionHeaderTableViewCell else {
+        guard let header = tableView.dequeueReusableHeaderFooterView(
+            withIdentifier: String(describing: EditTableHeaderFooterView.self)
+            ) as? EditTableHeaderFooterView else {
             return UIView()
         }
-        header.setupCell(title: TitleName.title.rawValue)
+        header.setupHeader(title: TitleName.title.rawValue)
         return header
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

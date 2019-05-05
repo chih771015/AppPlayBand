@@ -104,7 +104,6 @@
 		59D717AB22658B6A009772FC /* StoreDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D717AA22658B6A009772FC /* StoreDataStruct.swift */; };
 		59D717AD2265A8F3009772FC /* ResultEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D717AC2265A8F3009772FC /* ResultEnum.swift */; };
 		59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF84E22564DEB00273724 /* UILabel+Extension.swift */; };
-		59DFF8512257409300273724 /* Photo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DFF8502257409300273724 /* Photo.storyboard */; };
 		59DFF8542257465800273724 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF8532257465800273724 /* PhotoViewController.swift */; };
 		59DFF85622578DAB00273724 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF85522578DAB00273724 /* EditProfileViewController.swift */; };
 		59DFF85A22578FFD00273724 /* EditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF85822578FFD00273724 /* EditTableViewCell.swift */; };
@@ -231,7 +230,6 @@
 		59D717AA22658B6A009772FC /* StoreDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataStruct.swift; sourceTree = "<group>"; };
 		59D717AC2265A8F3009772FC /* ResultEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultEnum.swift; sourceTree = "<group>"; };
 		59DFF84E22564DEB00273724 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
-		59DFF8502257409300273724 /* Photo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Photo.storyboard; sourceTree = "<group>"; };
 		59DFF8532257465800273724 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		59DFF85522578DAB00273724 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		59DFF85822578FFD00273724 /* EditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewCell.swift; sourceTree = "<group>"; };
@@ -579,7 +577,6 @@
 				59F81F952254640200C04E32 /* News.storyboard */,
 				59F81F972254641400C04E32 /* Booking.storyboard */,
 				59F81F992254642F00C04E32 /* Message.storyboard */,
-				59DFF8502257409300273724 /* Photo.storyboard */,
 				597F0449225EDDD600BAAFEE /* SignIn.storyboard */,
 				59BB3D5F2264AAAE00E46BEE /* EditPage.storyboard */,
 				5933CBBF2275A3A300E0C114 /* NoDataView.swift */,
@@ -750,7 +747,6 @@
 				5952120A227EE78600B8A1E2 /* BlackListTableViewCell.xib in Resources */,
 				59BB3D602264AAAE00E46BEE /* EditPage.storyboard in Resources */,
 				5941D834225359D600FDEEBA /* Assets.xcassets in Resources */,
-				59DFF8512257409300273724 /* Photo.storyboard in Resources */,
 				59ABB0242258732B00AE937A /* SettingTableViewCell.xib in Resources */,
 				597F044A225EDDD600BAAFEE /* SignIn.storyboard in Resources */,
 				59821B3B2278418F00A61B50 /* StoreAddRoomTableViewCell.xib in Resources */,

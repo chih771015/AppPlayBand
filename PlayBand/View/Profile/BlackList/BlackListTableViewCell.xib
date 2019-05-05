@@ -39,13 +39,23 @@
                             <constraint firstAttribute="height" constant="24" id="od9-tV-WPe"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MLN-UN-iX4">
+                        <rect key="frame" x="60" y="51.5" width="255" height="1"/>
+                        <color key="backgroundColor" name="endColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="ST5-Sn-bMM"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="tgf-st-F3U" firstAttribute="height" secondItem="R4f-2X-ZRx" secondAttribute="height" id="0kN-oZ-pL9"/>
+                    <constraint firstItem="MLN-UN-iX4" firstAttribute="leading" secondItem="R4f-2X-ZRx" secondAttribute="leading" id="6YX-JH-fi7"/>
                     <constraint firstItem="0Jc-GS-9Mm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="IrZ-bM-CDx"/>
                     <constraint firstItem="tgf-st-F3U" firstAttribute="width" secondItem="R4f-2X-ZRx" secondAttribute="width" id="Mbn-kJ-ENK"/>
                     <constraint firstItem="tgf-st-F3U" firstAttribute="leading" secondItem="0Jc-GS-9Mm" secondAttribute="trailing" id="NX5-CG-exD"/>
+                    <constraint firstAttribute="bottom" secondItem="MLN-UN-iX4" secondAttribute="bottom" id="apb-Cm-Tok"/>
                     <constraint firstItem="tgf-st-F3U" firstAttribute="centerY" secondItem="0Jc-GS-9Mm" secondAttribute="centerY" id="cTZ-8D-AKu"/>
+                    <constraint firstItem="MLN-UN-iX4" firstAttribute="trailing" secondItem="tgf-st-F3U" secondAttribute="trailing" id="fGQ-cv-vFW"/>
                     <constraint firstAttribute="bottom" secondItem="0Jc-GS-9Mm" secondAttribute="bottom" constant="20" id="iOb-gU-QFB"/>
                     <constraint firstItem="0Jc-GS-9Mm" firstAttribute="leading" secondItem="R4f-2X-ZRx" secondAttribute="trailing" constant="24" id="jOM-O7-amd"/>
                     <constraint firstAttribute="trailing" secondItem="tgf-st-F3U" secondAttribute="trailing" constant="60" id="l1q-O8-Sqz"/>
@@ -65,7 +75,7 @@
     <resources>
         <image name="Icons_44px_Failed" width="44" height="44"/>
         <namedColor name="endColor">
-            <color red="0.039215686274509803" green="0.83529411764705885" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.40784313725490196" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textColor">
             <color red="0.30588235294117649" green="0.30588235294117649" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

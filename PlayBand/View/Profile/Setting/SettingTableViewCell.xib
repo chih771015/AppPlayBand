@@ -22,7 +22,7 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IVG-J3-0AI">
                         <rect key="frame" x="32" y="28" width="24" height="24"/>
-                        <color key="tintColor" name="colorGreen"/>
+                        <color key="tintColor" name="endColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="24" id="FQp-wX-2Q2"/>
                             <constraint firstAttribute="width" secondItem="IVG-J3-0AI" secondAttribute="height" multiplier="1:1" id="tQZ-Xb-SMN"/>
@@ -36,13 +36,14 @@
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="3rR-YT-wkZ">
                         <rect key="frame" x="339" y="30" width="20" height="20"/>
-                        <color key="tintColor" name="colorGreen"/>
+                        <color key="tintColor" name="endColor"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="3rR-YT-wkZ" secondAttribute="height" multiplier="1:1" id="v4X-kN-mwC"/>
                         </constraints>
                     </imageView>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y9E-ka-HFj">
                         <rect key="frame" x="310" y="25" width="51" height="20"/>
+                        <color key="onTintColor" name="endColor"/>
                     </switch>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUz-el-eec">
                         <rect key="frame" x="0.0" y="78.5" width="375" height="1"/>
@@ -81,8 +82,8 @@
     </objects>
     <resources>
         <image name="right-arrow" width="512" height="512"/>
-        <namedColor name="colorGreen">
-            <color red="0.30588235294117649" green="0.72941176470588232" blue="0.59215686274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="endColor">
+            <color red="0.0" green="0.40784313725490196" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textColor">
             <color red="0.30588235294117649" green="0.30588235294117649" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

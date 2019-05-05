@@ -42,11 +42,12 @@
                                 <rect key="frame" x="135" y="70" width="105" height="105"/>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="105" id="aXu-nt-HPT"/>
                                     <constraint firstAttribute="width" secondItem="BTL-Rs-yJP" secondAttribute="height" multiplier="1:1" id="znS-Cf-MTK"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="lvCornerRadius">
-                                        <real key="value" value="55"/>
+                                        <real key="value" value="47"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
@@ -103,7 +104,7 @@
                                         <real key="value" value="16"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="lvBorderWidth">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="lvBorderColor">
                                         <color key="value" name="endColor"/>
@@ -130,7 +131,6 @@
                             <constraint firstItem="C4s-sF-wRV" firstAttribute="width" secondItem="BTL-Rs-yJP" secondAttribute="width" multiplier="43:40" id="cSu-Yg-ghJ"/>
                             <constraint firstItem="EVh-R3-oSo" firstAttribute="trailing" secondItem="Och-Hg-tx3" secondAttribute="trailing" constant="16" id="cur-Es-tKG"/>
                             <constraint firstItem="EVh-R3-oSo" firstAttribute="trailing" secondItem="gkd-fK-U5Z" secondAttribute="trailing" id="dd3-4z-7Fa"/>
-                            <constraint firstItem="BTL-Rs-yJP" firstAttribute="width" secondItem="8CS-Wq-sMb" secondAttribute="width" multiplier="105:375" id="e23-l2-LTN"/>
                             <constraint firstItem="gkd-fK-U5Z" firstAttribute="top" secondItem="5xz-BN-TGK" secondAttribute="bottom" id="oXR-Ar-Zjg"/>
                             <constraint firstItem="Och-Hg-tx3" firstAttribute="leading" secondItem="EVh-R3-oSo" secondAttribute="leading" constant="16" id="r5P-N7-nBp"/>
                             <constraint firstItem="BTL-Rs-yJP" firstAttribute="top" secondItem="EVh-R3-oSo" secondAttribute="top" constant="6" id="wdh-FS-K6p"/>
@@ -988,7 +988,7 @@
         <image name="settings" width="16" height="16"/>
         <image name="user" width="24" height="24"/>
         <namedColor name="endColor">
-            <color red="0.039215686274509803" green="0.83529411764705885" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.40784313725490196" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textColor">
             <color red="0.30588235294117649" green="0.30588235294117649" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
