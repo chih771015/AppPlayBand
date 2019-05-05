@@ -28,7 +28,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="LineInStudio" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqy-UJ-Hoa">
-                    <rect key="frame" x="44" y="189" width="291" height="43"/>
+                    <rect key="frame" x="56" y="189" width="263" height="43"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                     <color key="textColor" name="endColor"/>
                     <nil key="highlightedColor"/>
@@ -39,11 +39,11 @@
                 <constraint firstAttribute="bottom" secondItem="FWO-Q0-Wvh" secondAttribute="bottom" id="7oA-wL-XLJ"/>
                 <constraint firstItem="gIe-PE-ZGQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="BQH-9T-7hU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FWO-Q0-Wvh" secondAttribute="trailing" id="CwD-MQ-4yq"/>
-                <constraint firstItem="gqy-UJ-Hoa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="44" id="DNY-Ah-Tch"/>
+                <constraint firstItem="gqy-UJ-Hoa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="56" id="DNY-Ah-Tch"/>
                 <constraint firstItem="FWO-Q0-Wvh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="I8h-BT-cNQ"/>
                 <constraint firstItem="gIe-PE-ZGQ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="KjR-Ra-Jn6"/>
                 <constraint firstItem="FWO-Q0-Wvh" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="LGl-x5-HHj"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gqy-UJ-Hoa" secondAttribute="trailing" constant="40" id="cSG-yd-RsF"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gqy-UJ-Hoa" secondAttribute="trailing" constant="56" id="cSG-yd-RsF"/>
                 <constraint firstItem="gqy-UJ-Hoa" firstAttribute="top" secondItem="gIe-PE-ZGQ" secondAttribute="bottom" constant="18" id="fMZ-oJ-h5M"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="gqy-UJ-Hoa" secondAttribute="bottom" priority="750" constant="8" id="oEQ-q2-wUp"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gIe-PE-ZGQ" secondAttribute="trailing" id="oTj-cx-8p7"/>

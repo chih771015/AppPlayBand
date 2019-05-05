@@ -10,18 +10,6 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
-    enum SignUpError: String {
-        
-        case account = "帳號不能為空"
-        case password = "密碼不能為空"
-        case passwordConfirm = "密碼輸入不一樣請重新確認"
-        case name = "名字不能為空"
-        case email = "信箱不能為空"
-        case phone = "電話不能為空"
-        case band = "樂團不能為空"
-        case facebook = "沒粉絲團就給個人頁面吧"
-    }
-    
     private func errorAlert(message: String?) {
         
         self.addErrorAlertMessage(message: message)
@@ -31,36 +19,36 @@ class SignUpViewController: UIViewController {
         
         if email.trimmingCharacters(in: .whitespaces).isEmpty {
             
-            errorAlert(message: SignUpError.account.rawValue)
+            errorAlert(message: SignUpError.account.localizedDescription)
             return
         }
         if password.trimmingCharacters(in: .whitespaces).isEmpty {
             
-            errorAlert(message: SignUpError.password.rawValue)
+            errorAlert(message: SignUpError.password.localizedDescription)
             return
         }
         if name.trimmingCharacters(in: .whitespaces).isEmpty {
             
-            errorAlert(message: SignUpError.name.rawValue)
+            errorAlert(message: SignUpError.name.localizedDescription)
             return
         }
         if phone.trimmingCharacters(in: .whitespaces).isEmpty {
             
-            errorAlert(message: SignUpError.phone.rawValue)
+            errorAlert(message: SignUpError.phone.localizedDescription)
             return
         }
         if band.trimmingCharacters(in: .whitespaces).isEmpty {
             
-            errorAlert(message: SignUpError.band.rawValue)
+            errorAlert(message: SignUpError.band.localizedDescription)
             return
         }
         if facebook.trimmingCharacters(in: .whitespaces).isEmpty {
             
-            errorAlert(message: SignUpError.facebook.rawValue)
+            errorAlert(message: SignUpError.facebook.localizedDescription)
             return
         }
         if password != passwordConfirm {
-            errorAlert(message: SignUpError.passwordConfirm.rawValue)
+            errorAlert(message: SignUpError.passwordConfirm.localizedDescription)
             return
         }
         
@@ -159,8 +147,7 @@ class SignUpViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.lv_registerCellWithNib(identifier: String(describing: EditTableViewCell.self), bundle: nil)
-        tableView.lv_registerCellWithNib(
-            identifier: String(describing: EditSectionHeaderTableViewCell.self), bundle: nil)
+        tableView.lv_registerHeaderWithNib(identifier: String(describing: EditTableHeaderFooterView.self), bundle: nil)
     }
     
 }
@@ -168,12 +155,13 @@ extension SignUpViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        guard let header = tableView.dequeueReusableCell(
+        guard let header = tableView.dequeueReusableHeaderFooterView(
             withIdentifier: String(
-                describing: EditSectionHeaderTableViewCell.self)) as? EditSectionHeaderTableViewCell else {
+                describing: EditTableHeaderFooterView.self)
+            ) as? EditTableHeaderFooterView else {
                     return UIView()
         }
-        header.setupCell(title: "申請帳號")
+        header.setupHeader(title: "申請帳號")
         return header
     }
     

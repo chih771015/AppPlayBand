@@ -21,39 +21,39 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="aaa" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b3F-SO-asc">
-                        <rect key="frame" x="34" y="58.5" width="307" height="40"/>
+                        <rect key="frame" x="48" y="58.5" width="293" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" priority="750" constant="40" id="v1i-fo-t7Y"/>
                         </constraints>
                         <color key="textColor" name="textColor"/>
-                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUy-Bp-7vz">
-                        <rect key="frame" x="34" y="98.5" width="307" height="1"/>
+                        <rect key="frame" x="48" y="98.5" width="279" height="1"/>
                         <color key="backgroundColor" name="endColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="M6b-kh-VsS"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCC-gg-l6c">
-                        <rect key="frame" x="34" y="14" width="271.5" height="44.5"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                        <rect key="frame" x="48" y="14" width="243.5" height="44.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                         <color key="textColor" name="endColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kVO-sP-RMo">
-                        <rect key="frame" x="305.5" y="14" width="35.5" height="17"/>
+                        <rect key="frame" x="291.5" y="14" width="35.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" name="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="nUy-Bp-7vz" secondAttribute="trailing" constant="34" id="1Y4-vX-e8t"/>
+                    <constraint firstAttribute="trailing" secondItem="nUy-Bp-7vz" secondAttribute="trailing" constant="48" id="1Y4-vX-e8t"/>
                     <constraint firstItem="b3F-SO-asc" firstAttribute="top" secondItem="BCC-gg-l6c" secondAttribute="bottom" id="4I0-ED-HfS"/>
                     <constraint firstItem="nUy-Bp-7vz" firstAttribute="top" secondItem="b3F-SO-asc" secondAttribute="bottom" id="5wq-q5-z0E"/>
-                    <constraint firstItem="nUy-Bp-7vz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="34" id="7Cg-Vz-b8N"/>
+                    <constraint firstItem="nUy-Bp-7vz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="48" id="7Cg-Vz-b8N"/>
                     <constraint firstAttribute="bottom" secondItem="nUy-Bp-7vz" secondAttribute="bottom" id="89f-IT-cqY"/>
                     <constraint firstItem="kVO-sP-RMo" firstAttribute="leading" secondItem="BCC-gg-l6c" secondAttribute="trailing" id="Nez-PG-gkN"/>
                     <constraint firstItem="BCC-gg-l6c" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="T1M-LG-efR"/>

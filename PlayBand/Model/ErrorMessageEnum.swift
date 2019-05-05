@@ -91,3 +91,38 @@ enum InputError: Error {
         }
     }
 }
+
+
+enum SignUpError: Error {
+    
+    case account
+    case password
+    case passwordConfirm
+    case name
+    case email
+    case phone
+    case band
+    case facebook
+    
+    var localizedDescription: String {
+        
+        switch self {
+        case .account:
+            return "帳號不能為空"
+        case .password:
+            return "密碼不能為空"
+        case .passwordConfirm:
+            return "密碼輸入不一樣請重新確認"
+        case .name:
+            return "名字不能為空"
+        case .email:
+            return "信箱不能為空"
+        case .phone:
+            return "電話不能為空"
+        case .band:
+            return "樂團不能為空"
+        case .facebook:
+            return "沒粉絲團就給個人頁面吧"
+        }
+    }
+}

@@ -39,6 +39,29 @@ class EditProfileViewController: UIViewController {
             at: IndexPath(row: 3, section: 0)) as? EditTableViewCell)?.textField.text else {
             return
         }
+        
+        if name.trimmingCharacters(in: .whitespaces).isEmpty {
+            
+
+            self.addErrorTypeAlertMessage(error: SignUpError.name)
+            return
+        }
+        if phone.trimmingCharacters(in: .whitespaces).isEmpty {
+            
+            self.addErrorTypeAlertMessage(error: SignUpError.phone)
+            return
+        }
+        if band.trimmingCharacters(in: .whitespaces).isEmpty {
+            
+            self.addErrorTypeAlertMessage(error: SignUpError.band)
+            return
+        }
+        if facebook.trimmingCharacters(in: .whitespaces).isEmpty {
+            
+            self.addErrorTypeAlertMessage(error: SignUpError.facebook)
+            return
+        }
+        
         let userData = UserData(name: name, phone: phone, band: band, email: email, facebook: facebook)
         
         PBProgressHUD.addLoadingView(animated: true)
@@ -54,11 +77,12 @@ class EditProfileViewController: UIViewController {
 
             } else {
                 
-                self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error?.localizedDescription)
+                self?.addErrorTypeAlertMessage(error: error)
             }
         }
     }
     @IBOutlet weak var tableView: UITableView! {
+        
         didSet {
             
             setupTableView()
@@ -81,8 +105,7 @@ class EditProfileViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.lv_registerCellWithNib(identifier: String(describing: EditTableViewCell.self), bundle: nil)
-        tableView.lv_registerCellWithNib(
-            identifier: String(describing: EditSectionHeaderTableViewCell.self), bundle: nil)
+        tableView.lv_registerHeaderWithNib(identifier: String(describing: EditTableHeaderFooterView.self), bundle: nil)
     }
 }
 
@@ -90,12 +113,11 @@ extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        guard let header = tableView.dequeueReusableCell(
-            withIdentifier: String(
-                describing: EditSectionHeaderTableViewCell.self)) as? EditSectionHeaderTableViewCell else {
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(
+                describing: EditTableHeaderFooterView.self)) as? EditTableHeaderFooterView else {
             return UIView()
         }
-        header.setupCell(title: PageName.name.rawValue)
+        header.setupHeader(title: PageName.name.rawValue)
         return header
     }
     

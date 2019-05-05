@@ -25,5 +25,6 @@ class ConfirmTableViewHeaderView: UITableViewHeaderFooterView {
         
         self.titleImage.lv_setImageWithURL(url: storePhoto)
         self.titleLabel.setupTextInPB(text: storeName)
+        self.titleLabel.textAlignment = .center
     }
 }

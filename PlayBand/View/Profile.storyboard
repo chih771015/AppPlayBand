@@ -877,7 +877,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcj-JT-Cen">
                                         <rect key="frame" x="44" y="2" width="287" height="44"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="送出修改"/>
                                         <connections>
                                             <action selector="buttonAction" destination="OG8-L5-7xX" eventType="touchUpInside" id="dyA-Dz-Pkc"/>
                                         </connections>
@@ -938,7 +938,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFn-LW-kei">
                                         <rect key="frame" x="44" y="2" width="287" height="44"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="送出修改"/>
                                         <connections>
                                             <action selector="buttonAction" destination="g4e-gH-8bx" eventType="touchUpInside" id="zGS-DV-iXG"/>
                                         </connections>

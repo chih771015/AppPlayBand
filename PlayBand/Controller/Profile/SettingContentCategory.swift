@@ -156,6 +156,13 @@ enum SettingContentCategory: String {
             nextVC.setupController(listStyle: .store, name: userData.storeBlackList)
             viewController.navigationController?.pushViewController(nextVC, animated: true)
         case .userBlackList:
+            
+            if FirebaseManger.shared.storeName.count == 0 {
+                
+                viewController.addErrorAlertMessage(message: "沒有店家不會看到其他使用者")
+                return
+            }
+            
             guard let nextVC = UIStoryboard.profile.instantiateViewController(
                 withIdentifier: String(describing: BlackListViewController.self)
                 ) as? BlackListViewController else {

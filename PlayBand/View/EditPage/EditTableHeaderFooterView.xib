@@ -22,13 +22,13 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUq-GG-qTW">
-                    <rect key="frame" x="24" y="60" width="331" height="786"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                    <rect key="frame" x="48" y="60" width="283" height="786"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                     <color key="textColor" name="endColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPn-mm-g6Q">
-                    <rect key="frame" x="355" y="60" width="35" height="17"/>
+                    <rect key="frame" x="331" y="60" width="35" height="17"/>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                     <color key="textColor" name="textColor"/>
                     <nil key="highlightedColor"/>
@@ -36,10 +36,10 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="RUq-GG-qTW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="2w2-Bq-VaU"/>
+                <constraint firstItem="RUq-GG-qTW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="48" id="2w2-Bq-VaU"/>
                 <constraint firstItem="qPn-mm-g6Q" firstAttribute="leading" secondItem="RUq-GG-qTW" secondAttribute="trailing" id="EUW-ay-Oa7"/>
                 <constraint firstItem="qPn-mm-g6Q" firstAttribute="top" secondItem="RUq-GG-qTW" secondAttribute="top" id="LXk-AE-5sI"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qPn-mm-g6Q" secondAttribute="trailing" constant="24" id="Nq4-FN-kZH"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qPn-mm-g6Q" secondAttribute="trailing" constant="48" id="Nq4-FN-kZH"/>
                 <constraint firstItem="kcU-2V-jy8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="e38-fL-QhY"/>
                 <constraint firstItem="RUq-GG-qTW" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="eIy-Sx-oqq"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="RUq-GG-qTW" secondAttribute="bottom" priority="750" constant="16" id="g2m-bb-mk7"/>
