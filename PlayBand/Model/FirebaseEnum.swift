@@ -8,6 +8,22 @@
 
 import UIKit
 
+enum FirebaseCollectionName {
+    
+    case user
+    case store
+    
+    var name: String {
+        
+        switch self {
+        case .user:
+            return "Users"
+        case .store:
+            return "Store"
+        }
+    }
+}
+
 enum FirebaseEnum: String {
     
     case user = "Users"

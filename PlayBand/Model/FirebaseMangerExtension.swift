@@ -8,6 +8,8 @@
 
 import Firebase
 
+typealias FireBaseData = [String: Any]
+
 extension FirebaseManger {
     
     func getUserInfo() {
@@ -405,5 +407,23 @@ extension FirebaseManger {
                 completionHandler(.success(FirebaseEnum.blackListRemove.rawValue))
             }
         }
+    }
+    
+    func getOneCollectionDocuments(collectionName: FirebaseCollectionName, completionHandler: @escaping (Result<[FireBaseData]>) -> Void) {
+        
+        dataBase().collection(collectionName.name).getDocuments { (querySnapshot, error) in
+            
+            if let error = error {
+                
+                completionHandler(.failure(error))
+            } else if let datas = querySnapshot?.documents.map({$0.data()}) {
+                
+                completionHandler(.success(datas))
+            } else {
+                
+                completionHandler(.failure(FireBaseError.unknow))
+            }
+        }
+        
     }
 }

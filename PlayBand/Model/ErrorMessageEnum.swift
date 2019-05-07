@@ -92,7 +92,6 @@ enum InputError: Error {
     }
 }
 
-
 enum SignUpError: Error {
     
     case account
