@@ -114,6 +114,9 @@
 		59E6FE00227C335300EFAE55 /* AccountError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E6FDFF227C335300EFAE55 /* AccountError.swift */; };
 		59E6FE02227C4E9300EFAE55 /* UIAlertAction+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E6FE01227C4E9300EFAE55 /* UIAlertAction+Extension.swift */; };
 		59E7F62A2281DC4000EF8906 /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E7F6292281DC4000EF8906 /* FirebaseError.swift */; };
+		59E7F62C2281F2EA00EF8906 /* FirebaseMangerExtension+ refactoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E7F62B2281F2EA00EF8906 /* FirebaseMangerExtension+ refactoring.swift */; };
+		59E7F62E2281F93400EF8906 /* FirebaseResultEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E7F62D2281F93400EF8906 /* FirebaseResultEnum.swift */; };
+		59E7F6302282000C00EF8906 /* FirebaseCollectionNameEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E7F62F2282000C00EF8906 /* FirebaseCollectionNameEnum.swift */; };
 		59EED82E2278B193006A52C7 /* EditTableHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EED82D2278B193006A52C7 /* EditTableHeaderFooterView.swift */; };
 		59EED8302278B1F1006A52C7 /* EditTableHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59EED82F2278B1F1006A52C7 /* EditTableHeaderFooterView.xib */; };
 		59EED8322278B8A9006A52C7 /* BaseStoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EED8312278B8A9006A52C7 /* BaseStoreDetailViewController.swift */; };
@@ -243,6 +246,9 @@
 		59E6FDFF227C335300EFAE55 /* AccountError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountError.swift; sourceTree = "<group>"; };
 		59E6FE01227C4E9300EFAE55 /* UIAlertAction+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Extension.swift"; sourceTree = "<group>"; };
 		59E7F6292281DC4000EF8906 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
+		59E7F62B2281F2EA00EF8906 /* FirebaseMangerExtension+ refactoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseMangerExtension+ refactoring.swift"; sourceTree = "<group>"; };
+		59E7F62D2281F93400EF8906 /* FirebaseResultEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseResultEnum.swift; sourceTree = "<group>"; };
+		59E7F62F2282000C00EF8906 /* FirebaseCollectionNameEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCollectionNameEnum.swift; sourceTree = "<group>"; };
 		59EED82D2278B193006A52C7 /* EditTableHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableHeaderFooterView.swift; sourceTree = "<group>"; };
 		59EED82F2278B1F1006A52C7 /* EditTableHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditTableHeaderFooterView.xib; sourceTree = "<group>"; };
 		59EED8312278B8A9006A52C7 /* BaseStoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStoreDetailViewController.swift; sourceTree = "<group>"; };
@@ -578,6 +584,9 @@
 				59536698227AF25E00502B89 /* CheckTextFieldText.swift */,
 				59E6FDFF227C335300EFAE55 /* AccountError.swift */,
 				5913F0AF228191F900562436 /* StoreProvider.swift */,
+				59E7F62B2281F2EA00EF8906 /* FirebaseMangerExtension+ refactoring.swift */,
+				59E7F62D2281F93400EF8906 /* FirebaseResultEnum.swift */,
+				59E7F62F2282000C00EF8906 /* FirebaseCollectionNameEnum.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -910,6 +919,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59EED8342278BB40006A52C7 /* StoreReviewViewController.swift in Sources */,
+				59E7F62E2281F93400EF8906 /* FirebaseResultEnum.swift in Sources */,
 				597F044F225F210F00BAAFEE /* SignUpViewController.swift in Sources */,
 				5907F6972259DE3C008BB604 /* StoreDescriptionTableViewCell.swift in Sources */,
 				59E7F62A2281DC4000EF8906 /* FirebaseError.swift in Sources */,
@@ -993,12 +1003,14 @@
 				59A08E972267931B00F405B5 /* UserListDataStruct.swift in Sources */,
 				59009147227F6C3F006CDC88 /* PrivacyViewController.swift in Sources */,
 				59821B3A2278418F00A61B50 /* StoreAddRoomTableViewCell.swift in Sources */,
+				59E7F62C2281F2EA00EF8906 /* FirebaseMangerExtension+ refactoring.swift in Sources */,
 				594CAA8A226395F5009A0921 /* UserDataStruct.swift in Sources */,
 				59821B3D227867EA00A61B50 /* AddImageViewController.swift in Sources */,
 				59DFF85A22578FFD00273724 /* EditTableViewCell.swift in Sources */,
 				5929502F2269A1EA00FD5DC5 /* FirebaseEnum.swift in Sources */,
 				595F939D227B4CEB007DA364 /* EditStoreRoomViewController.swift in Sources */,
 				59821B2E227822CA00A61B50 /* StoreMangerViewController.swift in Sources */,
+				59E7F6302282000C00EF8906 /* FirebaseCollectionNameEnum.swift in Sources */,
 				5980519D225F2D45002036FD /* MessageViewController.swift in Sources */,
 				59821B3222782B3700A61B50 /* StoreApplyContentCategory.swift in Sources */,
 				594ED6B1226058E90054CCC9 /* MessageConfirmPageTableViewCell.swift in Sources */,

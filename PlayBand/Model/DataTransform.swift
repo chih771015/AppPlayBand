@@ -59,4 +59,19 @@ class DataTransform {
             return dictionary
         }
     }
+    
+    class func dataArrayReturnWithoutOption<T>(datas: [T?]) -> [T] {
+        
+        var returnDatas: [T] = []
+        
+        for data in datas {
+            
+            if let returnData = data {
+                
+                returnDatas.append(returnData)
+            }
+        }
+        
+        return returnDatas
+    }
 }

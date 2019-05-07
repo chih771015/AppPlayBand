@@ -12,24 +12,39 @@ class StoreProvider {
     
     func getStoreDatas(completionHandler: @escaping (Result<[StoreData]>) -> Void) {
         
-        FirebaseManger.shared.getOneCollectionDocuments(collectionName: .store) { (result) in
+        FirebaseManger.shared.getFirstCollectionDocuments(
+        collectionName: FirebaseCollectionName.store.name) { (result) in
             
             switch result {
                 
             case .success(let datas):
                 
-                var storeDatas: [StoreData] = []
-                
-                for data in datas {
-                    
-                    if let storeData = StoreData(dictionary: data) {
-                        
-                        storeDatas.append(storeData)
-                    }
-                }
+                let storeDatas = DataTransform.dataArrayReturnWithoutOption(datas: datas.map({StoreData(dictionary: $0)}))
                 
                 completionHandler(.success(storeDatas))
 
+            case .failure(let error):
+                
+                completionHandler(.failure(error))
+            }
+        }
+    }
+    
+    func getStoreBookingDatas(storeName: String, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
+        
+        FirebaseManger.shared
+            .getSecondCollectionDocuments(
+            firstCollection: FirebaseCollectionName.store.name,
+            firstDocumentID: storeName,
+            secondCollection: FirebaseCollectionName.bookingConfirm.name) { (result) in
+            
+            switch result {
+                
+            case .success(let datas):
+                
+                let bookingDatas = DataTransform.dataArrayReturnWithoutOption(datas: datas.map({UserBookingData(dictionary: $0)}))
+                
+                completionHandler(.success(bookingDatas))
             case .failure(let error):
                 
                 completionHandler(.failure(error))

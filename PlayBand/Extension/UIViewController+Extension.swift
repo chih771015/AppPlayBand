@@ -12,15 +12,11 @@ extension UIViewController {
     
     func addErrorAlertMessage(
         title: String?  = FirebaseEnum.fail.rawValue, message: String?,
-        completionHanderInDismiss: (() -> Void)? = nil) {
+        completionHanderInDismiss: ((UIAlertAction) -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-        let alertAction = UIAlertAction(title: "OK", style: .default) { _ in
-            
-            guard let completionHander = completionHanderInDismiss else {return}
-            completionHander()
-        }
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: completionHanderInDismiss)
         alertAction.setupActionColor()
         alert.addAction(alertAction)
         present(alert, animated: true, completion: nil)
@@ -28,28 +24,21 @@ extension UIViewController {
     
     func addErrorTypeAlertMessage(
         title: String? = FirebaseEnum.fail.rawValue,
-        error: Error?, completionHanderInDismiss: (() -> Void)? = nil) {
+        error: Error?, completionHanderInDismiss: ((UIAlertAction) -> Void)? = nil) {
         
-        let alertAction = UIAlertAction(title: "OK", style: .default) { _ in
-            
-            completionHanderInDismiss?()
-        }
+        addErrorAlertMessage(title: title, message: error?.localizedDescription, completionHanderInDismiss: completionHanderInDismiss)
         
-        alertAction.setupActionColor()
-        
-        if let inputError = error as? InputError {
-            
-            let alert = UIAlertController(
-                title: title, message: inputError.localizedDescription, preferredStyle: .alert)
-            alert.addAction(alertAction)
-            present(alert, animated: true, completion: nil)
-
-        } else {
-            
-            let alert = UIAlertController(title: title, message: error?.localizedDescription, preferredStyle: .alert)
-            alert.addAction(alertAction)
-            present(alert, animated: true, completion: nil)
-        }
+//        let alertAction = UIAlertAction(title: "OK", style: .default) { _ in
+//
+//            completionHanderInDismiss?()
+//        }
+//
+//        alertAction.setupActionColor()
+//
+//        let alert = UIAlertController(title: title, message: error?.localizedDescription, preferredStyle: .alert)
+//        alert.addAction(alertAction)
+//        present(alert, animated: true, completion: nil)
+    
     }
 
     func addSucessAlertMessage(title: String?, message: String?, completionHanderInDismiss: (() -> Void)?) {

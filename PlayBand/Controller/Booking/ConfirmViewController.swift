@@ -41,7 +41,7 @@ class ConfirmViewController: UIViewController {
         
         if FirebaseManger.shared.userData?.storeRejectUser.contains(storeName) ?? false {
         
-            self.addErrorAlertMessage(title: "警告", message: "你已被加入拒絕名單內\n請自行聯絡店家查詢原因") { [weak self] in
+            self.addErrorAlertMessage(title: "警告", message: "你已被加入拒絕名單內\n請自行聯絡店家查詢原因") { [weak self] _ in
                 
                 self?.navigationController?.popToRootViewController(animated: true)
             }

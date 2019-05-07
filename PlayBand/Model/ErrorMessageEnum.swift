@@ -92,6 +92,14 @@ enum InputError: Error {
     }
 }
 
+extension InputError: LocalizedError {
+    
+    var errorDescription: String? {
+        
+        return NSLocalizedString(localizedDescription, comment: "")
+    }
+}
+
 enum SignUpError: Error {
     
     case account
