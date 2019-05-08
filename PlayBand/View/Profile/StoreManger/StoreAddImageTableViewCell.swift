@@ -14,7 +14,7 @@ class StoreAddImageTableViewCell: UITableViewCell {
     @IBOutlet weak var titleImageView: UIImageView!
     @IBAction func buttonAction(_ sender: Any) {
         
-        delegate?.buttonAction(cell: self)
+        delegate?.cellButtonAction(cell: self)
     }
     weak var delegate: StoreAddImageDelegate?
     override func awakeFromNib() {
@@ -44,5 +44,5 @@ class StoreAddImageTableViewCell: UITableViewCell {
 }
 
 protocol StoreAddImageDelegate: class {
-    func buttonAction(cell: UITableViewCell)
+    func cellButtonAction(cell: UITableViewCell)
 }

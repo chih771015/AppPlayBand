@@ -11,21 +11,33 @@ import Firebase
 
 extension FirebaseManger {
     
-    func getFirstCollectionDocuments(collectionName: String, completionHandler: @escaping (Result<[FireBaseData]>) -> Void) {
+    func getFirstCollectionDocuments(collectionName: FirebaseCollectionName, completionHandler: @escaping (Result<[FireBaseData]>) -> Void) {
         
-        let ref = dataBase().collection(collectionName)
+        let ref = fireStoreDatabase().collection(collectionName.name)
         collectionGetDocuments(ref: ref, completionHandler: completionHandler)
         
     }
     
-    func getSecondCollectionDocuments(firstCollection: String, firstDocumentID : String, secondCollection: String, compeletionHandler: @escaping (Result<[FireBaseData]>) -> Void) {
+    func getSecondCollectionDocuments(
+        firstCollection: FirebaseCollectionName, firstDocumentID : String, secondCollection: FirebaseCollectionName, compeletionHandler: @escaping (Result<[FireBaseData]>) -> Void) {
         
-        let collectionRef = dataBase().collection(firstCollection)
-            .document(firstDocumentID).collection(secondCollection)
+        let collectionRef = fireStoreDatabase().collection(firstCollection.name)
+            .document(firstDocumentID).collection(secondCollection.name)
         collectionGetDocuments(ref: collectionRef, completionHandler: compeletionHandler)
     }
     
-    private func collectionGetDocuments(ref: CollectionReference, completionHandler: @escaping (Result<[FireBaseData]>) -> Void) {
+    func upDataFirstCollectionDocument(collectionName: FirebaseCollectionName, documentID: String, data: FireBaseData, completionHandler: @escaping (Result<Bool>) -> Void) {
+        
+        let documentRef = fireStoreDatabase().collection(collectionName.name).document(documentID)
+        documentUpdata(ref: documentRef, data: data, completionHandler: completionHandler)
+    }
+    
+    func setDataFirstCollection() {
+        
+        
+    }
+    
+    func collectionGetDocuments(ref: CollectionReference, completionHandler: @escaping (Result<[FireBaseData]>) -> Void) {
         
         ref.getDocuments { (querySnapshot, error) in
             
@@ -42,7 +54,7 @@ extension FirebaseManger {
         }
     }
     
-    private func documentGetData(ref: DocumentReference, completionHandler: @escaping (Result<FireBaseData>) -> Void) {
+    func documentGetData(ref: DocumentReference, completionHandler: @escaping (Result<FireBaseData>) -> Void) {
         
         ref.getDocument { (documentSnapshot, error) in
             
@@ -59,7 +71,7 @@ extension FirebaseManger {
         }
     }
     
-    private func documentSetData(ref: DocumentReference, firebaseData: FireBaseData, merge: Bool = true, completionHandler: @escaping (Result<Bool>) -> Void) {
+    func documentSetData(ref: DocumentReference, firebaseData: FireBaseData, merge: Bool = true, completionHandler: @escaping (Result<Bool>) -> Void) {
         
         ref.setData(firebaseData, merge: merge) { (error) in
             
@@ -67,7 +79,7 @@ extension FirebaseManger {
         }
     }
     
-    private func documentDelete(ref: DocumentReference, completionHandler: @escaping (Result<Bool>) -> Void) {
+    func documentDelete(ref: DocumentReference, completionHandler: @escaping (Result<Bool>) -> Void) {
         
         ref.delete { (error) in
             
@@ -75,7 +87,7 @@ extension FirebaseManger {
         }
     }
     
-    private func documentUpdata(ref: DocumentReference, data: [AnyHashable : Any], completionHandler: @escaping (Result<Bool>) -> Void) {
+    func documentUpdata(ref: DocumentReference, data: [AnyHashable : Any], completionHandler: @escaping (Result<Bool>) -> Void) {
         
         ref.updateData(data) { (error) in
             
@@ -83,9 +95,7 @@ extension FirebaseManger {
         }
     }
 
-    
     private func checkError(error: Error?, completionHandler: (Result<Bool>) -> Void) {
-        
         
         if let error = error {
             
@@ -94,5 +104,23 @@ extension FirebaseManger {
             
             completionHandler(.success(true))
         }
+    }
+}
+
+
+
+extension Firestore {
+    
+    func collectionName(_ name: FirebaseCollectionName) -> CollectionReference {
+        
+        return self.collection(name.name)
+    }
+}
+
+extension DocumentReference {
+    
+    func collectionName(_ name: FirebaseCollectionName) -> CollectionReference {
+        
+        return self.collection(name.name)
     }
 }

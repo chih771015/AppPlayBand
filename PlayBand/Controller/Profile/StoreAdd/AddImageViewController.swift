@@ -72,7 +72,7 @@ class AddImageViewController: BaseEditViewController {
 
 extension AddImageViewController: StoreAddImageDelegate {
     
-    func buttonAction(cell: UITableViewCell) {
+    func cellButtonAction(cell: UITableViewCell) {
         
         guard let index = tableView.indexPath(for: cell) else {return}
         

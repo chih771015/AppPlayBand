@@ -15,7 +15,7 @@ class FirebaseManger {
     
     static let shared = FirebaseManger()
     let user = { Auth.auth() }
-    let dataBase = { Firestore.firestore() }
+    let fireStoreDatabase = { Firestore.firestore() }
     let userCollection = FirebaseEnum.user.rawValue
     var listener: ListenerRegistration?
     
@@ -80,7 +80,7 @@ class FirebaseManger {
             
             if let user = user {
                 
-               self.listener = self.dataBase().collection(self.userCollection).document(user
+               self.listener = self.fireStoreDatabase().collection(self.userCollection).document(user
                 .uid).addSnapshotListener(includeMetadataChanges: true, listener: { (querySnapshot, error) in
                     
                     guard let dictionary = querySnapshot?.data() else {
@@ -129,7 +129,7 @@ class FirebaseManger {
             return
         }
         let dictionary = DataTransform.userData(userData: userData)
-        dataBase().collection(FirebaseEnum.user.rawValue).document(uid).setData(dictionary, merge: true) { error in
+        fireStoreDatabase().collection(FirebaseEnum.user.rawValue).document(uid).setData(dictionary, merge: true) { error in
             if error == nil {
                 
                 self.getUserInfo()
@@ -139,7 +139,7 @@ class FirebaseManger {
     }
     func getStoreBookingInfo(name: String, completionHandler: @escaping (Result<[BookingTimeAndRoom]>) -> Void) {
         
-        dataBase().collection(FirebaseEnum.store.rawValue).document(name)
+        fireStoreDatabase().collection(FirebaseEnum.store.rawValue).document(name)
         .collection(FirebaseEnum.confirm.rawValue).getDocuments { (querySnapshot, error) in
         
             guard let documents = querySnapshot?.documents else {
@@ -181,7 +181,7 @@ class FirebaseManger {
         var count = 0
         var haveError = false
         for bookingData in bookingDatas {
-            let document = dataBase()
+            let document = fireStoreDatabase()
                 .collection(FirebaseEnum.store.rawValue).document(storeName)
                 .collection(FirebaseEnum.confirm.rawValue).document()
             let documentID = document.documentID
@@ -219,17 +219,17 @@ class FirebaseManger {
     }
     private func cloneBookingData(dictionary: [String: Any], uid: String, storeName: String, documentID: String) {
         
-        let documemntInBooking = dataBase().collection(FirebaseEnum.booking.rawValue)
+        let documemntInBooking = fireStoreDatabase().collection(FirebaseEnum.booking.rawValue)
             .document(storeName).collection(uid).document(documentID)
         
         documemntInBooking.setData(dictionary, merge: true)
         
-        let documentInUser = dataBase().collection(FirebaseEnum.user.rawValue)
+        let documentInUser = fireStoreDatabase().collection(FirebaseEnum.user.rawValue)
             .document(uid).collection(FirebaseEnum.booking.rawValue).document(documentID)
         
         documentInUser.setData(dictionary, merge: true)
         
-        let documentInStoreBooking = dataBase().collection(FirebaseEnum.store.rawValue)
+        let documentInStoreBooking = fireStoreDatabase().collection(FirebaseEnum.store.rawValue)
             .document(storeName).collection(FirebaseEnum.booking.rawValue).document(documentID)
         
         documentInStoreBooking.setData(dictionary, merge: true)
@@ -241,7 +241,7 @@ class FirebaseManger {
             self.userBookingData = []
             return
         }
-        let userBookingDocument = dataBase().collection(FirebaseEnum.user.rawValue)
+        let userBookingDocument = fireStoreDatabase().collection(FirebaseEnum.user.rawValue)
             .document(uid).collection(FirebaseEnum.booking.rawValue)
         
         userBookingDocument.getDocuments { (querySnapshot, _) in
@@ -300,7 +300,7 @@ class FirebaseManger {
             completionHandler(.failure(AccountError.noLogin))
             return
         }
-        dataBase().collection(FirebaseEnum.user.rawValue).document(uid)
+        fireStoreDatabase().collection(FirebaseEnum.user.rawValue).document(uid)
             .setData([UsersKey.photoURL.rawValue: url], merge: true) { (error) in
             
             if let error = error {
@@ -315,7 +315,7 @@ class FirebaseManger {
         
         self.mangerStoreData = []
         for store in self.storeName {
-            let mangerBookingDocument = dataBase().collection(FirebaseEnum.store.rawValue).document(store)
+            let mangerBookingDocument = fireStoreDatabase().collection(FirebaseEnum.store.rawValue).document(store)
                 .collection(FirebaseEnum.booking.rawValue)
             mangerBookingDocument.getDocuments { (querySnapshot, error) in
                 
@@ -352,7 +352,7 @@ class FirebaseManger {
     private func getMangerMessage(listID: String, storeName: String, uid: String) {
         
         self.mangerStoreData = []
-        dataBase().collection(FirebaseEnum.store.rawValue).document(storeName)
+        fireStoreDatabase().collection(FirebaseEnum.store.rawValue).document(storeName)
             .collection(FirebaseEnum.confirm.rawValue).getDocuments { (querySnapshot, error) in
                 
                 if error != nil {
@@ -374,7 +374,7 @@ class FirebaseManger {
     func updataBookingConfirm(storeName: String, pathID: String, userUID: String,
                               storeMessage: String = FirebaseBookingKey.storeMessage.description, completionHandler: @escaping (Result<String>) -> Void) {
         
-        dataBase().collection(FirebaseEnum.store.rawValue).document(storeName)
+        fireStoreDatabase().collection(FirebaseEnum.store.rawValue).document(storeName)
             .collection(FirebaseEnum.confirm.rawValue).document(pathID)
             .updateData([FirebaseBookingKey.status.rawValue: FirebaseBookingKey.Status.confirm.rawValue]) { (error) in
                 if let error = error {
@@ -406,7 +406,7 @@ class FirebaseManger {
         }
         dictionary.updateValue(storeMessage, forKey: FirebaseBookingKey.storeMessage.rawValue)
         
-        dataBase().collection(FirebaseEnum.user.rawValue).document(userUID)
+        fireStoreDatabase().collection(FirebaseEnum.user.rawValue).document(userUID)
             .collection(FirebaseEnum.booking.rawValue).document(pathID).updateData(dictionary) { (error) in
             
             if let error = error {
@@ -415,7 +415,7 @@ class FirebaseManger {
             } else {
                 
                 completionHandler(.success(FirebaseEnum.mangerConfirm.rawValue))
-                self.dataBase().collection(FirebaseEnum.store.rawValue).document(storeName)
+                self.fireStoreDatabase().collection(FirebaseEnum.store.rawValue).document(storeName)
                     .collection(FirebaseEnum.booking.rawValue).document(pathID).updateData(dictionary)
             }
         }
@@ -423,7 +423,7 @@ class FirebaseManger {
     
     func refuseBooking(pathID: String, storeName: String,
                        userUID: String, storeMessage: String, completionHandler: @escaping (Result<String>) -> Void) {
-        dataBase().collection(FirebaseEnum.store.rawValue).document(storeName)
+        fireStoreDatabase().collection(FirebaseEnum.store.rawValue).document(storeName)
             .collection(FirebaseEnum.confirm.rawValue).document(pathID).delete { (error) in
                 
                 if let error = error {

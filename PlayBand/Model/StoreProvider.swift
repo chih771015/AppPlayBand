@@ -10,45 +10,23 @@ import Foundation
 
 class StoreProvider {
     
+    private let firebaseStoreManger = FireBaseStoreDataManger()
+    
+    let bookingDataProVider = BookingDataProvider()
+    
     func getStoreDatas(completionHandler: @escaping (Result<[StoreData]>) -> Void) {
         
-        FirebaseManger.shared.getFirstCollectionDocuments(
-        collectionName: FirebaseCollectionName.store.name) { (result) in
-            
-            switch result {
-                
-            case .success(let datas):
-                
-                let storeDatas = DataTransform.dataArrayReturnWithoutOption(datas: datas.map({StoreData(dictionary: $0)}))
-                
-                completionHandler(.success(storeDatas))
-
-            case .failure(let error):
-                
-                completionHandler(.failure(error))
-            }
-        }
+        firebaseStoreManger.getStoresData(completionHandler: completionHandler)
     }
     
     func getStoreBookingDatas(storeName: String, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
         
-        FirebaseManger.shared
-            .getSecondCollectionDocuments(
-            firstCollection: FirebaseCollectionName.store.name,
-            firstDocumentID: storeName,
-            secondCollection: FirebaseCollectionName.bookingConfirm.name) { (result) in
-            
-            switch result {
-                
-            case .success(let datas):
-                
-                let bookingDatas = DataTransform.dataArrayReturnWithoutOption(datas: datas.map({UserBookingData(dictionary: $0)}))
-                
-                completionHandler(.success(bookingDatas))
-            case .failure(let error):
-                
-                completionHandler(.failure(error))
-            }
-        }
+        bookingDataProVider.getStoreBookingDatas(storeName: storeName, completionHandler: completionHandler)
+    }
+    
+    func updateStoreDataInfo(storeData: StoreData, completionHandler: @escaping (Result<String>) -> Void) {
+        
+        firebaseStoreManger.updateStoreData(storeData: storeData, completionHandler: completionHandler)
+        
     }
 }

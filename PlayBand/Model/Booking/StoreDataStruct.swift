@@ -81,21 +81,6 @@ struct StoreData {
         self.city = city
     }
     
-    enum StoreDataKey: String {
-        
-        case name
-        case opentime
-        case closetime
-        case phone
-        case address
-        case photourl
-        case rooms
-        case price
-        case information
-        case city
-        case images
-    }
-    
     func getStoreOpenHours() -> Int {
         
         guard let close = Int(closeTime) else {return 0}

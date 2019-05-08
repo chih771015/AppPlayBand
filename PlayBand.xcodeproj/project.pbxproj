@@ -105,6 +105,10 @@
 		59D717A922658742009772FC /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D717A822658742009772FC /* UIImageView+Extension.swift */; };
 		59D717AB22658B6A009772FC /* StoreDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D717AA22658B6A009772FC /* StoreDataStruct.swift */; };
 		59D717AD2265A8F3009772FC /* ResultEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D717AC2265A8F3009772FC /* ResultEnum.swift */; };
+		59D925F82282750E004EBEEC /* FireBaseStoreDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D925F72282750E004EBEEC /* FireBaseStoreDataManger.swift */; };
+		59D925FD228281FB004EBEEC /* FBStoreMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D925FC228281FB004EBEEC /* FBStoreMessage.swift */; };
+		59D9260122829E5C004EBEEC /* BookingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D9260022829E5C004EBEEC /* BookingDataProvider.swift */; };
+		59D9260322829E9F004EBEEC /* FBBookingDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D9260222829E9F004EBEEC /* FBBookingDataManger.swift */; };
 		59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF84E22564DEB00273724 /* UILabel+Extension.swift */; };
 		59DFF8542257465800273724 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF8532257465800273724 /* PhotoViewController.swift */; };
 		59DFF85622578DAB00273724 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF85522578DAB00273724 /* EditProfileViewController.swift */; };
@@ -237,6 +241,10 @@
 		59D717A822658742009772FC /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		59D717AA22658B6A009772FC /* StoreDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataStruct.swift; sourceTree = "<group>"; };
 		59D717AC2265A8F3009772FC /* ResultEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultEnum.swift; sourceTree = "<group>"; };
+		59D925F72282750E004EBEEC /* FireBaseStoreDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseStoreDataManger.swift; sourceTree = "<group>"; };
+		59D925FC228281FB004EBEEC /* FBStoreMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBStoreMessage.swift; sourceTree = "<group>"; };
+		59D9260022829E5C004EBEEC /* BookingDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDataProvider.swift; sourceTree = "<group>"; };
+		59D9260222829E9F004EBEEC /* FBBookingDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBBookingDataManger.swift; sourceTree = "<group>"; };
 		59DFF84E22564DEB00273724 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		59DFF8532257465800273724 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		59DFF85522578DAB00273724 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -543,6 +551,38 @@
 			path = EditPage;
 			sourceTree = "<group>";
 		};
+		59D925FB228281CA004EBEEC /* FirebaseSuccessMessage */ = {
+			isa = PBXGroup;
+			children = (
+				59D925FC228281FB004EBEEC /* FBStoreMessage.swift */,
+			);
+			path = FirebaseSuccessMessage;
+			sourceTree = "<group>";
+		};
+		59D925FE22828926004EBEEC /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				59D925FF228289D0004EBEEC /* FirebaseEnum */,
+				59D925FB228281CA004EBEEC /* FirebaseSuccessMessage */,
+				59FCFD3822620CAE006402E5 /* Firebase.swift */,
+				593B4FF6226B18A10069F24F /* FirebaseMangerExtension.swift */,
+				59E7F62B2281F2EA00EF8906 /* FirebaseMangerExtension+ refactoring.swift */,
+				59D925F72282750E004EBEEC /* FireBaseStoreDataManger.swift */,
+				59D9260222829E9F004EBEEC /* FBBookingDataManger.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		59D925FF228289D0004EBEEC /* FirebaseEnum */ = {
+			isa = PBXGroup;
+			children = (
+				5929502E2269A1EA00FD5DC5 /* FirebaseEnum.swift */,
+				59E7F62D2281F93400EF8906 /* FirebaseResultEnum.swift */,
+				59E7F62F2282000C00EF8906 /* FirebaseCollectionNameEnum.swift */,
+			);
+			path = FirebaseEnum;
+			sourceTree = "<group>";
+		};
 		59DFF8522257463D00273724 /* Photo */ = {
 			isa = PBXGroup;
 			children = (
@@ -571,22 +611,18 @@
 		59F81F8B22545AAF00C04E32 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				59D925FE22828926004EBEEC /* Firebase */,
 				59E7F6282281DC2600EF8906 /* ErrorEnum */,
 				59A08E95226792F400F405B5 /* Message */,
 				5907F6992259DE60008BB604 /* Booking */,
 				59ABB027225878A700AE937A /* Profile */,
-				59FCFD3822620CAE006402E5 /* Firebase.swift */,
-				593B4FF6226B18A10069F24F /* FirebaseMangerExtension.swift */,
-				5929502E2269A1EA00FD5DC5 /* FirebaseEnum.swift */,
 				592950302269A24F00FD5DC5 /* DataTransform.swift */,
 				59D717AC2265A8F3009772FC /* ResultEnum.swift */,
 				5925E44422793F8200EB7C19 /* ErrorMessageEnum.swift */,
 				59536698227AF25E00502B89 /* CheckTextFieldText.swift */,
 				59E6FDFF227C335300EFAE55 /* AccountError.swift */,
 				5913F0AF228191F900562436 /* StoreProvider.swift */,
-				59E7F62B2281F2EA00EF8906 /* FirebaseMangerExtension+ refactoring.swift */,
-				59E7F62D2281F93400EF8906 /* FirebaseResultEnum.swift */,
-				59E7F62F2282000C00EF8906 /* FirebaseCollectionNameEnum.swift */,
+				59D9260022829E5C004EBEEC /* BookingDataProvider.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -919,6 +955,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59EED8342278BB40006A52C7 /* StoreReviewViewController.swift in Sources */,
+				59D9260122829E5C004EBEEC /* BookingDataProvider.swift in Sources */,
 				59E7F62E2281F93400EF8906 /* FirebaseResultEnum.swift in Sources */,
 				597F044F225F210F00BAAFEE /* SignUpViewController.swift in Sources */,
 				5907F6972259DE3C008BB604 /* StoreDescriptionTableViewCell.swift in Sources */,
@@ -969,6 +1006,7 @@
 				59521209227EE78600B8A1E2 /* BlackListTableViewCell.swift in Sources */,
 				598B8CD52254B9530061F03B /* ProfileInformationTableViewCell.swift in Sources */,
 				592FF2D82272271000872A17 /* MessageImageTableViewCell.swift in Sources */,
+				59D925FD228281FB004EBEEC /* FBStoreMessage.swift in Sources */,
 				59F81F92225462FD00C04E32 /* UIStoryBoard+Extenstion.swift in Sources */,
 				596662082275D703006DE29F /* JGProgressHUD.swift in Sources */,
 				59530B0D225C79EB002F18AB /* ConfirmViewController.swift in Sources */,
@@ -989,6 +1027,7 @@
 				5953668E227A9ADD00502B89 /* SuperMangerStoreConfirmViewController.swift in Sources */,
 				59B43E18226F03A300598538 /* UIButton+Extension.swift in Sources */,
 				5926747F2270C0280050E161 /* MessageOrderDetailViewController.swift in Sources */,
+				59D925F82282750E004EBEEC /* FireBaseStoreDataManger.swift in Sources */,
 				597F044D225EE79D00BAAFEE /* SignInViewController.swift in Sources */,
 				59530B17225C8089002F18AB /* ConfirmTableViewSectionHeaderView.swift in Sources */,
 				59F81F9C22547C3A00C04E32 /* UIImage+Extension.swift in Sources */,
@@ -1004,6 +1043,7 @@
 				59009147227F6C3F006CDC88 /* PrivacyViewController.swift in Sources */,
 				59821B3A2278418F00A61B50 /* StoreAddRoomTableViewCell.swift in Sources */,
 				59E7F62C2281F2EA00EF8906 /* FirebaseMangerExtension+ refactoring.swift in Sources */,
+				59D9260322829E9F004EBEEC /* FBBookingDataManger.swift in Sources */,
 				594CAA8A226395F5009A0921 /* UserDataStruct.swift in Sources */,
 				59821B3D227867EA00A61B50 /* AddImageViewController.swift in Sources */,
 				59DFF85A22578FFD00273724 /* EditTableViewCell.swift in Sources */,

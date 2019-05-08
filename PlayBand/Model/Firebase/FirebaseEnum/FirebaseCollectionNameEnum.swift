@@ -13,6 +13,8 @@ enum FirebaseCollectionName {
     case user
     case store
     case bookingConfirm
+    case booking
+    case inputString(String)
     
     var name: String {
         
@@ -23,6 +25,10 @@ enum FirebaseCollectionName {
             return "Store"
         case .bookingConfirm:
             return "BookingConfirm"
+        case .booking:
+            return "Booking"
+        case .inputString(let string):
+            return string
         }
     }
 }

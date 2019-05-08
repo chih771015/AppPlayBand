@@ -154,7 +154,7 @@ class EditStorePhotoViewController: BaseEditViewController {
 
 extension EditStorePhotoViewController: StoreAddImageDelegate {
     
-    func buttonAction(cell: UITableViewCell) {
+    func cellButtonAction(cell: UITableViewCell) {
         
         guard let index = tableView.indexPath(for: cell) else {return}
         

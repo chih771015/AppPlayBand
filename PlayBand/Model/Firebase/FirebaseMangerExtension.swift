@@ -18,7 +18,7 @@ extension FirebaseManger {
             self.userData = nil
             return
         }
-        dataBase().collection(FirebaseEnum.user.rawValue).document(uid).getDocument { (document, _) in
+        fireStoreDatabase().collection(FirebaseEnum.user.rawValue).document(uid).getDocument { (document, _) in
             
             if let user = document.flatMap({
                 $0.data().flatMap({ (data) in
@@ -34,7 +34,7 @@ extension FirebaseManger {
     
     func getStoreInfo(completionHandler: ((Result<[StoreData]>) -> Void)?) {
         
-        dataBase().collection(FirebaseEnum.store.rawValue).getDocuments { (querySnapshot, error) in
+        fireStoreDatabase().collection(FirebaseEnum.store.rawValue).getDocuments { (querySnapshot, error) in
             
             if let error = error {
                 
@@ -64,7 +64,7 @@ extension FirebaseManger {
     func getMangerStoreName() {
         
         guard let uid = user().currentUser?.uid else {return}
-        dataBase().collection(FirebaseEnum.user.rawValue).document(uid)
+        fireStoreDatabase().collection(FirebaseEnum.user.rawValue).document(uid)
             .collection(FirebaseEnum.store.rawValue).getDocuments { (querySnapshot, error) in
             
                 if error != nil {
@@ -100,7 +100,7 @@ extension FirebaseManger {
         let userDictionary = DataTransform.userData(userData: userData)
         dictionary.updateValue(userDictionary, forKey: FirebaseBookingKey.user.rawValue)
         
-        let document = dataBase().collection(FirebaseEnum.storeApply.rawValue).document()
+        let document = fireStoreDatabase().collection(FirebaseEnum.storeApply.rawValue).document()
         dictionary.updateValue(document.documentID, forKey: FirebaseBookingKey.pathID.rawValue)
         dictionary.updateValue(self.user().currentUser?.uid, forKey: UsersKey.uid.rawValue)
         
@@ -180,7 +180,7 @@ extension FirebaseManger {
     
     func getStoreApplyDataWithSuperManger(completionHandler: @escaping (Result<[StoreApplyData]>) -> Void) {
         
-        dataBase().collection(FirebaseEnum.storeApply.rawValue).getDocuments { (querySnapshot, error) in
+        fireStoreDatabase().collection(FirebaseEnum.storeApply.rawValue).getDocuments { (querySnapshot, error) in
             
             if let error = error {
                 completionHandler(.failure(error))
@@ -212,14 +212,14 @@ extension FirebaseManger {
         userUID: String, pathID: String,
         storeData: StoreData, completionHandler: @escaping (Result<String>) -> Void) {
         
-        dataBase().collection(FirebaseEnum.store.rawValue)
+        fireStoreDatabase().collection(FirebaseEnum.store.rawValue)
             .document(storeData.name).setData(storeData.getFirebaseDictionay(), merge: true) { (error) in
             
                 if let error = error {
                     completionHandler(.failure(error))
                     return
                 }
-                self.dataBase().collection(FirebaseEnum.user.rawValue).document(userUID)
+                self.fireStoreDatabase().collection(FirebaseEnum.user.rawValue).document(userUID)
                     .collection(FirebaseEnum.store.rawValue)
                     .addDocument(data: [UsersKey.store.rawValue: storeData.name])
                 self.deleteApplyStore(pathID: pathID, storeName: storeData.name)
@@ -229,12 +229,12 @@ extension FirebaseManger {
     
     private func deleteApplyStore(pathID: String, storeName: String) {
         
-        dataBase().collection(FirebaseEnum.storeApply.rawValue).document(pathID).delete()
+        fireStoreDatabase().collection(FirebaseEnum.storeApply.rawValue).document(pathID).delete()
     }
     
     func getStoreBookingDataWithManger(
         storeName: String, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
-        dataBase().collection(FirebaseEnum.store.rawValue).document(storeName)
+        fireStoreDatabase().collection(FirebaseEnum.store.rawValue).document(storeName)
             .collection(FirebaseEnum.booking.rawValue).getDocuments { (querySnapshot, error) in
             
             if let error = error {
@@ -269,7 +269,7 @@ extension FirebaseManger {
     
     func updataStoreData(storeData: StoreData, completionHandler: @escaping (Result<String>) -> Void) {
         let dictionary = storeData.getFirebaseDictionay()
-        dataBase().collection(FirebaseEnum.store.rawValue).document(storeData.name).updateData(dictionary) { (error) in
+        fireStoreDatabase().collection(FirebaseEnum.store.rawValue).document(storeData.name).updateData(dictionary) { (error) in
             
             if let error = error {
                 
@@ -294,7 +294,7 @@ extension FirebaseManger {
             completionHandler(.failure(AccountError.noLogin))
             return
         }
-        dataBase().collection(FirebaseEnum.user.rawValue).document(uid).updateData([UsersKey.storeBlackList.rawValue: FieldValue.arrayUnion([storeName])]) { (error) in
+        fireStoreDatabase().collection(FirebaseEnum.user.rawValue).document(uid).updateData([UsersKey.storeBlackList.rawValue: FieldValue.arrayUnion([storeName])]) { (error) in
             
             if let error = error {
                 
@@ -314,7 +314,7 @@ extension FirebaseManger {
             return
         }
 
-        dataBase().collection(FirebaseEnum.user.rawValue).document(userUid)
+        fireStoreDatabase().collection(FirebaseEnum.user.rawValue).document(userUid)
             .updateData([UsersKey.storeRejectUser.rawValue: FieldValue.arrayUnion(storeNames)]) { (error) in
             
             if let error = error {
@@ -323,7 +323,7 @@ extension FirebaseManger {
             } else {
                 
                 let dictionary = [UsersKey.uid.rawValue: userUid, UsersKey.name.rawValue: userName]
-                self.dataBase().collection(FirebaseEnum.user.rawValue)
+                self.fireStoreDatabase().collection(FirebaseEnum.user.rawValue)
                     .document(uid).updateData([
                         UsersKey.userBlackList.rawValue:
                             FieldValue.arrayUnion([dictionary])], completion: { (error) in
@@ -357,7 +357,7 @@ extension FirebaseManger {
             completionHandler(.failure(AccountError.noLogin))
             return
         }
-        dataBase().collection(FirebaseEnum.user.rawValue).document(uid).updateData([UsersKey.storeBlackList.rawValue: FieldValue.arrayRemove([name])]) { (error) in
+        fireStoreDatabase().collection(FirebaseEnum.user.rawValue).document(uid).updateData([UsersKey.storeBlackList.rawValue: FieldValue.arrayRemove([name])]) { (error) in
             
             if let error = error {
                 
@@ -384,7 +384,7 @@ extension FirebaseManger {
         }
         
         let dictionary = [UsersKey.name.rawValue: name, UsersKey.uid.rawValue: userUID]
-        dataBase().collection(userCollection).document(uid).updateData([UsersKey.userBlackList.rawValue: FieldValue.arrayRemove([dictionary])]) { (error) in
+        fireStoreDatabase().collection(userCollection).document(uid).updateData([UsersKey.userBlackList.rawValue: FieldValue.arrayRemove([dictionary])]) { (error) in
             
             if let error = error {
                 completionHandler(.failure(error))
@@ -397,7 +397,7 @@ extension FirebaseManger {
         
     }
     private func removeStoreReject(userUID: String, completionHandler: @escaping (Result<String>) -> Void){
-        dataBase().collection(userCollection).document(userUID).updateData([UsersKey.storeRejectUser.rawValue: FieldValue.arrayRemove(storeName)]){ error in
+        fireStoreDatabase().collection(userCollection).document(userUID).updateData([UsersKey.storeRejectUser.rawValue: FieldValue.arrayRemove(storeName)]){ error in
             
             if let error = error {
                 
