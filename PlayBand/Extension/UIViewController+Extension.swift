@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias ActionHandler = (String, ((UIAlertAction) -> Void)?)
+
 extension UIViewController {
     
     func addErrorAlertMessage(
@@ -27,17 +29,6 @@ extension UIViewController {
         error: Error?, completionHanderInDismiss: ((UIAlertAction) -> Void)? = nil) {
         
         addErrorAlertMessage(title: title, message: error?.localizedDescription, completionHanderInDismiss: completionHanderInDismiss)
-        
-//        let alertAction = UIAlertAction(title: "OK", style: .default) { _ in
-//
-//            completionHanderInDismiss?()
-//        }
-//
-//        alertAction.setupActionColor()
-//
-//        let alert = UIAlertController(title: title, message: error?.localizedDescription, preferredStyle: .alert)
-//        alert.addAction(alertAction)
-//        present(alert, animated: true, completion: nil)
     
     }
 
@@ -109,5 +100,29 @@ extension UIViewController {
         guard let appdelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let loginVC = UIStoryboard.signIn.instantiateInitialViewController()
         appdelegate.window?.rootViewController = loginVC
+    }
+    
+    func addAlertActionSheet(title: String? = nil, message: String? = nil, actionTitleAndHandlers: [ActionHandler], cancelTitle: String, cancelHandler: ((UIAlertAction) -> Void)? = nil) {
+        
+        if actionTitleAndHandlers.isEmpty {
+            
+            addErrorAlertMessage(message: "沒有輸入按鈕\n有Bug")
+            return
+        }
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        for action in actionTitleAndHandlers {
+            
+            let title = action.0
+            let actionManger = UIAlertAction(title: title, style: .default, handler: action.1)
+            actionManger.setupActionColor()
+            alert.addAction(actionManger)
+        }
+        
+        let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelHandler)
+        cancelAction.setupActionColor()
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }

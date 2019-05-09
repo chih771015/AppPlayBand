@@ -14,17 +14,17 @@ enum UserBookingDataWith {
     case storeManger(storeName: String)
 }
 
-class BookingDataProvider {
+class BookingDataManger {
     
     let fireBaseBookingManger = FBBookingDataManger()
     
-    func getStoreBookingDatas(storeName: String, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
+    func getStoreBookingDatas(storeName: String, completionHandler: @escaping (Result<[BookingTimeAndRoom]>) -> Void) {
         
         fireBaseBookingManger.getStoreBookingData(storeName: storeName, completionHandler: completionHandler)
     }
     
-    func getUserBookingData(type: UserBookingDataWith, uid: String, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
+    func getUserBookingData(with type: UserBookingDataWith, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
         
-        
+        fireBaseBookingManger.getUserBookingDatas(with: type, completionHandler: completionHandler)
     }
 }

@@ -37,7 +37,7 @@ class FBBookingDataManger {
     
     let fireBase = FirebaseManger.shared
     
-    func getStoreBookingData(storeName: String ,completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
+    func getStoreBookingData(storeName: String ,completionHandler: @escaping (Result<[BookingTimeAndRoom]>) -> Void) {
         
         let ref = fireStoreDataBase.collectionName(.store).document(storeName).collectionName(.bookingConfirm)
         fireBase.collectionGetDocuments(ref: ref) { (result) in
@@ -46,7 +46,7 @@ class FBBookingDataManger {
                 
             case .success(let datas):
                 
-                let bookingDatas = DataTransform.dataArrayReturnWithoutOption(datas: datas.map({UserBookingData(dictionary: $0)}))
+                let bookingDatas = DataTransform.dataArrayReturnWithoutOption(datas: datas.map({BookingTimeAndRoom(dictionary: $0)}))
                 
                 completionHandler(.success(bookingDatas))
             case .failure(let error):
@@ -56,7 +56,7 @@ class FBBookingDataManger {
         }
     }
     
-    func getUserBookingDatas(type: UserBookingDataWith, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
+    func getUserBookingDatas(with type: UserBookingDataWith, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
        
         let ref = fireStoreDataBase.collectionName(type.collectionName).document(type.returnValue).collectionName(.bookingConfirm)
         fireBase.collectionGetDocuments(ref: ref) { (result) in

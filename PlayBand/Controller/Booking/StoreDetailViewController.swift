@@ -92,6 +92,7 @@ extension StoreDetailViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     private func addBlackList() {
+        
         guard let storeName = storeData?.name else {return}
         
         PBProgressHUD.addLoadingView()

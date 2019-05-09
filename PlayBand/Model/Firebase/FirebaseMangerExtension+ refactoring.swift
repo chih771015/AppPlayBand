@@ -11,32 +11,6 @@ import Firebase
 
 extension FirebaseManger {
     
-    func getFirstCollectionDocuments(collectionName: FirebaseCollectionName, completionHandler: @escaping (Result<[FireBaseData]>) -> Void) {
-        
-        let ref = fireStoreDatabase().collection(collectionName.name)
-        collectionGetDocuments(ref: ref, completionHandler: completionHandler)
-        
-    }
-    
-    func getSecondCollectionDocuments(
-        firstCollection: FirebaseCollectionName, firstDocumentID : String, secondCollection: FirebaseCollectionName, compeletionHandler: @escaping (Result<[FireBaseData]>) -> Void) {
-        
-        let collectionRef = fireStoreDatabase().collection(firstCollection.name)
-            .document(firstDocumentID).collection(secondCollection.name)
-        collectionGetDocuments(ref: collectionRef, completionHandler: compeletionHandler)
-    }
-    
-    func upDataFirstCollectionDocument(collectionName: FirebaseCollectionName, documentID: String, data: FireBaseData, completionHandler: @escaping (Result<Bool>) -> Void) {
-        
-        let documentRef = fireStoreDatabase().collection(collectionName.name).document(documentID)
-        documentUpdata(ref: documentRef, data: data, completionHandler: completionHandler)
-    }
-    
-    func setDataFirstCollection() {
-        
-        
-    }
-    
     func collectionGetDocuments(ref: CollectionReference, completionHandler: @escaping (Result<[FireBaseData]>) -> Void) {
         
         ref.getDocuments { (querySnapshot, error) in

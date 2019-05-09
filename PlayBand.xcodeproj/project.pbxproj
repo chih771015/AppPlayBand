@@ -12,7 +12,7 @@
 		5907F6972259DE3C008BB604 /* StoreDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907F6952259DE3C008BB604 /* StoreDescriptionTableViewCell.swift */; };
 		5907F6982259DE3C008BB604 /* StoreDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5907F6962259DE3C008BB604 /* StoreDescriptionTableViewCell.xib */; };
 		5907F69B2259E2BD008BB604 /* StoreContentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */; };
-		5913F0B0228191F900562436 /* StoreProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913F0AF228191F900562436 /* StoreProvider.swift */; };
+		5913F0B0228191F900562436 /* StoreManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913F0AF228191F900562436 /* StoreManger.swift */; };
 		591E36C1227D9A91008F483E /* BlackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E36C0227D9A91008F483E /* BlackListViewController.swift */; };
 		59207AA3225AEC2D00B50E7C /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59207AA2225AEC2D00B50E7C /* CalendarTableViewCell.swift */; };
 		59207AA5225AF09400B50E7C /* BookingTimeAndRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59207AA4225AF09400B50E7C /* BookingTimeAndRoom.swift */; };
@@ -107,8 +107,9 @@
 		59D717AD2265A8F3009772FC /* ResultEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D717AC2265A8F3009772FC /* ResultEnum.swift */; };
 		59D925F82282750E004EBEEC /* FireBaseStoreDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D925F72282750E004EBEEC /* FireBaseStoreDataManger.swift */; };
 		59D925FD228281FB004EBEEC /* FBStoreMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D925FC228281FB004EBEEC /* FBStoreMessage.swift */; };
-		59D9260122829E5C004EBEEC /* BookingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D9260022829E5C004EBEEC /* BookingDataProvider.swift */; };
+		59D9260122829E5C004EBEEC /* BookingDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D9260022829E5C004EBEEC /* BookingDataManger.swift */; };
 		59D9260322829E9F004EBEEC /* FBBookingDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D9260222829E9F004EBEEC /* FBBookingDataManger.swift */; };
+		59D926052282ADC7004EBEEC /* UserManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D926042282ADC7004EBEEC /* UserManger.swift */; };
 		59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF84E22564DEB00273724 /* UILabel+Extension.swift */; };
 		59DFF8542257465800273724 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF8532257465800273724 /* PhotoViewController.swift */; };
 		59DFF85622578DAB00273724 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF85522578DAB00273724 /* EditProfileViewController.swift */; };
@@ -146,7 +147,7 @@
 		5907F6952259DE3C008BB604 /* StoreDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		5907F6962259DE3C008BB604 /* StoreDescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreDescriptionTableViewCell.xib; sourceTree = "<group>"; };
 		5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreContentCategory.swift; sourceTree = "<group>"; };
-		5913F0AF228191F900562436 /* StoreProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreProvider.swift; sourceTree = "<group>"; };
+		5913F0AF228191F900562436 /* StoreManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManger.swift; sourceTree = "<group>"; };
 		591E36C0227D9A91008F483E /* BlackListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackListViewController.swift; sourceTree = "<group>"; };
 		59207AA2225AEC2D00B50E7C /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		59207AA4225AF09400B50E7C /* BookingTimeAndRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTimeAndRoom.swift; sourceTree = "<group>"; };
@@ -243,8 +244,9 @@
 		59D717AC2265A8F3009772FC /* ResultEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultEnum.swift; sourceTree = "<group>"; };
 		59D925F72282750E004EBEEC /* FireBaseStoreDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseStoreDataManger.swift; sourceTree = "<group>"; };
 		59D925FC228281FB004EBEEC /* FBStoreMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBStoreMessage.swift; sourceTree = "<group>"; };
-		59D9260022829E5C004EBEEC /* BookingDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDataProvider.swift; sourceTree = "<group>"; };
+		59D9260022829E5C004EBEEC /* BookingDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDataManger.swift; sourceTree = "<group>"; };
 		59D9260222829E9F004EBEEC /* FBBookingDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBBookingDataManger.swift; sourceTree = "<group>"; };
+		59D926042282ADC7004EBEEC /* UserManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManger.swift; sourceTree = "<group>"; };
 		59DFF84E22564DEB00273724 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		59DFF8532257465800273724 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		59DFF85522578DAB00273724 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 		59D925FE22828926004EBEEC /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				59E7F6292281DC4000EF8906 /* FirebaseError.swift */,
 				59D925FF228289D0004EBEEC /* FirebaseEnum */,
 				59D925FB228281CA004EBEEC /* FirebaseSuccessMessage */,
 				59FCFD3822620CAE006402E5 /* Firebase.swift */,
@@ -603,7 +606,8 @@
 		59E7F6282281DC2600EF8906 /* ErrorEnum */ = {
 			isa = PBXGroup;
 			children = (
-				59E7F6292281DC4000EF8906 /* FirebaseError.swift */,
+				59E6FDFF227C335300EFAE55 /* AccountError.swift */,
+				5925E44422793F8200EB7C19 /* ErrorMessageEnum.swift */,
 			);
 			path = ErrorEnum;
 			sourceTree = "<group>";
@@ -618,11 +622,10 @@
 				59ABB027225878A700AE937A /* Profile */,
 				592950302269A24F00FD5DC5 /* DataTransform.swift */,
 				59D717AC2265A8F3009772FC /* ResultEnum.swift */,
-				5925E44422793F8200EB7C19 /* ErrorMessageEnum.swift */,
 				59536698227AF25E00502B89 /* CheckTextFieldText.swift */,
-				59E6FDFF227C335300EFAE55 /* AccountError.swift */,
-				5913F0AF228191F900562436 /* StoreProvider.swift */,
-				59D9260022829E5C004EBEEC /* BookingDataProvider.swift */,
+				5913F0AF228191F900562436 /* StoreManger.swift */,
+				59D9260022829E5C004EBEEC /* BookingDataManger.swift */,
+				59D926042282ADC7004EBEEC /* UserManger.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -955,7 +958,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59EED8342278BB40006A52C7 /* StoreReviewViewController.swift in Sources */,
-				59D9260122829E5C004EBEEC /* BookingDataProvider.swift in Sources */,
+				59D9260122829E5C004EBEEC /* BookingDataManger.swift in Sources */,
 				59E7F62E2281F93400EF8906 /* FirebaseResultEnum.swift in Sources */,
 				597F044F225F210F00BAAFEE /* SignUpViewController.swift in Sources */,
 				5907F6972259DE3C008BB604 /* StoreDescriptionTableViewCell.swift in Sources */,
@@ -995,7 +998,7 @@
 				59536697227AEF8C00502B89 /* EditStoreInfoViewController.swift in Sources */,
 				598B8CD82254BFF80061F03B /* UITableView+Extension.swift in Sources */,
 				59ABB0232258732B00AE937A /* SettingTableViewCell.swift in Sources */,
-				5913F0B0228191F900562436 /* StoreProvider.swift in Sources */,
+				5913F0B0228191F900562436 /* StoreManger.swift in Sources */,
 				59ABB029225878C700AE937A /* SettingContentCategory.swift in Sources */,
 				5933CBBE2274774600E0C114 /* UIViewController+Extension.swift in Sources */,
 				592674832270D8A60050E161 /* MessageDetailTableViewCell.swift in Sources */,
@@ -1023,6 +1026,7 @@
 				59F81F8F2254625C00C04E32 /* PBTabBarController.swift in Sources */,
 				59483D7A2268488A00FD211E /* PasswordChangeViewController.swift in Sources */,
 				59ABB0382259084800AE937A /* StoreDetailViewController.swift in Sources */,
+				59D926052282ADC7004EBEEC /* UserManger.swift in Sources */,
 				59B43E14226ECD4300598538 /* UICollectionVIew+Extension.swift in Sources */,
 				5953668E227A9ADD00502B89 /* SuperMangerStoreConfirmViewController.swift in Sources */,
 				59B43E18226F03A300598538 /* UIButton+Extension.swift in Sources */,

@@ -29,6 +29,7 @@ class SearchStoreViewController: UIViewController {
     @IBOutlet weak var backgroundColorView: UIView!
     
     private let noDataView = NoDataView()
+    let storeProvider = StoreManger()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,35 +53,26 @@ class SearchStoreViewController: UIViewController {
         
         PBProgressHUD.addLoadingView(animated: true)
         
-        DispatchQueue.global().async {
-            
-            FirebaseManger.shared.getStoreInfo { [weak self] result in
-                
-                DispatchQueue.main.async {
+        storeProvider.getStoreDatas(completionHandler: { [weak self] (result) in
+                PBProgressHUD.dismissLoadingView()
+                self?.tableView.endHeaderRefreshing()
+                switch result {
                     
-                    PBProgressHUD.dismissLoadingView(animated: true)
+                case .success(let data):
                     
-                    self?.tableView.endHeaderRefreshing()
+                    guard let filterData = self?.setupFilterStoreData(storeData: data) else {
+                        
+                                                    self?.storeDatas = data
+                                                    return
+                                                }
                     
-                    switch result {
-                        
-                    case .success(let data):
-                        
-                        guard let filterData = self?.setupFilterStoreData(storeData: data) else {
-                            
-                            self?.storeDatas = data
-                            return
-                        }
-                        
-                        self?.storeDatas = filterData
-                        
-                    case .failure(let error):
-                        
-                        self?.addErrorTypeAlertMessage(error: error)
-                    }
+                                                self?.storeDatas = filterData
+                case .failure(let error):
+                    
+                    self?.addErrorTypeAlertMessage(error: error)
                 }
-            }
-        }
+                
+            })
     }
     
     private func tableViewSetup() {
@@ -98,15 +90,15 @@ class SearchStoreViewController: UIViewController {
     
     @objc func notificationData(notifcation: NSNotification) {
         
-        if notifcation.name == NSNotification.storeDatas {
-            
-            let filterData = setupFilterStoreData(storeData: FirebaseManger.shared.storeDatas)
-            self.storeDatas = filterData
-        }
-        if notifcation.name == NSNotification.userData {
-            
-            self.storeDatas = setupFilterStoreData(storeData: FirebaseManger.shared.storeDatas)
-        }
+//        if notifcation.name == NSNotification.storeDatas {
+//
+//            let filterData = setupFilterStoreData(storeData: FirebaseManger.shared.storeDatas)
+//            self.storeDatas = filterData
+//        }
+//        if notifcation.name == NSNotification.userData {
+//
+//            self.storeDatas = setupFilterStoreData(storeData: FirebaseManger.shared.storeDatas)
+//        }
     }
     
     private func setupFilterStoreData(storeData: [StoreData]) -> [StoreData] {

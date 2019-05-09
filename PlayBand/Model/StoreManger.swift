@@ -8,18 +8,18 @@
 
 import Foundation
 
-class StoreProvider {
+class StoreManger {
     
     private let firebaseStoreManger = FireBaseStoreDataManger()
     
-    let bookingDataProVider = BookingDataProvider()
+    let bookingDataProVider = BookingDataManger()
     
     func getStoreDatas(completionHandler: @escaping (Result<[StoreData]>) -> Void) {
         
         firebaseStoreManger.getStoresData(completionHandler: completionHandler)
     }
     
-    func getStoreBookingDatas(storeName: String, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
+    func getStoreBookingDatas(storeName: String, completionHandler: @escaping (Result<[BookingTimeAndRoom]>) -> Void) {
         
         bookingDataProVider.getStoreBookingDatas(storeName: storeName, completionHandler: completionHandler)
     }

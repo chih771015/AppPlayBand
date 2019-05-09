@@ -10,37 +10,35 @@ import UIKit
 
 class MessageViewController: UIViewController {
     
-    @IBAction func barButtonAction(_ sender: Any) {
+    func setupMessage(with type: MessageFetchDataEnum) {
+        
+        self.messageStatus = type
+        self.navigationItem.title = type.title
+    }
+    
+    func changeViewModel() {
         
         if FirebaseManger.shared.storeName.isEmpty {
             self.addErrorAlertMessage(message: "你沒有店家可以管理")
             return
         }
         
-        let alert = UIAlertController(title: "切換模式", message: "請選擇模式", preferredStyle: .actionSheet)
-        
-        let actionUser = UIAlertAction(title: "用戶訂單模式", style: .default) { [weak self] (_) in
-            self?.messageStatus = .normal
-            self?.navigationItem.title = "用戶訂單模式"
-        }
-        actionUser.setValue(UIColor.playBandColorEnd, forKey: "titleTextColor")
-        alert.addAction(actionUser)
+        var actionAndHandlers: [ActionHandler] = [(MessageFetchDataEnum.normal.title, { [weak self] _ in
+            self?.setupMessage(with: .normal)
+        })]
         
         for store in FirebaseManger.shared.storeName {
-            let title = "管理\(store)"
-            let actionManger = UIAlertAction(title: title, style: .default) { [weak self] (_) in
-                self?.messageStatus = .store(store)
-                self?.navigationItem.title = title
-            }
-            actionManger.setupActionColor()
-            alert.addAction(actionManger)
             
+            let action: ActionHandler = (MessageFetchDataEnum.store(store).title, { [weak self] _ in self?.setupMessage(with: .store(store))})
+            actionAndHandlers.append(action)
         }
         
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        cancelAction.setValue(UIColor.playBandColorEnd, forKey: "titleTextColor")
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
+        self.addAlertActionSheet(title: "選擇訂單模式", message: nil, actionTitleAndHandlers: actionAndHandlers, cancelTitle: "取消")
+    }
+    
+    @IBAction func barButtonAction(_ sender: Any) {
+        
+        changeViewModel()
     }
     
     @IBAction func tobeConfirmAction() {
@@ -87,7 +85,9 @@ class MessageViewController: UIViewController {
     private var confirmVC: MessageOrderViewController?
     private var refuseVC: MessageOrderViewController?
     private var messageStatus = MessageFetchDataEnum.normal {
+        
         didSet {
+         
             self.userBookingData = []
             self.fetchData()
         }
@@ -97,13 +97,14 @@ class MessageViewController: UIViewController {
         super.viewDidLoad()
         view.layoutIfNeeded()
         scrollView.layoutIfNeeded()
-        // Do any additional setup after loading the view.
         setupData()
     }
     
     deinit {
+        
         NotificationCenter.default.removeObserver(self)
     }
+    
     private func setupData() {
         
         setupNotifaication(nsNotifcationName: NSNotification.storeDatas)
@@ -114,6 +115,7 @@ class MessageViewController: UIViewController {
     }
     
     private func setupNotifaication(nsNotifcationName: NSNotification.Name) {
+        
         NotificationCenter.default.addObserver(self, selector: #selector(getBookingData(notification:)), name: nsNotifcationName, object: nil)
         
     }
