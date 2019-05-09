@@ -97,43 +97,40 @@ extension MessageOrderViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: MessageOrderTableViewCell.self),
-            for: indexPath) as? MessageOrderTableViewCell else {
-            return UITableViewCell()
-        }
-        
-        let data = bookingData[indexPath.row]
-        let title = data.userInfo.name
-        let year = data.bookingTime.date.year
-        let month = data.bookingTime.date.month
-        let day = data.bookingTime.date.day
-        let date = "\(year) 年 \(month) 月 \(day) 日"
-        let hours = data.bookingTime.hoursCount()
-        var status = data.status
-        switch status {
-        case BookingStatus.confirm.rawValue:
-            status = BookingStatus.confirm.display
-        case BookingStatus.refuse.rawValue:
-            status = BookingStatus.refuse.display
-        case BookingStatus.tobeConfirm.rawValue:
-            status = BookingStatus.tobeConfirm.display
-        default:
-            status = "BUG"
-        }
-        let url = data.userInfo.photoURL
-        let storeName = data.store
-        let storeURL = FirebaseManger.shared.storeDatas.first(where: {$0.name == storeName})?.photourl
-        
-        switch self.status {
-            
-        case .normal:
-
-            cell.setupCell(title: storeName, date: date, hours: hours, status: status, url: storeURL)
-        case .store:
-            cell.setupCell(title: title, date: date, hours: hours, status: status, url: url)
-        }
-        return cell
+//        guard let cell = tableView.dequeueReusableCell(
+//            withIdentifier: String(describing: MessageOrderTableViewCell.self),
+//            for: indexPath) as? MessageOrderTableViewCell else {
+//            return UITableViewCell()
+//        }
+//
+//        let data = bookingData[indexPath.row]
+//        let title = data.userInfo.name
+//        let date = data.bookingTime.returnDateText()
+//        let hours = data.bookingTime.hoursCount()
+//        var status = data.status
+//        switch status {
+//        case BookingStatus.confirm.rawValue:
+//            status = BookingStatus.confirm.display
+//        case BookingStatus.refuse.rawValue:
+//            status = BookingStatus.refuse.display
+//        case BookingStatus.tobeConfirm.rawValue:
+//            status = BookingStatus.tobeConfirm.display
+//        default:
+//            status = "BUG"
+//        }
+//        let url = data.userInfo.photoURL
+//        let storeName = data.store
+//        let storeURL = FirebaseManger.shared.storeDatas.first(where: {$0.name == storeName})?.photourl
+//
+//        switch self.status {
+//
+//        case .normal:
+//
+//            cell.setupCell(title: storeName, date: date, hours: hours, status: status, url: storeURL)
+//        case .store:
+//            cell.setupCell(title: title, date: date, hours: hours, status: status, url: url)
+//        }
+        return status.cellForIndexPath(tableView: tableView, at: indexPath, bookingData: bookingData[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -149,4 +146,9 @@ extension MessageOrderViewController: UITableViewDataSource, UITableViewDelegate
       
         return 130
     }
+}
+
+protocol MessageOrderChild: class {
+    
+    func upRefresh(_ viewController: MessageOrderViewController)
 }

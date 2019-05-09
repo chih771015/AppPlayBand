@@ -39,6 +39,7 @@ class FireBaseStoreDataManger {
             case .success(let datas):
                 
                 let storedatas = DataTransform.dataArrayReturnWithoutOption(datas: datas.map({StoreData(dictionary: $0)}))
+                FirebaseManger.shared.storeDatas = storedatas
                 completionHandler(.success(storedatas))
             case .failure(let error):
                 

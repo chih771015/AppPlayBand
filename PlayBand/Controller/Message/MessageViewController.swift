@@ -10,30 +10,30 @@ import UIKit
 
 class MessageViewController: UIViewController {
     
-    func setupMessage(with type: MessageFetchDataEnum) {
+    private enum SegueName: String {
         
-        self.messageStatus = type
-        self.navigationItem.title = type.title
+        case tobeConfirm
+        case refuse
+        case confirm
     }
     
-    func changeViewModel() {
+    private enum ChangeModel {
         
-        if FirebaseManger.shared.storeName.isEmpty {
-            self.addErrorAlertMessage(message: "你沒有店家可以管理")
-            return
-        }
+        case noStoreMessage
+        case title
+        case cancelTitle
         
-        var actionAndHandlers: [ActionHandler] = [(MessageFetchDataEnum.normal.title, { [weak self] _ in
-            self?.setupMessage(with: .normal)
-        })]
-        
-        for store in FirebaseManger.shared.storeName {
+        var title: String {
             
-            let action: ActionHandler = (MessageFetchDataEnum.store(store).title, { [weak self] _ in self?.setupMessage(with: .store(store))})
-            actionAndHandlers.append(action)
+            switch self {
+            case .noStoreMessage:
+                return "你沒有店家可以管理"
+            case .title:
+                return "選擇訂單模式"
+            case .cancelTitle:
+                return "取消"
+            }
         }
-        
-        self.addAlertActionSheet(title: "選擇訂單模式", message: nil, actionTitleAndHandlers: actionAndHandlers, cancelTitle: "取消")
     }
     
     @IBAction func barButtonAction(_ sender: Any) {
@@ -64,16 +64,10 @@ class MessageViewController: UIViewController {
             scrollView.delegate = self
         }
     }
-    private enum SegueName: String {
-        
-        case tobeConfirm
-        case refuse
-        case confirm
-    }
     
     private let firebaseManger = FirebaseManger.shared
     
-    var userBookingData: [UserBookingData] = [] {
+    private var userBookingData: [UserBookingData] = [] {
         
         didSet {
             
@@ -149,10 +143,8 @@ class MessageViewController: UIViewController {
             self?.userBookingData = []
             self?.fetchData()
         }
-        
         childVC.loadViewIfNeeded()
         let identifier = segue.identifier
-        
         if identifier == SegueName.confirm.rawValue {
             
             self.confirmVC = childVC
@@ -190,7 +182,7 @@ class MessageViewController: UIViewController {
     
     @objc func getBookingData(notification: NSNotification) {
         
-        if notification.name == NSNotification.Name(NotificationCenterName.bookingData.rawValue) {
+        if notification.name == NSNotification.bookingData {
             PBProgressHUD.dismissLoadingView(animated: true)
             guard let bookingDatas = notification.object as? [UserBookingData] else {return}
             self.userBookingData = bookingDatas
@@ -203,6 +195,32 @@ class MessageViewController: UIViewController {
             
             setupChildDatas()
         }
+    }
+    
+    func setupModel(with type: MessageFetchDataEnum) {
+        
+        self.messageStatus = type
+        self.navigationItem.title = type.title
+    }
+    
+    func changeViewModel() {
+        
+        if FirebaseManger.shared.storeName.isEmpty {
+            self.addErrorAlertMessage(message: ChangeModel.noStoreMessage.title)
+            return
+        }
+        
+        var actionAndHandlers: [ActionHandler] = [(MessageFetchDataEnum.normal.title, { [weak self] _ in
+            self?.setupModel(with: .normal)
+        })]
+        
+        for store in FirebaseManger.shared.storeName {
+            
+            let action: ActionHandler = (MessageFetchDataEnum.store(store).title, { [weak self] _ in self?.setupModel(with: .store(store))})
+            actionAndHandlers.append(action)
+        }
+        
+        self.addAlertActionSheet(title: ChangeModel.title.title, message: nil, actionTitleAndHandlers: actionAndHandlers, cancelTitle: ChangeModel.cancelTitle.title)
     }
 }
 

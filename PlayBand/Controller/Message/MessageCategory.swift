@@ -86,7 +86,7 @@ enum MessageCategory: String {
         case .hours:
             cell.setupCell(title: rawValue, description: bookingData.bookingTime.hoursStringOnebyOne())
         case .price:
-            cell.setupCell(title: rawValue, description: bookingData.bookingTime.retureTotalPrice())
+            cell.setupCell(title: rawValue, description: bookingData.bookingTime.returnTotalPrice())
         case .room:
             cell.setupCell(title: rawValue, description: bookingData.bookingTime.room)
         default:

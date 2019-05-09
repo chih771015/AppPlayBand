@@ -90,11 +90,19 @@ struct BookingTimeAndRoom: Equatable, Comparable {
         return text
     }
     
-    func retureTotalPrice() -> String {
+    func returnTotalPrice() -> String {
         
         guard let intPrice = Int(price) else {return "舊資料"}
         let price = String(intPrice * hoursCount())
         return price
+    }
+    
+    func returnDateText() -> String {
+        
+        let year = date.year
+        let month = date.month
+        let day = date.day
+        return "\(year) 年 \(month) 月 \(day) 日"
     }
 
 }
