@@ -32,7 +32,7 @@ class StoreDetailViewController: UIViewController {
         }
     }
     
-    private let datas: [StoreContentCategory] = [.images, .name, .phone, .address, .price, .time, .description]
+    private let cellTypes: [StoreContentCategory] = [.images, .name, .phone, .address, .price, .time, .description]
     
     var storeData: StoreData? {
         
@@ -78,12 +78,12 @@ extension StoreDetailViewController: UITableViewDataSource, UITableViewDelegate 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return datas.count
+        return cellTypes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return datas[indexPath.row].cellForIndexPath(indexPath, tableView: tableView, data: self.storeData)
+        return cellTypes[indexPath.row].cellForIndexPath(indexPath, tableView: tableView, data: self.storeData)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

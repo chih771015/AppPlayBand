@@ -77,49 +77,9 @@ class MessageOrderDetailViewController: UIViewController {
         }
     }
     
-    private func rejectBooking(storeMessage: String) {
-        
-        guard let bookingData = self.bookingData else { return }
-        
-        PBProgressHUD.addLoadingView()
-        
-        FirebaseManger.shared.refuseBooking(
-            pathID: bookingData.pathID, storeName:
-        bookingData.store, userUID: bookingData.userUID, storeMessage: storeMessage) { [weak self] (result) in
-            
-            PBProgressHUD.dismissLoadingView()
-            
-            switch result {
-                
-            case .success(let message):
-                
-                self?.addSucessAlertMessage(title: message, message: nil, completionHanderInDismiss: { [weak self] in
-                    
-                    self?.navigationController?.popToRootViewController(animated: true)
-                })
-                
-            case .failure(let error):
-                
-                self?.addErrorTypeAlertMessage(error: error)
-            }
-        }
-    }
-    
     private var bookingData: UserBookingData?
     private var status = MessageFetchDataEnum.normal
-    
-    private var cellDatas: [MessageCategory] {
-        
-        switch status {
-            
-        case .normal:
-            return [ .storeName, .documentID, .status, .room, .time, .hours, .price,
-                     .userName, .userEmail, .userPhone, .userMessage, .storeMessageForStore]
-        case .store:
-            return [.userName, .uid, .userEmail, .userPhone, .userFacebook, .storeName, .documentID, .status,
-                    .room, .price, .time, .hours, .userMessage]
-        }
-    }
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -174,6 +134,10 @@ class MessageOrderDetailViewController: UIViewController {
             buttonViewHeight.constant = 0
         }
     }
+
+}
+
+extension MessageOrderDetailViewController {
     
     private func addStoreBlackList() {
         
@@ -182,18 +146,45 @@ class MessageOrderDetailViewController: UIViewController {
         }
         PBProgressHUD.addLoadingView()
         FirebaseManger.shared.storeAddUserBlackList(
-        userUid: bookingData.userUID, userName: bookingData.userInfo.name,
-        storeNames: FirebaseManger.shared.storeName) { [weak self] (result) in
+            userUid: bookingData.userUID, userName: bookingData.userInfo.name,
+            storeNames: FirebaseManger.shared.storeName) { [weak self] (result) in
+                PBProgressHUD.dismissLoadingView()
+                switch result {
+                    
+                case .success(let message):
+                    
+                    self?.addSucessAlertMessage(
+                        title: message, message: nil, completionHanderInDismiss: { [weak self] in
+                            
+                            self?.navigationController?.popViewController(animated: true)
+                    })
+                case .failure(let error):
+                    
+                    self?.addErrorTypeAlertMessage(error: error)
+                }
+        }
+    }
+    
+    private func rejectBooking(storeMessage: String) {
+        
+        guard let bookingData = self.bookingData else { return }
+        
+        PBProgressHUD.addLoadingView()
+        FirebaseManger.shared.refuseBooking(
+            pathID: bookingData.pathID, storeName:
+        bookingData.store, userUID: bookingData.userUID, storeMessage: storeMessage) { [weak self] (result) in
+            
             PBProgressHUD.dismissLoadingView()
+            
             switch result {
                 
             case .success(let message):
                 
-                self?.addSucessAlertMessage(
-                    title: message, message: nil, completionHanderInDismiss: { [weak self] in
+                self?.addSucessAlertMessage(title: message, message: nil, completionHanderInDismiss: { [weak self] in
                     
-                        self?.navigationController?.popViewController(animated: true)
+                    self?.navigationController?.popToRootViewController(animated: true)
                 })
+                
             case .failure(let error):
                 
                 self?.addErrorTypeAlertMessage(error: error)
@@ -205,25 +196,17 @@ class MessageOrderDetailViewController: UIViewController {
 extension MessageOrderDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let sectionHeader = tableView.dequeueReusableCell(
-            withIdentifier: String(
-                describing: MessageImageTableViewCell.self)
-            ) as? MessageImageTableViewCell else {return UIView()}
-        if let store = FirebaseManger.shared.storeDatas.first(where: {$0.name == bookingData?.store}) {
-            
-            sectionHeader.setupCell(url: store.photourl)
-        }
         
-        return sectionHeader
+        return status.headerForIndexPathInDetail(tableView: tableView, at: section, bookingData: bookingData)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return cellDatas.count
+        return status.orderDetailCellType.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return cellDatas[indexPath.row].cellForIndexPathInDetail(indexPath, tableView: tableView, data: bookingData)
+        return status.orderDetailCellType[indexPath.row].cellForIndexPathInDetail(indexPath, tableView: tableView, data: bookingData)
     }
 }

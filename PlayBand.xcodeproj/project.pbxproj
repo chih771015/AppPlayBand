@@ -42,6 +42,7 @@
 		594CAA8A226395F5009A0921 /* UserDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594CAA89226395F5009A0921 /* UserDataStruct.swift */; };
 		594ED6B1226058E90054CCC9 /* MessageConfirmPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594ED6AF226058E90054CCC9 /* MessageConfirmPageTableViewCell.swift */; };
 		594ED6B2226058E90054CCC9 /* MessageConfirmPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 594ED6B0226058E90054CCC9 /* MessageConfirmPageTableViewCell.xib */; };
+		595044C72284271E00BB9002 /* BookingStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595044C62284271E00BB9002 /* BookingStatusView.swift */; };
 		59521209227EE78600B8A1E2 /* BlackListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59521207227EE78600B8A1E2 /* BlackListTableViewCell.swift */; };
 		5952120A227EE78600B8A1E2 /* BlackListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59521208227EE78600B8A1E2 /* BlackListTableViewCell.xib */; };
 		5952315C2254AB51008C007F /* ProfileUserPictureImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5952315B2254AB51008C007F /* ProfileUserPictureImageView.swift */; };
@@ -179,6 +180,7 @@
 		594CAA89226395F5009A0921 /* UserDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStruct.swift; sourceTree = "<group>"; };
 		594ED6AF226058E90054CCC9 /* MessageConfirmPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageConfirmPageTableViewCell.swift; sourceTree = "<group>"; };
 		594ED6B0226058E90054CCC9 /* MessageConfirmPageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageConfirmPageTableViewCell.xib; sourceTree = "<group>"; };
+		595044C62284271E00BB9002 /* BookingStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingStatusView.swift; sourceTree = "<group>"; };
 		59521207227EE78600B8A1E2 /* BlackListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackListTableViewCell.swift; sourceTree = "<group>"; };
 		59521208227EE78600B8A1E2 /* BlackListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlackListTableViewCell.xib; sourceTree = "<group>"; };
 		5952315B2254AB51008C007F /* ProfileUserPictureImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUserPictureImageView.swift; sourceTree = "<group>"; };
@@ -725,6 +727,7 @@
 				592674822270D8A60050E161 /* MessageDetailTableViewCell.xib */,
 				592FF2D62272271000872A17 /* MessageImageTableViewCell.swift */,
 				592FF2D72272271000872A17 /* MessageImageTableViewCell.xib */,
+				595044C62284271E00BB9002 /* BookingStatusView.swift */,
 			);
 			path = MessageOrder;
 			sourceTree = "<group>";
@@ -1001,6 +1004,7 @@
 				5913F0B0228191F900562436 /* StoreManger.swift in Sources */,
 				59ABB029225878C700AE937A /* SettingContentCategory.swift in Sources */,
 				5933CBBE2274774600E0C114 /* UIViewController+Extension.swift in Sources */,
+				595044C72284271E00BB9002 /* BookingStatusView.swift in Sources */,
 				592674832270D8A60050E161 /* MessageDetailTableViewCell.swift in Sources */,
 				59DFF8542257465800273724 /* PhotoViewController.swift in Sources */,
 				595F939F227B52AA007DA364 /* EditStorePhotoViewController.swift in Sources */,

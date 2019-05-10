@@ -23,7 +23,33 @@ enum MessageFetchDataEnum {
         }
     }
     
-    func cellForIndexPath(tableView: UITableView, at indexPath: IndexPath, bookingData: UserBookingData) -> UITableViewCell {
+    var orderDetailCellType: [MessageCategory] {
+        
+        switch self {
+            
+        case .normal:
+            return [ .storeName, .documentID, .status, .room, .time, .hours, .price,
+                     .userName, .userEmail, .userPhone, .userMessage, .storeMessageForStore]
+        case .store:
+            return [.userName, .uid, .userEmail, .userPhone, .userFacebook, .storeName, .documentID, .status,
+                    .room, .price, .time, .hours, .userMessage]
+        }
+    }
+    
+    func headerForIndexPathInDetail(tableView: UITableView, at section: Int, bookingData: UserBookingData?) -> UIView? {
+        
+        guard let sectionHeader = tableView.dequeueReusableCell(
+            withIdentifier: String(
+                describing: MessageImageTableViewCell.self)
+            ) as? MessageImageTableViewCell else {return UIView()}
+        if let store = FirebaseManger.shared.storeDatas.first(where: {$0.name == bookingData?.store}) {
+            
+            sectionHeader.setupCell(url: store.photourl)
+        }
+        return sectionHeader
+    }
+    
+    func cellForIndexPathInOrder(tableView: UITableView, at indexPath: IndexPath, bookingData: UserBookingData) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: MessageOrderTableViewCell.self),

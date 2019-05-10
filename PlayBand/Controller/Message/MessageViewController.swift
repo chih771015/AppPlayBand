@@ -138,11 +138,7 @@ class MessageViewController: UIViewController {
         
         guard let childVC = segue.destination as? MessageOrderViewController else { return }
         
-        childVC.setupRefreshHandler { [weak self] in
-            
-            self?.userBookingData = []
-            self?.fetchData()
-        }
+        childVC.delegate = self
         childVC.loadViewIfNeeded()
         let identifier = segue.identifier
         if identifier == SegueName.confirm.rawValue {
@@ -197,13 +193,13 @@ class MessageViewController: UIViewController {
         }
     }
     
-    func setupModel(with type: MessageFetchDataEnum) {
+    private func setupModel(with type: MessageFetchDataEnum) {
         
         self.messageStatus = type
         self.navigationItem.title = type.title
     }
     
-    func changeViewModel() {
+    private func changeViewModel() {
         
         if FirebaseManger.shared.storeName.isEmpty {
             self.addErrorAlertMessage(message: ChangeModel.noStoreMessage.title)
@@ -230,5 +226,13 @@ extension MessageViewController: UIScrollViewDelegate {
         
         let nowX = scrollView.contentOffset.x
         self.underLineConstraint.constant = nowX / 3
+    }
+}
+
+extension MessageViewController: MessageOrderChild {
+    
+    func upRefresh(_ viewController: MessageOrderViewController) {
+        
+        fetchData()
     }
 }

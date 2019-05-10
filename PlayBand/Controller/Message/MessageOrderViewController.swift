@@ -16,13 +16,12 @@ class MessageOrderViewController: UIViewController {
         
         didSet {
             
-            tableView.endHeaderRefreshing()
             tableView.reloadData()
         }
     }
     
-    private var refreshHandler: () -> Void = {}
-    private var status = MessageFetchDataEnum.normal
+    private var cellStatus = MessageFetchDataEnum.normal
+    var delegate: MessageOrderChild?
     
     override func viewDidLoad() {
         
@@ -53,15 +52,11 @@ class MessageOrderViewController: UIViewController {
         }
         tableView.layoutIfNeeded()
     }
-    func setupRefreshHandler(refreshHandler: @escaping () -> Void) {
-        
-        self.refreshHandler = refreshHandler
-    }
     
     func setupBookingData(data: [UserBookingData], status: MessageFetchDataEnum) {
     
         self.bookingData = data
-        self.status = status
+        self.cellStatus = status
     }
 }
 
@@ -97,40 +92,7 @@ extension MessageOrderViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        guard let cell = tableView.dequeueReusableCell(
-//            withIdentifier: String(describing: MessageOrderTableViewCell.self),
-//            for: indexPath) as? MessageOrderTableViewCell else {
-//            return UITableViewCell()
-//        }
-//
-//        let data = bookingData[indexPath.row]
-//        let title = data.userInfo.name
-//        let date = data.bookingTime.returnDateText()
-//        let hours = data.bookingTime.hoursCount()
-//        var status = data.status
-//        switch status {
-//        case BookingStatus.confirm.rawValue:
-//            status = BookingStatus.confirm.display
-//        case BookingStatus.refuse.rawValue:
-//            status = BookingStatus.refuse.display
-//        case BookingStatus.tobeConfirm.rawValue:
-//            status = BookingStatus.tobeConfirm.display
-//        default:
-//            status = "BUG"
-//        }
-//        let url = data.userInfo.photoURL
-//        let storeName = data.store
-//        let storeURL = FirebaseManger.shared.storeDatas.first(where: {$0.name == storeName})?.photourl
-//
-//        switch self.status {
-//
-//        case .normal:
-//
-//            cell.setupCell(title: storeName, date: date, hours: hours, status: status, url: storeURL)
-//        case .store:
-//            cell.setupCell(title: title, date: date, hours: hours, status: status, url: url)
-//        }
-        return status.cellForIndexPath(tableView: tableView, at: indexPath, bookingData: bookingData[indexPath.row])
+        return cellStatus.cellForIndexPathInOrder(tableView: tableView, at: indexPath, bookingData: bookingData[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -138,7 +100,7 @@ extension MessageOrderViewController: UITableViewDataSource, UITableViewDelegate
         guard let nextVC = self.storyboard?.instantiateViewController(
             withIdentifier: String(
                 describing: MessageOrderDetailViewController.self)) as? MessageOrderDetailViewController else {return}
-        nextVC.setupBookingData(data: bookingData[indexPath.row], status: status)
+        nextVC.setupBookingData(data: bookingData[indexPath.row], status: cellStatus)
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
@@ -146,7 +108,13 @@ extension MessageOrderViewController: UITableViewDataSource, UITableViewDelegate
       
         return 130
     }
+    
+    func refreshHandler() {
+        
+        self.delegate?.upRefresh(self)
+    }
 }
+
 
 protocol MessageOrderChild: class {
     
