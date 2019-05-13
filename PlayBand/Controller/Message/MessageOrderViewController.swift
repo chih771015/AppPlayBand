@@ -21,7 +21,7 @@ class MessageOrderViewController: UIViewController {
     }
     
     private var cellStatus = MessageFetchDataEnum.normal
-    var delegate: MessageOrderChild?
+    var delegate: MessageOrderChildDelegate?
     
     override func viewDidLoad() {
         
@@ -116,7 +116,7 @@ extension MessageOrderViewController: UITableViewDataSource, UITableViewDelegate
 }
 
 
-protocol MessageOrderChild: class {
+protocol MessageOrderChildDelegate: class {
     
     func upRefresh(_ viewController: MessageOrderViewController)
 }

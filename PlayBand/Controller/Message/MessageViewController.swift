@@ -45,7 +45,6 @@ class MessageViewController: UIViewController {
         
         self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
-    
     @IBAction func confirmAction() {
         
         self.scrollView.setContentOffset(CGPoint(x: self.view.frame.width, y: 0), animated: true)
@@ -229,7 +228,7 @@ extension MessageViewController: UIScrollViewDelegate {
     }
 }
 
-extension MessageViewController: MessageOrderChild {
+extension MessageViewController: MessageOrderChildDelegate {
     
     func upRefresh(_ viewController: MessageOrderViewController) {
         

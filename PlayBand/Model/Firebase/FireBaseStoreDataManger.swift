@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 enum StoreDataKey: String {
     
@@ -25,14 +26,18 @@ enum StoreDataKey: String {
 
 class FireBaseStoreDataManger {
     
-    lazy var fireStoreDatabase = FirebaseManger.shared.fireStoreDatabase()
+    private lazy var fireStoreDatabase = FirebaseManger.shared.fireStoreDatabase()
     
-    let firebaseProvider = FirebaseManger.shared
+    private let firebaseManger: FirebaseReadAndWrite
     
-    func getStoresData(completionHandler: @escaping (Result<[StoreData]>) -> Void) {
+    init(firebaseManger: FirebaseReadAndWrite = FirebaseManger.shared) {
+        self.firebaseManger = firebaseManger
+    }
+    
+    func getStoresData(refName: FirebaseCollectionName = .store ,completionHandler: @escaping (Result<[StoreData]>) -> Void) {
         
-        let ref = fireStoreDatabase.collectionName(.store)
-        firebaseProvider.collectionGetDocuments(ref: ref) { (result) in
+        let ref = fireStoreDatabase.collectionName(refName)
+        firebaseManger.collectionGetDocuments(ref: ref) { (result) in
             
             switch result {
                 
@@ -50,10 +55,9 @@ class FireBaseStoreDataManger {
     
     func updateStoreData(storeData: StoreData, completionHandler: @escaping (Result<String>) -> Void) {
         
-        
         let fireBaseData = storeDataToFirebaseData(storeData: storeData)
         let ref = fireStoreDatabase.collectionName(.store).document(storeData.name)
-        firebaseProvider.documentUpdata(ref: ref, data: fireBaseData) { (result) in
+        firebaseManger.documentUpdata(ref: ref, data: fireBaseData) { (result) in
             switch result {
             case .success(_):
                 
@@ -94,4 +98,11 @@ class FireBaseStoreDataManger {
         
         return dictionay
     }
+}
+
+protocol FirebaseReadAndWrite {
+    
+    func collectionGetDocuments(ref: CollectionReference, completionHandler: @escaping (Result<[FireBaseData]>) -> Void)
+    
+    func documentUpdata(ref: DocumentReference, data: [AnyHashable : Any], completionHandler: @escaping (Result<Bool>) -> Void)
 }

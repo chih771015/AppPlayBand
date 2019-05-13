@@ -61,6 +61,7 @@
 		5959C806226DA1C300AA62AD /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5959C805226DA1C300AA62AD /* UIColor+Extension.swift */; };
 		595F939D227B4CEB007DA364 /* EditStoreRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595F939C227B4CEB007DA364 /* EditStoreRoomViewController.swift */; };
 		595F939F227B52AA007DA364 /* EditStorePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595F939E227B52AA007DA364 /* EditStorePhotoViewController.swift */; };
+		5961D564228975D0002415AE /* MockFirebaseManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5961D563228975D0002415AE /* MockFirebaseManger.swift */; };
 		596662082275D703006DE29F /* JGProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662072275D703006DE29F /* JGProgressHUD.swift */; };
 		5966620A2275DEE9006DE29F /* MJRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662092275DEE9006DE29F /* MJRefresh.swift */; };
 		597F044A225EDDD600BAAFEE /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597F0449225EDDD600BAAFEE /* SignIn.storyboard */; };
@@ -137,10 +138,22 @@
 		59F81F9F22549FCD00C04E32 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F81F9E22549FCD00C04E32 /* ProfileViewController.swift */; };
 		59F81FA12254A3F200C04E32 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F81FA02254A3F100C04E32 /* UIView+Extension.swift */; };
 		59FCFD3922620CAE006402E5 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCFD3822620CAE006402E5 /* Firebase.swift */; };
+		59FEBD3622856B0A001BD17E /* PlayBandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FEBD3522856B0A001BD17E /* PlayBandTests.swift */; };
 		59FF33CC22701D3F00F8DCAA /* MessageOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FF33CA22701D3F00F8DCAA /* MessageOrderTableViewCell.swift */; };
 		59FF33CD22701D3F00F8DCAA /* MessageOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59FF33CB22701D3F00F8DCAA /* MessageOrderTableViewCell.xib */; };
 		59FF33CF2270316800F8DCAA /* MessageOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FF33CE2270316800F8DCAA /* MessageOrderViewController.swift */; };
+		DA0E9EB4284A6D7949FDF809 /* Pods_PlayBandTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F14FCF48C29AAE6527BF57D2 /* Pods_PlayBandTests.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		59FEBD3822856B0A001BD17E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5941D821225359D500FDEEBA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5941D828225359D500FDEEBA;
+			remoteInfo = PlayBand;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4DC66BA7995D6F264BD1A145 /* Pods-PlayBand.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayBand.release.xcconfig"; path = "Target Support Files/Pods-PlayBand/Pods-PlayBand.release.xcconfig"; sourceTree = "<group>"; };
@@ -199,6 +212,7 @@
 		5959C805226DA1C300AA62AD /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		595F939C227B4CEB007DA364 /* EditStoreRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStoreRoomViewController.swift; sourceTree = "<group>"; };
 		595F939E227B52AA007DA364 /* EditStorePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStorePhotoViewController.swift; sourceTree = "<group>"; };
+		5961D563228975D0002415AE /* MockFirebaseManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFirebaseManger.swift; sourceTree = "<group>"; };
 		596662072275D703006DE29F /* JGProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUD.swift; sourceTree = "<group>"; };
 		596662092275DEE9006DE29F /* MJRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJRefresh.swift; sourceTree = "<group>"; };
 		597F0449225EDDD600BAAFEE /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
@@ -275,11 +289,17 @@
 		59F81F9E22549FCD00C04E32 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		59F81FA02254A3F100C04E32 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		59FCFD3822620CAE006402E5 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		59FEBD3322856B0A001BD17E /* PlayBandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlayBandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		59FEBD3522856B0A001BD17E /* PlayBandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBandTests.swift; sourceTree = "<group>"; };
+		59FEBD3722856B0A001BD17E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59FF33CA22701D3F00F8DCAA /* MessageOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageOrderTableViewCell.swift; sourceTree = "<group>"; };
 		59FF33CB22701D3F00F8DCAA /* MessageOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageOrderTableViewCell.xib; sourceTree = "<group>"; };
 		59FF33CE2270316800F8DCAA /* MessageOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageOrderViewController.swift; sourceTree = "<group>"; };
+		B8A196487A2B84FFB89F2AE9 /* Pods-PlayBandTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayBandTests.release.xcconfig"; path = "Target Support Files/Pods-PlayBandTests/Pods-PlayBandTests.release.xcconfig"; sourceTree = "<group>"; };
 		C291E05659581482F9363EF6 /* Pods-PlayBand.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayBand.debug.xcconfig"; path = "Target Support Files/Pods-PlayBand/Pods-PlayBand.debug.xcconfig"; sourceTree = "<group>"; };
 		CB1175214C85AD46AEC4EF17 /* Pods_PlayBand.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayBand.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCBFAB262ACA0C3084B48622 /* Pods-PlayBandTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayBandTests.debug.xcconfig"; path = "Target Support Files/Pods-PlayBandTests/Pods-PlayBandTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F14FCF48C29AAE6527BF57D2 /* Pods_PlayBandTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayBandTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +308,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				04EE224A9427F6AF53FCEB53 /* Pods_PlayBand.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59FEBD3022856B0A001BD17E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA0E9EB4284A6D7949FDF809 /* Pods_PlayBandTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				5941D82B225359D500FDEEBA /* PlayBand */,
+				59FEBD3422856B0A001BD17E /* PlayBandTests */,
 				5941D82A225359D500FDEEBA /* Products */,
 				6E3F15B2F76F23D3001D8D73 /* Pods */,
 				65305CFD1299762D2983A06F /* Frameworks */,
@@ -334,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				5941D829225359D500FDEEBA /* PlayBand.app */,
+				59FEBD3322856B0A001BD17E /* PlayBandTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -718,6 +748,16 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		59FEBD3422856B0A001BD17E /* PlayBandTests */ = {
+			isa = PBXGroup;
+			children = (
+				59FEBD3522856B0A001BD17E /* PlayBandTests.swift */,
+				59FEBD3722856B0A001BD17E /* Info.plist */,
+				5961D563228975D0002415AE /* MockFirebaseManger.swift */,
+			);
+			path = PlayBandTests;
+			sourceTree = "<group>";
+		};
 		59FF33C922701D1500F8DCAA /* MessageOrder */ = {
 			isa = PBXGroup;
 			children = (
@@ -736,6 +776,7 @@
 			isa = PBXGroup;
 			children = (
 				CB1175214C85AD46AEC4EF17 /* Pods_PlayBand.framework */,
+				F14FCF48C29AAE6527BF57D2 /* Pods_PlayBandTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -745,6 +786,8 @@
 			children = (
 				C291E05659581482F9363EF6 /* Pods-PlayBand.debug.xcconfig */,
 				4DC66BA7995D6F264BD1A145 /* Pods-PlayBand.release.xcconfig */,
+				DCBFAB262ACA0C3084B48622 /* Pods-PlayBandTests.debug.xcconfig */,
+				B8A196487A2B84FFB89F2AE9 /* Pods-PlayBandTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -773,6 +816,26 @@
 			productReference = 5941D829225359D500FDEEBA /* PlayBand.app */;
 			productType = "com.apple.product-type.application";
 		};
+		59FEBD3222856B0A001BD17E /* PlayBandTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 59FEBD3C22856B0A001BD17E /* Build configuration list for PBXNativeTarget "PlayBandTests" */;
+			buildPhases = (
+				D8E6E47E6ABE77C8676E94DC /* [CP] Check Pods Manifest.lock */,
+				59FEBD2F22856B0A001BD17E /* Sources */,
+				59FEBD3022856B0A001BD17E /* Frameworks */,
+				59FEBD3122856B0A001BD17E /* Resources */,
+				BECE95369C892A1A8E77B9C7 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				59FEBD3922856B0A001BD17E /* PBXTargetDependency */,
+			);
+			name = PlayBandTests;
+			productName = PlayBandTests;
+			productReference = 59FEBD3322856B0A001BD17E /* PlayBandTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -785,6 +848,10 @@
 				TargetAttributes = {
 					5941D828225359D500FDEEBA = {
 						CreatedOnToolsVersion = 10.2;
+					};
+					59FEBD3222856B0A001BD17E = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = 5941D828225359D500FDEEBA;
 					};
 				};
 			};
@@ -802,6 +869,7 @@
 			projectRoot = "";
 			targets = (
 				5941D828225359D500FDEEBA /* PlayBand */,
+				59FEBD3222856B0A001BD17E /* PlayBandTests */,
 			);
 		};
 /* End PBXProject section */
@@ -841,6 +909,13 @@
 				59B43E12226ECAD000598538 /* StoreImageCollectionViewCell.xib in Resources */,
 				59F81F9A2254642F00C04E32 /* Message.storyboard in Resources */,
 				59EED8302278B1F1006A52C7 /* EditTableHeaderFooterView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59FEBD3122856B0A001BD17E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -931,6 +1006,30 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlayBand/Pods-PlayBand-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BECE95369C892A1A8E77B9C7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlayBandTests/Pods-PlayBandTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlayBandTests/Pods-PlayBandTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C109DB257FF332B7B1C1507C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -947,6 +1046,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-PlayBand-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8E6E47E6ABE77C8676E94DC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PlayBandTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1065,7 +1186,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		59FEBD2F22856B0A001BD17E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5961D564228975D0002415AE /* MockFirebaseManger.swift in Sources */,
+				59FEBD3622856B0A001BD17E /* PlayBandTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		59FEBD3922856B0A001BD17E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5941D828225359D500FDEEBA /* PlayBand */;
+			targetProxy = 59FEBD3822856B0A001BD17E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5941D830225359D500FDEEBA /* Main.storyboard */ = {
@@ -1243,6 +1381,49 @@
 			};
 			name = Release;
 		};
+		59FEBD3A22856B0A001BD17E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCBFAB262ACA0C3084B48622 /* Pods-PlayBandTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = G9J3D558CX;
+				INFOPLIST_FILE = PlayBandTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.chihhsuan.PlayBandTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlayBand.app/PlayBand";
+			};
+			name = Debug;
+		};
+		59FEBD3B22856B0A001BD17E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8A196487A2B84FFB89F2AE9 /* Pods-PlayBandTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G9J3D558CX;
+				INFOPLIST_FILE = PlayBandTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.chihhsuan.PlayBandTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlayBand.app/PlayBand";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1260,6 +1441,15 @@
 			buildConfigurations = (
 				5941D83C225359D600FDEEBA /* Debug */,
 				5941D83D225359D600FDEEBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		59FEBD3C22856B0A001BD17E /* Build configuration list for PBXNativeTarget "PlayBandTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59FEBD3A22856B0A001BD17E /* Debug */,
+				59FEBD3B22856B0A001BD17E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -21,5 +21,10 @@ target 'PlayBand' do
     pod 'JGProgressHUD'
     pod 'Fabric', '~> 1.9.0'
     pod 'Crashlytics', '~> 3.12.0'
+
+     target 'PlayBandTests' do
+        inherit! :search_paths
+        pod 'Firebase'
+    end
 end
 

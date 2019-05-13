@@ -13,7 +13,7 @@ class StoreManger {
     private let firebaseStoreManger = FireBaseStoreDataManger()
     
     let bookingDataProVider = BookingDataManger()
-    
+
     func getStoreDatas(completionHandler: @escaping (Result<[StoreData]>) -> Void) {
         
         firebaseStoreManger.getStoresData(completionHandler: completionHandler)
@@ -29,4 +29,12 @@ class StoreManger {
         firebaseStoreManger.updateStoreData(storeData: storeData, completionHandler: completionHandler)
         
     }
+}
+
+protocol FirebaseGetStoreProtocol: class {
+    
+    func getStoresData(completionHandler: @escaping (Result<[StoreData]>) -> Void)
+    
+    func updateStoreData(storeData: StoreData, completionHandler: @escaping (Result<String>) -> Void)
+    
 }
