@@ -59,5 +59,4 @@ class MessageOrderTableViewCell: UITableViewCell {
         colorView.layer.addSublayer(layer)
         caGradientLayer = layer
     }
-
 }

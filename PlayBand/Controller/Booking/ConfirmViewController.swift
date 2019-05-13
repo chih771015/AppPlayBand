@@ -69,7 +69,7 @@ class ConfirmViewController: UIViewController {
                 
             case .failure(let error):
                 
-                self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription)
+                self?.addErrorTypeAlertMessage(error: error)
                 
             }
         }

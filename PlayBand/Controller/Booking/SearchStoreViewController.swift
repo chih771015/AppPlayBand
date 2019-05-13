@@ -28,23 +28,30 @@ class SearchStoreViewController: UIViewController {
     
     @IBOutlet weak var backgroundColorView: UIView!
     
-    private let noDataView = NoDataView()
-    let storeProvider = StoreManger()
+    private let storeManger = StoreManger()
+    private let cellType = StoreContentCategory.storeSearch
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // swiftlint: disable line_length
 
         tableView.beginHeaderRefreshing()
-        
-        NotificationCenter.default
-            .addObserver(
-            self, selector: #selector(notificationData(notifcation:)), name: NSNotification.storeDatas, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(notificationData(notifcation:)), name: NSNotification.userData, object: nil)
+        setupNotificationCenter()
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func setupNotificationCenter() {
+        
+        addNotificationObserver(notificationName: NSNotification.userData)
+        addNotificationObserver(notificationName: NSNotification.storeDatas)
+    }
+    
+    private func addNotificationObserver(notificationName: NSNotification.Name) {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationData(notifcation:)), name: notificationName, object: nil)
     }
     
     private func getStoreData() {
@@ -53,7 +60,7 @@ class SearchStoreViewController: UIViewController {
         
         PBProgressHUD.addLoadingView(animated: true)
         
-        storeProvider.getStoreDatas(completionHandler: { [weak self] (result) in
+        storeManger.getStoreDatas(completionHandler: { [weak self] (result) in
                 PBProgressHUD.dismissLoadingView()
                 self?.tableView.endHeaderRefreshing()
                 switch result {
@@ -90,15 +97,15 @@ class SearchStoreViewController: UIViewController {
     
     @objc func notificationData(notifcation: NSNotification) {
         
-//        if notifcation.name == NSNotification.storeDatas {
-//
-//            let filterData = setupFilterStoreData(storeData: FirebaseManger.shared.storeDatas)
-//            self.storeDatas = filterData
-//        }
-//        if notifcation.name == NSNotification.userData {
-//
-//            self.storeDatas = setupFilterStoreData(storeData: FirebaseManger.shared.storeDatas)
-//        }
+        if notifcation.name == NSNotification.storeDatas {
+
+            let filterData = setupFilterStoreData(storeData: FirebaseManger.shared.storeDatas)
+            self.storeDatas = filterData
+        }
+        if notifcation.name == NSNotification.userData {
+
+            self.storeDatas = setupFilterStoreData(storeData: FirebaseManger.shared.storeDatas)
+        }
     }
     
     private func setupFilterStoreData(storeData: [StoreData]) -> [StoreData] {
@@ -106,9 +113,10 @@ class SearchStoreViewController: UIViewController {
         if let name = FirebaseManger.shared.userData?.storeBlackList {
             
             return storeData.filter({!name.contains($0.name)})
+        } else {
+            
+            return storeData
         }
-        
-        return storeData
     }
 }
 
@@ -121,17 +129,7 @@ extension SearchStoreViewController: UITableViewDataSource, UITableViewDelegate 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(
-                describing: SearchStoreTableViewCell.self),
-            for: indexPath) as? SearchStoreTableViewCell else {
-                return UITableViewCell()
-                
-        }
-        let storeData = storeDatas[indexPath.row]
-        cell.setupCell(title: storeData.name, imageURL: storeData.photourl,
-                       city: storeData.city, price: storeData.returnStorePriceLowToHigh())
-        return cell
+        return cellType.cellForeSearch(indexPath, tableView: tableView, storeData: storeDatas[indexPath.row])
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

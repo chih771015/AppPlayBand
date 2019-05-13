@@ -86,9 +86,14 @@ class MessageViewController: UIViewController {
         }
     }
     
+    let testView = ScrollViewWithThreeAction()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.stickSubView(testView)
         view.layoutIfNeeded()
+        testView.setupTitle(first: "等待回覆", second: "已預定", third: "已拒絕")
+        testView.delegate = self
         scrollView.layoutIfNeeded()
         setupData()
     }
@@ -211,11 +216,15 @@ class MessageViewController: UIViewController {
         
         for store in FirebaseManger.shared.storeName {
             
-            let action: ActionHandler = (MessageFetchDataEnum.store(store).title, { [weak self] _ in self?.setupModel(with: .store(store))})
+            let action: ActionHandler = (MessageFetchDataEnum.store(store).title, { [weak self] _ in
+                self?.setupModel(with: .store(store))})
             actionAndHandlers.append(action)
         }
         
-        self.addAlertActionSheet(title: ChangeModel.title.title, message: nil, actionTitleAndHandlers: actionAndHandlers, cancelTitle: ChangeModel.cancelTitle.title)
+        self.addAlertActionSheet(
+            title: ChangeModel.title.title, message: nil,
+            actionTitleAndHandlers: actionAndHandlers,
+            cancelTitle: ChangeModel.cancelTitle.title)
     }
 }
 
@@ -233,5 +242,20 @@ extension MessageViewController: MessageOrderChildDelegate {
     func upRefresh(_ viewController: MessageOrderViewController) {
         
         fetchData()
+    }
+}
+
+extension MessageViewController: ScrollViewWithThreeActionDelegate {
+    
+    func leftAction() {
+        print("left")
+    }
+    
+    func rightAction() {
+        print("right")
+    }
+    
+    func centerAction() {
+        print("center")
     }
 }

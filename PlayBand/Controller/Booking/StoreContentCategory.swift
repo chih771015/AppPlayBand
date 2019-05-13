@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 enum StoreContentCategory: String {
+    
+    case storeSearch
 
     case name = "店名"
     
@@ -37,10 +39,26 @@ enum StoreContentCategory: String {
             
         case .images:
             return String(describing: StoreTitleImageTableViewCell.self)
+        case .storeSearch:
+            return String(describing: SearchStoreTableViewCell.self)
         default:
             return String(describing: StoreDescriptionTableViewCell.self)
         }
 
+    }
+    
+    func cellForeSearch(_ indexPath: IndexPath, tableView: UITableView, storeData: StoreData) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: identifier, for: indexPath
+            ) as? SearchStoreTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        cell.setupCell(title: storeData.name, imageURL: storeData.photourl,
+                       city: storeData.city, price: storeData.returnStorePriceLowToHigh())
+        
+        return cell
     }
     
     func cellForSuperManger(_ indexPath: IndexPath,
