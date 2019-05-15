@@ -92,7 +92,11 @@ extension MessageOrderViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return cellStatus.cellForIndexPathInOrder(tableView: tableView, at: indexPath, bookingData: bookingData[indexPath.row])
+        return cellStatus.cellForIndexPathInOrder(
+            tableView: tableView,
+            at: indexPath,
+            bookingData: bookingData[indexPath.row]
+        )
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -114,7 +118,6 @@ extension MessageOrderViewController: UITableViewDataSource, UITableViewDelegate
         self.delegate?.upRefresh(self)
     }
 }
-
 
 protocol MessageOrderChildDelegate: class {
     

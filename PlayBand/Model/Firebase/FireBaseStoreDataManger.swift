@@ -28,24 +28,32 @@ class FireBaseStoreDataManger {
     
     private lazy var fireStoreDatabase = FirebaseManger.shared.fireStoreDatabase()
     
-    private let firebaseManger: FirebaseReadAndWrite
+    private let firebaseReadAndWrite: FirebaseReadAndWrite
     
     init(firebaseManger: FirebaseReadAndWrite = FirebaseManger.shared) {
-        self.firebaseManger = firebaseManger
+        self.firebaseReadAndWrite = firebaseManger
     }
     
-    func getStoresData(refName: FirebaseCollectionName = .store ,completionHandler: @escaping (Result<[StoreData]>) -> Void) {
+    func getStoresData(completionHandler: @escaping (Result<[StoreData]>) -> Void) {
         
-        let ref = fireStoreDatabase.collectionName(refName)
-        firebaseManger.collectionGetDocuments(ref: ref) { (result) in
+        let ref = fireStoreDatabase.collectionName(.store)
+        firebaseReadAndWrite.collectionGetDocuments(ref: ref) { (result) in
             
             switch result {
                 
             case .success(let datas):
                 
-                let storedatas = DataTransform.dataArrayReturnWithoutOption(datas: datas.map({StoreData(dictionary: $0)}))
-                FirebaseManger.shared.storeDatas = storedatas
-                completionHandler(.success(storedatas))
+                do {
+                    let storedatas = try DataTransform.dataArrayReturnWithoutOption(
+                        datas: datas.map({StoreData(dictionary: $0)})
+                    )
+                    
+                    FirebaseManger.shared.storeDatas = storedatas
+                    completionHandler(.success(storedatas))
+                } catch {
+                    
+                    completionHandler(.failure(error))
+                }
             case .failure(let error):
                 
                 completionHandler(.failure(error))
@@ -57,9 +65,9 @@ class FireBaseStoreDataManger {
         
         let fireBaseData = storeDataToFirebaseData(storeData: storeData)
         let ref = fireStoreDatabase.collectionName(.store).document(storeData.name)
-        firebaseManger.documentUpdata(ref: ref, data: fireBaseData) { (result) in
+        firebaseReadAndWrite.documentUpdata(ref: ref, data: fireBaseData) { (result) in
             switch result {
-            case .success(_):
+            case .success:
                 
                 completionHandler(.success(FBStoreMessage.updata.message))
             case .failure(let error):
@@ -104,5 +112,8 @@ protocol FirebaseReadAndWrite {
     
     func collectionGetDocuments(ref: CollectionReference, completionHandler: @escaping (Result<[FireBaseData]>) -> Void)
     
-    func documentUpdata(ref: DocumentReference, data: [AnyHashable : Any], completionHandler: @escaping (Result<Bool>) -> Void)
+    func documentUpdata(ref: DocumentReference,
+                        data: [AnyHashable: Any],
+                        completionHandler: @escaping (Result<Bool>) -> Void
+    )
 }

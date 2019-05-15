@@ -42,7 +42,9 @@ extension PrivacyViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: StoreDescriptionTableViewCell.self), for: indexPath) as? StoreDescriptionTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: StoreDescriptionTableViewCell.self),
+            for: indexPath) as? StoreDescriptionTableViewCell else {
             
             return UITableViewCell()
         }

@@ -50,7 +50,7 @@ class DataTransform {
                 UsersKey.facebook.rawValue: userData.facebook,
                 UsersKey.status.rawValue: userData.status]
             
-            return dictionary
+            return dictionary as [String: Any]
         } else {
             
             let dictionary = [UsersKey.name.rawValue: userData.name, UsersKey.band.rawValue: userData.band,
@@ -60,7 +60,7 @@ class DataTransform {
         }
     }
     
-    class func dataArrayReturnWithoutOption<T>(datas: [T?]) -> [T] {
+    class func dataArrayReturnWithoutOption<T>(datas: [T?]) throws -> [T] {
         
         var returnDatas: [T] = []
         
@@ -69,6 +69,9 @@ class DataTransform {
             if let returnData = data {
                 
                 returnDatas.append(returnData)
+            } else {
+                
+                throw FirebaseDataError.decodeFail
             }
         }
         

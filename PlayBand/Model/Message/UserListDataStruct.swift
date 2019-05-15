@@ -10,7 +10,7 @@ import Foundation
 
 struct UserBookingData {
     
-    let bookingTime : BookingTimeAndRoom
+    let bookingTime: BookingTimeAndRoom
     let status: String
     let pathID: String
     let userInfo: UserData

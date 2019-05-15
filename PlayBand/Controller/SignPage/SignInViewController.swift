@@ -20,7 +20,8 @@ class SignInViewController: UIViewController {
             
             return
         }
-        guard let password = passwordTextField.text, password.trimmingCharacters(in: .whitespaces).isEmpty == false else {
+        guard let password = passwordTextField.text,
+            password.trimmingCharacters(in: .whitespaces).isEmpty == false else {
             
             self.addErrorAlertMessage(message: "請輸入密碼")
             

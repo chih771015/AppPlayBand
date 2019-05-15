@@ -41,7 +41,6 @@ class EditProfileViewController: UIViewController {
         }
         
         if name.trimmingCharacters(in: .whitespaces).isEmpty {
-            
 
             self.addErrorTypeAlertMessage(error: SignUpError.name)
             return

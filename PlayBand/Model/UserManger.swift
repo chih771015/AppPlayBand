@@ -12,7 +12,9 @@ class UserManger {
     
     let bookingDataProvider = BookingDataManger()
     
-    func getUserBookingDatas(with type: UserBookingDataWith, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
+    func getUserBookingDatas(
+        with type: UserBookingDataWith,
+        completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
         
         bookingDataProvider.getUserBookingData(with: type, completionHandler: completionHandler)
     }

@@ -174,7 +174,7 @@ extension EditStorePhotoViewController: UINavigationControllerDelegate, UIImageP
     
     func imagePickerController(
         _ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
         var selectImage: UIImage?
         

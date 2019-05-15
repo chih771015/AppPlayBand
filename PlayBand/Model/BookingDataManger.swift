@@ -23,7 +23,8 @@ class BookingDataManger {
         fireBaseBookingManger.getStoreBookingData(storeName: storeName, completionHandler: completionHandler)
     }
     
-    func getUserBookingData(with type: UserBookingDataWith, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
+    func getUserBookingData(with type: UserBookingDataWith,
+                            completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
         
         fireBaseBookingManger.getUserBookingDatas(with: type, completionHandler: completionHandler)
     }

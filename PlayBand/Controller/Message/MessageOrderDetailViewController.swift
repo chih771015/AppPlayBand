@@ -207,6 +207,7 @@ extension MessageOrderDetailViewController: UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return status.orderDetailCellType[indexPath.row].cellForIndexPathInDetail(indexPath, tableView: tableView, data: bookingData)
+        return status.orderDetailCellType[indexPath.row]
+            .cellForIndexPathInDetail(indexPath, tableView: tableView, data: bookingData)
     }
 }

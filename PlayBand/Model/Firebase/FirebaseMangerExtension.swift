@@ -269,7 +269,10 @@ extension FirebaseManger {
     
     func updataStoreData(storeData: StoreData, completionHandler: @escaping (Result<String>) -> Void) {
         let dictionary = storeData.getFirebaseDictionay()
-        fireStoreDatabase().collection(FirebaseEnum.store.rawValue).document(storeData.name).updateData(dictionary) { (error) in
+        fireStoreDatabase()
+            .collection(FirebaseEnum.store.rawValue)
+            .document(storeData.name)
+            .updateData(dictionary) { (error) in
             
             if let error = error {
                 
@@ -294,7 +297,11 @@ extension FirebaseManger {
             completionHandler(.failure(AccountError.noLogin))
             return
         }
-        fireStoreDatabase().collection(FirebaseEnum.user.rawValue).document(uid).updateData([UsersKey.storeBlackList.rawValue: FieldValue.arrayUnion([storeName])]) { (error) in
+        fireStoreDatabase()
+            .collection(FirebaseEnum.user.rawValue).document(uid)
+            .updateData(
+                [UsersKey.storeBlackList.rawValue: FieldValue.arrayUnion([storeName])]
+            ) { (error) in
             
             if let error = error {
                 
@@ -306,7 +313,11 @@ extension FirebaseManger {
         }
     }
     
-    func storeAddUserBlackList(userUid: String, userName: String, storeNames: [String], completionHandler: @escaping (Result<String>) -> Void) {
+    func storeAddUserBlackList(
+        userUid: String,
+        userName: String,
+        storeNames: [String],
+        completionHandler: @escaping (Result<String>) -> Void) {
         
         guard let uid = user().currentUser?.uid else {
             
@@ -357,7 +368,11 @@ extension FirebaseManger {
             completionHandler(.failure(AccountError.noLogin))
             return
         }
-        fireStoreDatabase().collection(FirebaseEnum.user.rawValue).document(uid).updateData([UsersKey.storeBlackList.rawValue: FieldValue.arrayRemove([name])]) { (error) in
+        fireStoreDatabase()
+            .collection(FirebaseEnum.user.rawValue)
+            .document(uid).updateData(
+                [UsersKey.storeBlackList.rawValue: FieldValue.arrayRemove([name])]
+            ) { (error) in
             
             if let error = error {
                 
@@ -384,7 +399,12 @@ extension FirebaseManger {
         }
         
         let dictionary = [UsersKey.name.rawValue: name, UsersKey.uid.rawValue: userUID]
-        fireStoreDatabase().collection(userCollection).document(uid).updateData([UsersKey.userBlackList.rawValue: FieldValue.arrayRemove([dictionary])]) { (error) in
+        fireStoreDatabase()
+            .collection(userCollection)
+            .document(uid)
+            .updateData(
+                [UsersKey.userBlackList.rawValue: FieldValue.arrayRemove([dictionary])]
+            ) { (error) in
             
             if let error = error {
                 completionHandler(.failure(error))
@@ -397,7 +417,9 @@ extension FirebaseManger {
         
     }
     private func removeStoreReject(userUID: String, completionHandler: @escaping (Result<String>) -> Void){
-        fireStoreDatabase().collection(userCollection).document(userUID).updateData([UsersKey.storeRejectUser.rawValue: FieldValue.arrayRemove(storeName)]){ error in
+        fireStoreDatabase().collection(userCollection)
+            .document(userUID)
+            .updateData([UsersKey.storeRejectUser.rawValue: FieldValue.arrayRemove(storeName)]){ error in
             
             if let error = error {
                 

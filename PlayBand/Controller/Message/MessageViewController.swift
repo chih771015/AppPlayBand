@@ -114,7 +114,10 @@ class MessageViewController: UIViewController {
     
     private func setupNotifaication(nsNotifcationName: NSNotification.Name) {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(getBookingData(notification:)), name: nsNotifcationName, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(getBookingData(notification:)),
+                                               name: nsNotifcationName,
+                                               object: nil)
         
     }
     

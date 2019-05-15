@@ -129,5 +129,4 @@ enum StoreContentCategory: String {
         return desCell
     
     }
-
 }

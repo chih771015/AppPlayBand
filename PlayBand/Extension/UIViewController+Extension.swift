@@ -28,7 +28,10 @@ extension UIViewController {
         title: String? = FirebaseEnum.fail.rawValue,
         error: Error?, completionHanderInDismiss: ((UIAlertAction) -> Void)? = nil) {
         
-        addErrorAlertMessage(title: title, message: error?.localizedDescription, completionHanderInDismiss: completionHanderInDismiss)
+        addErrorAlertMessage(
+            title: title,
+            message: error?.localizedDescription,
+            completionHanderInDismiss: completionHanderInDismiss)
     
     }
 
@@ -102,7 +105,12 @@ extension UIViewController {
         appdelegate.window?.rootViewController = loginVC
     }
     
-    func addAlertActionSheet(title: String? = nil, message: String? = nil, actionTitleAndHandlers: [ActionHandler], cancelTitle: String, cancelHandler: ((UIAlertAction) -> Void)? = nil) {
+    func addAlertActionSheet(
+        title: String? = nil,
+        message: String? = nil,
+        actionTitleAndHandlers: [ActionHandler],
+        cancelTitle: String,
+        cancelHandler: ((UIAlertAction) -> Void)? = nil) {
         
         if actionTitleAndHandlers.isEmpty {
             

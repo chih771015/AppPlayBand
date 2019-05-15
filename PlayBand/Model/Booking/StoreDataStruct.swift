@@ -50,6 +50,7 @@ struct StoreData {
     }
     
     init? (dictionary: [String: Any]) {
+        
         guard let name = dictionary[StoreDataKey.name.rawValue] as? String else {return nil}
         guard let openTime = dictionary[StoreDataKey.opentime.rawValue] as? String else {return nil}
         guard let closeTime = dictionary[StoreDataKey.closetime.rawValue] as? String else {return nil}
@@ -59,6 +60,7 @@ struct StoreData {
         guard let information = dictionary[StoreDataKey.information.rawValue] as? String else {return nil}
         guard let rooms = dictionary[StoreDataKey.rooms.rawValue] as? [[String: Any]] else {return nil}
         guard let city = dictionary[StoreDataKey.city.rawValue] as? String else {return nil}
+        
         for room in rooms {
             
             guard let name = room[StoreDataKey.name.rawValue] as? String else {return nil}

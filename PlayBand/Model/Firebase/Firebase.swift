@@ -80,15 +80,18 @@ class FirebaseManger {
             
             if let user = user {
                 
-               self.listener = self.fireStoreDatabase().collection(self.userCollection).document(user
-                .uid).addSnapshotListener(includeMetadataChanges: true, listener: { (querySnapshot, error) in
+               self.listener = self.fireStoreDatabase()
+                .collection(self.userCollection)
+                .document(user.uid).addSnapshotListener(
+                    includeMetadataChanges: true,
+                    listener: { (querySnapshot, _) in
                     
-                    guard let dictionary = querySnapshot?.data() else {
-                        return
-                    }
-                    
-                    let userData = UserData(dictionary: dictionary)
-                    self.userData = userData
+                        guard let dictionary = querySnapshot?.data() else {
+                            return
+                        }
+                        
+                        let userData = UserData(dictionary: dictionary)
+                        self.userData = userData
                 })
             } else {
                 
@@ -129,7 +132,9 @@ class FirebaseManger {
             return
         }
         let dictionary = DataTransform.userData(userData: userData)
-        fireStoreDatabase().collection(FirebaseEnum.user.rawValue).document(uid).setData(dictionary, merge: true) { error in
+        fireStoreDatabase()
+            .collection(FirebaseEnum.user.rawValue)
+            .document(uid).setData(dictionary, merge: true) { error in
             if error == nil {
                 
                 self.getUserInfo()
@@ -372,7 +377,8 @@ class FirebaseManger {
     }
     
     func updataBookingConfirm(storeName: String, pathID: String, userUID: String,
-                              storeMessage: String = FirebaseBookingKey.storeMessage.description, completionHandler: @escaping (Result<String>) -> Void) {
+                              storeMessage: String = FirebaseBookingKey.storeMessage.description,
+                              completionHandler: @escaping (Result<String>) -> Void) {
         
         fireStoreDatabase().collection(FirebaseEnum.store.rawValue).document(storeName)
             .collection(FirebaseEnum.confirm.rawValue).document(pathID)
@@ -384,12 +390,14 @@ class FirebaseManger {
                     
                    self.updataBookingColloection(
                     storeName: storeName, pathID: pathID, userUID: userUID,
-                    status: .confirm, storeMessage: storeMessage,completionHandler: completionHandler)
+                    status: .confirm, storeMessage: storeMessage,
+                    completionHandler: completionHandler)
                 }
         }
     }
     
-    private func updataBookingColloection(storeName: String, pathID: String,
+    private func updataBookingColloection(storeName: String,
+                                          pathID: String,
                                           userUID: String,
                                           status: FirebaseBookingKey.Status,
                                           storeMessage: String,

@@ -34,7 +34,10 @@ class EditTableViewCell: UITableViewCell {
     func setupEditPasswordCell(
         placeholder: String, tag: Int, textFieldDelgate: UITextFieldDelegate,
         text: String? = nil, description: String? = nil) {
-         setupTextField(placeholder: placeholder, tag: tag, textFieldDelgate: textFieldDelgate, text: text, description: description)
+         setupTextField(placeholder: placeholder,
+                        tag: tag,
+                        textFieldDelgate: textFieldDelgate,
+                        text: text, description: description)
         textField.isSecureTextEntry = true
     }
     func setupEditPickerCell(placeholder: String, tag: Int, textFieldDelgate: UITextFieldDelegate) {

@@ -25,20 +25,25 @@ class SuperMangerStoreConfirmViewController: BaseStoreDetailViewController {
             return
         }
         PBProgressHUD.addLoadingView(animated: true)
-        FirebaseManger.shared.applyStoreInSuperManger(userUID: data.userUID, pathID: data.pathID, storeData: data.storeData) { [weak self] (result) in
-            PBProgressHUD.dismissLoadingView(animated: true)
-            
-            switch result {
+        FirebaseManger.shared
+            .applyStoreInSuperManger(
+                userUID: data.userUID, pathID: data.pathID, storeData: data.storeData
+            ) { [weak self] (result) in
+                PBProgressHUD.dismissLoadingView(animated: true)
                 
-            case .success(let message):
-                self?.addSucessAlertMessage(title: message, message: nil, completionHanderInDismiss: { [weak self] in
+                switch result {
                     
-                    self?.navigationController?.popToRootViewController(animated: true)
-                })
-            case .failure(let error):
-                
-                self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription)
-            }
+                case .success(let message):
+                    self?.addSucessAlertMessage(title: message,
+                                                message: nil,
+                                                completionHanderInDismiss: { [weak self] in
+                        
+                        self?.navigationController?.popToRootViewController(animated: true)
+                    })
+                case .failure(let error):
+                    
+                    self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue, message: error.localizedDescription)
+                }
         }
     }
     @IBAction func refuseButtonAction(_ sender: Any) {
@@ -55,6 +60,7 @@ class SuperMangerStoreConfirmViewController: BaseStoreDetailViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return datas[indexPath.row].cellForSuperManger(indexPath, tableView: tableView, data: storeData, userData: applyDatas?.user)
+        return datas[indexPath.row].cellForSuperManger(
+            indexPath, tableView: tableView, data: storeData, userData: applyDatas?.user)
     }
 }

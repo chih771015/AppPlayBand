@@ -45,10 +45,19 @@ class FBBookingDataManger {
             switch result {
                 
             case .success(let datas):
-                
-                let bookingDatas = DataTransform.dataArrayReturnWithoutOption(datas: datas.map({BookingTimeAndRoom(dictionary: $0)}))
-                
-                completionHandler(.success(bookingDatas))
+                do {
+                    
+                    let bookingDatas = try DataTransform
+                        .dataArrayReturnWithoutOption(
+                            datas: datas.map({BookingTimeAndRoom(dictionary: $0)})
+                    )
+                    
+                    completionHandler(.success(bookingDatas))
+                } catch {
+                    
+                    completionHandler(.failure(error))
+                }
+          
             case .failure(let error):
                 
                 completionHandler(.failure(error))
@@ -56,18 +65,31 @@ class FBBookingDataManger {
         }
     }
     
-    func getUserBookingDatas(with type: UserBookingDataWith, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
+    func getUserBookingDatas(
+        with type: UserBookingDataWith,
+        completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
        
-        let ref = fireStoreDataBase.collectionName(type.collectionName).document(type.returnValue).collectionName(.bookingConfirm)
+        let ref = fireStoreDataBase
+            .collectionName(type.collectionName)
+            .document(type.returnValue)
+            .collectionName(.bookingConfirm)
         fireBase.collectionGetDocuments(ref: ref) { (result) in
             
             switch result {
                 
             case .success(let data):
-                
-                let bookingDatas = DataTransform.dataArrayReturnWithoutOption(datas: data.map({UserBookingData(dictionary: $0)}))
-                
-                completionHandler(.success(bookingDatas))
+                do {
+                    let bookingDatas = try DataTransform
+                        .dataArrayReturnWithoutOption(
+                            datas: data.map({UserBookingData(dictionary: $0)}
+                        )
+                    )
+                    
+                    completionHandler(.success(bookingDatas))
+                } catch {
+                    
+                    completionHandler(.failure(error))
+                }
             case .failure(let error):
                 
                 completionHandler(.failure(error))

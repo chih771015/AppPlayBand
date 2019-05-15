@@ -85,11 +85,16 @@ extension BlackListViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
             
-            self.addAlert(title: "確定要將 \(names[indexPath.row]) 移除黑名單嗎", actionTitle: "確定", cancelTitle: "取消") { [weak self] (_) in
+            self.addAlert(title: "確定要將 \(names[indexPath.row]) 移除黑名單嗎",
+                            actionTitle: "確定",
+                            cancelTitle: "取消"
+            ) { [weak self] (_) in
                 self?.removeBlackList(index: indexPath.row)
             }
         }
@@ -127,7 +132,10 @@ extension BlackListViewController: UITableViewDelegate, UITableViewDataSource {
     
     @objc func celltargetAction(button: UIButton) {
         
-        self.addAlert(title: "確定要將 \(names[button.tag]) 移除黑名單嗎", actionTitle: "確定", cancelTitle: "取消") { [weak self] (_) in
+        self.addAlert(title: "確定要將 \(names[button.tag]) 移除黑名單嗎",
+                      actionTitle: "確定",
+                      cancelTitle: "取消"
+        ) { [weak self] (_) in
             self?.removeBlackList(index: button.tag)
         }
     }

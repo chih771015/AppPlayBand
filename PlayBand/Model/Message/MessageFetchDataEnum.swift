@@ -49,7 +49,10 @@ enum MessageFetchDataEnum {
         return sectionHeader
     }
     
-    func cellForIndexPathInOrder(tableView: UITableView, at indexPath: IndexPath, bookingData: UserBookingData) -> UITableViewCell {
+    func cellForIndexPathInOrder(
+        tableView: UITableView,
+        at indexPath: IndexPath,
+        bookingData: UserBookingData) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: MessageOrderTableViewCell.self),

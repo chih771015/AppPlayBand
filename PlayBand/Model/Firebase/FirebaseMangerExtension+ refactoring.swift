@@ -11,9 +11,9 @@ import Firebase
 
 extension FirebaseManger: FirebaseReadAndWrite {
     
-    func collectionGetDocuments(ref: CollectionReference, completionHandler: @escaping (Result<[FireBaseData]>) -> Void) {
-        
-        ref.getDocuments { (querySnapshot, error) in
+    func collectionGetDocuments(ref: CollectionReference,
+                                completionHandler: @escaping (Result<[FireBaseData]>) -> Void) {
+            ref.getDocuments { (querySnapshot, error) in
             
             if let error = error {
                 
@@ -45,7 +45,10 @@ extension FirebaseManger: FirebaseReadAndWrite {
         }
     }
     
-    func documentSetData(ref: DocumentReference, firebaseData: FireBaseData, merge: Bool = true, completionHandler: @escaping (Result<Bool>) -> Void) {
+    func documentSetData(ref: DocumentReference,
+                         firebaseData: FireBaseData,
+                         merge: Bool = true,
+                         completionHandler: @escaping (Result<Bool>) -> Void) {
         
         ref.setData(firebaseData, merge: merge) { (error) in
             
@@ -61,7 +64,9 @@ extension FirebaseManger: FirebaseReadAndWrite {
         }
     }
     
-    func documentUpdata(ref: DocumentReference, data: [AnyHashable : Any], completionHandler: @escaping (Result<Bool>) -> Void) {
+    func documentUpdata(ref: DocumentReference,
+                        data: [AnyHashable: Any],
+                        completionHandler: @escaping (Result<Bool>) -> Void) {
         
         ref.updateData(data) { (error) in
             

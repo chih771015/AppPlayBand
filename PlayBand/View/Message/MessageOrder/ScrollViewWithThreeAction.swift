@@ -10,7 +10,7 @@ import UIKit
 
 class ScrollViewWithThreeAction: UIView {
 
-    @IBOutlet weak var topActionView: UIView!
+    @IBOutlet private weak var topActionView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     private let topView = TopViewWithThreeButtonAndUnderLine()
     weak var delegate: ScrollViewWithThreeActionDelegate?
@@ -97,7 +97,3 @@ protocol ScrollViewWithThreeActionDelegate: class {
     func rightAction()
     func centerAction()
 }
-
-
-
-

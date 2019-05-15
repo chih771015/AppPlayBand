@@ -90,7 +90,8 @@ class PBTabBarController: UITabBarController, UITabBarControllerDelegate {
         tabBar.tintColor = UIColor.playBandColorEnd
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+    func tabBarController(_ tabBarController: UITabBarController,
+                          shouldSelect viewController: UIViewController) -> Bool {
         
         if viewController == self.viewControllers?[0] {
             

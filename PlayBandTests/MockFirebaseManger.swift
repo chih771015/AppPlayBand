@@ -10,19 +10,34 @@ import Foundation
 import Firebase
 @testable import PlayBand
 
-class MockFirebaseManger: FirebaseReadAndWrite {
+class MockFirebaseManger {
     
-    var ref: CollectionReference?
+    var collectionRef: CollectionReference?
     var completionIsAction = false
+    var getStoreDataResult: Result<[FireBaseData]>!
+    var documentRef: DocumentReference?
+    var documentUpdataResult: Result<Bool>!
+    var path: String = ""
+}
 
-    func collectionGetDocuments(ref: CollectionReference, completionHandler: @escaping (Result<[FireBaseData]>) -> Void) {
+extension MockFirebaseManger: FirebaseReadAndWrite {
+    
+    func collectionGetDocuments(
+        ref: CollectionReference,
+        completionHandler: @escaping (Result<[FireBaseData]>) -> Void) {
         
-        self.ref = ref
+        self.collectionRef = ref
         completionIsAction = true
-        completionHandler(.success([FireBaseData()]))
+        completionHandler(getStoreDataResult)
     }
     
-    func documentUpdata(ref: DocumentReference, data: [AnyHashable : Any], completionHandler: @escaping (Result<Bool>) -> Void) {
+    func documentUpdata(
+        ref: DocumentReference,
+        data: [AnyHashable: Any],
+        completionHandler: @escaping (Result<Bool>) -> Void) {
         
+        self.documentRef = ref
+        completionIsAction = true
+        completionHandler(documentUpdataResult)
     }
 }

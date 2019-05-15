@@ -28,7 +28,10 @@ class StoreAddImageTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupCell(image: UIImage, storeAddImageDelegate: StoreAddImageDelegate,row: Int, url: String = String()) {
+    func setupCell(image: UIImage,
+                   storeAddImageDelegate: StoreAddImageDelegate,
+                   row: Int,
+                   url: String = String()) {
         if row == 0 {
             self.titleLabel.text = "這是主圖片"
         } else {
