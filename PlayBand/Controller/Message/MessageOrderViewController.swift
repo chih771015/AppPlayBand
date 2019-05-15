@@ -21,7 +21,7 @@ class MessageOrderViewController: UIViewController {
     }
     
     private var cellStatus = MessageFetchDataEnum.normal
-    var delegate: MessageOrderChildDelegate?
+    weak var delegate: MessageOrderChildDelegate?
     
     override func viewDidLoad() {
         
@@ -100,9 +100,12 @@ extension MessageOrderViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let nextVC = self.storyboard?.instantiateViewController(
-            withIdentifier: String(
-                describing: MessageOrderDetailViewController.self)) as? MessageOrderDetailViewController else {return}
+        guard let nextVC = UIStoryboard.message.instantiateViewController(
+            withIdentifier: String(describing: MessageOrderDetailViewController.self)
+            ) as? MessageOrderDetailViewController else {
+            return
+        }
+        
         nextVC.setupBookingData(data: bookingData[indexPath.row], status: cellStatus)
         self.navigationController?.pushViewController(nextVC, animated: true)
     }

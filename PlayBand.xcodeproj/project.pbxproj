@@ -117,6 +117,7 @@
 		59DFF85622578DAB00273724 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF85522578DAB00273724 /* EditProfileViewController.swift */; };
 		59DFF85A22578FFD00273724 /* EditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFF85822578FFD00273724 /* EditTableViewCell.swift */; };
 		59DFF85B22578FFD00273724 /* EditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59DFF85922578FFD00273724 /* EditTableViewCell.xib */; };
+		59E1DE12228C253300108981 /* MessageHeadNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E1DE11228C253300108981 /* MessageHeadNavigationViewController.swift */; };
 		59E6FDFE227BFB4400EFAE55 /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E6FDFD227BFB4400EFAE55 /* NSNotification+Extension.swift */; };
 		59E6FE00227C335300EFAE55 /* AccountError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E6FDFF227C335300EFAE55 /* AccountError.swift */; };
 		59E6FE02227C4E9300EFAE55 /* UIAlertAction+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E6FE01227C4E9300EFAE55 /* UIAlertAction+Extension.swift */; };
@@ -270,6 +271,7 @@
 		59DFF85522578DAB00273724 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		59DFF85822578FFD00273724 /* EditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewCell.swift; sourceTree = "<group>"; };
 		59DFF85922578FFD00273724 /* EditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditTableViewCell.xib; sourceTree = "<group>"; };
+		59E1DE11228C253300108981 /* MessageHeadNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHeadNavigationViewController.swift; sourceTree = "<group>"; };
 		59E6FDFD227BFB4400EFAE55 /* NSNotification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+Extension.swift"; sourceTree = "<group>"; };
 		59E6FDFF227C335300EFAE55 /* AccountError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountError.swift; sourceTree = "<group>"; };
 		59E6FE01227C4E9300EFAE55 /* UIAlertAction+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Extension.swift"; sourceTree = "<group>"; };
@@ -457,6 +459,7 @@
 				59FF33CE2270316800F8DCAA /* MessageOrderViewController.swift */,
 				5926747E2270C0280050E161 /* MessageOrderDetailViewController.swift */,
 				592950322269C4A600FD5DC5 /* MessageCategory.swift */,
+				59E1DE11228C253300108981 /* MessageHeadNavigationViewController.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -1159,6 +1162,7 @@
 				59483D7A2268488A00FD211E /* PasswordChangeViewController.swift in Sources */,
 				59ABB0382259084800AE937A /* StoreDetailViewController.swift in Sources */,
 				59D926052282ADC7004EBEEC /* UserManger.swift in Sources */,
+				59E1DE12228C253300108981 /* MessageHeadNavigationViewController.swift in Sources */,
 				59B43E14226ECD4300598538 /* UICollectionVIew+Extension.swift in Sources */,
 				5953668E227A9ADD00502B89 /* SuperMangerStoreConfirmViewController.swift in Sources */,
 				59B43E18226F03A300598538 /* UIButton+Extension.swift in Sources */,

@@ -1,28 +1,21 @@
 //
-//  BaseNavigationViewController.swift
+//  MessageHeadNavigationViewController.swift
 //  PlayBand
 //
-//  Created by 姜旦旦 on 2019/4/23.
+//  Created by 姜旦旦 on 2019/5/15.
 //  Copyright © 2019 姜旦旦. All rights reserved.
 //
 
 import UIKit
 
-class BaseNavigationViewController: UINavigationController {
+class MessageHeadNavigationViewController: BaseNavigationViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        guard let color = UIColor.playBandColorEnd else {return}
-        let white = UIColor.white
-        self.navigationBar.barTintColor = white
-        self.navigationBar.tintColor = color
-        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
-        self.navigationBar.isTranslucent = true
         self.view.backgroundColor = .white
     }
-
+    
     /*
     // MARK: - Navigation
 

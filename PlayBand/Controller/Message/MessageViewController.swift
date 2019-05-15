@@ -72,7 +72,13 @@ class MessageViewController: UIViewController {
         setupChildVC()
         setupChildView()
         setupData()
+        setupNavigationItem()
         view.layoutIfNeeded()
+    }
+    
+    func setupNavigationItem() {
+        
+        self.navigationItem.title = "預定時間"
     }
     
     private func setupTestView() {

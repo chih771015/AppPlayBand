@@ -28,8 +28,8 @@ private enum Tab {
 
         case .booking: controller = UIStoryboard.booking.instantiateInitialViewController()!
 
-        case .message: controller = UIStoryboard.message.instantiateInitialViewController()!
-
+        case .message: controller = BaseNavigationViewController(rootViewController: MessageViewController())
+            
         case .profile: controller = UIStoryboard.profile.instantiateInitialViewController()!
 
         }
