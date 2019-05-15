@@ -8,12 +8,13 @@
 
 import UIKit
 
-class ScrollViewWithThreeAction: UIView {
+class ScrollViewWithThreeActionView: UIView {
 
     @IBOutlet private weak var topActionView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     private let topView = TopViewWithThreeButtonAndUnderLine()
     weak var delegate: ScrollViewWithThreeActionDelegate?
+    var scrollViewFullSizeSubViews: [UIView] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,6 +31,7 @@ class ScrollViewWithThreeAction: UIView {
             
             let scrollView = UIScrollView()
             self.scrollView = scrollView
+            scrollView.isPagingEnabled = true
             self.addSubview(scrollView)
         }
         scrollView.backgroundColor = .red
@@ -47,6 +49,42 @@ class ScrollViewWithThreeAction: UIView {
     func setupTitle(first: String, second: String, third: String) {
         
         topView.setupTitle(first: first, second: second, third: third)
+    }
+    
+    func setupScrollViewSubViewFullSize(at conut: Int) {
+        
+        for _ in 0..<conut {
+            
+            let view = UIView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            scrollView.addSubview(view)
+        }
+        
+        setupScrollViewSubViewConstraints()
+    }
+    
+    private func setupScrollViewSubViewConstraints() {
+        
+        let viewCount = scrollView.subviews.count
+        
+        for count in 0..<viewCount {
+            let view = scrollView.subviews[count]
+            view.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+            view.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+            view.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+            view.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
+            if count == 0 {
+                
+                view.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+            } else {
+                
+                view.leadingAnchor.constraint(equalTo: scrollView.subviews[count - 1].trailingAnchor).isActive = true
+            }
+            if count == viewCount - 1 {
+                
+                view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
+            }
+        }
     }
     
     private func setupTopView() {
@@ -76,7 +114,7 @@ class ScrollViewWithThreeAction: UIView {
     }
 }
 
-extension ScrollViewWithThreeAction: ThreeActionDelegate {
+extension ScrollViewWithThreeActionView: ThreeActionDelegate {
     
     func leftAction() {
         delegate?.leftAction()

@@ -74,9 +74,9 @@ class MessageViewController: UIViewController {
         }
     }
     
-    private var tobeConfirmVC: MessageOrderViewController?
-    private var confirmVC: MessageOrderViewController?
-    private var refuseVC: MessageOrderViewController?
+    private var tobeConfirmVC: MessageOrderViewController = MessageOrderViewController()
+    private var confirmVC: MessageOrderViewController = MessageOrderViewController()
+    private var refuseVC: MessageOrderViewController = MessageOrderViewController()
     private var messageStatus = MessageFetchDataEnum.normal {
         
         didSet {
@@ -86,16 +86,38 @@ class MessageViewController: UIViewController {
         }
     }
     
-    let testView = ScrollViewWithThreeAction()
+    let testView = ScrollViewWithThreeActionView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.stickSubView(testView)
         view.layoutIfNeeded()
         testView.setupTitle(first: "等待回覆", second: "已預定", third: "已拒絕")
+        setupChildVC()
+        setupChildView()
         testView.delegate = self
         scrollView.layoutIfNeeded()
         setupData()
+    }
+    
+    func setupChildVC() {
+        
+        addChild(tobeConfirmVC)
+        tobeConfirmVC.delegate = self
+        addChild(confirmVC)
+        confirmVC.delegate = self
+        addChild(refuseVC)
+        refuseVC.delegate = self
+    }
+    
+    func setupChildView() {
+        
+        testView.setupScrollViewSubViewFullSize(at: self.children.count)
+        let viewCount = testView.scrollView.subviews.count
+        for index in 0..<viewCount {
+            
+            testView.scrollView.subviews[index].stickSubView(self.children[index].view)
+        }
     }
     
     deinit {
@@ -141,30 +163,11 @@ class MessageViewController: UIViewController {
         }
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        guard let childVC = segue.destination as? MessageOrderViewController else { return }
-        
-        childVC.delegate = self
-        childVC.loadViewIfNeeded()
-        let identifier = segue.identifier
-        if identifier == SegueName.confirm.rawValue {
-            
-            self.confirmVC = childVC
-        } else if identifier == SegueName.tobeConfirm.rawValue {
-            
-            self.tobeConfirmVC = childVC
-        } else if identifier == SegueName.refuse.rawValue {
-            
-            self.refuseVC = childVC
-        }
-    }
-    
     private func setupChildDatas() {
         
-        tobeConfirmVC?.setupBookingData(data: filterData(status: .tobeConfirm), status: self.messageStatus)
-        confirmVC?.setupBookingData(data: filterData(status: .confirm), status: self.messageStatus)
-        refuseVC?.setupBookingData(data: filterData(status: .refuse), status: self.messageStatus)
+        tobeConfirmVC.setupBookingData(data: filterData(status: .tobeConfirm), status: self.messageStatus)
+        confirmVC.setupBookingData(data: filterData(status: .confirm), status: self.messageStatus)
+        refuseVC.setupBookingData(data: filterData(status: .refuse), status: self.messageStatus)
     }
     
     private func filterData(status: FirebaseBookingKey.Status) -> [UserBookingData] {

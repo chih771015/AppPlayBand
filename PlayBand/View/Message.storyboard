@@ -24,21 +24,12 @@
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yrv-cV-O3h">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
-                                        <connections>
-                                            <segue destination="rpx-wl-BPB" kind="embed" identifier="tobeConfirm" id="Q67-yd-ELz"/>
-                                        </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tpc-ex-SMy">
                                         <rect key="frame" x="414" y="0.0" width="414" height="624"/>
-                                        <connections>
-                                            <segue destination="wCn-Gt-qG6" kind="embed" identifier="confirm" id="yKj-YW-uzl"/>
-                                        </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAR-MZ-GNN">
                                         <rect key="frame" x="828" y="0.0" width="414" height="624"/>
-                                        <connections>
-                                            <segue destination="Gaz-gE-xfh" kind="embed" identifier="refuse" id="YeR-Ho-XPY"/>
-                                        </connections>
                                     </containerView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -453,7 +444,7 @@
             <objects>
                 <viewController id="rpx-wl-BPB" customClass="MessageOrderViewController" customModule="PlayBand" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5qC-ho-huH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Uw9-1M-3pS"/>
@@ -468,7 +459,7 @@
             <objects>
                 <viewController id="wCn-Gt-qG6" customClass="MessageOrderViewController" customModule="PlayBand" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Png-bK-6bI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="IKa-WZ-MMo"/>
@@ -476,14 +467,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKI-P7-bkO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="467" y="699"/>
+            <point key="canvasLocation" x="132" y="791"/>
         </scene>
         <!--Message Order View Controller-->
         <scene sceneID="GIA-tC-mwq">
             <objects>
                 <viewController id="Gaz-gE-xfh" customClass="MessageOrderViewController" customModule="PlayBand" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="by8-oM-dRX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="gJs-Xh-3QY"/>
