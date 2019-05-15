@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TopViewWithThreeButtonAndUnderLine: UIView {
+class ThreeButtonAndUnderLineView: UIView {
 
     @IBOutlet weak var buttonLeft: UIButton!
     @IBOutlet weak var buttonCenter: UIButton!

@@ -67,15 +67,20 @@ extension UIView {
         self.layer.shadowColor = UIColor.lightGray.cgColor
     }
     
-    func stickSubView(_ objectView: UIView) {
+    func stickSubViewNoRemove(_ objectView: UIView) {
         
-        objectView.removeFromSuperview()
         addSubview(objectView)
         objectView.translatesAutoresizingMaskIntoConstraints = false
         objectView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
         objectView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         objectView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
         objectView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+    }
+    
+    func stickSubView(_ objectView: UIView) {
+        
+        objectView.removeFromSuperview()
+        stickSubViewNoRemove(objectView)
     }
     
     static func noDataView() -> UIView {

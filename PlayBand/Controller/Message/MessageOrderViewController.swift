@@ -26,11 +26,11 @@ class MessageOrderViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.view.layoutIfNeeded()
         setupTableView()
+        self.view.layoutIfNeeded()
         // Do any additional setup after loading the view.
     }
-    
+
     private func setupTableView() {
     
         if tableView ==  nil {
@@ -50,11 +50,10 @@ class MessageOrderViewController: UIViewController {
         tableView.addRefreshHeader { [weak self] in
             self?.refreshHandler()
         }
-        tableView.layoutIfNeeded()
     }
     
     func setupBookingData(data: [UserBookingData], status: MessageFetchDataEnum) {
-    
+        tableView.endHeaderRefreshing()
         self.bookingData = data
         self.cellStatus = status
     }

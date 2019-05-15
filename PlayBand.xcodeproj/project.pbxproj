@@ -138,7 +138,7 @@
 		59F81F9F22549FCD00C04E32 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F81F9E22549FCD00C04E32 /* ProfileViewController.swift */; };
 		59F81FA12254A3F200C04E32 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F81FA02254A3F100C04E32 /* UIView+Extension.swift */; };
 		59FA7A542289BEAB004D091D /* ScrollViewWithThreeActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FA7A532289BEAB004D091D /* ScrollViewWithThreeActionView.swift */; };
-		59FA7A562289C881004D091D /* TopViewWithThreeButtonAndUnderLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FA7A552289C881004D091D /* TopViewWithThreeButtonAndUnderLine.swift */; };
+		59FA7A562289C881004D091D /* ThreeButtonAndUnderLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FA7A552289C881004D091D /* ThreeButtonAndUnderLineView.swift */; };
 		59FCFD3922620CAE006402E5 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCFD3822620CAE006402E5 /* Firebase.swift */; };
 		59FEBD3622856B0A001BD17E /* PlayBandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FEBD3522856B0A001BD17E /* PlayBandTests.swift */; };
 		59FF33CC22701D3F00F8DCAA /* MessageOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FF33CA22701D3F00F8DCAA /* MessageOrderTableViewCell.swift */; };
@@ -291,7 +291,7 @@
 		59F81F9E22549FCD00C04E32 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		59F81FA02254A3F100C04E32 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		59FA7A532289BEAB004D091D /* ScrollViewWithThreeActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewWithThreeActionView.swift; sourceTree = "<group>"; };
-		59FA7A552289C881004D091D /* TopViewWithThreeButtonAndUnderLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewWithThreeButtonAndUnderLine.swift; sourceTree = "<group>"; };
+		59FA7A552289C881004D091D /* ThreeButtonAndUnderLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeButtonAndUnderLineView.swift; sourceTree = "<group>"; };
 		59FCFD3822620CAE006402E5 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		59FEBD3322856B0A001BD17E /* PlayBandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlayBandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		59FEBD3522856B0A001BD17E /* PlayBandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBandTests.swift; sourceTree = "<group>"; };
@@ -773,7 +773,7 @@
 				592FF2D72272271000872A17 /* MessageImageTableViewCell.xib */,
 				595044C62284271E00BB9002 /* BookingStatusView.swift */,
 				59FA7A532289BEAB004D091D /* ScrollViewWithThreeActionView.swift */,
-				59FA7A552289C881004D091D /* TopViewWithThreeButtonAndUnderLine.swift */,
+				59FA7A552289C881004D091D /* ThreeButtonAndUnderLineView.swift */,
 			);
 			path = MessageOrder;
 			sourceTree = "<group>";
@@ -1145,7 +1145,7 @@
 				596662082275D703006DE29F /* JGProgressHUD.swift in Sources */,
 				59530B0D225C79EB002F18AB /* ConfirmViewController.swift in Sources */,
 				5941D82D225359D500FDEEBA /* AppDelegate.swift in Sources */,
-				59FA7A562289C881004D091D /* TopViewWithThreeButtonAndUnderLine.swift in Sources */,
+				59FA7A562289C881004D091D /* ThreeButtonAndUnderLineView.swift in Sources */,
 				59530B10225C7B58002F18AB /* ConfirmTableViewCell.swift in Sources */,
 				59D717AD2265A8F3009772FC /* ResultEnum.swift in Sources */,
 				593774AA227A1846008A05E0 /* StoreApplyData.swift in Sources */,

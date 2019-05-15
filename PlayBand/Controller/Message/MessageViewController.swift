@@ -41,29 +41,6 @@ class MessageViewController: UIViewController {
         changeViewModel()
     }
     
-    @IBAction func tobeConfirmAction() {
-        
-        self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-    }
-    @IBAction func confirmAction() {
-        
-        self.scrollView.setContentOffset(CGPoint(x: self.view.frame.width, y: 0), animated: true)
-    }
-    @IBAction func refuseAction() {
-        
-        self.scrollView.setContentOffset(CGPoint(x: self.view.frame.width * 2, y: 0), animated: true)
-    }
-    @IBOutlet weak var underLineConstraint: NSLayoutConstraint!
-    @IBOutlet weak var tobeConfirmButton: UIButton!
-    @IBOutlet weak var confirmButton: UIButton!
-    @IBOutlet weak var refuseButton: UIButton!
-    @IBOutlet weak var scrollView: UIScrollView! {
-        didSet {
-            
-            scrollView.delegate = self
-        }
-    }
-    
     private let firebaseManger = FirebaseManger.shared
     
     private var userBookingData: [UserBookingData] = [] {
@@ -90,17 +67,23 @@ class MessageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.stickSubView(testView)
-        view.layoutIfNeeded()
-        testView.setupTitle(first: "等待回覆", second: "已預定", third: "已拒絕")
+
+        setupTestView()
         setupChildVC()
         setupChildView()
-        testView.delegate = self
-        scrollView.layoutIfNeeded()
         setupData()
+        view.layoutIfNeeded()
     }
     
-    func setupChildVC() {
+    private func setupTestView() {
+        
+        self.view.stickSubView(testView)
+        testView.setupTitle(first: "等待回覆", second: "已預定", third: "已拒絕")
+        testView.delegate = self
+        testView.scrollView.delegate = self
+    }
+    
+    private func setupChildVC() {
         
         addChild(tobeConfirmVC)
         tobeConfirmVC.delegate = self
@@ -110,13 +93,15 @@ class MessageViewController: UIViewController {
         refuseVC.delegate = self
     }
     
-    func setupChildView() {
+    private func setupChildView() {
         
         testView.setupScrollViewSubViewFullSize(at: self.children.count)
         let viewCount = testView.scrollView.subviews.count
         for index in 0..<viewCount {
             
             testView.scrollView.subviews[index].stickSubView(self.children[index].view)
+            print("childFrame")
+            print(self.children[index].view.frame)
         }
     }
     
@@ -239,7 +224,10 @@ extension MessageViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let nowX = scrollView.contentOffset.x
-        self.underLineConstraint.constant = nowX / 3
+        let width = scrollView.contentSize.width
+        let scale = nowX / width
+        
+        testView.setupUnderLineView(xPoint: self.view.frame.width * scale)
     }
 }
 
@@ -254,14 +242,14 @@ extension MessageViewController: MessageOrderChildDelegate {
 extension MessageViewController: ScrollViewWithThreeActionDelegate {
     
     func leftAction() {
-        print("left")
+        testView.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
     
     func rightAction() {
-        print("right")
+        testView.scrollView.setContentOffset(CGPoint(x: testView.scrollView.frame.width * 2, y: 0), animated: true)
     }
     
     func centerAction() {
-        print("center")
+        testView.scrollView.setContentOffset(CGPoint(x: testView.scrollView.frame.width * 1, y: 0), animated: true)
     }
 }

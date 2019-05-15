@@ -12,10 +12,9 @@ class ScrollViewWithThreeActionView: UIView {
 
     @IBOutlet private weak var topActionView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
-    private let topView = TopViewWithThreeButtonAndUnderLine()
+    private let topView = ThreeButtonAndUnderLineView()
     weak var delegate: ScrollViewWithThreeActionDelegate?
-    var scrollViewFullSizeSubViews: [UIView] = []
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -61,6 +60,11 @@ class ScrollViewWithThreeActionView: UIView {
         }
         
         setupScrollViewSubViewConstraints()
+    }
+    
+    func setupUnderLineView(xPoint: CGFloat) {
+        
+        topView.moveUnderLine(xPoint: xPoint)
     }
     
     private func setupScrollViewSubViewConstraints() {
