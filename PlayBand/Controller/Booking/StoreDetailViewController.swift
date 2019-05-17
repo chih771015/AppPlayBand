@@ -50,7 +50,7 @@ class StoreDetailViewController: UIViewController {
     }
     private func setupBarButton() {
         
-        if FirebaseManger.shared.user().currentUser == nil {
+        if FirebaseManager.shared.user().currentUser == nil {
             
             navigationItem.rightBarButtonItems?.removeAll()
         }
@@ -96,7 +96,7 @@ extension StoreDetailViewController: UITableViewDataSource, UITableViewDelegate 
         guard let storeName = storeData?.name else {return}
         
         PBProgressHUD.addLoadingView()
-        FirebaseManger.shared.userAddStoreBlackList(storeName: storeName) { [weak self] (result) in
+        FirebaseManager.shared.userAddStoreBlackList(storeName: storeName) { [weak self] (result) in
             
             PBProgressHUD.dismissLoadingView()
             switch result {

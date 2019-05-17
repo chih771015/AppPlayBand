@@ -8,12 +8,12 @@
 
 import Firebase
 
-class FirebaseManger {
+class FirebaseManager {
     
     typealias AuthResult = (AuthDataResult?, Error?) -> Void
     typealias ListeningResult = (Auth, User?) -> Void
     
-    static let shared = FirebaseManger()
+    static let shared = FirebaseManager()
     let user = { Auth.auth() }
     let fireStoreDatabase = { Firestore.firestore() }
     let userCollection = FirebaseEnum.user.rawValue
@@ -76,7 +76,7 @@ class FirebaseManger {
     func configure() {
         
         FirebaseApp.configure()
-        FirebaseManger.shared.listenAccount { (_, user) in
+        FirebaseManager.shared.listenAccount { (_, user) in
             
             if let user = user {
                 
@@ -179,7 +179,7 @@ class FirebaseManger {
             completionHandler(.failure(AccountError.noLogin))
             return
         }
-        guard let user = FirebaseManger.shared.userData else {
+        guard let user = FirebaseManager.shared.userData else {
             
             return
         }

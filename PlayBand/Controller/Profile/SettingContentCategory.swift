@@ -71,7 +71,7 @@ enum SettingContentCategory: String {
 
     func setCellForIndexPath(viewController: UIViewController) {
         
-        guard let userData = FirebaseManger.shared.userData else {
+        guard let userData = FirebaseManager.shared.userData else {
             
             viewController.addErrorAlertMessage(message: "你沒有資料")
             return
@@ -86,7 +86,7 @@ enum SettingContentCategory: String {
 
         case .logout:
             
-            FirebaseManger.shared.logout(completionHandler: { [weak viewController] result in
+            FirebaseManager.shared.logout(completionHandler: { [weak viewController] result in
                 
                 switch result {
                     
@@ -112,7 +112,7 @@ enum SettingContentCategory: String {
             })
         case .editStore:
             
-            if FirebaseManger.shared.storeName.count == 0 {
+            if FirebaseManager.shared.storeName.count == 0 {
                 
                 viewController.addErrorAlertMessage(message: "沒有店家可以修改")
                 return
@@ -120,7 +120,7 @@ enum SettingContentCategory: String {
             
             let alert = UIAlertController(title: "選擇店家", message: "請選擇要修改資訊的店家", preferredStyle: .actionSheet)
             
-            for store in FirebaseManger.shared.storeName {
+            for store in FirebaseManager.shared.storeName {
                 
                 let actionManger = UIAlertAction(title: "修改\(store)", style: .default) { [weak viewController] (_) in
                     
@@ -130,7 +130,7 @@ enum SettingContentCategory: String {
                         return
                     }
                     
-                    if let store = FirebaseManger.shared.storeDatas.first(where: {$0.name == store}) {
+                    if let store = FirebaseManager.shared.storeDatas.first(where: {$0.name == store}) {
                         nextVC.storeData = store
                         viewController?.navigationController?.pushViewController(nextVC, animated: true)
                     }
@@ -157,7 +157,7 @@ enum SettingContentCategory: String {
             viewController.navigationController?.pushViewController(nextVC, animated: true)
         case .userBlackList:
             
-            if FirebaseManger.shared.storeName.count == 0 {
+            if FirebaseManager.shared.storeName.count == 0 {
                 
                 viewController.addErrorAlertMessage(message: "沒有店家不會看到其他使用者")
                 return

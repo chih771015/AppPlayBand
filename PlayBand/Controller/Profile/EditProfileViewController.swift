@@ -64,7 +64,7 @@ class EditProfileViewController: UIViewController {
         let userData = UserData(name: name, phone: phone, band: band, email: email, facebook: facebook)
         
         PBProgressHUD.addLoadingView(animated: true)
-        FirebaseManger.shared.editProfileInfo(userData: userData) { [weak self] (error) in
+        FirebaseManager.shared.editProfileInfo(userData: userData) { [weak self] (error) in
             PBProgressHUD.dismissLoadingView(animated: true)
             if error == nil {
         

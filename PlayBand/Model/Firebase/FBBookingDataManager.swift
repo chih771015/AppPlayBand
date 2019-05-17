@@ -31,11 +31,11 @@ extension UserBookingDataWith {
     }
 }
 
-class FBBookingDataManger {
+class FBBookingDataManager {
     
-    lazy var fireStoreDataBase = FirebaseManger.shared.fireStoreDatabase()
+    lazy var fireStoreDataBase = FirebaseManager.shared.fireStoreDatabase()
     
-    let fireBase = FirebaseManger.shared
+    let fireBase = FirebaseManager.shared
     
     func getStoreBookingData(storeName: String ,completionHandler: @escaping (Result<[BookingTimeAndRoom]>) -> Void) {
         
@@ -65,14 +65,14 @@ class FBBookingDataManger {
         }
     }
     
-    func getUserBookingDatas(
+    private func getUserBookingDatas(
         with type: UserBookingDataWith,
         completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
        
         let ref = fireStoreDataBase
             .collectionName(type.collectionName)
             .document(type.returnValue)
-            .collectionName(.bookingConfirm)
+            .collectionName(.booking)
         fireBase.collectionGetDocuments(ref: ref) { (result) in
             
             switch result {
@@ -95,5 +95,20 @@ class FBBookingDataManger {
                 completionHandler(.failure(error))
             }
         }
+    }
+    
+    func getUserBookingDatasWithUser(completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
+        
+        guard let uid = FirebaseManager.shared.user().currentUser?.uid else {
+            
+            completionHandler(.failure(AccountError.noLogin))
+            return
+        }
+        getUserBookingDatas(with: .user(uid: uid), completionHandler: completionHandler)
+    }
+    
+    func getUserBookingDatasWithStore(storeName: String, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
+        
+        getUserBookingDatas(with: .storeManger(storeName: storeName), completionHandler: completionHandler)
     }
 }

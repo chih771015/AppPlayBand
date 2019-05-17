@@ -18,7 +18,7 @@ class SettingViewController: UIViewController {
     }
 
     private var datas: [SettingContentCategory] {
-        if let manger = FirebaseManger.shared.user().currentUser?.uid, manger == "cfvX7nocBBasff3souxrkSndcCw2" {
+        if let manger = FirebaseManager.shared.user().currentUser?.uid, manger == "cfvX7nocBBasff3souxrkSndcCw2" {
             
             return [ .passwordChange, .logout, .storeApply, .superManger, .editStore, .userBlackList, .storeBlackList]
         }

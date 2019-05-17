@@ -60,7 +60,7 @@ class SignUpViewController: UIViewController {
         
         PBProgressHUD.addLoadingView(at: view, animated: true)
         
-        FirebaseManger.shared.signUpAccount(
+        FirebaseManager.shared.signUpAccount(
             email: account,
             password: password,
             completionHandler: { [weak self] result, error in
@@ -81,7 +81,7 @@ class SignUpViewController: UIViewController {
     
     private func signIn(account: String, password: String, userData: UserData) {
         
-        FirebaseManger.shared.signInAccount(
+        FirebaseManager.shared.signInAccount(
             email: account,
             password: password,
             completionHandler: { [weak self] (result, error) in
@@ -91,7 +91,7 @@ class SignUpViewController: UIViewController {
                     self?.addErrorTypeAlertMessage(error: error)
                     return
                 }
-                FirebaseManger.shared.editProfileInfo(userData: userData)
+                FirebaseManager.shared.editProfileInfo(userData: userData)
                 
                 PBProgressHUD.dismissLoadingView(animated: true)
                 self?.addSucessAlertMessage(title: "歡迎進入", message: nil, completionHanderInDismiss: {

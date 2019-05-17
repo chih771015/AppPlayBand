@@ -34,7 +34,7 @@ class EditStorePhotoViewController: BaseEditViewController {
                 images.append(self.images[index])
             }
             urls = urls.filter({$0.isEmpty == false})
-            FirebaseManger.shared.uploadImagesAndGetURL(images: images) { [weak self] (result) in
+            FirebaseManager.shared.uploadImagesAndGetURL(images: images) { [weak self] (result) in
                 switch result {
                     
                 case .success(let urlsData):
@@ -126,7 +126,7 @@ class EditStorePhotoViewController: BaseEditViewController {
     
     private func upDataStoreRoom(storeData: StoreData) {
         
-        FirebaseManger.shared.updataStoreData(storeData: storeData) { [weak self] (result) in
+        FirebaseManager.shared.updataStoreData(storeData: storeData) { [weak self] (result) in
             PBProgressHUD.dismissLoadingView(animated: true)
             switch result {
                 
@@ -140,7 +140,7 @@ class EditStorePhotoViewController: BaseEditViewController {
                             closure(storeData)
                         }
                         
-                    FirebaseManger.shared.replaceStoreData(storeData: storeData)
+                    FirebaseManager.shared.replaceStoreData(storeData: storeData)
                     self?.navigationController?.popViewController(animated: true)
                 })
             case .failure(let error):

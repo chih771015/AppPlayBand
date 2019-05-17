@@ -37,7 +37,7 @@ class MessageOrderDetailViewController: UIViewController {
         
         PBProgressHUD.addLoadingView()
         
-        FirebaseManger.shared.updataBookingConfirm(
+        FirebaseManager.shared.updataBookingConfirm(
             storeName: bookingData.store, pathID: bookingData.pathID,
             userUID: bookingData.userUID) { [weak self] (result) in
                 
@@ -145,9 +145,9 @@ extension MessageOrderDetailViewController {
             return
         }
         PBProgressHUD.addLoadingView()
-        FirebaseManger.shared.storeAddUserBlackList(
+        FirebaseManager.shared.storeAddUserBlackList(
             userUid: bookingData.userUID, userName: bookingData.userInfo.name,
-            storeNames: FirebaseManger.shared.storeName) { [weak self] (result) in
+            storeNames: FirebaseManager.shared.storeName) { [weak self] (result) in
                 PBProgressHUD.dismissLoadingView()
                 switch result {
                     
@@ -170,7 +170,7 @@ extension MessageOrderDetailViewController {
         guard let bookingData = self.bookingData else { return }
         
         PBProgressHUD.addLoadingView()
-        FirebaseManger.shared.refuseBooking(
+        FirebaseManager.shared.refuseBooking(
             pathID: bookingData.pathID, storeName:
         bookingData.store, userUID: bookingData.userUID, storeMessage: storeMessage) { [weak self] (result) in
             

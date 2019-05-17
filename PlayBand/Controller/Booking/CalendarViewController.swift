@@ -94,7 +94,7 @@ class CalendarViewController: UIViewController {
         
         PBProgressHUD.addLoadingView(animated: true)
         
-        FirebaseManger.shared.getStoreBookingInfo(name: data.name) { [weak self] (result) in
+        FirebaseManager.shared.getStoreBookingInfo(name: data.name) { [weak self] (result) in
             
             PBProgressHUD.dismissLoadingView(animated: true)
             

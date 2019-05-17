@@ -32,7 +32,7 @@ class StoreReviewViewController: BaseStoreDetailViewController {
         guard var data = storeData else {return}
         PBProgressHUD.addLoadingView(animated: true)
         
-        FirebaseManger.shared.uploadImagesAndGetURL(images: images) { [weak self] (result) in
+        FirebaseManager.shared.uploadImagesAndGetURL(images: images) { [weak self] (result) in
             
             switch result {
                 
@@ -58,7 +58,7 @@ class StoreReviewViewController: BaseStoreDetailViewController {
     
     private func uploadStoreInformation(data: StoreData) {
         
-        FirebaseManger.shared.sendStoreApply(storeData: data) { [weak self] (result) in
+        FirebaseManager.shared.sendStoreApply(storeData: data) { [weak self] (result) in
             PBProgressHUD.dismissLoadingView(animated: true)
             
             switch result {

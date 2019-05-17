@@ -98,7 +98,7 @@ class EditStoreInfoViewController: BaseEditViewController {
         
         guard let storeData = storeData else {return}
         PBProgressHUD.addLoadingView(animated: true)
-        FirebaseManger.shared.updataStoreData(storeData: storeData) { [weak self] (result) in
+        FirebaseManager.shared.updataStoreData(storeData: storeData) { [weak self] (result) in
             PBProgressHUD.dismissLoadingView(animated: true)
             
             switch result {
@@ -113,7 +113,7 @@ class EditStoreInfoViewController: BaseEditViewController {
                         
                         toStore(storeData)
                     }
-                    FirebaseManger.shared.replaceStoreData(storeData: storeData)
+                    FirebaseManager.shared.replaceStoreData(storeData: storeData)
                     self?.navigationController?.popViewController(animated: true)
                 })
             }

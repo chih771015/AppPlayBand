@@ -10,7 +10,7 @@ import Firebase
 
 typealias FireBaseData = [String: Any]
 
-extension FirebaseManger {
+extension FirebaseManager {
     
     func getUserInfo() {
         

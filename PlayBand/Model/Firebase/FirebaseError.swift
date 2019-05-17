@@ -11,7 +11,6 @@ import Foundation
 enum FireBaseError: Error {
     
     case unknow
-    
 }
 extension FireBaseError: LocalizedError {
     

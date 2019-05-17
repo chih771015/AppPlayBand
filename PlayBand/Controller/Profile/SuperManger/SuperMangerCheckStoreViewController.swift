@@ -26,7 +26,7 @@ class SuperMangerCheckStoreViewController: BaseStoresViewController {
     override func getStoreData() {
         PBProgressHUD.addLoadingView(animated: true)
         
-        FirebaseManger.shared.getStoreApplyDataWithSuperManger { [weak self] (result) in
+        FirebaseManager.shared.getStoreApplyDataWithSuperManger { [weak self] (result) in
             self?.tableView.endHeaderRefreshing()
             PBProgressHUD.dismissLoadingView(animated: true)
             

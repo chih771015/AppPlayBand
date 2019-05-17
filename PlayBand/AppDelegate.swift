@@ -17,11 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FirebaseManger.shared.configure()
+        FirebaseManager.shared.configure()
         Fabric.with([Crashlytics.self])
         // Override point for customization after application launch.
         let appdelgate = UIApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
-        if FirebaseManger.shared.user().currentUser != nil {
+        if FirebaseManager.shared.user().currentUser != nil {
             
             let nextVC = UIStoryboard.main.instantiateInitialViewController()
             appdelgate.window?.rootViewController = nextVC

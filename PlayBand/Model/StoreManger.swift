@@ -12,7 +12,7 @@ class StoreManger {
     
     private let firebaseStoreManger = FireBaseStoreDataManger()
     
-    let bookingDataProVider = BookingDataManger()
+    let bookingDataProVider = BookingDataManager()
 
     func getStoreDatas(completionHandler: @escaping (Result<[StoreData]>) -> Void) {
         

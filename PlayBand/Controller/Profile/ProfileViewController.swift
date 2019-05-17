@@ -65,10 +65,10 @@ class ProfileViewController: UIViewController {
             self, selector: #selector(getUserData(notifciation:)),
             name: NSNotification.Name(NotificationCenterName.userData.rawValue),
             object: nil)
-        if FirebaseManger.shared.userData != nil {
+        if FirebaseManager.shared.userData != nil {
             
-            self.user = FirebaseManger.shared.userData
-        } else if FirebaseManger.shared.user().currentUser != nil {
+            self.user = FirebaseManager.shared.userData
+        } else if FirebaseManager.shared.user().currentUser != nil {
             
             PBProgressHUD.addLoadingView(animated: true)
         }
@@ -163,7 +163,7 @@ extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerCo
             let resizeImage = selectedImage.resizeImage(
                 targetSize: CGSize(width: 500, height: selectedImage.size.height / selectedImage.size.width * 500))
         
-            FirebaseManger.shared.uploadIamge(uniqueString: uniqueString, image: resizeImage) { [weak self] (result) in
+            FirebaseManager.shared.uploadIamge(uniqueString: uniqueString, image: resizeImage) { [weak self] (result) in
                 PBProgressHUD.dismissLoadingView(animated: true)
                 switch result {
                     
@@ -171,7 +171,7 @@ extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerCo
                     
                     self?.addSucessAlertMessage(title: message, message: nil, completionHanderInDismiss: nil)
                     
-                    FirebaseManger.shared.getUserInfo()
+                    FirebaseManager.shared.getUserInfo()
                 
                 case .failure(let error):
                     

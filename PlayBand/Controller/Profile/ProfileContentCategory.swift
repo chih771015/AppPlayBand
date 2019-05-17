@@ -194,7 +194,7 @@ enum ProfileContentCategory: String {
             withIdentifier: String(describing: EditTableViewCell.self),
             for: indexPath) as? EditTableViewCell else { return UITableViewCell()}
         
-        let userData = FirebaseManger.shared.userData
+        let userData = FirebaseManager.shared.userData
         
         switch self {
         

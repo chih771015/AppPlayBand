@@ -65,7 +65,7 @@ class PasswordChangeViewController: UIViewController {
         }
     }
 
-    private let firebase = FirebaseManger.shared
+    private let firebase = FirebaseManager.shared
     
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var tableView: UITableView! {

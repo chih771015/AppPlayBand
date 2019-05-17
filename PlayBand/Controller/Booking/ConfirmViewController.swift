@@ -20,7 +20,7 @@ class ConfirmViewController: UIViewController {
     @IBOutlet weak var button: UIButton!
     @IBAction func bookingAction() {
         
-        guard FirebaseManger.shared.user().currentUser != nil else {
+        guard FirebaseManager.shared.user().currentUser != nil else {
             
             self.addAlert(title: "尚未登入無法使用", message: "要去登入頁面嗎", actionTitle: "去登入", cancelTitle: "取消") { (_) in
                 UIViewController.returnLoginPage()
@@ -39,7 +39,7 @@ class ConfirmViewController: UIViewController {
             message = messageTextField.text ?? Text.message.rawValue
         }
         
-        if FirebaseManger.shared.userData?.storeRejectUser.contains(storeName) ?? false {
+        if FirebaseManager.shared.userData?.storeRejectUser.contains(storeName) ?? false {
         
             self.addErrorAlertMessage(title: "警告", message: "你已被加入拒絕名單內\n請自行聯絡店家查詢原因") { [weak self] _ in
                 
@@ -50,7 +50,7 @@ class ConfirmViewController: UIViewController {
         
         PBProgressHUD.addLoadingView(animated: true)
         
-        FirebaseManger.shared.bookingTimeCreat(
+        FirebaseManager.shared.bookingTimeCreat(
         storeName: storeName,
         bookingDatas: bookingTimeDatas,
         userMessage: message) { [weak self] (result) in
@@ -64,7 +64,7 @@ class ConfirmViewController: UIViewController {
                 self?.addSucessAlertMessage(title: message, message: nil, completionHanderInDismiss: {
                     
                     self?.navigationController?.popToRootViewController(animated: true)
-                    FirebaseManger.shared.getUserBookingData()
+                    FirebaseManager.shared.getUserBookingData()
                 })
                 
             case .failure(let error):

@@ -41,7 +41,7 @@ class BaseStoresViewController: UIViewController {
         
         DispatchQueue.global().async {
             
-            FirebaseManger.shared.getStoreInfo { [weak self] result in
+            FirebaseManager.shared.getStoreInfo { [weak self] result in
                 
                 DispatchQueue.main.async {
                     

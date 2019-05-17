@@ -98,7 +98,7 @@ class PBTabBarController: UITabBarController, UITabBarControllerDelegate {
             return true
         }
         
-        guard FirebaseManger.shared.user().currentUser != nil else {
+        guard FirebaseManager.shared.user().currentUser != nil else {
             
             self.addAlert(title: "尚未登入無法使用", message: "要去登入頁面登入嗎", actionTitle: "去登入", cancelTitle: "取消") { (_) in
                 UIViewController.returnLoginPage()

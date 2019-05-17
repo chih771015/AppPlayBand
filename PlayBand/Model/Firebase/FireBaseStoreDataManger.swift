@@ -26,11 +26,11 @@ enum StoreDataKey: String {
 
 class FireBaseStoreDataManger {
     
-    private lazy var fireStoreDatabase = FirebaseManger.shared.fireStoreDatabase()
+    private lazy var fireStoreDatabase = FirebaseManager.shared.fireStoreDatabase()
     
     private let firebaseReadAndWrite: FirebaseReadAndWrite
     
-    init(firebaseManger: FirebaseReadAndWrite = FirebaseManger.shared) {
+    init(firebaseManger: FirebaseReadAndWrite = FirebaseManager.shared) {
         self.firebaseReadAndWrite = firebaseManger
     }
     
@@ -48,7 +48,7 @@ class FireBaseStoreDataManger {
                         datas: datas.map({StoreData(dictionary: $0)})
                     )
                     
-                    FirebaseManger.shared.storeDatas = storedatas
+                    FirebaseManager.shared.storeDatas = storedatas
                     completionHandler(.success(storedatas))
                 } catch {
                     

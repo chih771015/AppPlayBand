@@ -104,7 +104,7 @@ extension BlackListViewController: UITableViewDelegate, UITableViewDataSource {
         
         let name = names[index]
         PBProgressHUD.addLoadingView()
-        FirebaseManger.shared.removeBlackList(listStyle: listStyle, name: name) { [weak self] (result) in
+        FirebaseManager.shared.removeBlackList(listStyle: listStyle, name: name) { [weak self] (result) in
             PBProgressHUD.dismissLoadingView()
             switch result {
             

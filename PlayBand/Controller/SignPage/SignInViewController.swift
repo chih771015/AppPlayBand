@@ -10,7 +10,7 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
-    private let firebase = FirebaseManger.shared
+    private let firebase = FirebaseManager.shared
     
     @IBAction func signInAction() {
         

@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-extension FirebaseManger: FirebaseReadAndWrite {
+extension FirebaseManager: FirebaseReadAndWrite {
     
     func collectionGetDocuments(ref: CollectionReference,
                                 completionHandler: @escaping (Result<[FireBaseData]>) -> Void) {

@@ -42,7 +42,7 @@ enum MessageFetchDataEnum {
             withIdentifier: String(
                 describing: MessageImageTableViewCell.self)
             ) as? MessageImageTableViewCell else {return UIView()}
-        if let store = FirebaseManger.shared.storeDatas.first(where: {$0.name == bookingData?.store}) {
+        if let store = FirebaseManager.shared.storeDatas.first(where: {$0.name == bookingData?.store}) {
             
             sectionHeader.setupCell(url: store.photourl)
         }
@@ -77,7 +77,7 @@ enum MessageFetchDataEnum {
         }
         let url = data.userInfo.photoURL
         let storeName = data.store
-        let storeURL = FirebaseManger.shared.storeDatas.first(where: {$0.name == storeName})?.photourl
+        let storeURL = FirebaseManager.shared.storeDatas.first(where: {$0.name == storeName})?.photourl
         
         switch self {
             

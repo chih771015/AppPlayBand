@@ -99,18 +99,18 @@ class SearchStoreViewController: UIViewController {
         
         if notifcation.name == NSNotification.storeDatas {
 
-            let filterData = setupFilterStoreData(storeData: FirebaseManger.shared.storeDatas)
+            let filterData = setupFilterStoreData(storeData: FirebaseManager.shared.storeDatas)
             self.storeDatas = filterData
         }
         if notifcation.name == NSNotification.userData {
 
-            self.storeDatas = setupFilterStoreData(storeData: FirebaseManger.shared.storeDatas)
+            self.storeDatas = setupFilterStoreData(storeData: FirebaseManager.shared.storeDatas)
         }
     }
     
     private func setupFilterStoreData(storeData: [StoreData]) -> [StoreData] {
    
-        if let name = FirebaseManger.shared.userData?.storeBlackList {
+        if let name = FirebaseManager.shared.userData?.storeBlackList {
             
             return storeData.filter({!name.contains($0.name)})
         } else {
