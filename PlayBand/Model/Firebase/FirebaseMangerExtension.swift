@@ -32,35 +32,6 @@ extension FirebaseManager {
         }
     }
     
-    func getStoreInfo(completionHandler: ((Result<[StoreData]>) -> Void)?) {
-        
-        fireStoreDatabase().collection(FirebaseEnum.store.rawValue).getDocuments { (querySnapshot, error) in
-            
-            if let error = error {
-                
-                completionHandler?(.failure(error))
-            } else {
-                
-                guard let documents = querySnapshot?.documents else {
-                    
-                    completionHandler?(.failure(FirebaseDataError.document))
-                    return
-                }
-                var storeDatas: [StoreData] = []
-                for document in documents {
-                    
-                    guard let storeData = StoreData(dictionary: document.data()) else {
-                        completionHandler?(.failure(FirebaseDataError.decodeFail))
-                        return
-                    }
-                    storeDatas.append(storeData)
-                }
-                self.storeDatas = storeDatas
-                completionHandler?(.success(self.storeDatas))
-            }
-        }
-    }
-    
     func getMangerStoreName() {
         
         guard let uid = user().currentUser?.uid else {return}
@@ -232,41 +203,6 @@ extension FirebaseManager {
         fireStoreDatabase().collection(FirebaseEnum.storeApply.rawValue).document(pathID).delete()
     }
     
-    func getStoreBookingDataWithManger(
-        storeName: String, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
-        fireStoreDatabase().collection(FirebaseEnum.store.rawValue).document(storeName)
-            .collection(FirebaseEnum.booking.rawValue).getDocuments { (querySnapshot, error) in
-            
-            if let error = error {
-                completionHandler(.failure(error))
-                return
-            }
-            guard let docments = querySnapshot?.documents else {
-                completionHandler(.failure(FirebaseDataError.document))
-                return
-            }
-            
-            if docments.isEmpty {
-                
-                completionHandler(.success([]))
-                return
-            }
-            
-            var datas: [UserBookingData] = []
-            for document in docments {
-                
-                guard let data = UserBookingData(dictionary: document.data()) else {
-                    
-                    completionHandler(.failure(FirebaseDataError.decodeFail))
-                    return
-                }
-                datas.append(data)
-            }
-            
-            completionHandler(.success(datas))
-        }
-    }
-    
     func updataStoreData(storeData: StoreData, completionHandler: @escaping (Result<String>) -> Void) {
         let dictionary = storeData.getFirebaseDictionay()
         fireStoreDatabase()
@@ -430,5 +366,4 @@ extension FirebaseManager {
             }
         }
     }
-    
 }

@@ -25,10 +25,8 @@ class SearchStoreViewController: UIViewController {
             tableView.reloadData()
         }
     }
-    
-    @IBOutlet weak var backgroundColorView: UIView!
-    
-    private let storeManger = StoreManger()
+
+    private let storeManger = StoreManager()
     private let cellType = StoreContentCategory.storeSearch
     
     override func viewDidLoad() {

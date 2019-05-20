@@ -73,6 +73,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var calendarTableView: JKCalendarTableView!
 
     var storeData: StoreData?
+    let storeManager: StoreManager = StoreManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,7 +95,7 @@ class CalendarViewController: UIViewController {
         
         PBProgressHUD.addLoadingView(animated: true)
         
-        FirebaseManager.shared.getStoreBookingInfo(name: data.name) { [weak self] (result) in
+        storeManager.getStoreBookingDatas(storeName: data.name) { [weak self] (result) in
             
             PBProgressHUD.dismissLoadingView(animated: true)
             

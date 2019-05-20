@@ -26,6 +26,8 @@ class BaseStoresViewController: UIViewController {
         }
     }
     
+    let storeManager: StoreManager = StoreManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // swiftlint: disable line_length
@@ -38,30 +40,37 @@ class BaseStoresViewController: UIViewController {
         self.storeDatas = []
         
         PBProgressHUD.addLoadingView(animated: true)
-        
-        DispatchQueue.global().async {
-            
-            FirebaseManager.shared.getStoreInfo { [weak self] result in
+
+        storeManager.getStoreDatas(completionHandler: { [weak self] (result) in
+            PBProgressHUD.dismissLoadingView()
+            self?.tableView.endHeaderRefreshing()
+            switch result {
                 
-                DispatchQueue.main.async {
+            case .success(let data):
+                
+                guard let filterData = self?.setupFilterStoreData(storeData: data) else {
                     
-                    PBProgressHUD.dismissLoadingView(animated: true)
-                    
-                    self?.tableView.endHeaderRefreshing()
-                    
-                    switch result {
-                        
-                    case .success(let data):
-                        
-                        self?.storeDatas = data
-                        
-                    case .failure(let error):
-                        
-                        self?.addErrorAlertMessage(title: FirebaseEnum.fail.rawValue,
-                                                   message: error.localizedDescription, completionHanderInDismiss: nil)
-                    }
+                    self?.storeDatas = data
+                    return
                 }
+                
+                self?.storeDatas = filterData
+            case .failure(let error):
+                
+                self?.addErrorTypeAlertMessage(error: error)
             }
+            
+        })
+    }
+    
+    private func setupFilterStoreData(storeData: [StoreData]) -> [StoreData] {
+        
+        if let name = FirebaseManager.shared.userData?.storeBlackList {
+            
+            return storeData.filter({!name.contains($0.name)})
+        } else {
+            
+            return storeData
         }
     }
     

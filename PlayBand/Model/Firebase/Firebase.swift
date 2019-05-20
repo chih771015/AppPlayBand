@@ -56,6 +56,7 @@ class FirebaseManager {
         }
     }
     private init () {}
+    
     private func postBookingData(data: [UserBookingData]) {
         
         NotificationCenter.default.post(
@@ -142,35 +143,7 @@ class FirebaseManager {
             completionHandler(error)
         }
     }
-    func getStoreBookingInfo(name: String, completionHandler: @escaping (Result<[BookingTimeAndRoom]>) -> Void) {
-        
-        fireStoreDatabase().collection(FirebaseEnum.store.rawValue).document(name)
-        .collection(FirebaseEnum.confirm.rawValue).getDocuments { (querySnapshot, error) in
-        
-            guard let documents = querySnapshot?.documents else {
-                return
-            }
-            if let error = error {
-                
-                completionHandler(.failure(error))
-            } else {
-                
-                var booingTimes: [BookingTimeAndRoom] = []
-                
-                for document in documents {
-                    
-                    guard let bookingTime = BookingTimeAndRoom(dictionary: document.data()) else {
-                        
-                        completionHandler(.failure(FirebaseDataError.decodeFail))
-                        return
-                    }
-                    booingTimes.append(bookingTime)
-                }
-                
-                completionHandler(.success(booingTimes))
-            }
-        }
-    }
+    
     func bookingTimeCreat(storeName: String, bookingDatas: [BookingTimeAndRoom],
                          userMessage: String, completionHandler: @escaping (Result<String>) -> Void) {
 
