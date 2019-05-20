@@ -8,7 +8,7 @@
 
 import Foundation
 
-class StoreManger {
+class StoreManager {
     
     private let firebaseStoreManger = FireBaseStoreDataManger()
     
