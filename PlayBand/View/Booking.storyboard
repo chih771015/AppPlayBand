@@ -43,7 +43,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="找團室" id="ffK-cK-Ywc"/>
                     <connections>
-                        <outlet property="backgroundColorView" destination="RQd-gN-suq" id="1Q4-Ha-AdB"/>
                         <outlet property="tableView" destination="Wow-FK-Pyh" id="Nf0-PK-fM9"/>
                     </connections>
                 </viewController>
@@ -414,7 +413,7 @@
     <resources>
         <image name="add" width="512" height="512"/>
         <namedColor name="endColor">
-            <color red="0.039215686274509803" green="0.83529411764705885" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.40784313725490196" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
