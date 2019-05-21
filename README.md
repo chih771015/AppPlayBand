@@ -29,8 +29,7 @@ Features & ScreenShots
 可以在此看到已預約的時間店家是否有回覆
 店家管理者也可以在此確認使用者的預定資料, 也可將使用者加入店家黑名單
 
-<img src="https://github.com/chih771015/AppPlayBand/blob/master/image/3.gif" width="207" height="364" align=center/>
-<img src="https://github.com/chih771015/AppPlayBand/blob/master/image/4.gif" width="207" height="364" align=center/>
+<img src="https://github.com/chih771015/AppPlayBand/blob/master/image/3.gif" width="207" height="364" align=center/> <img src="https://github.com/chih771015/AppPlayBand/blob/master/image/4.gif" width="207" height="364" align=center/>
 
 ### 個人頁面
 可以觀看現在的個人資料跟設定個人資料
@@ -40,9 +39,7 @@ Features & ScreenShots
 ### 設定頁面
 可以登出, 或是進入店家申請頁面
 
-<img src="https://github.com/chih771015/AppPlayBand/blob/master/image/6.gif" width="207" height="364" align=center/>
-<img src="https://github.com/chih771015/AppPlayBand/blob/master/image/7.gif" width="207" height="364" align=center/>
-<img src="https://github.com/chih771015/AppPlayBand/blob/master/image/8.gif" width="207" height="364" align=center/>
+<img src="https://github.com/chih771015/AppPlayBand/blob/master/image/6.gif" width="207" height="364" align=center/> <img src="https://github.com/chih771015/AppPlayBand/blob/master/image/7.gif" width="207" height="364" align=center/> <img src="https://github.com/chih771015/AppPlayBand/blob/master/image/8.gif" width="207" height="364" align=center/>
 
 Libraries
 ---
