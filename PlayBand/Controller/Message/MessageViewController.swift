@@ -59,13 +59,43 @@ class MessageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("ParentDidLoadBegin")
         setupTestView()
         setupChildVC()
         setupChildView()
         setupData()
         setupNavigationItem()
         view.layoutIfNeeded()
+        print("ParentDidLoadEnd")
+    }
+    
+    override func loadView() {
+        super.loadView()
+        print("ParentLoadView")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("ParentWillAppear")
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        print("ParentWillLayout")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("ParentDidAppear")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("ParentWillDisappear")
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("ParentViewDidDisappear")
     }
     
     private func setupNavigationItem() {
@@ -92,16 +122,33 @@ class MessageViewController: UIViewController {
         confirmVC.delegate = self
         addChild(refuseVC)
         refuseVC.delegate = self
+        print("setupChildVC")
     }
     
     private func setupChildView() {
-        
+        print("ChildViewSubBegin")
         messageSubView.setupScrollViewSubViewFullSize(at: self.children.count)
+ //       messageSubView.setupScrollViewSubViewFullSize(at: 3)
+
         let viewCount = messageSubView.scrollView.subviews.count
         for index in 0..<viewCount {
-            
+//            print("setupChildViewWillSub")
             messageSubView.scrollView.subviews[index].stickSubView(self.children[index].view)
+//            print("setupChildViewDidSub")
         }
+        
+//        print("setupChildViewWillSub")
+//
+//        messageSubView.scrollView.subviews[0].stickSubView(confirmVC.view)
+//        print("setupChildViewDidSub")
+//        print("setupChildViewWillSub")
+//
+//        messageSubView.scrollView.subviews[1].stickSubView(tobeConfirmVC.view)
+//        print("setupChildViewDidSub")
+//        print("setupChildViewWillSub")
+//        messageSubView.scrollView.subviews[2].stickSubView(refuseVC.view)
+        print("setupChildViewDidSub")
+        
     }
     
     deinit {
@@ -234,7 +281,7 @@ extension MessageViewController: UIScrollViewDelegate {
         let nowX = scrollView.contentOffset.x
         let width = scrollView.contentSize.width
         let scale = nowX / width
-        
+
         messageSubView.setupUnderLineView(xPoint: self.view.frame.width * scale)
     }
 }

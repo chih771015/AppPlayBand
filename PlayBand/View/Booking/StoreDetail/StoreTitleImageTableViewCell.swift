@@ -70,6 +70,7 @@ class StoreTitleImageTableViewCell: UITableViewCell {
 
 extension StoreTitleImageTableViewCell: UICollectionViewDelegate,
 UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,

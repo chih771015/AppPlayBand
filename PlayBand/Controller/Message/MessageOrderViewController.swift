@@ -28,7 +28,37 @@ class MessageOrderViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         self.view.layoutIfNeeded()
+        print("ChildViewDidLoad")
         // Do any additional setup after loading the view.
+    }
+    
+    override func loadView() {
+        super.loadView()
+        print("ChildViewLoadView")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("ChildViewWillAppear")
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        print("ChildViewWillLayout")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("ChildViewDidAppear")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("ChildViewWillDisappear")
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("ChildViewDidDisappear")
     }
 
     private func setupTableView() {
