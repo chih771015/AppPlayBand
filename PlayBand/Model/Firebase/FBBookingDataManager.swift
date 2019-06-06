@@ -37,6 +37,8 @@ class FBBookingDataManager {
     
     let fireBase = FirebaseManager.shared
     
+    let pushNotification = FireBaseNotificationSender()
+    
     func getStoreBookingData(storeName: String ,completionHandler: @escaping (Result<[BookingTimeAndRoom]>) -> Void) {
         
         let ref = fireStoreDataBase.collectionName(.store).document(storeName).collectionName(.bookingConfirm)
@@ -110,5 +112,29 @@ class FBBookingDataManager {
     func getUserBookingDatasWithStore(storeName: String, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
         
         getUserBookingDatas(with: .storeManger(storeName: storeName), completionHandler: completionHandler)
+    }
+    
+    func addUserBookingDatas(storeName: String, bookingDatas: [BookingTimeAndRoom],
+                             userMessage: String, completionHandler: @escaping (Result<String>) -> Void) {
+        fireBase.bookingTimeCreat(storeName: storeName, bookingDatas: bookingDatas, userMessage: userMessage) {[weak self] (result) in
+            
+            switch result {
+            
+            case .success:
+                if self?.fireBase.storeName.contains(storeName) ?? false {
+                    break
+                }
+                guard let tokens = self?.fireBase.storeDatas.first(where: {$0.name == storeName})?.tokens else {break}
+                guard let name = self?.fireBase.userData?.name else {break}
+                
+                for token in tokens {
+                    
+                    self?.pushNotification.sendPushNotification(to: token, title: "新增團室預定", body: "用戶\(name)跟您預約團室\n請您做確認的動作")
+                }
+            case .failure:
+                break
+            }
+            completionHandler(result)
+        }
     }
 }

@@ -20,6 +20,7 @@ struct UserData {
     var storeBlackList: [String]
     var userBlackLists: [UserBlackList]
     var storeRejectUser: [String]
+    var tokens: [String] = []
     init?(dictionary: [String: Any]) {
         
         guard let name = dictionary[UsersKey.name.rawValue] as? String else {return nil}
@@ -27,6 +28,7 @@ struct UserData {
         guard let band = dictionary[UsersKey.band.rawValue] as? String else {return nil}
         guard let email = dictionary[UsersKey.email.rawValue] as? String else {return nil}
         guard let facebook = dictionary[UsersKey.facebook.rawValue] as? String else {return nil}
+        
         if let storeBlackList = dictionary[UsersKey.storeBlackList.rawValue] as? [String] {
             
             self.storeBlackList = storeBlackList
@@ -64,6 +66,10 @@ struct UserData {
         self.facebook = facebook
         let photoURL = dictionary[UsersKey.photoURL.rawValue] as? String
         self.photoURL = photoURL
+        if let tokens = dictionary[UsersKey.token.rawValue] as? [String] {
+            
+            self.tokens = tokens
+        }
     }
     
     init(name: String, phone: String, band: String, email: String, facebook: String, status: String? = nil) {

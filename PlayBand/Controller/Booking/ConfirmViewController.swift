@@ -15,6 +15,7 @@ class ConfirmViewController: UIViewController {
         case booking = "送出預定訂單"
         case message = "沒有訊息"
     }
+    private let userManager = UserManager()
     
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var button: UIButton!
@@ -50,7 +51,7 @@ class ConfirmViewController: UIViewController {
         
         PBProgressHUD.addLoadingView(animated: true)
         
-        FirebaseManager.shared.bookingTimeCreat(
+        userManager.addBookingDatas(
         storeName: storeName,
         bookingDatas: bookingTimeDatas,
         userMessage: message) { [weak self] (result) in

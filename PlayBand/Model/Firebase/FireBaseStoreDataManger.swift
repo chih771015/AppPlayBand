@@ -22,6 +22,7 @@ enum StoreDataKey: String {
     case information
     case city
     case images
+    case token
 }
 
 class FireBaseStoreDataManger {

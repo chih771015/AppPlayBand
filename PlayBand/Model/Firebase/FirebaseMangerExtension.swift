@@ -352,10 +352,10 @@ extension FirebaseManager {
         }
         
     }
-    private func removeStoreReject(userUID: String, completionHandler: @escaping (Result<String>) -> Void){
+    private func removeStoreReject(userUID: String, completionHandler: @escaping (Result<String>) -> Void) {
         fireStoreDatabase().collection(userCollection)
             .document(userUID)
-            .updateData([UsersKey.storeRejectUser.rawValue: FieldValue.arrayRemove(storeName)]){ error in
+            .updateData([UsersKey.storeRejectUser.rawValue: FieldValue.arrayRemove(storeName)]) { error in
             
             if let error = error {
                 
@@ -365,5 +365,15 @@ extension FirebaseManager {
                 completionHandler(.success(FirebaseEnum.blackListRemove.rawValue))
             }
         }
+    }
+    
+    func signUpAccount(email: String, password: String, completionHandler: @escaping AuthResult) {
+        
+        Auth.auth().createUser(withEmail: email, password: password, completion: completionHandler)
+    }
+    
+    func signInAccount(email: String, password: String, completionHandler: @escaping AuthResult) {
+        
+        Auth.auth().signIn(withEmail: email, password: password, completion: completionHandler)
     }
 }

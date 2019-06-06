@@ -93,6 +93,7 @@
 		59ABB0342258B32B00AE937A /* SearchStoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ABB0322258B32B00AE937A /* SearchStoreTableViewCell.swift */; };
 		59ABB0352258B32B00AE937A /* SearchStoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59ABB0332258B32B00AE937A /* SearchStoreTableViewCell.xib */; };
 		59ABB0382259084800AE937A /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ABB0362259084800AE937A /* StoreDetailViewController.swift */; };
+		59AE1DA922A605B900E42428 /* FireBaseNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE1DA822A605B900E42428 /* FireBaseNotificationSender.swift */; };
 		59B43E0B226ECA5C00598538 /* StoreTitleImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B43E09226ECA5C00598538 /* StoreTitleImageTableViewCell.swift */; };
 		59B43E0C226ECA5C00598538 /* StoreTitleImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59B43E0A226ECA5C00598538 /* StoreTitleImageTableViewCell.xib */; };
 		59B43E11226ECAD000598538 /* StoreImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B43E0F226ECAD000598538 /* StoreImageCollectionViewCell.swift */; };
@@ -161,6 +162,7 @@
 /* Begin PBXFileReference section */
 		4DC66BA7995D6F264BD1A145 /* Pods-PlayBand.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayBand.release.xcconfig"; path = "Target Support Files/Pods-PlayBand/Pods-PlayBand.release.xcconfig"; sourceTree = "<group>"; };
 		59009146227F6C3F006CDC88 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		5904AFF122A4CD4600D0099B /* PlayBand.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlayBand.entitlements; sourceTree = "<group>"; };
 		5907F6952259DE3C008BB604 /* StoreDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		5907F6962259DE3C008BB604 /* StoreDescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreDescriptionTableViewCell.xib; sourceTree = "<group>"; };
 		5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreContentCategory.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 		59ABB0322258B32B00AE937A /* SearchStoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStoreTableViewCell.swift; sourceTree = "<group>"; };
 		59ABB0332258B32B00AE937A /* SearchStoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchStoreTableViewCell.xib; sourceTree = "<group>"; };
 		59ABB0362259084800AE937A /* StoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailViewController.swift; sourceTree = "<group>"; };
+		59AE1DA822A605B900E42428 /* FireBaseNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseNotificationSender.swift; sourceTree = "<group>"; };
 		59B43E09226ECA5C00598538 /* StoreTitleImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTitleImageTableViewCell.swift; sourceTree = "<group>"; };
 		59B43E0A226ECA5C00598538 /* StoreTitleImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreTitleImageTableViewCell.xib; sourceTree = "<group>"; };
 		59B43E0F226ECAD000598538 /* StoreImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -377,6 +380,7 @@
 		5941D82B225359D500FDEEBA /* PlayBand */ = {
 			isa = PBXGroup;
 			children = (
+				5904AFF122A4CD4600D0099B /* PlayBand.entitlements */,
 				59949293225A7D6400726BF3 /* FrameWork */,
 				59F81F902254629F00C04E32 /* Extension */,
 				59F81F8D22545AC400C04E32 /* Controller */,
@@ -611,6 +615,7 @@
 				59E7F62B2281F2EA00EF8906 /* FirebaseMangerExtension+ refactoring.swift */,
 				59D925F72282750E004EBEEC /* FireBaseStoreDataManger.swift */,
 				59D9260222829E9F004EBEEC /* FBBookingDataManager.swift */,
+				59AE1DA822A605B900E42428 /* FireBaseNotificationSender.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -857,6 +862,11 @@
 				TargetAttributes = {
 					5941D828225359D500FDEEBA = {
 						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					59FEBD3222856B0A001BD17E = {
 						CreatedOnToolsVersion = 10.2;
@@ -1117,6 +1127,7 @@
 				591E36C1227D9A91008F483E /* BlackListViewController.swift in Sources */,
 				59949297225A7FCE00726BF3 /* CalendarViewController.swift in Sources */,
 				59821B352278402900A61B50 /* AddRoomViewController.swift in Sources */,
+				59AE1DA922A605B900E42428 /* FireBaseNotificationSender.swift in Sources */,
 				5925E44522793F8200EB7C19 /* ErrorMessageEnum.swift in Sources */,
 				593774A8227A16D6008A05E0 /* SuperMangerCheckStoreViewController.swift in Sources */,
 				59ABB026225877C400AE937A /* SettingViewController.swift in Sources */,
@@ -1358,6 +1369,7 @@
 			baseConfigurationReference = C291E05659581482F9363EF6 /* Pods-PlayBand.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PlayBand/PlayBand.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G9J3D558CX;
 				INFOPLIST_FILE = PlayBand/Info.plist;
@@ -1378,6 +1390,7 @@
 			baseConfigurationReference = 4DC66BA7995D6F264BD1A145 /* Pods-PlayBand.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PlayBand/PlayBand.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G9J3D558CX;
 				INFOPLIST_FILE = PlayBand/Info.plist;

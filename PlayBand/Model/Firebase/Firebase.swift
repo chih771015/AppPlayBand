@@ -18,7 +18,6 @@ class FirebaseManager {
     let fireStoreDatabase = { Firestore.firestore() }
     let userCollection = FirebaseEnum.user.rawValue
     var listener: ListenerRegistration?
-    
     var userData: UserData? {
         didSet {
             
@@ -37,7 +36,13 @@ class FirebaseManager {
         }
     }
     
-    var storeName: [String] = []
+    var storeName: [String] = [] {
+        
+        didSet {
+            
+            setStoresToken()
+        }
+    }
     var storeDatas: [StoreData] = []
     var userBookingData: [UserBookingData] = [] {
         didSet {
@@ -52,26 +57,29 @@ class FirebaseManager {
     var userStatus: String = String() {
         didSet {
             
-                getMangerStoreName()
+            getMangerStoreName()
         }
     }
     private init () {}
+    
+    private func setStoresToken() {
+        guard let token = Messaging.messaging().fcmToken else { return }
+        for store in storeName {
+            
+            if storeDatas.first(where: {$0.name == store})?.tokens.contains(token) ?? true {
+                
+                
+            } else {
+                fireStoreDatabase().collectionName(.store).document(store).updateData([StoreDataKey.token.rawValue: FieldValue.arrayUnion([token])])
+            }
+        }
+    }
     
     private func postBookingData(data: [UserBookingData]) {
         
         NotificationCenter.default.post(
             name: NSNotification.bookingData,
             object: data)
-    }
-    
-    func signUpAccount(email: String, password: String, completionHandler: @escaping AuthResult) {
-        
-        Auth.auth().createUser(withEmail: email, password: password, completion: completionHandler)
-    }
-    
-    func signInAccount(email: String, password: String, completionHandler: @escaping AuthResult) {
-        
-        Auth.auth().signIn(withEmail: email, password: password, completion: completionHandler)
     }
     
     func configure() {
@@ -82,8 +90,7 @@ class FirebaseManager {
             if let user = user {
                 
                self.listener = self.fireStoreDatabase()
-                .collection(self.userCollection)
-                .document(user.uid).addSnapshotListener(
+                .collection(self.userCollection).document(user.uid).addSnapshotListener(
                     includeMetadataChanges: true,
                     listener: { (querySnapshot, _) in
                     
@@ -93,6 +100,14 @@ class FirebaseManager {
                         
                         let userData = UserData(dictionary: dictionary)
                         self.userData = userData
+                        guard let token = Messaging.messaging().fcmToken else {return}
+                        if self.userData?.tokens.contains(token) ?? true {
+                            
+                        } else {
+                            
+                            self.fireStoreDatabase().collectionName(.user)
+                                .document(user.uid).updateData([UsersKey.token.rawValue: FieldValue.arrayUnion([token])])
+                        }
                 })
             } else {
                 
@@ -118,11 +133,27 @@ class FirebaseManager {
     func logout(completionHandler: (Result<String>) -> Void) {
         
         do {
+            
+            guard let uid = user().currentUser?.uid, let token = Messaging.messaging().fcmToken else {
+                completionHandler(.failure(FireBaseError.unknow))
+                return
+            }
+            fireStoreDatabase().collectionName(.user)
+                .document(uid).updateData([UsersKey.token.rawValue: FieldValue.arrayRemove([token])])
+            resetStoreToken(token: token)
             try Auth.auth().signOut()
             resetData()
             completionHandler(.success(FirebaseEnum.logout.rawValue))
         } catch let signOutError as NSError {
             completionHandler(.failure(signOutError))
+        }
+    }
+    
+    private func resetStoreToken(token: String) {
+        
+        for store in storeName {
+            
+            fireStoreDatabase().collectionName(.store).document(store).updateData([StoreDataKey.token.rawValue: FieldValue.arrayRemove([token])])
         }
     }
     
@@ -148,7 +179,6 @@ class FirebaseManager {
                          userMessage: String, completionHandler: @escaping (Result<String>) -> Void) {
 
         guard let uid = user().currentUser?.uid else {
-            
             completionHandler(.failure(AccountError.noLogin))
             return
         }

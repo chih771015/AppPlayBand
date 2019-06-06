@@ -33,7 +33,6 @@ class ScrollViewWithThreeActionView: UIView {
             scrollView.isPagingEnabled = true
             self.addSubview(scrollView)
         }
-        scrollView.backgroundColor = .red
         setupConstraints()
         topActionView.stickSubView(topView)
         topView.delegate = self

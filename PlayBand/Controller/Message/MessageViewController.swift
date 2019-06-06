@@ -136,17 +136,7 @@ class MessageViewController: UIViewController {
             messageSubView.scrollView.subviews[index].stickSubView(self.children[index].view)
 //            print("setupChildViewDidSub")
         }
-        
-//        print("setupChildViewWillSub")
-//
-//        messageSubView.scrollView.subviews[0].stickSubView(confirmVC.view)
-//        print("setupChildViewDidSub")
-//        print("setupChildViewWillSub")
-//
-//        messageSubView.scrollView.subviews[1].stickSubView(tobeConfirmVC.view)
-//        print("setupChildViewDidSub")
-//        print("setupChildViewWillSub")
-//        messageSubView.scrollView.subviews[2].stickSubView(refuseVC.view)
+
         print("setupChildViewDidSub")
         
     }
@@ -183,7 +173,7 @@ class MessageViewController: UIViewController {
         case .normal:
             
             userManager.getUserBookingDatasWithUserType
-                {[weak self] result in self?.bookingDataResultCheck(result: result)}
+                { [weak self] result in self?.bookingDataResultCheck(result: result)}
         case .store(let storeName):
     
             userManager.getUserBookingDatasWithStoreType(

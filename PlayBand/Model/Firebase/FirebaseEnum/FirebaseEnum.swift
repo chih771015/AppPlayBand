@@ -112,6 +112,7 @@ enum UsersKey: String {
     case storeBlackList
     case userBlackList
     case storeRejectUser
+    case token
     
     enum Status: String {
         

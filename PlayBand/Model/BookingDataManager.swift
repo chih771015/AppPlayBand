@@ -32,4 +32,10 @@ class BookingDataManager {
         
         fireBaseBookingManger.getUserBookingDatasWithStore(storeName: storeName, completionHandler: completionHandler)
     }
+    
+    func addBookingDatas(storeName: String, bookingDatas: [BookingTimeAndRoom],
+                         userMessage: String, completionHandler: @escaping (Result<String>) -> Void) {
+        
+        fireBaseBookingManger.addUserBookingDatas(storeName: storeName, bookingDatas: bookingDatas, userMessage: userMessage, completionHandler: completionHandler)
+    }
 }

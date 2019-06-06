@@ -20,6 +20,7 @@ struct StoreData {
     var rooms: [Room] = []
     var city: String
     var images: [String] = []
+    var tokens: [String] = []
     
     struct Room {
         
@@ -81,6 +82,11 @@ struct StoreData {
         self.photourl = photourl
         self.information = information
         self.city = city
+        
+        if let tokens = dictionary[StoreDataKey.token.rawValue] as? [String] {
+            
+            self.tokens = tokens
+        }
     }
     
     func getStoreOpenHours() -> Int {
