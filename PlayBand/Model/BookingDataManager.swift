@@ -38,4 +38,17 @@ class BookingDataManager {
         
         fireBaseBookingManger.addUserBookingDatas(storeName: storeName, bookingDatas: bookingDatas, userMessage: userMessage, completionHandler: completionHandler)
     }
+    
+    func confirmBookingOrder(storeName: String, pathID: String, userUID: String,
+                             storeMessage: String = FirebaseBookingKey.storeMessage.description,
+                             completionHandler: @escaping (Result<String>) -> Void) {
+        fireBaseBookingManger.confirmBookingOrder(storeName: storeName, pathID: pathID, userUID: userUID, completionHandler: completionHandler)
+        
+    }
+    
+    func rejectBookingOrder(pathID: String, storeName: String,
+                            userUID: String, storeMessage: String, completionHandler: @escaping (Result<String>) -> Void) {
+        
+        fireBaseBookingManger.rejecBookingOrder(pathID: pathID, storeName: storeName, userUID: userUID, storeMessage: storeMessage, completionHandler: completionHandler)
+    }
 }

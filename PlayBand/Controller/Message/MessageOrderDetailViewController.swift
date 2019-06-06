@@ -37,7 +37,7 @@ class MessageOrderDetailViewController: UIViewController {
         
         PBProgressHUD.addLoadingView()
         
-        FirebaseManager.shared.updataBookingConfirm(
+        storeManager.confirmBookingOrder(
             storeName: bookingData.store, pathID: bookingData.pathID,
             userUID: bookingData.userUID) { [weak self] (result) in
                 
@@ -79,6 +79,7 @@ class MessageOrderDetailViewController: UIViewController {
     
     private var bookingData: UserBookingData?
     private var status = MessageFetchDataEnum.normal
+    private let storeManager = StoreManager()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -189,7 +190,7 @@ extension MessageOrderDetailViewController {
         guard let bookingData = self.bookingData else { return }
         
         PBProgressHUD.addLoadingView()
-        FirebaseManager.shared.refuseBooking(
+        storeManager.rejectOrder(
             pathID: bookingData.pathID, storeName:
         bookingData.store, userUID: bookingData.userUID, storeMessage: storeMessage) { [weak self] (result) in
             

@@ -116,7 +116,7 @@ class FBBookingDataManager {
     
     func addUserBookingDatas(storeName: String, bookingDatas: [BookingTimeAndRoom],
                              userMessage: String, completionHandler: @escaping (Result<String>) -> Void) {
-        fireBase.bookingTimeCreat(storeName: storeName, bookingDatas: bookingDatas, userMessage: userMessage) {[weak self] (result) in
+        fireBase.bookingTimeCreat(storeName: storeName, bookingDatas: bookingDatas, userMessage: userMessage) { [weak self] (result) in
             
             switch result {
             
@@ -129,12 +129,65 @@ class FBBookingDataManager {
                 
                 for token in tokens {
                     
-                    self?.pushNotification.sendPushNotification(to: token, title: "新增團室預定", body: "用戶\(name)跟您預約團室\n請您做確認的動作")
+                    self?.pushNotification.sendPushNotification(
+                        to: token, title: "新增團室預定",
+                        body: "用戶\(name)跟您預約團室\n請您做確認的動作")
                 }
             case .failure:
                 break
             }
             completionHandler(result)
         }
+    }
+    
+    func confirmBookingOrder(storeName: String, pathID: String, userUID: String,
+                             storeMessage: String = FirebaseBookingKey.storeMessage.description,
+                             completionHandler: @escaping (Result<String>) -> Void) {
+        fireBase.updataBookingConfirm(
+            storeName: storeName, pathID: pathID, userUID: userUID, completionHandler: { [weak self] (result) in
+            
+            switch result {
+                
+            case .success:
+                
+                self?.getUserTokensAndSendNotification(userUID: userUID, title: "預約時間確認",
+                                                       body: "店家\(storeName)已確認您的預約\n請查看資訊")
+            case .failure:
+                break
+            }
+            completionHandler(result)})
+        
+    }
+    
+    func rejecBookingOrder(pathID: String, storeName: String,
+                           userUID: String, storeMessage: String, completionHandler: @escaping (Result<String>) -> Void) {
+        
+        fireBase.refuseBooking(pathID: pathID, storeName: storeName, userUID: userUID, storeMessage: storeMessage) { [weak self] (result) in
+            
+            switch result {
+                
+            case .success:
+                self?.getUserTokensAndSendNotification(userUID: userUID, title: "預約時間拒絕",
+                                                       body: "店家\(storeName)已拒絕您的預約\n請查看資訊")
+                
+            case .failure:
+                
+                break
+            }
+            completionHandler(result)
+        }
+    }
+    
+    private func getUserTokensAndSendNotification(userUID: String, title: String, body: String) {
+        
+        self.fireStoreDataBase.collectionName(.user).document(userUID).getDocument(completion: { [weak self] (documentSnapshot, error) in
+            
+            guard let tokens = UserData(dictionary: documentSnapshot?.data() ?? Dictionary())?.tokens else {return}
+            
+            for token in tokens {
+                
+                self?.pushNotification.sendPushNotification(to: token, title: title, body: body)
+            }
+        })
     }
 }

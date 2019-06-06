@@ -42,6 +42,8 @@ class StoreDetailViewController: UIViewController {
         }
     }
     
+    private let storeManager = StoreManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.layoutIfNeeded()

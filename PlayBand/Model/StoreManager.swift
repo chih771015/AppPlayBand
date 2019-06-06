@@ -29,6 +29,21 @@ class StoreManager {
         firebaseStoreManger.updateStoreData(storeData: storeData, completionHandler: completionHandler)
         
     }
+    
+    func confirmBookingOrder(storeName: String, pathID: String, userUID: String,
+                             storeMessage: String = FirebaseBookingKey.storeMessage.description,
+                             completionHandler: @escaping (Result<String>) -> Void) {
+        bookingDataProVider.confirmBookingOrder(
+            storeName: storeName, pathID: pathID, userUID: userUID, completionHandler: completionHandler)
+        
+    }
+    
+    func rejectOrder(pathID: String, storeName: String,
+                     userUID: String, storeMessage: String, completionHandler: @escaping (Result<String>) -> Void) {
+        
+        bookingDataProVider.rejectBookingOrder(pathID: pathID, storeName: storeName, userUID: userUID, storeMessage: storeMessage, completionHandler: completionHandler)
+    }
+    
 }
 
 protocol FirebaseGetStoreProtocol: class {
