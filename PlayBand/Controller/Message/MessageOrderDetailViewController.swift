@@ -88,29 +88,6 @@ class MessageOrderDetailViewController: UIViewController {
         setupButtonView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("MessageOrderDetailViewWillAppear")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("MessageOrderDetailViewDidAppear")
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("MessageOrderDetailViewWillDisappear")
-    }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("MessageOrderDetailViewDidDisappear")
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     private func setupTableView() {
         
         tableView.lv_registerCellWithNib(

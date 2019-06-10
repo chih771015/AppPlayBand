@@ -37,25 +37,6 @@ class SearchStoreViewController: UIViewController {
         setupNotificationCenter()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("SearchStoreViewWillAppear")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("SearchStoreViewDidAppear")
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("SearchStoreViewWillDisappear")
-    }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("SearchStoreViewDidDisappear")
-    }
-    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -157,5 +138,4 @@ extension SearchStoreViewController: UITableViewDataSource, UITableViewDelegate 
         nextViewController.storeData = self.storeDatas[indexPath.row]
         navigationController?.pushViewController(nextViewController, animated: true)
     }
-
 }

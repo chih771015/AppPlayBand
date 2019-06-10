@@ -23,6 +23,8 @@ private struct StoryboardCategory {
     static let photo = "Photo"
     
     static let signIn = "SignIn"
+    
+    static let chat = "Chat"
 
 }
 
@@ -41,6 +43,8 @@ extension UIStoryboard {
     static var photo: UIStoryboard { return pbStoryboard(name: StoryboardCategory.photo)}
     
     static var signIn: UIStoryboard { return pbStoryboard(name: StoryboardCategory.signIn)}
+    
+    static var chat: UIStoryboard { return pbStoryboard(name: StoryboardCategory.chat)}
 
     private static func pbStoryboard(name: String) -> UIStoryboard {
 

@@ -59,43 +59,12 @@ class MessageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("ParentDidLoadBegin")
         setupTestView()
         setupChildVC()
         setupChildView()
         setupData()
         setupNavigationItem()
         view.layoutIfNeeded()
-        print("ParentDidLoadEnd")
-    }
-    
-    override func loadView() {
-        super.loadView()
-        print("ParentLoadView")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("ParentWillAppear")
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        print("ParentWillLayout")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("ParentDidAppear")
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("ParentWillDisappear")
-    }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("ParentViewDidDisappear")
     }
     
     private func setupNavigationItem() {
@@ -128,8 +97,6 @@ class MessageViewController: UIViewController {
     private func setupChildView() {
         print("ChildViewSubBegin")
         messageSubView.setupScrollViewSubViewFullSize(at: self.children.count)
- //       messageSubView.setupScrollViewSubViewFullSize(at: 3)
-
         let viewCount = messageSubView.scrollView.subviews.count
         for index in 0..<viewCount {
 //            print("setupChildViewWillSub")
@@ -219,6 +186,7 @@ class MessageViewController: UIViewController {
     @objc func getBookingData(notification: NSNotification) {
         
         if notification.name == NSNotification.bookingData {
+            
             PBProgressHUD.dismissLoadingView(animated: true)
             guard let bookingDatas = notification.object as? [UserBookingData] else {return}
             self.userBookingData = bookingDatas

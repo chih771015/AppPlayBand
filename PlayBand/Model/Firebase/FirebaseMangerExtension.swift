@@ -343,15 +343,15 @@ extension FirebaseManager {
             ) { (error) in
             
             if let error = error {
-                completionHandler(.failure(error))
                 
+                completionHandler(.failure(error))
             } else {
                 
                 self.removeStoreReject(userUID: userUID, completionHandler: completionHandler)
             }
         }
-        
     }
+    
     private func removeStoreReject(userUID: String, completionHandler: @escaping (Result<String>) -> Void) {
         fireStoreDatabase().collection(userCollection)
             .document(userUID)

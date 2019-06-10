@@ -10,7 +10,7 @@ import UIKit
 
 private enum Tab {
 
-    case news
+    case chat
 
     case booking
 
@@ -24,7 +24,7 @@ private enum Tab {
 
         switch self {
 
-        case .news: controller = UIStoryboard.news.instantiateInitialViewController()!
+        case .chat: controller = UIStoryboard.chat.instantiateInitialViewController()!
 
         case .booking: controller = UIStoryboard.booking.instantiateInitialViewController()!
 
@@ -45,14 +45,14 @@ private enum Tab {
 
         switch self {
 
-        case .news:
+        case .chat:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.newspaper),
-                selectedImage: UIImage.asset(.newspaper)
+                image: UIImage.asset(.mail),
+                selectedImage: UIImage.asset(.mail)
             )
 
-        case .booking:
+        case .message:
    
             return UITabBarItem(
                 title: nil,
@@ -60,11 +60,11 @@ private enum Tab {
                 selectedImage: UIImage.asset(.calendar)
             )
 
-        case .message:
+        case .booking:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.mail),
-                selectedImage: UIImage.asset(.mail)
+                image: UIImage.asset(.shopIcon),
+                selectedImage: UIImage.asset(.shopIcon)
             )
 
         case .profile:
@@ -79,7 +79,7 @@ private enum Tab {
 
 class PBTabBarController: UITabBarController, UITabBarControllerDelegate {
 
-    private let tabs: [Tab] = [ .booking, .message, .profile]
+    private let tabs: [Tab] = [ .booking, .chat, .message, .profile]
 
     override func viewDidLoad() {
         super.viewDidLoad()

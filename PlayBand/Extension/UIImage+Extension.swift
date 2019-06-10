@@ -22,6 +22,7 @@ enum ImageAsset: String {
     case phonecall
     case resume
     case shop
+    case shopIcon
 }
 
 extension UIImage {
