@@ -12,6 +12,10 @@
 		590765DC22AE0547009544D2 /* ChatDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590765DA22AE0547009544D2 /* ChatDetailTableViewCell.swift */; };
 		590765DD22AE0547009544D2 /* ChatDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 590765DB22AE0547009544D2 /* ChatDetailTableViewCell.xib */; };
 		590765DF22AE0677009544D2 /* ChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590765DE22AE0677009544D2 /* ChatDetailViewController.swift */; };
+		590765E122AE367E009544D2 /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590765E022AE367E009544D2 /* ChatManager.swift */; };
+		590765E322AE3736009544D2 /* FirebaseChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590765E222AE3736009544D2 /* FirebaseChatManager.swift */; };
+		590765E522AE3A76009544D2 /* ChatEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590765E422AE3A76009544D2 /* ChatEnum.swift */; };
+		590765E722AE4C3B009544D2 /* ChatCategoryEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590765E622AE4C3B009544D2 /* ChatCategoryEnum.swift */; };
 		5907F6972259DE3C008BB604 /* StoreDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907F6952259DE3C008BB604 /* StoreDescriptionTableViewCell.swift */; };
 		5907F6982259DE3C008BB604 /* StoreDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5907F6962259DE3C008BB604 /* StoreDescriptionTableViewCell.xib */; };
 		5907F69B2259E2BD008BB604 /* StoreContentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */; };
@@ -175,6 +179,10 @@
 		590765DA22AE0547009544D2 /* ChatDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailTableViewCell.swift; sourceTree = "<group>"; };
 		590765DB22AE0547009544D2 /* ChatDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatDetailTableViewCell.xib; sourceTree = "<group>"; };
 		590765DE22AE0677009544D2 /* ChatDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailViewController.swift; sourceTree = "<group>"; };
+		590765E022AE367E009544D2 /* ChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
+		590765E222AE3736009544D2 /* FirebaseChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseChatManager.swift; sourceTree = "<group>"; };
+		590765E422AE3A76009544D2 /* ChatEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEnum.swift; sourceTree = "<group>"; };
+		590765E622AE4C3B009544D2 /* ChatCategoryEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCategoryEnum.swift; sourceTree = "<group>"; };
 		5907F6952259DE3C008BB604 /* StoreDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		5907F6962259DE3C008BB604 /* StoreDescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreDescriptionTableViewCell.xib; sourceTree = "<group>"; };
 		5907F69A2259E2BD008BB604 /* StoreContentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreContentCategory.swift; sourceTree = "<group>"; };
@@ -380,6 +388,7 @@
 			children = (
 				59326DE322A90A3B005297A7 /* ChatMainViewController.swift */,
 				590765DE22AE0677009544D2 /* ChatDetailViewController.swift */,
+				590765E622AE4C3B009544D2 /* ChatCategoryEnum.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -406,6 +415,8 @@
 			isa = PBXGroup;
 			children = (
 				59326DEC22A91B2C005297A7 /* ChatData.swift */,
+				590765E022AE367E009544D2 /* ChatManager.swift */,
+				590765E422AE3A76009544D2 /* ChatEnum.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -678,6 +689,7 @@
 				59D925F72282750E004EBEEC /* FireBaseStoreDataManger.swift */,
 				59D9260222829E9F004EBEEC /* FBBookingDataManager.swift */,
 				59AE1DA822A605B900E42428 /* FireBaseNotificationSender.swift */,
+				590765E222AE3736009544D2 /* FirebaseChatManager.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -1184,6 +1196,7 @@
 				59DFF84F22564DEB00273724 /* UILabel+Extension.swift in Sources */,
 				5959C806226DA1C300AA62AD /* UIColor+Extension.swift in Sources */,
 				59ABB0342258B32B00AE937A /* SearchStoreTableViewCell.swift in Sources */,
+				590765E522AE3A76009544D2 /* ChatEnum.swift in Sources */,
 				59E6FE02227C4E9300EFAE55 /* UIAlertAction+Extension.swift in Sources */,
 				59E6FE00227C335300EFAE55 /* AccountError.swift in Sources */,
 				59B43E0B226ECA5C00598538 /* StoreTitleImageTableViewCell.swift in Sources */,
@@ -1213,6 +1226,7 @@
 				59FF33CC22701D3F00F8DCAA /* MessageOrderTableViewCell.swift in Sources */,
 				59536697227AEF8C00502B89 /* EditStoreInfoViewController.swift in Sources */,
 				598B8CD82254BFF80061F03B /* UITableView+Extension.swift in Sources */,
+				590765E122AE367E009544D2 /* ChatManager.swift in Sources */,
 				590765DF22AE0677009544D2 /* ChatDetailViewController.swift in Sources */,
 				59ABB0232258732B00AE937A /* SettingTableViewCell.swift in Sources */,
 				5913F0B0228191F900562436 /* StoreManager.swift in Sources */,
@@ -1237,8 +1251,10 @@
 				59530B10225C7B58002F18AB /* ConfirmTableViewCell.swift in Sources */,
 				59D717AD2265A8F3009772FC /* ResultEnum.swift in Sources */,
 				593774AA227A1846008A05E0 /* StoreApplyData.swift in Sources */,
+				590765E322AE3736009544D2 /* FirebaseChatManager.swift in Sources */,
 				59F81F9F22549FCD00C04E32 /* ProfileViewController.swift in Sources */,
 				5933CBC02275A3A300E0C114 /* NoDataView.swift in Sources */,
+				590765E722AE4C3B009544D2 /* ChatCategoryEnum.swift in Sources */,
 				59D717AB22658B6A009772FC /* StoreDataStruct.swift in Sources */,
 				59EED82E2278B193006A52C7 /* EditTableHeaderFooterView.swift in Sources */,
 				593774A5227A13CE008A05E0 /* BaseStoresViewController.swift in Sources */,

@@ -24,11 +24,10 @@ class ChatMainTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupCell(title: String, description: String, imageURL: String) {
+    func setupCell(title: String, description: String, imageURL: String?) {
         
         self.titleLabel.setupTextInPB(text: title)
         self.descriptionLabel.setupTextInPB(text: description)
-        self.titleIamge.lv_setImageWithURL(url: imageURL)
+        self.titleIamge.lv_setImageWithURL(url: imageURL ?? "")
     }
-    
 }

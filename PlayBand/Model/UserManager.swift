@@ -12,6 +12,11 @@ class UserManager {
     
     let bookingDataProvider = BookingDataManager()
     
+    var userManagerStore: [String] {
+        
+        return FirebaseManager.shared.storeName
+    }
+    
     func getUserBookingDatasWithUserType(completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
         
         bookingDataProvider.getUserBookingDatasWithUserType(completionHandler: completionHandler)
