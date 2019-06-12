@@ -102,6 +102,11 @@ class ChatMainViewController: BaseTableViewController {
         self.navigationItem.title = chatManager.chatModel.title
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchData(with: chatManager.chatModel)
+    }
+    
     private func setupModel(with type: ChatCategoryEnum) {
         
         chatManager.chatModel = type

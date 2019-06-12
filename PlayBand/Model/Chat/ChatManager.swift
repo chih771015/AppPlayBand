@@ -96,7 +96,7 @@ class ChatManager {
             switch result {
                 
             case .success(let data):
-                self?.newChatData = data
+                self?.filterBlackList(datas: data)
                 completionHandler(.success(true))
             case .failure(let error):
                 completionHandler(.failure(error))
@@ -111,12 +111,30 @@ class ChatManager {
             switch result {
                 
             case .success(let data):
-                self?.newChatData = data
+                self?.filterBlackList(datas: data)
                 completionHandler(.success(true))
             case .failure(let error):
                 completionHandler(.failure(error))
             }
         }
+    }
+    
+    func filterBlackList(datas: [ChatData]) {
+        
+        var filterDatas = datas
+        if let userData = FirebaseManager.shared.userData {
+            
+            for store in userData.storeBlackList {
+                
+                filterDatas = filterDatas.filter({$0.uid != store})
+            }
+            
+            for user in userData.userBlackLists {
+                
+                filterDatas = filterDatas.filter({$0.uid != user.uid})
+            }
+        }
+        newChatData = filterDatas
     }
     
     func getDetailMessage(completionHandler: @escaping (Result<Bool>) -> Void) {
@@ -180,9 +198,11 @@ class ChatManager {
     }
     
     func addCellCount() {
+        
         if cellCountValue < selectChatData.count {
             
-            cellCountValue += 15
+            cellCountValue += 10
+            delegate?.reloadTableView(self)
         }
     }
     
@@ -214,5 +234,8 @@ extension ChatManager: FirebaseChatDelegate {
 }
 
 protocol ChatManagerDelegate: AnyObject {
+    
     func newData(_ chatManager: ChatManager)
+    
+    func reloadTableView(_ chatManager: ChatManager)
 }

@@ -29,28 +29,38 @@
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="lvCornerRadius">
-                                <real key="value" value="35"/>
+                                <real key="value" value="34"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xjp-kM-oBV">
-                        <rect key="frame" x="122" y="61" width="225" height="17"/>
+                        <rect key="frame" x="122" y="61" width="209" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" name="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDd-lD-6PM">
-                        <rect key="frame" x="122" y="26" width="225" height="19.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <rect key="frame" x="122" y="26" width="209" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                         <color key="textColor" name="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R5f-X4-nai">
+                        <rect key="frame" x="32" y="142.5" width="299" height="1"/>
+                        <color key="backgroundColor" name="endColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="ZIf-H9-nlT"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Xjp-kM-oBV" secondAttribute="trailing" constant="16" id="A08-hh-HFM"/>
+                    <constraint firstItem="R5f-X4-nai" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="22W-gq-ZFb"/>
+                    <constraint firstAttribute="trailing" secondItem="Xjp-kM-oBV" secondAttribute="trailing" constant="32" id="A08-hh-HFM"/>
                     <constraint firstAttribute="bottom" secondItem="8tD-Vd-SBp" secondAttribute="bottom" priority="750" constant="16" id="Ia3-5c-fJn"/>
                     <constraint firstItem="8tD-Vd-SBp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="36" id="RbT-Xp-6Fd"/>
                     <constraint firstItem="Xjp-kM-oBV" firstAttribute="bottom" secondItem="8tD-Vd-SBp" secondAttribute="bottom" constant="-8" id="Ubd-r6-lJ3"/>
+                    <constraint firstAttribute="bottom" secondItem="R5f-X4-nai" secondAttribute="bottom" id="W5H-ga-z6u"/>
+                    <constraint firstAttribute="trailing" secondItem="R5f-X4-nai" secondAttribute="trailing" constant="32" id="Yy9-iS-ZCL"/>
                     <constraint firstItem="8tD-Vd-SBp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Zjd-gJ-7cK"/>
                     <constraint firstItem="BDd-lD-6PM" firstAttribute="trailing" secondItem="Xjp-kM-oBV" secondAttribute="trailing" id="aWs-O7-iGH"/>
                     <constraint firstItem="BDd-lD-6PM" firstAttribute="leading" secondItem="Xjp-kM-oBV" secondAttribute="leading" id="vJw-aP-b6L"/>

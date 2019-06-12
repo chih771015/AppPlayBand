@@ -16,15 +16,34 @@ class FirebaseChatManager {
     let notificationSender = FireBaseNotificationSender()
     var listener: ListenerRegistration?
     weak var delegate: FirebaseChatDelegate?
+    var newChatDataListener: ListenerRegistration?
     
     func getUserNewChatData(completionHandler: @escaping (Result<[ChatData]>) -> Void) {
-        
+        newChatDataListener?.remove()
         guard let uid = firebaseManager.user().currentUser?.uid else {
             completionHandler(.failure(FireBaseError.unknow))
             return
         }
-        fireStore.collectionName(.user).document(uid)
-            .collectionName(.newChatData).getDocuments { (querySnapshot, error) in
+        let collection = fireStore.collectionName(.user).document(uid).collectionName(.newChatData)
+//             collection.getDocuments { (querySnapshot, error) in
+//
+//            if let error = error {
+//
+//                completionHandler(.failure(error))
+//                return
+//            } else {
+//
+//                guard let documents = querySnapshot?.documents else {
+//
+//                    completionHandler(.failure(FireBaseError.unknow))
+//                    return
+//                }
+//
+//                let data = documents.compactMap({ChatData(dictionary: $0.data())})
+//                completionHandler(.success(data))
+//            }
+//        }
+        newChatDataListener = collection.addSnapshotListener({ (querySnapshot, error) in
             
             if let error = error {
                 
@@ -41,13 +60,38 @@ class FirebaseChatManager {
                 let data = documents.compactMap({ChatData(dictionary: $0.data())})
                 completionHandler(.success(data))
             }
-        }
+        })
     }
     
     func getStoreNewChatData(storeName: String, completionHandler: @escaping (Result<[ChatData]>) -> Void) {
         
-        fireStore.collectionName(.store).document(storeName)
-            .collectionName(.newChatData).getDocuments { (querySnapshot, error) in
+        newChatDataListener?.remove()
+        let collection = fireStore.collectionName(.store).document(storeName)
+            .collectionName(.newChatData)
+            
+//            getDocuments { (querySnapshot, error) in
+//
+//            if let error = error {
+//
+//                completionHandler(.failure(error))
+//            }
+//
+//            guard let documents = querySnapshot?.documents else {
+//
+//                completionHandler(.failure(FireBaseError.unknow))
+//                return
+//            }
+//
+//            var datas: [ChatData] = []
+//            for document in documents {
+//
+//                guard let data = ChatData(dictionary: document.data()) else {continue}
+//                datas.append(data)
+//            }
+//
+//            completionHandler(.success(datas))
+//        }
+        newChatDataListener = collection.addSnapshotListener({ (querySnapshot, error) in
             
             if let error = error {
                 
@@ -68,7 +112,7 @@ class FirebaseChatManager {
             }
             
             completionHandler(.success(datas))
-        }
+        })
     }
     
     func sendNewMeesageToUser(userName: String, storeName: String, message: String, uid: String, userURL: String) {
@@ -84,9 +128,13 @@ class FirebaseChatManager {
                 
                 self?.fireStore.collectionName(.user).document(uid).getDocument(completion: { (document, _) in
                     
-                    guard let userTokens = UserData(dictionary: document?.data() ?? Dictionary())?.tokens else {return}
+                    guard let userData = UserData(dictionary: document?.data() ?? Dictionary()) else {return}
                     
-                    for token in userTokens {
+                    if userData.storeBlackList.contains(storeName) {
+                        return
+                    }
+                    
+                    for token in userData.tokens {
                         
                        self?.notificationSender.sendPushNotification(to: token, title: storeName, body: message)
                     }

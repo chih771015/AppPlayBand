@@ -25,6 +25,12 @@ class ChatDetailTableViewCell: UITableViewCell {
         mainImage.isHidden = true
         mainTextView.isHidden = true
         mainNameLabel.isHidden = true
+        mainTextView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        otherSideTextView.layer.maskedCorners = [.layerMaxXMinYCorner,
+                                                 .layerMaxXMaxYCorner,
+                                                 .layerMinXMaxYCorner]
+        mainTextView.layer.cornerRadius = 10
+        otherSideTextView.layer.cornerRadius = 10
         // Initialization code
     }
 

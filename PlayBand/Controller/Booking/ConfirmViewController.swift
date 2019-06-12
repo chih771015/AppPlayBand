@@ -70,7 +70,10 @@ class ConfirmViewController: UIViewController {
                 
             case .failure(let error):
                 
-                self?.addErrorTypeAlertMessage(error: error)
+                self?.addErrorTypeAlertMessage(error: error,
+                                               completionHanderInDismiss: { [weak self] (_) in
+                    self?.navigationController?.popToRootViewController(animated: true)
+                })
                 
             }
         }

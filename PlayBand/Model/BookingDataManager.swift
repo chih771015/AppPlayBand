@@ -18,7 +18,7 @@ class BookingDataManager {
     
     let fireBaseBookingManger = FBBookingDataManager()
     
-    func getStoreBookingDatas(storeName: String, completionHandler: @escaping (Result<[BookingTimeAndRoom]>) -> Void) {
+    func getStoreBookingDatas(storeName: String, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
         
         fireBaseBookingManger.getStoreBookingData(storeName: storeName, completionHandler: completionHandler)
     }

@@ -19,7 +19,7 @@ class StoreManager {
         firebaseStoreManger.getStoresData(completionHandler: completionHandler)
     }
     
-    func getStoreBookingDatas(storeName: String, completionHandler: @escaping (Result<[BookingTimeAndRoom]>) -> Void) {
+    func getStoreBookingDatas(storeName: String, completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
         
         bookingDataProVider.getStoreBookingDatas(storeName: storeName, completionHandler: completionHandler)
     }

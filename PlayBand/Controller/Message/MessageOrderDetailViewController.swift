@@ -120,7 +120,7 @@ class MessageOrderDetailViewController: UIViewController {
         switch status {
         case .store:
             
-            if bookingData?.status == FirebaseBookingKey.Status.tobeConfirm.rawValue {
+            if bookingData?.status != FirebaseBookingKey.Status.refuse.rawValue {
                 
                 buttonViewHeight.constant = 70
             } else {

@@ -39,7 +39,7 @@ class FBBookingDataManager {
     
     let pushNotification = FireBaseNotificationSender()
     
-    func getStoreBookingData(storeName: String ,completionHandler: @escaping (Result<[BookingTimeAndRoom]>) -> Void) {
+    func getStoreBookingData(storeName: String ,completionHandler: @escaping (Result<[UserBookingData]>) -> Void) {
         
         let ref = fireStoreDataBase.collectionName(.store).document(storeName).collectionName(.bookingConfirm)
         fireBase.collectionGetDocuments(ref: ref) { (result) in
@@ -47,19 +47,9 @@ class FBBookingDataManager {
             switch result {
                 
             case .success(let datas):
-                do {
-                    
-                    let bookingDatas = try DataTransform
-                        .dataArrayReturnWithoutOption(
-                            datas: datas.map({BookingTimeAndRoom(dictionary: $0)})
-                    )
-                    
-                    completionHandler(.success(bookingDatas))
-                } catch {
-                    
-                    completionHandler(.failure(error))
-                }
-          
+                
+                let retrunDatas = datas.compactMap({UserBookingData(dictionary: $0)})
+                completionHandler(.success(retrunDatas))
             case .failure(let error):
                 
                 completionHandler(.failure(error))
@@ -116,6 +106,7 @@ class FBBookingDataManager {
     
     func addUserBookingDatas(storeName: String, bookingDatas: [BookingTimeAndRoom],
                              userMessage: String, completionHandler: @escaping (Result<String>) -> Void) {
+        
         fireBase.bookingTimeCreat(storeName: storeName, bookingDatas: bookingDatas, userMessage: userMessage) { [weak self] (result) in
             
             switch result {

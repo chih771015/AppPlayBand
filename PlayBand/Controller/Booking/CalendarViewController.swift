@@ -62,7 +62,7 @@ class CalendarViewController: UIViewController {
         }
     }
     private var price = String()
-    private var firebaseBookingData: [BookingTimeAndRoom] = [] {
+    private var firebaseBookingData: [UserBookingData] = [] {
         
         didSet {
          
@@ -237,15 +237,28 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
             withIdentifier: String(describing: CalendarTableViewCell.self),
             for: indexPath) as? CalendarTableViewCell else {return UITableViewCell()}
 
+        if selectDay.date < Date() {
+            cell.bookingButton.isHidden = true
+        }
+        
         let hour = indexPath.row + (Int(storeData?.openTime ?? "0") ?? 0)
         let time = BookingDate(year: selectDay.year, month: selectDay.month, day: selectDay.day)
         
-        if firebaseBookingData
-            .filter({$0.date == time})
-            .filter({$0.hour.contains(hour)})
-            .filter({$0.room == self.room}).count != 0 {
+        let bookingData = firebaseBookingData
+                            .filter({$0.bookingTime.date == time})
+                            .filter({$0.bookingTime.hour.contains(hour)})
+                            .filter({$0.bookingTime.room == self.room})
+        
+        if bookingData.count != 0 {
             
-            cell.fireBaseBookingSetup(hour: hour)
+            if FirebaseManager.shared.storeName.contains(storeData?.name ?? "") {
+                
+                cell.fireBaseBookingSetup(text: "\(bookingData[0].userInfo.name)預定此時間", hour: hour)
+            } else {
+                
+                cell.fireBaseBookingSetup(hour: hour)
+            }
+            
             return cell
         }
         cell.bookingButton.addTarget(self, action: #selector(addBooking(sender:)), for: .touchUpInside)

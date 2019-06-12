@@ -40,10 +40,14 @@ class CalendarTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    override func prepareForReuse() {
+        
+        bookingButton.isHidden = false
+    }
+    
     func setupCell(hour: Int) {
 
         setupText(hour: hour)
-        bookingButton.isHidden = false
         bookingView.isHidden = true
         bookingView.backgroundColor = UIColor.white
         bookingButton.setImage(UIImage.asset(.add), for: .normal)
@@ -52,20 +56,19 @@ class CalendarTableViewCell: UITableViewCell {
     func userBookingSetup(hour: Int) {
         
         setupText(hour: hour)
-        bookingButton.isHidden = false
         bookingView.isHidden = false
         bookingButton.setImage(UIImage.asset(.substract), for: .normal)
         bookingView.backgroundColor = UIColor.playBandColorEnd
         titleLabel.text = TitleText.user.rawValue
     }
     
-    func fireBaseBookingSetup(hour: Int) {
+    func fireBaseBookingSetup(text: String = TitleText.firebase.rawValue, hour: Int) {
         
         setupText(hour: hour)
         bookingButton.isHidden = true
         bookingView.isHidden = false
         bookingView.backgroundColor = UIColor.playBandColorPinkRed
-        titleLabel.text = TitleText.firebase.rawValue
+        titleLabel.text = text
     }
     private func setupText(hour: Int) {
         
