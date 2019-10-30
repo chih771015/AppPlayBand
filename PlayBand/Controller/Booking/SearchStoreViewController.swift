@@ -8,88 +8,61 @@
 
 import UIKit
 
-class SearchStoreViewController: UIViewController {
-
-    @IBOutlet weak var tableView: UITableView! {
-        
-        didSet {
-
-            tableViewSetup()
-        }
-    }
+class ObserverBox<T> {
     
-    private var storeDatas: [StoreData] = [] {
+    var value: T {
         
         didSet {
             
-            tableView.reloadData()
+            callBack?(value)
         }
     }
-
-    private let storeManger = StoreManager()
-    private let cellType = StoreContentCategory.storeSearch
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // swiftlint: disable line_length
+    var callBack: ((T) -> Void)?
+    
+    init(_ value: T) {
+        
+        self.value = value
+    }
+    
+    func listening(callBack: @escaping (T) -> Void) {
+        
+        callBack(value)
+        self.callBack = callBack
+    }
+    
+    func observer(callBack: @escaping (T) -> Void) {
+         
+         self.callBack = callBack
+     }
+    
+    func remove() {
+        
+        self.callBack = nil
+    }
+}
 
-        tableView.beginHeaderRefreshing()
+class SerachStoreViewModel {
+    
+    var storeDatas: [StoreData] = []
+        
+    let observerResult: ObserverBox<(Result<String>)> = .init(.success(""))
+    
+    private let storeManger = StoreManager()
+    
+    init() {
+        
         setupNotificationCenter()
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    private func setupNotificationCenter() {
-        
-        addNotificationObserver(notificationName: NSNotification.userData)
-        addNotificationObserver(notificationName: NSNotification.storeDatas)
-    }
-    
-    private func addNotificationObserver(notificationName: NSNotification.Name) {
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(notificationData(notifcation:)), name: notificationName, object: nil)
-    }
-    
-    private func getStoreData() {
-        
-        self.storeDatas = []
-        
-        PBProgressHUD.addLoadingView(animated: true)
-        
-        storeManger.getStoreDatas(completionHandler: { [weak self] (result) in
-                PBProgressHUD.dismissLoadingView()
-                self?.tableView.endHeaderRefreshing()
-                switch result {
-                    
-                case .success(let data):
-                    
-                    guard let filterData = self?.setupFilterStoreData(storeData: data) else {
-                        
-                                                    self?.storeDatas = data
-                                                    return
-                                                }
-                    
-                                                self?.storeDatas = filterData
-                case .failure(let error):
-                    
-                    self?.addErrorTypeAlertMessage(error: error)
-                }
-                
-            })
-    }
-    
-    private func tableViewSetup() {
-
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.lv_registerCellWithNib(
-            identifier: String(describing: SearchStoreTableViewCell.self),
-            bundle: nil)
-        tableView.addRefreshHeader { [weak self] in
-            
-            self?.getStoreData()
+    private func setupFilterStoreData(storeData: [StoreData]) -> [StoreData] {
+         
+        if let name = FirebaseManager.shared.userData?.storeBlackList {
+                  
+            return storeData.filter({!name.contains($0.name)})
+        } else {
+                  
+            return storeData
         }
     }
     
@@ -106,14 +79,93 @@ class SearchStoreViewController: UIViewController {
         }
     }
     
-    private func setupFilterStoreData(storeData: [StoreData]) -> [StoreData] {
-   
-        if let name = FirebaseManager.shared.userData?.storeBlackList {
+    func getStoreData() {
+        
+        self.storeDatas = []
+                
+        storeManger.getStoreDatas(completionHandler: { [weak self] (result) in
+            guard let self = self else { return }
             
-            return storeData.filter({!name.contains($0.name)})
-        } else {
+            switch result {
             
-            return storeData
+            case .success(let data):
+                    
+                let filterData = self.setupFilterStoreData(storeData: data)
+
+                self.storeDatas = filterData
+                
+                self.observerResult.value = .success("")
+            case .failure(let error):
+                
+                self.observerResult.value = .failure(error)
+            }
+                
+        })
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func setupNotificationCenter() {
+        
+        addNotificationObserver(notificationName: NSNotification.userData)
+        addNotificationObserver(notificationName: NSNotification.storeDatas)
+    }
+    
+    private func addNotificationObserver(notificationName: NSNotification.Name) {
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(notificationData(notifcation:)),
+                                               name: notificationName,
+                                               object: nil)
+    }
+}
+
+class SearchStoreViewController: UIViewController {
+
+    @IBOutlet weak var tableView: UITableView! {
+        
+        didSet {
+
+            tableViewSetup()
+        }
+    }
+
+    private let viewModel = SerachStoreViewModel()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // swiftlint: disable line_length
+    
+        viewModel.observerResult.observer { [weak self] (result) in
+            PBProgressHUD.dismissLoadingView()
+            self?.tableView.endHeaderRefreshing()
+            switch result {
+                
+            case .success:
+                
+                self?.tableView.reloadData()
+                
+            case .failure(let error):
+                
+                self?.addErrorTypeAlertMessage(error: error)
+            }
+        }
+        tableView.beginHeaderRefreshing()
+    }
+    
+    private func tableViewSetup() {
+
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.lv_registerCellWithNib(
+            identifier: String(describing: SearchStoreTableViewCell.self),
+            bundle: nil)
+        tableView.addRefreshHeader { [weak self] in
+            
+            self?.viewModel.getStoreData()
+            PBProgressHUD.addLoadingView(animated: true)
         }
     }
 }
@@ -122,12 +174,21 @@ extension SearchStoreViewController: UITableViewDataSource, UITableViewDelegate 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return storeDatas.count
+        return viewModel.storeDatas.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        return cellType.cellForeSearch(indexPath, tableView: tableView, storeData: storeDatas[indexPath.row])
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: SearchStoreTableViewCell.self), for: indexPath
+            ) as? SearchStoreTableViewCell else {
+            return UITableViewCell()
+        }
+        let storeData = viewModel.storeDatas[indexPath.row]
+        cell.setupCell(title: storeData.name, imageURL: storeData.photourl,
+                       city: storeData.city, price: storeData.returnStorePriceLowToHigh())
+        
+        return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -135,7 +196,7 @@ extension SearchStoreViewController: UITableViewDataSource, UITableViewDelegate 
         guard let nextViewController = self.storyboard?.instantiateViewController(
             withIdentifier: String(describing: StoreDetailViewController.self)
         ) as? StoreDetailViewController else {return}
-        nextViewController.storeData = self.storeDatas[indexPath.row]
+        nextViewController.storeData = self.viewModel.storeDatas[indexPath.row]
         navigationController?.pushViewController(nextViewController, animated: true)
     }
 }
